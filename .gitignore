@@ -1,0 +1,14 @@
+.env
+.DS_Store
+node_modules/
+
+# Fuentes crudas de cada corrida (regenerables desde GSC/crawler) — se versiona report.html y data.json
+reports/*/*/data/
+
+# Repo separado con su propio remoto (github.com/jorgejaramillo/mcp-google-search-console) —
+# no debe anidarse como carpeta normal de este repo.
+mcp-google-search-console/
+
+# Descargas sueltas de pruebas anteriores del crawler (clientes ajenos, tests) —
+# el skill ahora guarda en reports/<slug>/<fecha>/data/crawl/, que ya está ignorado arriba.
+crawler/output/

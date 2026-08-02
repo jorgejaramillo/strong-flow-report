@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Strong Flow Report: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"jorgejaramillo","clientName":"Jorge Jaramillo","domain":"jorgejaramillo.com","periodStart":"05 jul 2026","periodEnd":"01 ago 2026","generatedAt":"02 ago 2026","pagesAnalyzed":53},"headerBadges":[{"text":"↑ +3.2% clicks","class":"badge-success"},{"text":"53 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"32","valueClass":"text-primary","desc":"↑ 3.2% vs período anterior","descClass":"text-success"},{"title":"Impresiones","value":"8,737","desc":"↓ 9.6%","descClass":"text-error"},{"title":"CTR medio","value":"0.37%","desc":"↑ 0.05pp","descClass":"text-success"},{"title":"Posición media","value":"22.3","desc":"↑ 0.4 (mejor)","descClass":"text-success"},{"title":"URLs encontradas","value":"53","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"53","desc":"A Search Console"}],"cannibalization":{"query":"entrenamiento de fuerza","rows":[{"url":"/blog/entrenamiento-fuerza","impressions":1200,"clicks":45,"position":8.3,"status":"Principal","statusClass":"badge-success"},{"url":"/blog/fuerza-para-principiantes","impressions":340,"clicks":8,"position":18.7,"status":"Canibaliza","statusClass":"badge-warning"}],"action":"Acción sugerida: canonical de /blog/fuerza-para-principiantes → /blog/entrenamiento-fuerza."},"winners":[{"page":"/blog/rutina-fuerza","clicks":210,"prev":142,"delta":"+68"},{"page":"/programas/hipertrofia","clicks":155,"prev":110,"delta":"+45"},{"page":"/blog/proteina-vegetal","clicks":98,"prev":61,"delta":"+37"},{"page":"/","clicks":340,"prev":312,"delta":"+28"}],"losers":[{"page":"/agencia-seo","clicks":40,"prev":95,"delta":"-55"},{"page":"/servicios","clicks":88,"prev":130,"delta":"-42"},{"page":"/blog/entrenamiento-fuerza","clicks":60,"prev":91,"delta":"-31"},{"page":"/categoria-d","clicks":22,"prev":44,"delta":"-22"}],"landingsCrawl":["/","/servicios","/agencia-seo","/blog/rutina-fuerza","/blog/proteina-vegetal","/blog/entrenamiento-fuerza","/blog/fuerza-para-principiantes","/programas/hipertrofia","/producto-a","/categoria-d"],"aiActions":["<code>/agencia-seo</code> tiene meta robots <code>noindex</code> activo por error: remover la etiqueta para permitir indexación.","<code>/blog/fuerza-para-principiantes</code> duplica intención con <code>/blog/entrenamiento-fuerza</code>: agregar canonical hacia la página principal.","<code>/producto-a</code> carga 1.8 MB de imágenes sin comprimir en el DOM renderizado: optimizar a WebP y lazy loading.","<code>/categoria-d</code> no tiene structured data (schema.org): agregar <code>ItemList</code> para rich results.","<code>/</code> y <code>/servicios</code> comparten el mismo H1: diferenciar para evitar canibalización de keyword de marca."],"keywords":{"general":[{"query":"entrenamiento personalizado","clicks":320,"impressions":8100,"position":6.2},{"query":"rutina de ejercicios","clicks":210,"impressions":6400,"position":9.8},{"query":"plan de nutrición fitness","clicks":145,"impressions":5200,"position":11.4},{"query":"como ganar masa muscular","clicks":98,"impressions":4300,"position":14.1}],"target":[{"query":"entrenador personal online","clicks":180,"impressions":2900,"position":4.1},{"query":"programa hipertrofia 12 semanas","clicks":120,"impressions":1950,"position":5.7},{"query":"rutina de fuerza en casa","clicks":95,"impressions":1450,"position":12.3},{"query":"proteina vegetal para deportistas","clicks":60,"impressions":980,"position":9.7}],"brand":[{"query":"jorge jaramillo seo","clicks":410,"impressions":1200,"type":"Brand"},{"query":"jorge jaramillo consultor","clicks":150,"impressions":520,"type":"Brand"},{"query":"consultor seo bogota","clicks":88,"impressions":2100,"type":"Non-brand"},{"query":"agencia seo colombia","clicks":52,"impressions":1800,"type":"Non-brand"}]},"clicksOverTime":{"startDate":"2026-07-05","values":[320,340,298,410,455,430,388,402,415,398,440,470,460,502,489,510,540,520,505,530,560,545,570,590,610,595,620,650]},"sitemap":{"total":312,"submitted":298,"indexed":271,"errors":14,"errorNote":"14 URLs listadas en el sitemap devuelven 404 o redirect: limpiar el sitemap."},"robotsTxt":{"lines":["User-agent: *","Disallow: /admin/","Disallow: /cart/","Disallow: /blog/*?utm_*","Allow: /","","Sitemap: https://jorgejaramillo.com/sitemap.xml"],"warningLineIndex":3,"note":"robots.txt correcto y accesible (200 OK). Regla de <code>utm_*</code> bloquea rastreo de variantes con parámetros, sin afectar canonical."},"queryWinners":[{"query":"entrenador personal online","clicks":92,"prev":58,"delta":"+34"},{"query":"rutina de fuerza en casa","clicks":71,"prev":44,"delta":"+27"},{"query":"programa hipertrofia 12 semanas","clicks":55,"prev":33,"delta":"+22"},{"query":"jorge jaramillo seo","clicks":140,"prev":121,"delta":"+19"}],"queryLosers":[{"query":"agencia seo colombia","clicks":18,"prev":52,"delta":"-34"},{"query":"consultor seo bogota","clicks":30,"prev":61,"delta":"-31"},{"query":"como ganar masa muscular","clicks":40,"prev":68,"delta":"-28"},{"query":"plan de nutrición fitness","clicks":33,"prev":55,"delta":"-22"}],"findings":[{"page":"/blog/rutina-fuerza","detail":"Rankea para <strong>\"rutina de fuerza sin equipo\"</strong> (pos. 9.4, 210 impr.) pero la frase no aparece en el H1, subtítulos ni cuerpo del artículo.","action":"Acción: incluir la variante exacta en un subtítulo (H2) y en el primer párrafo."},{"page":"/servicios","detail":"Recibe impresiones por <strong>\"consultoria seo para ecommerce\"</strong> (pos. 13.1, 165 impr.), término no mencionado en ninguna parte de la página.","action":"Acción: agregar sección específica para el caso de uso ecommerce."},{"page":"/programas/hipertrofia","detail":"Query <strong>\"hipertrofia para mujeres\"</strong> en pos. 16.8 con 140 impr.: el contenido actual no diferencia por género.","action":"Acción: agregar bloque o FAQ orientado a esa audiencia."},{"page":"/blog/proteina-vegetal","detail":"<strong>\"proteina vegetal precio colombia\"</strong> genera 95 impr. en pos. 14.2 pero no hay mención de precios ni marcas locales.","action":"Acción: sumar tabla comparativa de precios/marcas disponibles en Colombia."},{"page":"/","detail":"Home rankea para <strong>\"entrenador personal bogota\"</strong> (pos. 11.5, 180 impr.) sin mencionar la ciudad en el contenido.","action":"Acción: agregar referencia geográfica en el hero o en el footer estructurado."},{"page":"/agencia-seo","detail":"<strong>\"cuanto cuesta una agencia seo\"</strong> con 110 impr. en pos. 17.9: la página no aborda rangos de precio ni modelo de cobro.","action":"Acción: incluir sección de rangos de inversión o modelo de tarifas."}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Strong Flow Report</span>
+  </div>
+  <div class="flex-none gap-2">
+    <span class="badge badge-outline" style="color:#E5E7EB;border-color:#E5E7EB;" id="badge-source">Datos de ejemplo (hardcodeado)</span>
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+          <p class="text-base-content/60" id="report-period"></p>
+        </div>
+        <div class="flex gap-2 flex-wrap" id="header-badges"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Query</th><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="cannibalization-rows"></tbody>
+        </table>
+      </div>
+      <p class="text-sm text-base-content/60 mt-2" id="cannibalization-action"></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul class="list-disc list-inside space-y-2 text-sm" id="ai-actions"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand y non-brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS EN EL TIEMPO (AREA CHART) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP Y ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap y robots.txt</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold mb-2">Sitemap.xml</h3>
+          <div class="stats stats-vertical shadow w-full mb-4" id="sitemap-stats"></div>
+          <div class="text-sm border-l-2 border-base-content/20 pl-3">
+            <span id="sitemap-error-note"></span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-2">robots.txt</h3>
+          <div class="mockup-code text-xs mb-4" id="robots-code"></div>
+          <div class="text-sm border-l-2 border-base-content/20 pl-3">
+            <span id="robots-note"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA — GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="query-landings-period"></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-query-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-query-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FICHAS DE HALLAZGOS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="findings-grid"></div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-base-content/50 py-6 no-print">
+    Strong Flow Report · Generado con MCP Google Search Console + Cloudflare Crawler
+  </footer>
+
+</div>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Strong Flow Report: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} vs semana anterior`;
+  document.getElementById('query-landings-period').textContent =
+    `Variación de clicks por query: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} vs semana anterior`;
+
+  document.getElementById('header-badges').innerHTML = REPORT_DATA.headerBadges
+    .map(b => `<div class="badge badge-lg ${b.class} gap-1">${b.text}</div>`)
+    .join('');
+
+  document.getElementById('stats-grid').innerHTML = REPORT_DATA.stats.map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  const canib = REPORT_DATA.cannibalization;
+  document.getElementById('cannibalization-rows').innerHTML = canib.rows.map((r, i) => `
+    <tr>
+      ${i === 0 ? `<td rowspan="${canib.rows.length}" class="align-top font-medium">"${canib.query}"</td>` : ''}
+      <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+      <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+    </tr>`).join('');
+  document.getElementById('cannibalization-action').textContent = canib.action;
+
+  // ── Sitemap ──
+  const sm = REPORT_DATA.sitemap;
+  document.getElementById('sitemap-stats').innerHTML = `
+    <div class="stat py-3"><div class="stat-title">URLs en sitemap</div><div class="stat-value text-lg">${sm.total}</div></div>
+    <div class="stat py-3"><div class="stat-title">Enviadas a GSC</div><div class="stat-value text-lg">${sm.submitted}</div></div>
+    <div class="stat py-3"><div class="stat-title">Indexadas</div><div class="stat-value text-lg text-success">${sm.indexed}</div></div>
+    <div class="stat py-3"><div class="stat-title">Con errores</div><div class="stat-value text-lg text-error">${sm.errors}</div></div>`;
+  document.getElementById('sitemap-error-note').textContent = sm.errorNote;
+
+  // ── robots.txt ──
+  const rb = REPORT_DATA.robotsTxt;
+  document.getElementById('robots-code').innerHTML = rb.lines.map((line, i) => `
+    <pre data-prefix="${i + 1}" class="${i === rb.warningLineIndex ? 'text-warning' : ''}"><code>${line}</code></pre>`).join('');
+  document.getElementById('robots-note').innerHTML = rb.note;
+
+  // ── Findings (fichas) ──
+  document.getElementById('findings-grid').innerHTML = REPORT_DATA.findings.map(f => `
+    <div class="card bg-base-200/50 border border-base-300">
+      <div class="card-body p-4">
+        <span class="badge badge-outline badge-sm w-fit">Oportunidad</span>
+        <h3 class="font-semibold mt-1">${f.page}</h3>
+        <p class="text-sm text-base-content/70">${f.detail}</p>
+        <p class="text-xs text-base-content/50 mt-1">${f.action}</p>
+      </div>
+    </div>`).join('');
+
+  // ── Clicks en el tiempo (Area Chart) ──
+  const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+  const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+  const clicksDates = REPORT_DATA.clicksOverTime.values.map((_, i) => {
+    const d = new Date(cy, cm - 1, cd);
+    d.setDate(d.getDate() + i);
+    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+  });
+  clicksAreaChart.setOption({
+    tooltip: { trigger: 'axis' },
+    grid: { left: 40, right: 20, top: 30, bottom: 30 },
+    xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+    yAxis: { type: 'value', name: 'Clicks' },
+    series: [{
+      name: 'Clicks',
+      type: 'line',
+      smooth: true,
+      symbol: 'none',
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(20,184,166,0.4)' },
+          { offset: 1, color: 'rgba(20,184,166,0.02)' },
+        ]),
+      },
+      lineStyle: { color: '#14B8A6', width: 2 },
+      itemStyle: { color: '#14B8A6' },
+      data: REPORT_DATA.clicksOverTime.values,
+    }],
+  });
+  window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners,
+    columns: [
+      { title: "Página", field: "page" },
+      { title: "Clicks", field: "clicks", hozAlign: "center" },
+      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
+      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers,
+    columns: [
+      { title: "Página", field: "page" },
+      { title: "Clicks", field: "clicks", hozAlign: "center" },
+      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
+      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  function crawlPage(url) {
+    alert(`Simulación: descargando HTML renderizado de ${url}…\n(en producción: dispara el skill "cloudflare-crawl")`);
+  }
+
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl.map(url => ({ url })),
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "url", hozAlign: "center", width: 90, headerSort: false,
+        formatter: () => `
+          <button class="btn btn-circle btn-ghost btn-sm" title="Ver crawler">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>`,
+        cellClick: (e, cell) => crawlPage(cell.getRow().getData().url),
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions').innerHTML = REPORT_DATA.aiActions.map(a => `<li>${a}</li>`).join('');
+
+  // ── Keywords ──
+  const kwColumns = [
+    { title: "Query", field: "query" },
+    { title: "Clicks", field: "clicks", hozAlign: "center" },
+    { title: "Impr.", field: "impressions", hozAlign: "center" },
+    { title: "Pos.", field: "position", hozAlign: "center" },
+  ];
+  new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general, columns: kwColumns });
+  new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target, columns: kwColumns });
+
+  new Tabulator("#table-kw-brand", {
+    layout: "fitColumns",
+    data: REPORT_DATA.keywords.brand,
+    columns: [
+      { title: "Query", field: "query" },
+      { title: "Clicks", field: "clicks", hozAlign: "center" },
+      { title: "Impr.", field: "impressions", hozAlign: "center" },
+      { title: "Tipo", field: "type", hozAlign: "center", formatter: (cell) => {
+          const isBrand = cell.getValue() === "Brand";
+          return `<span class="badge ${isBrand ? 'badge-info' : 'badge-outline'}">${cell.getValue()}</span>`;
+        } },
+    ],
+  });
+
+  // ── Consulta: Ganadores / Perdedores ──
+  new Tabulator("#table-query-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.queryWinners,
+    columns: [
+      { title: "Query", field: "query" },
+      { title: "Clicks", field: "clicks", hozAlign: "center" },
+      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
+      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-query-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.queryLosers,
+    columns: [
+      { title: "Query", field: "query" },
+      { title: "Clicks", field: "clicks", hozAlign: "center" },
+      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
+      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-error") },
+    ],
+  });
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

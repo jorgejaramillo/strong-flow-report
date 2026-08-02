@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "clientSlug": "jorgejaramillo",
+    "clientName": "Jorge Jaramillo",
+    "domain": "jorgejaramillo.com",
+    "periodStart": "05 jul 2026",
+    "periodEnd": "01 ago 2026",
+    "generatedAt": "02 ago 2026",
+    "pagesAnalyzed": 53
+  },
+  "headerBadges": [
+    { "text": "↑ +3.2% clicks", "class": "badge-success" },
+    { "text": "53 URLs en sitemap", "class": "badge-info" }
+  ],
+  "stats": [
+    { "title": "Clicks", "value": "32", "valueClass": "text-primary", "desc": "↑ 3.2% vs período anterior", "descClass": "text-success" },
+    { "title": "Impresiones", "value": "8,737", "desc": "↓ 9.6%", "descClass": "text-error" },
+    { "title": "CTR medio", "value": "0.37%", "desc": "↑ 0.05pp", "descClass": "text-success" },
+    { "title": "Posición media", "value": "22.3", "desc": "↑ 0.4 (mejor)", "descClass": "text-success" },
+    { "title": "URLs encontradas", "value": "53", "desc": "Vía sitemap.xml" },
+    { "title": "URLs enviadas", "value": "53", "desc": "A Search Console" }
+  ],
+  "cannibalization": {
+    "query": "entrenamiento de fuerza",
+    "rows": [
+      { "url": "/blog/entrenamiento-fuerza", "impressions": 1200, "clicks": 45, "position": 8.3, "status": "Principal", "statusClass": "badge-success" },
+      { "url": "/blog/fuerza-para-principiantes", "impressions": 340, "clicks": 8, "position": 18.7, "status": "Canibaliza", "statusClass": "badge-warning" }
+    ],
+    "action": "Acción sugerida: canonical de /blog/fuerza-para-principiantes → /blog/entrenamiento-fuerza."
+  },
+  "winners": [
+    { "page": "/blog/rutina-fuerza", "clicks": 210, "prev": 142, "delta": "+68" },
+    { "page": "/programas/hipertrofia", "clicks": 155, "prev": 110, "delta": "+45" },
+    { "page": "/blog/proteina-vegetal", "clicks": 98, "prev": 61, "delta": "+37" },
+    { "page": "/", "clicks": 340, "prev": 312, "delta": "+28" }
+  ],
+  "losers": [
+    { "page": "/agencia-seo", "clicks": 40, "prev": 95, "delta": "-55" },
+    { "page": "/servicios", "clicks": 88, "prev": 130, "delta": "-42" },
+    { "page": "/blog/entrenamiento-fuerza", "clicks": 60, "prev": 91, "delta": "-31" },
+    { "page": "/categoria-d", "clicks": 22, "prev": 44, "delta": "-22" }
+  ],
+  "landingsCrawl": [
+    "/", "/servicios", "/agencia-seo", "/blog/rutina-fuerza", "/blog/proteina-vegetal",
+    "/blog/entrenamiento-fuerza", "/blog/fuerza-para-principiantes", "/programas/hipertrofia",
+    "/producto-a", "/categoria-d"
+  ],
+  "aiActions": [
+    "<code>/agencia-seo</code> tiene meta robots <code>noindex</code> activo por error: remover la etiqueta para permitir indexación.",
+    "<code>/blog/fuerza-para-principiantes</code> duplica intención con <code>/blog/entrenamiento-fuerza</code>: agregar canonical hacia la página principal.",
+    "<code>/producto-a</code> carga 1.8 MB de imágenes sin comprimir en el DOM renderizado: optimizar a WebP y lazy loading.",
+    "<code>/categoria-d</code> no tiene structured data (schema.org): agregar <code>ItemList</code> para rich results.",
+    "<code>/</code> y <code>/servicios</code> comparten el mismo H1: diferenciar para evitar canibalización de keyword de marca."
+  ],
+  "keywords": {
+    "general": [
+      { "query": "entrenamiento personalizado", "clicks": 320, "impressions": 8100, "position": 6.2 },
+      { "query": "rutina de ejercicios", "clicks": 210, "impressions": 6400, "position": 9.8 },
+      { "query": "plan de nutrición fitness", "clicks": 145, "impressions": 5200, "position": 11.4 },
+      { "query": "como ganar masa muscular", "clicks": 98, "impressions": 4300, "position": 14.1 }
+    ],
+    "target": [
+      { "query": "entrenador personal online", "clicks": 180, "impressions": 2900, "position": 4.1 },
+      { "query": "programa hipertrofia 12 semanas", "clicks": 120, "impressions": 1950, "position": 5.7 },
+      { "query": "rutina de fuerza en casa", "clicks": 95, "impressions": 1450, "position": 12.3 },
+      { "query": "proteina vegetal para deportistas", "clicks": 60, "impressions": 980, "position": 9.7 }
+    ],
+    "brand": [
+      { "query": "jorge jaramillo seo", "clicks": 410, "impressions": 1200, "type": "Brand" },
+      { "query": "jorge jaramillo consultor", "clicks": 150, "impressions": 520, "type": "Brand" },
+      { "query": "consultor seo bogota", "clicks": 88, "impressions": 2100, "type": "Non-brand" },
+      { "query": "agencia seo colombia", "clicks": 52, "impressions": 1800, "type": "Non-brand" }
+    ]
+  },
+  "clicksOverTime": {
+    "startDate": "2026-07-05",
+    "values": [320,340,298,410,455,430,388,402,415,398,440,470,460,502,489,510,540,520,505,530,560,545,570,590,610,595,620,650]
+  },
+  "sitemap": {
+    "total": 312,
+    "submitted": 298,
+    "indexed": 271,
+    "errors": 14,
+    "errorNote": "14 URLs listadas en el sitemap devuelven 404 o redirect: limpiar el sitemap."
+  },
+  "robotsTxt": {
+    "lines": [
+      "User-agent: *",
+      "Disallow: /admin/",
+      "Disallow: /cart/",
+      "Disallow: /blog/*?utm_*",
+      "Allow: /",
+      "",
+      "Sitemap: https://jorgejaramillo.com/sitemap.xml"
+    ],
+    "warningLineIndex": 3,
+    "note": "robots.txt correcto y accesible (200 OK). Regla de <code>utm_*</code> bloquea rastreo de variantes con parámetros, sin afectar canonical."
+  },
+  "queryWinners": [
+    { "query": "entrenador personal online", "clicks": 92, "prev": 58, "delta": "+34" },
+    { "query": "rutina de fuerza en casa", "clicks": 71, "prev": 44, "delta": "+27" },
+    { "query": "programa hipertrofia 12 semanas", "clicks": 55, "prev": 33, "delta": "+22" },
+    { "query": "jorge jaramillo seo", "clicks": 140, "prev": 121, "delta": "+19" }
+  ],
+  "queryLosers": [
+    { "query": "agencia seo colombia", "clicks": 18, "prev": 52, "delta": "-34" },
+    { "query": "consultor seo bogota", "clicks": 30, "prev": 61, "delta": "-31" },
+    { "query": "como ganar masa muscular", "clicks": 40, "prev": 68, "delta": "-28" },
+    { "query": "plan de nutrición fitness", "clicks": 33, "prev": 55, "delta": "-22" }
+  ],
+  "findings": [
+    { "page": "/blog/rutina-fuerza", "detail": "Rankea para <strong>\"rutina de fuerza sin equipo\"</strong> (pos. 9.4, 210 impr.) pero la frase no aparece en el H1, subtítulos ni cuerpo del artículo.", "action": "Acción: incluir la variante exacta en un subtítulo (H2) y en el primer párrafo." },
+    { "page": "/servicios", "detail": "Recibe impresiones por <strong>\"consultoria seo para ecommerce\"</strong> (pos. 13.1, 165 impr.), término no mencionado en ninguna parte de la página.", "action": "Acción: agregar sección específica para el caso de uso ecommerce." },
+    { "page": "/programas/hipertrofia", "detail": "Query <strong>\"hipertrofia para mujeres\"</strong> en pos. 16.8 con 140 impr.: el contenido actual no diferencia por género.", "action": "Acción: agregar bloque o FAQ orientado a esa audiencia." },
+    { "page": "/blog/proteina-vegetal", "detail": "<strong>\"proteina vegetal precio colombia\"</strong> genera 95 impr. en pos. 14.2 pero no hay mención de precios ni marcas locales.", "action": "Acción: sumar tabla comparativa de precios/marcas disponibles en Colombia." },
+    { "page": "/", "detail": "Home rankea para <strong>\"entrenador personal bogota\"</strong> (pos. 11.5, 180 impr.) sin mencionar la ciudad en el contenido.", "action": "Acción: agregar referencia geográfica en el hero o en el footer estructurado." },
+    { "page": "/agencia-seo", "detail": "<strong>\"cuanto cuesta una agencia seo\"</strong> con 110 impr. en pos. 17.9: la página no aborda rangos de precio ni modelo de cobro.", "action": "Acción: incluir sección de rangos de inversión o modelo de tarifas." }
+  ]
+}
