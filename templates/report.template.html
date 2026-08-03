@@ -97,11 +97,8 @@
   <section class="section-card card shadow-md" style="background:#ffffff;">
     <div class="card-body">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
-          <p class="text-base-content/60" id="report-period"></p>
-        </div>
-        <div class="flex gap-2 flex-wrap" id="header-badges"></div>
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
       </div>
 
       <div class="divider"></div>
@@ -188,7 +185,7 @@
   <section class="section-card card shadow-md" style="background:#ffffff;">
     <div class="card-body">
       <h2 class="card-title">Posiciones de keywords en el tiempo</h2>
-      <p class="text-base-content/60 mb-2">Posición promedio por mes · consultas objetivo (seedKeywords) · más oscuro = más cerca del puesto 1</p>
+      <p class="text-base-content/60 mb-2">Posición por mes (más oscuro = más cerca del puesto 1) · volumen de búsqueda por keyword · consultas objetivo (seedKeywords)</p>
       <div id="chart-kw-heatmap" class="chart" style="height: 420px;"></div>
     </div>
   </section>
@@ -232,7 +229,14 @@
     <div class="card-body">
       <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
       <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="content-improve-grid"></div>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -253,19 +257,24 @@
   document.getElementById('landings-period').textContent =
     `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
 
-  document.getElementById('header-badges').innerHTML = REPORT_DATA.headerBadges
-    .map(b => `<div class="badge badge-lg ${b.class} gap-1">${b.text}</div>`)
-    .join('');
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Valor tráfico orgánico est.', value: da.organicTrafficValue != null ? '$' + da.organicTrafficValue.toLocaleString() : '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
 
-  document.getElementById('stats-grid').innerHTML = REPORT_DATA.stats.map(s => `
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...domainAnalyticsStats].map(s => `
     <div class="stat bg-base-200/50 rounded-lg">
       <div class="stat-title">${s.title}</div>
       <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
-      <div class="stat-desc ${s.descClass || ''}">${s.desc}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
     </div>`).join('');
 
   // ── Canibalización ──
-  document.getElementById('cannibalization-groups').innerHTML = REPORT_DATA.cannibalization.map(canib => `
+  document.getElementById('cannibalization-groups').innerHTML = REPORT_DATA.cannibalization.length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : REPORT_DATA.cannibalization.map(canib => `
     <div>
       <p class="font-medium mb-1">"${canib.query}"</p>
       <div class="overflow-x-auto">
@@ -309,12 +318,11 @@
     </div>`).join('');
 
   document.getElementById('content-improve-grid').innerHTML = REPORT_DATA.contentImprove.map(f => `
-    <div class="card bg-base-200/50 border border-base-300">
-      <div class="card-body p-4">
-        <h3 class="font-semibold">${f.page}</h3>
-        <p class="text-sm text-base-content/70">${f.detail}</p>
-      </div>
-    </div>`).join('');
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
 
   // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
   const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
@@ -364,17 +372,24 @@
   });
   window.addEventListener('resize', () => { clicksAreaChart.resize(); });
 
-  // ── Posiciones de keywords en el tiempo (heatmap) ──
-  const kwHeatmapChart = echarts.init(document.getElementById('chart-kw-heatmap'));
+  // ── Posiciones de keywords en el tiempo (heatmap, volumen en el label del eje Y) ──
   const kwPos = REPORT_DATA.keywordPositions;
+  const kwLabels = kwPos.rows.map(r => `${r.keyword}  ·  Vol: ${r.searchVolume !== null && r.searchVolume !== undefined ? r.searchVolume.toLocaleString() : '—'}`);
+  const kwData = [];
+  kwPos.rows.forEach((row, ki) => {
+    row.positions.forEach((pos, mi) => {
+      if (pos !== null && pos !== undefined) kwData.push([mi, ki, pos]);
+    });
+  });
+  const kwHeatmapChart = echarts.init(document.getElementById('chart-kw-heatmap'));
   kwHeatmapChart.setOption({
     tooltip: {
       position: 'top',
-      formatter: (p) => `${kwPos.keywords[p.data[1]]}<br>${kwPos.months[p.data[0]]}: posición ${p.data[2]}`,
+      formatter: (p) => `${kwPos.rows[p.data[1]].keyword}<br>${kwPos.months[p.data[0]]}: posición ${p.data[2]}`,
     },
-    grid: { left: 160, right: 20, top: 20, bottom: 40 },
+    grid: { left: 240, right: 20, top: 20, bottom: 40 },
     xAxis: { type: 'category', data: kwPos.months, splitArea: { show: true } },
-    yAxis: { type: 'category', data: kwPos.keywords, splitArea: { show: true } },
+    yAxis: { type: 'category', data: kwLabels, splitArea: { show: true } },
     visualMap: {
       min: 1,
       max: 30,
@@ -386,7 +401,7 @@
     },
     series: [{
       type: 'heatmap',
-      data: kwPos.data,
+      data: kwData,
       label: { show: true },
       emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.5)' } },
     }],

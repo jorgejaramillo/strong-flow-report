@@ -38,17 +38,19 @@ descargado HTML y esté mergeado en `data.json`.
 
 | # | Sección (key en data.json) | Cómo se obtiene |
 |---|---|---|
-| 1 | `meta`, `headerBadges`, `stats` | **Manual, sin script todavía.** Llamar `get_search_analytics` (dims `device`) del MCP de GSC para el período actual y el anterior, y `list_sitemaps` para conteos de URLs. Replicar el patrón ya usado en corridas anteriores (ver `reports/jorgejaramillo/*/data.json` como referencia de forma). |
-| 2 | `clicksOverTime` | `node scripts/sections/clicks-over-time.js <slug> <reportDate>` |
-| 3 | `cannibalization` | `node scripts/sections/cannibalization.js <slug>` |
-| 4 | `winners`, `losers`, `landingsPeriodLabel` | `node scripts/sections/landings-delta.js <slug> <reportDate>` |
-| 5 | `landingsCrawl` | `node scripts/sections/landings-crawl.js <slug> <reportDate>` — requiere `CF_ACCOUNT_ID`/`CF_API_TOKEN` en `.env` |
-| 6 | `aiActions` | **Manual: skill `analista`**, sobre el HTML que acaba de descargar el paso 5 (`reports/<slug>/<reportDate>/data/crawl/`). Requiere que el paso 5 ya haya corrido. |
-| 7 | `findings` | `node scripts/sections/findings.js <slug> <reportDate>` — requiere que `landingsCrawl` (paso 5) ya esté en `data.json`. |
-| 8 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
-| 9 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
-| 10 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
-| 11 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — **datos dummy todavía** (posición aleatoria), pendiente de conectar a la posición mensual real por query vía GSC. |
+| 1 | `meta`, `headerBadges`, `stats` | **Manual, sin script todavía.** Llamar `get_search_analytics` (dims `device`) del MCP de GSC para el período actual y el anterior, y `list_sitemaps` para conteos de URLs. Replicar el patrón ya usado en corridas anteriores (ver `reports/jorgejaramillo/*/data.json` como referencia de forma). `headerBadges` ya no se renderiza en el template (se quitó del header), pero el paso sigue generándolo por si se reusa más adelante. |
+| 2 | `domainAnalytics` | `node scripts/sections/domain-analytics.js <slug>` — DataForSEO Domain Analytics API (`domain_analytics/whois/overview`): keywords orgánicas, tráfico estimado, backlinks y fecha de registro del dominio. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env`. Sin dependencias de otros pasos. |
+| 3 | `clicksOverTime` | `node scripts/sections/clicks-over-time.js <slug> <reportDate>` |
+| 4 | `cannibalization` | `node scripts/sections/cannibalization.js <slug>` — excluye queries de marca (`config.keywords.brand`). |
+| 5 | `winners`, `losers`, `landingsPeriodLabel` | `node scripts/sections/landings-delta.js <slug> <reportDate>` |
+| 6 | `landingsCrawl` | `node scripts/sections/landings-crawl.js <slug> <reportDate>` — requiere `CF_ACCOUNT_ID`/`CF_API_TOKEN` en `.env` |
+| 7 | `aiActions` | **Manual: skill `analista`**, sobre el HTML que acaba de descargar el paso 6 (`reports/<slug>/<reportDate>/data/crawl/`). Requiere que el paso 6 ya haya corrido. |
+| 8 | `findings` | `node scripts/sections/findings.js <slug> <reportDate>` — requiere que `landingsCrawl` (paso 6) ya esté en `data.json`. |
+| 9 | `contentImprove` | `node scripts/sections/content-improve.js <slug> <reportDate>` — DataForSEO AI Optimization API (ChatGPT), requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `landingsCrawl` (paso 6) ya esté en `data.json`. Tiene costo por llamada (~$0.002/página). |
+| 10 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
+| 11 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
+| 12 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
+| 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — volumen de búsqueda (`keywords_data/google_ads/search_volume`) y posición orgánica (`dataforseo_labs/google/ranked_keywords`) reales, ambos vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key

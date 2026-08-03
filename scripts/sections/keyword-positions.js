@@ -2,56 +2,86 @@
 /**
  * scripts/sections/keyword-positions.js — sección "Posiciones de keywords en el tiempo"
  *
- * Genera la matriz para el heatmap (meses x seedKeywords, posición promedio).
+ * Genera una fila por seedKeyword con: volumen de búsqueda actual (vía
+ * DataForSEO keywords_data/google_ads/search_volume) y posición orgánica
+ * actual (vía DataForSEO dataforseo_labs/google/ranked_keywords) — país e
+ * idioma tomados de config.site. Si el dominio no rankea esa keyword en el
+ * índice de DataForSEO Labs, la posición queda null.
  *
- * De momento son datos DUMMY (posición aleatoria 1-30 por keyword/mes) —
- * placeholder mientras se integra la fuente real (posición mensual por
- * query vía GSC, dimensión "date" agrupada por mes).
+ * De momento el gráfico arranca con un solo mes (el actual). La idea es
+ * que sea acumulativa: cada corrida mensual futura debe agregar una
+ * columna nueva a la derecha conservando los meses anteriores — eso
+ * todavía no está implementado (requeriría persistir `keywordPositions`
+ * entre corridas, ej. en `clients/<slug>/keyword-positions-history.json`).
+ *
+ * Requiere DATAFORSEO_USERNAME/DATAFORSEO_PASSWORD en .env.
  *
  * Uso:
- *   node scripts/sections/keyword-positions.js <client> [months=6]
- * Imprime a stdout: { "keywordPositions": { keywords, months, data } }
+ *   node scripts/sections/keyword-positions.js <client>
+ * Imprime a stdout: { "keywordPositions": { months, rows } }
  */
 import { loadClientConfig } from '../lib/config.js';
+import { googleAdsSearchVolume, googleRankedKeywordPositions } from '../lib/dataforseo.js';
 
-const DEFAULT_MONTHS = 6;
 const MONTH_NAMES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-function lastNMonthLabels(n, today = new Date()) {
-  const labels = [];
-  for (let i = n - 1; i >= 0; i--) {
-    const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
-    labels.push(`${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`);
-  }
-  return labels;
+/** location_name completo que espera DataForSEO, por código alpha-3 de país (config.site.country) */
+const LOCATION_NAMES = {
+  ecu: 'Ecuador',
+  col: 'Colombia',
+  mex: 'Mexico',
+  usa: 'United States',
+  per: 'Peru',
+  chl: 'Chile',
+  arg: 'Argentina',
+};
+
+function currentMonthLabel(today = new Date()) {
+  return `${MONTH_NAMES[today.getMonth()]} ${today.getFullYear()}`;
 }
 
-export async function fetchKeywordPositions(config, monthsCount = DEFAULT_MONTHS) {
+export async function fetchKeywordPositions(config) {
   const keywords = config.seedKeywords || [];
-  const months = lastNMonthLabels(monthsCount);
+  const months = [currentMonthLabel()];
 
-  const data = [];
-  keywords.forEach((_, ki) => {
-    months.forEach((_, mi) => {
-      const position = Math.floor(Math.random() * 30) + 1; // dummy
-      data.push([mi, ki, position]);
-    });
-  });
+  const locationName = LOCATION_NAMES[config.site?.country];
+  if (!locationName) {
+    throw new Error(`No hay location_name mapeado para site.country="${config.site?.country}". Agrégalo a LOCATION_NAMES en scripts/sections/keyword-positions.js.`);
+  }
 
-  return { keywordPositions: { keywords, months, data } };
+  let volumeByKeyword = {};
+  let positionByKeyword = {};
+  let cost = 0;
+  if (keywords.length > 0) {
+    const [volumeResult, positionResult] = await Promise.all([
+      googleAdsSearchVolume({ keywords, locationName, languageCode: config.site.language }),
+      googleRankedKeywordPositions({ target: config.domain, keywords, locationName, languageCode: config.site.language }),
+    ]);
+    volumeByKeyword = volumeResult.volumeByKeyword;
+    positionByKeyword = positionResult.positionByKeyword;
+    cost = volumeResult.cost + positionResult.cost;
+  }
+
+  const rows = keywords.map(keyword => ({
+    keyword,
+    searchVolume: volumeByKeyword[keyword] ?? null,
+    positions: [positionByKeyword[keyword] ?? null],
+  }));
+
+  return { keywordPositions: { months, rows }, _meta: { cost } };
 }
 
 // ── CLI ──
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const [, , client, monthsArg] = process.argv;
+  const [, , client] = process.argv;
   if (!client) {
-    console.error('Uso: node scripts/sections/keyword-positions.js <client> [months=6]');
+    console.error('Uso: node scripts/sections/keyword-positions.js <client>');
     process.exit(1);
   }
 
   const config = loadClientConfig(client);
-  const result = await fetchKeywordPositions(config, monthsArg ? Number(monthsArg) : undefined);
+  const result = await fetchKeywordPositions(config);
 
-  console.error(`Keywords: ${result.keywordPositions.keywords.length} | Meses: ${result.keywordPositions.months.length} (DATOS DUMMY)`);
-  console.log(JSON.stringify(result, null, 2));
+  console.error(`Keywords: ${result.keywordPositions.rows.length} | Mes: ${result.keywordPositions.months[0]} (posición real vía DataForSEO) | costo DataForSEO: $${result._meta.cost.toFixed(4)}`);
+  console.log(JSON.stringify({ keywordPositions: result.keywordPositions }, null, 2));
 }

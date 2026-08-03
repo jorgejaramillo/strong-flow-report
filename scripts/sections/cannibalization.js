@@ -3,7 +3,11 @@
  * scripts/sections/cannibalization.js — sección "Mapa de canibalización de keywords"
  *
  * Algoritmo (mcp-google-search-console/gsc-seo-analyzer/prompts/cannibalization.md):
- *   1. Agrupar filas query+page por query.
+ *   1. Agrupar filas query+page por query, excluyendo queries de marca
+ *      (config.keywords.brand, match por substring case-insensitive —
+ *      mismo criterio que CONFIG_SPEC.md) — canibalizan casi siempre por
+ *      diseño (home + otras landings rankean para el nombre de marca) y no
+ *      son un hallazgo accionable.
  *   2. Contar cuántas URLs distintas tienen impresiones >= MIN_IMPRESSIONS.
  *   3. count > 1 => canibalización potencial.
  *   4. Dentro del grupo: URL principal = más clicks, empate -> menor posición, empate -> más impresiones.
@@ -31,6 +35,11 @@ function severity(row) {
 
 const SEVERITY_RANK = { high: 3, medium: 2, low: 1 };
 
+function isBrandQuery(query, brandTerms) {
+  const normalized = query.toLowerCase();
+  return brandTerms.some(term => normalized.includes(term.toLowerCase()));
+}
+
 /**
  * @param {object} config  clients/<slug>/config.json ya parseado
  * @param {{startDate: string, endDate: string}} [range]  default: últimos 28 días
@@ -46,9 +55,11 @@ export async function fetchCannibalization(config, range = lastNDays(28)) {
     rowLimit: 10000,
   });
 
-  // 1. Agrupar por query
+  // 1. Agrupar por query, excluyendo queries de marca
+  const brandTerms = config.keywords?.brand || [];
   const byQuery = new Map();
   for (const row of rows) {
+    if (isBrandQuery(row.query, brandTerms)) continue;
     if (!byQuery.has(row.query)) byQuery.set(row.query, []);
     byQuery.get(row.query).push(row);
   }
