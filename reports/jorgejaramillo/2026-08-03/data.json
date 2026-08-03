@@ -10,7 +10,7 @@
   },
   "headerBadges": [
     {
-      "text": "↑ +3.2% clicks",
+      "text": "\u2191 +3.2% clicks",
       "class": "badge-success"
     },
     {
@@ -23,31 +23,31 @@
       "title": "Clicks",
       "value": "32",
       "valueClass": "text-primary",
-      "desc": "↑ 3.2% vs período anterior",
+      "desc": "\u2191 3.2% vs per\u00edodo anterior",
       "descClass": "text-success"
     },
     {
       "title": "Impresiones",
       "value": "8,737",
-      "desc": "↓ 9.6%",
+      "desc": "\u2193 9.6%",
       "descClass": "text-error"
     },
     {
       "title": "CTR medio",
       "value": "0.37%",
-      "desc": "↑ 0.05pp",
+      "desc": "\u2191 0.05pp",
       "descClass": "text-success"
     },
     {
-      "title": "Posición media",
+      "title": "Posici\u00f3n media",
       "value": "22.3",
-      "desc": "↑ 0.4 (mejor)",
+      "desc": "\u2191 0.4 (mejor)",
       "descClass": "text-success"
     },
     {
       "title": "URLs encontradas",
       "value": "53",
-      "desc": "Vía sitemap.xml"
+      "desc": "V\u00eda sitemap.xml"
     },
     {
       "title": "URLs enviadas",
@@ -187,7 +187,7 @@
       "delta": "-1"
     }
   ],
-  "landingsPeriodLabel": "26 jul 2026 → 01 ago 2026",
+  "landingsPeriodLabel": "26 jul 2026 \u2192 01 ago 2026",
   "landingsCrawl": [
     {
       "url": "https://jorgejaramillo.com/",
@@ -233,11 +233,11 @@
   "aiActions": [
     "<code>/seo-medios-de-comunicacion.html</code> tiene meta description de solo 31 caracteres (recomendado 120-155): reescribirla incluyendo la keyword principal y una propuesta de valor.",
     "<code>/v0.html</code> tiene meta description de solo 24 caracteres (\"Con vercel y V0 podemos.\", incompleta): reescribirla a 120-155 caracteres describiendo el tutorial.",
-    "<code>/seo-medios-de-comunicacion.html</code> tiene un error de ortografía en el <code>&lt;title&gt;</code> (\"Consutlor\" en vez de \"Consultor\"): corregirlo.",
-    "<code>/</code> (home) no tiene Open Graph (<code>og:title</code>/<code>og:description</code>): agregarlos para mejorar cómo se comparte en redes sociales.",
-    "<code>/sitio-web-marca-personal.html</code> tiene 3 de 10 imágenes sin atributo <code>alt</code>: agregar texto descriptivo a cada una.",
-    "<code>/ejemplos-sitemap.html</code> tiene 4 de 8 imágenes sin atributo <code>alt</code>: completar los atributos faltantes.",
-    "<code>/v0.html</code> tiene 3 de 7 imágenes sin atributo <code>alt</code>: completar los atributos faltantes."
+    "<code>/seo-medios-de-comunicacion.html</code> tiene un error de ortograf\u00eda en el <code>&lt;title&gt;</code> (\"Consutlor\" en vez de \"Consultor\"): corregirlo.",
+    "<code>/</code> (home) no tiene Open Graph (<code>og:title</code>/<code>og:description</code>): agregarlos para mejorar c\u00f3mo se comparte en redes sociales.",
+    "<code>/sitio-web-marca-personal.html</code> tiene 3 de 10 im\u00e1genes sin atributo <code>alt</code>: agregar texto descriptivo a cada una.",
+    "<code>/ejemplos-sitemap.html</code> tiene 4 de 8 im\u00e1genes sin atributo <code>alt</code>: completar los atributos faltantes.",
+    "<code>/v0.html</code> tiene 3 de 7 im\u00e1genes sin atributo <code>alt</code>: completar los atributos faltantes."
   ],
   "keywords": {
     "general": [
@@ -593,31 +593,152 @@
   "findings": [
     {
       "page": "https://jorgejaramillo.com/consultor-seo.html",
-      "detail": "Rankea para <strong>\"consultoría seo en colombia\"</strong> (pos. 7.7, 91 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"consultor\u00eda seo en colombia\"</strong> (pos. 7.7, 91 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/seo-medios-de-comunicacion.html",
-      "detail": "Rankea para <strong>\"seo para medios\"</strong> (pos. 19.7, 53 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"seo para medios\"</strong> (pos. 19.7, 53 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/sitio-web-marca-personal.html",
-      "detail": "Rankea para <strong>\"webs personales ejemplos\"</strong> (pos. 26.2, 40 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"webs personales ejemplos\"</strong> (pos. 26.2, 40 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/consultor-seo.html",
-      "detail": "Rankea para <strong>\"seo consulting\"</strong> (pos. 31.9, 31 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"seo consulting\"</strong> (pos. 31.9, 31 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/sitio-web-marca-personal.html",
-      "detail": "Rankea para <strong>\"nombre de marca personal como estrategia seo\"</strong> (pos. 18.6, 29 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"nombre de marca personal como estrategia seo\"</strong> (pos. 18.6, 29 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/seo-medios-de-comunicacion.html",
-      "detail": "Rankea para <strong>\"seo para medios de comunicacion\"</strong> (pos. 25.7, 25 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"seo para medios de comunicacion\"</strong> (pos. 25.7, 25 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://jorgejaramillo.com/consultor-seo.html",
-      "detail": "Rankea para <strong>\"consultoria seo\"</strong> (pos. 14.1, 23 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"consultoria seo\"</strong> (pos. 14.1, 23 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
+    }
+  ],
+  "keywordPositions": {
+    "keywords": [
+      "consultor seo",
+      "ejemplo sitemap",
+      "contenido seo"
+    ],
+    "months": [
+      "mar 2026",
+      "abr 2026",
+      "may 2026",
+      "jun 2026",
+      "jul 2026",
+      "ago 2026"
+    ],
+    "data": [
+      [
+        0,
+        0,
+        7
+      ],
+      [
+        1,
+        0,
+        9
+      ],
+      [
+        2,
+        0,
+        11
+      ],
+      [
+        3,
+        0,
+        21
+      ],
+      [
+        4,
+        0,
+        5
+      ],
+      [
+        5,
+        0,
+        25
+      ],
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        17
+      ],
+      [
+        4,
+        1,
+        9
+      ],
+      [
+        5,
+        1,
+        15
+      ],
+      [
+        0,
+        2,
+        23
+      ],
+      [
+        1,
+        2,
+        20
+      ],
+      [
+        2,
+        2,
+        4
+      ],
+      [
+        3,
+        2,
+        6
+      ],
+      [
+        4,
+        2,
+        7
+      ],
+      [
+        5,
+        2,
+        9
+      ]
+    ]
+  },
+  "contentImprove": [
+    {
+      "page": "https://jorgejaramillo.com/",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
+    },
+    {
+      "page": "https://jorgejaramillo.com/servicios",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
+    },
+    {
+      "page": "https://jorgejaramillo.com/blog",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
     }
   ]
 }

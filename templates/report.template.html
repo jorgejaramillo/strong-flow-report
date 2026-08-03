@@ -133,7 +133,7 @@
     <div class="card-body">
       <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
       <p class="text-base-content/60 mb-2" id="landings-period"></p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-6">
         <div>
           <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
           <div id="table-winners"></div>
@@ -184,6 +184,15 @@
     </div>
   </section>
 
+  <!-- ═══════════════ POSICIONES DE KEYWORDS EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Posiciones de keywords en el tiempo</h2>
+      <p class="text-base-content/60 mb-2">Posición promedio por mes · consultas objetivo (seedKeywords) · más oscuro = más cerca del puesto 1</p>
+      <div id="chart-kw-heatmap" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
   <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
   <section class="section-card card shadow-md" style="background:#ffffff;">
     <div class="card-body">
@@ -215,6 +224,15 @@
       <h2 class="card-title">Hallazgos: Contenido faltante</h2>
       <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="findings-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="content-improve-grid"></div>
     </div>
   </section>
 
@@ -290,6 +308,14 @@
       </div>
     </div>`).join('');
 
+  document.getElementById('content-improve-grid').innerHTML = REPORT_DATA.contentImprove.map(f => `
+    <div class="card bg-base-200/50 border border-base-300">
+      <div class="card-body p-4">
+        <h3 class="font-semibold">${f.page}</h3>
+        <p class="text-sm text-base-content/70">${f.detail}</p>
+      </div>
+    </div>`).join('');
+
   // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
   const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
   const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
@@ -338,6 +364,35 @@
   });
   window.addEventListener('resize', () => { clicksAreaChart.resize(); });
 
+  // ── Posiciones de keywords en el tiempo (heatmap) ──
+  const kwHeatmapChart = echarts.init(document.getElementById('chart-kw-heatmap'));
+  const kwPos = REPORT_DATA.keywordPositions;
+  kwHeatmapChart.setOption({
+    tooltip: {
+      position: 'top',
+      formatter: (p) => `${kwPos.keywords[p.data[1]]}<br>${kwPos.months[p.data[0]]}: posición ${p.data[2]}`,
+    },
+    grid: { left: 160, right: 20, top: 20, bottom: 40 },
+    xAxis: { type: 'category', data: kwPos.months, splitArea: { show: true } },
+    yAxis: { type: 'category', data: kwPos.keywords, splitArea: { show: true } },
+    visualMap: {
+      min: 1,
+      max: 30,
+      calculable: true,
+      orient: 'horizontal',
+      left: 'center',
+      bottom: 0,
+      inRange: { color: ['#134e4a', '#5eead4', '#f0fdfa'] },
+    },
+    series: [{
+      type: 'heatmap',
+      data: kwPos.data,
+      label: { show: true },
+      emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.5)' } },
+    }],
+  });
+  window.addEventListener('resize', () => { kwHeatmapChart.resize(); });
+
   // ── Ganadores / Perdedores (landings) ──
   const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
 
@@ -345,10 +400,10 @@
     layout: "fitColumns",
     data: REPORT_DATA.winners,
     columns: [
-      { title: "Página", field: "page" },
-      { title: "Clicks", field: "clicks", hozAlign: "center" },
-      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
-      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-success") },
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
     ],
   });
 
@@ -356,10 +411,10 @@
     layout: "fitColumns",
     data: REPORT_DATA.losers,
     columns: [
-      { title: "Página", field: "page" },
-      { title: "Clicks", field: "clicks", hozAlign: "center" },
-      { title: "Sem. anterior", field: "prev", hozAlign: "center" },
-      { title: "Variación", field: "delta", hozAlign: "center", formatter: deltaFormatter("text-error") },
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
     ],
   });
 

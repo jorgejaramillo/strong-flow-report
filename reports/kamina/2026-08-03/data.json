@@ -10,7 +10,7 @@
   },
   "headerBadges": [
     {
-      "text": "↓ -13.0% clicks",
+      "text": "\u2193 -13.0% clicks",
       "class": "badge-error"
     },
     {
@@ -23,31 +23,31 @@
       "title": "Clicks",
       "value": "740",
       "valueClass": "text-primary",
-      "desc": "↓ 13.0% vs período anterior",
+      "desc": "\u2193 13.0% vs per\u00edodo anterior",
       "descClass": "text-error"
     },
     {
       "title": "Impresiones",
       "value": "19,775",
-      "desc": "↓ 16.7%",
+      "desc": "\u2193 16.7%",
       "descClass": "text-error"
     },
     {
       "title": "CTR medio",
       "value": "3.74%",
-      "desc": "↑ 0.16pp",
+      "desc": "\u2191 0.16pp",
       "descClass": "text-success"
     },
     {
-      "title": "Posición media",
+      "title": "Posici\u00f3n media",
       "value": "8.8",
-      "desc": "↓ 0.5 (peor)",
+      "desc": "\u2193 0.5 (peor)",
       "descClass": "text-error"
     },
     {
       "title": "URLs encontradas",
       "value": "53",
-      "desc": "Vía sitemap.xml"
+      "desc": "V\u00eda sitemap.xml"
     },
     {
       "title": "URLs enviadas",
@@ -542,7 +542,7 @@
       "delta": "-2"
     }
   ],
-  "landingsPeriodLabel": "26 jul 2026 → 01 ago 2026",
+  "landingsPeriodLabel": "26 jul 2026 \u2192 01 ago 2026",
   "landingsCrawl": [
     {
       "url": "https://kamina.ai/",
@@ -626,43 +626,43 @@
     }
   ],
   "aiActions": [
-    "<code>/credito</code> tiene 3 etiquetas <code>&lt;h1&gt;</code> en vez de una sola: consolidar en un único H1 que defina el tema principal de la página.",
-    "<code>/credito</code> tiene 96 de 193 imágenes sin atributo <code>alt</code>: agregar texto descriptivo, especialmente en imágenes de producto/beneficios.",
-    "<code>/vende-mas-sin-riesgos-de-cartera-con-credito-directo</code> tiene 11 de 12 imágenes sin atributo <code>alt</code>: completar los atributos faltantes.",
+    "<code>/credito</code> tiene 3 etiquetas <code>&lt;h1&gt;</code> en vez de una sola: consolidar en un \u00fanico H1 que defina el tema principal de la p\u00e1gina.",
+    "<code>/credito</code> tiene 96 de 193 im\u00e1genes sin atributo <code>alt</code>: agregar texto descriptivo, especialmente en im\u00e1genes de producto/beneficios.",
+    "<code>/vende-mas-sin-riesgos-de-cartera-con-credito-directo</code> tiene 11 de 12 im\u00e1genes sin atributo <code>alt</code>: completar los atributos faltantes.",
     "<code>/modelo-negocio</code> tiene <code>&lt;title&gt;</code> de solo 24 caracteres (\"muy corto para SEO) y 2 etiquetas H1: alargar el title (~50-60 caracteres) y dejar un solo H1.",
-    "<code>/personas</code> tiene 2 etiquetas <code>&lt;h1&gt;</code>: dejar solo una que describa el tema central de la página.",
-    "<code>/manual-de-primeros-auxilios-financieros</code> tiene 6 de 7 imágenes sin atributo <code>alt</code>: completar los atributos faltantes.",
-    "Solo <code>/</code> (home) tiene Open Graph (<code>og:title</code>/<code>og:description</code>): agregarlo también en landings clave como <code>/credito</code> y <code>/donde-comprar</code> para mejorar cómo se comparten en redes.",
+    "<code>/personas</code> tiene 2 etiquetas <code>&lt;h1&gt;</code>: dejar solo una que describa el tema central de la p\u00e1gina.",
+    "<code>/manual-de-primeros-auxilios-financieros</code> tiene 6 de 7 im\u00e1genes sin atributo <code>alt</code>: completar los atributos faltantes.",
+    "Solo <code>/</code> (home) tiene Open Graph (<code>og:title</code>/<code>og:description</code>): agregarlo tambi\u00e9n en landings clave como <code>/credito</code> y <code>/donde-comprar</code> para mejorar c\u00f3mo se comparten en redes.",
     "<code>/terminos-y-condiciones-kamina-pay</code> y <code>/terminos-y-condiciones</code> tienen meta description corta (86 y 84 caracteres, bajo el rango recomendado 120-155): ampliarlas."
   ],
   "findings": [
     {
       "page": "https://kamina.ai/",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1.1, 319 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1.1, 319 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/personas",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 2.6, 309 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 2.6, 309 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/credito",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1.7, 306 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1.7, 306 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/quienes-somos",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 3.3, 283 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 3.3, 283 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/terminos-y-condiciones-kamina-pay",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 2.3, 203 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 2.3, 203 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
-      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1, 168 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina pay\"</strong> (pos. 1, 168 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     },
     {
       "page": "https://kamina.ai/personas",
-      "detail": "Rankea para <strong>\"kamina para que sirve\"</strong> (pos. 10.4, 22 impr.) pero el término no aparece en el texto de la página."
+      "detail": "Rankea para <strong>\"kamina para que sirve\"</strong> (pos. 10.4, 22 impr.) pero el t\u00e9rmino no aparece en el texto de la p\u00e1gina."
     }
   ],
   "keywords": {
@@ -696,14 +696,14 @@
         "delta": "-1"
       },
       {
-        "query": "décimo tercero y décimo cuarto",
+        "query": "d\u00e9cimo tercero y d\u00e9cimo cuarto",
         "clicks": 0,
         "impressions": 79,
         "position": 7.7,
         "delta": "0"
       },
       {
-        "query": "décimo cuarto",
+        "query": "d\u00e9cimo cuarto",
         "clicks": 0,
         "impressions": 70,
         "position": 9.5,
@@ -835,7 +835,7 @@
         "delta": "+1"
       },
       {
-        "query": "electrodomésticos a plazos sin intereses",
+        "query": "electrodom\u00e9sticos a plazos sin intereses",
         "clicks": 1,
         "impressions": 2,
         "position": 1,
@@ -855,5 +855,312 @@
     "url": "https://kamina.ai/robots.txt",
     "content": "User-agent: *\n\nSitemap: https://kamina.ai/modelo-de-negocio-sitemap.xml\nSitemap: https://kamina.ai/pages-sitemap.xml\nSitemap: https://kamina.ai/guias-sitemap.xml\nSitemap: https://kamina.ai/blog/blog-category-sitemap.xml\nSitemap: https://kamina.ai/sitemap.xml\nSitemap: https://kamina.ai/home-guias-sitemap.xml\nSitemap: https://kamina.ai/blog/sitemap.xml\nSitemap: https://kamina.ai/personas-sitemap.xml\nSitemap: https://kamina.ai/blog/blog-post-sitemap.xml\nSitemap: https://kamina.ai/solicitar-demo-sitemap.xml",
     "localPath": "reports/kamina/2026-08-03/data/robots.txt"
-  }
+  },
+  "keywordPositions": {
+    "keywords": [
+      "credito directo",
+      "compras sin interes",
+      "educaci\u00f3n financiera",
+      "decimo cuarto sueldo",
+      "decimo tercer sueldo",
+      "historial crediticio",
+      "finanzas personales",
+      "salud financiera",
+      "capacidad de endeudamiento"
+    ],
+    "months": [
+      "mar 2026",
+      "abr 2026",
+      "may 2026",
+      "jun 2026",
+      "jul 2026",
+      "ago 2026"
+    ],
+    "data": [
+      [
+        0,
+        0,
+        27
+      ],
+      [
+        1,
+        0,
+        3
+      ],
+      [
+        2,
+        0,
+        13
+      ],
+      [
+        3,
+        0,
+        4
+      ],
+      [
+        4,
+        0,
+        18
+      ],
+      [
+        5,
+        0,
+        19
+      ],
+      [
+        0,
+        1,
+        20
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        24
+      ],
+      [
+        3,
+        1,
+        18
+      ],
+      [
+        4,
+        1,
+        14
+      ],
+      [
+        5,
+        1,
+        12
+      ],
+      [
+        0,
+        2,
+        19
+      ],
+      [
+        1,
+        2,
+        28
+      ],
+      [
+        2,
+        2,
+        21
+      ],
+      [
+        3,
+        2,
+        24
+      ],
+      [
+        4,
+        2,
+        5
+      ],
+      [
+        5,
+        2,
+        12
+      ],
+      [
+        0,
+        3,
+        4
+      ],
+      [
+        1,
+        3,
+        11
+      ],
+      [
+        2,
+        3,
+        9
+      ],
+      [
+        3,
+        3,
+        9
+      ],
+      [
+        4,
+        3,
+        29
+      ],
+      [
+        5,
+        3,
+        29
+      ],
+      [
+        0,
+        4,
+        18
+      ],
+      [
+        1,
+        4,
+        2
+      ],
+      [
+        2,
+        4,
+        11
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        4,
+        22
+      ],
+      [
+        5,
+        4,
+        10
+      ],
+      [
+        0,
+        5,
+        11
+      ],
+      [
+        1,
+        5,
+        26
+      ],
+      [
+        2,
+        5,
+        22
+      ],
+      [
+        3,
+        5,
+        24
+      ],
+      [
+        4,
+        5,
+        16
+      ],
+      [
+        5,
+        5,
+        7
+      ],
+      [
+        0,
+        6,
+        4
+      ],
+      [
+        1,
+        6,
+        23
+      ],
+      [
+        2,
+        6,
+        13
+      ],
+      [
+        3,
+        6,
+        1
+      ],
+      [
+        4,
+        6,
+        10
+      ],
+      [
+        5,
+        6,
+        15
+      ],
+      [
+        0,
+        7,
+        1
+      ],
+      [
+        1,
+        7,
+        6
+      ],
+      [
+        2,
+        7,
+        20
+      ],
+      [
+        3,
+        7,
+        1
+      ],
+      [
+        4,
+        7,
+        12
+      ],
+      [
+        5,
+        7,
+        30
+      ],
+      [
+        0,
+        8,
+        25
+      ],
+      [
+        1,
+        8,
+        15
+      ],
+      [
+        2,
+        8,
+        10
+      ],
+      [
+        3,
+        8,
+        19
+      ],
+      [
+        4,
+        8,
+        27
+      ],
+      [
+        5,
+        8,
+        17
+      ]
+    ]
+  },
+  "contentImprove": [
+    {
+      "page": "https://kamina.ai/",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
+    },
+    {
+      "page": "https://kamina.ai/credito",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
+    },
+    {
+      "page": "https://kamina.ai/blog/",
+      "detail": "Placeholder: hallazgo de ejemplo (DataForSEO AI Optimization API, a\u00fan no integrado)."
+    }
+  ]
 }

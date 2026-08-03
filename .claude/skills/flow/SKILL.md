@@ -48,6 +48,7 @@ descargado HTML y esté mergeado en `data.json`.
 | 8 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
 | 9 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
 | 10 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
+| 11 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — **datos dummy todavía** (posición aleatoria), pendiente de conectar a la posición mensual real por query vía GSC. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key
