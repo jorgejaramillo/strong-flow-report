@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "google-search-console": {
-      "command": "node",
-      "args": ["/Users/jorgejaramillo/Documents/Github/mcp-google-search-console/server.js"],
-      "cwd": "/Users/jorgejaramillo/Documents/Github/mcp-google-search-console"
-    }
-  }
-}
