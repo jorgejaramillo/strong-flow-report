@@ -18,6 +18,7 @@ reports/<slug>/<fecha>/
   data/crawl/                       # HTML crudo descargado por el crawler (NO se versiona, es regenerable)
 crawler/SKILL.md                    # skill: descarga HTML renderizado de una o varias URLs vía Cloudflare
 mcp-google-search-console/          # servidor MCP de Google Search Console (repo aparte, con su propio git)
+dataforseo-mcp/                     # servidor MCP de DataForSEO (repo aparte, con su propio git)
 ```
 
 - `clients/<slug>/config.json` define un cliente: `domain`, `gsc.siteUrl`
@@ -82,24 +83,51 @@ El skill `content-gap-analyzer` (dentro de `mcp-google-search-console/`)
 usa `SCRAPERAPI_KEY` para scrapear páginas cuando el crawler de Cloudflare
 no es necesario/suficiente.
 
+### 4. DataForSEO (MCP)
+
+Vive en `dataforseo-mcp/` — igual que `mcp-google-search-console/`, es **un
+repo git aparte** ([`dataforseo/mcp-server-typescript`](https://github.com/dataforseo/mcp-server-typescript),
+la fuente oficial de [`dataforseo-mcp-server`](https://dataforseo.com/model-context-protocol)),
+clonado dentro de este repo pero excluido vía `.gitignore`. Da acceso a
+datos de keyword research, SERP, backlinks y auditoría on-page que
+complementan lo que trae el MCP de Google Search Console.
+
+Se instala y compila una sola vez:
+
+```bash
+cd dataforseo-mcp
+npm install   # corre el build (TypeScript) automáticamente vía el script "prepare"
+```
+
+Necesita credenciales del dashboard de API Access de DataForSEO:
+
+```
+DATAFORSEO_USERNAME=tu_login
+DATAFORSEO_PASSWORD=tu_password
+```
+
+`.mcp.json` referencia estas variables como `${DATAFORSEO_USERNAME}` /
+`${DATAFORSEO_PASSWORD}` (expansión de variables de entorno de Claude
+Code) — **no pegues las credenciales directamente en `.mcp.json`**, ese
+archivo se versiona en git. Hay placeholders vacíos en el `.env` de la
+raíz; para que la expansión funcione, expórtalas también en tu shell
+(ej. en `~/.zshrc`) o cárgalas antes de abrir Claude Code:
+
+```bash
+export DATAFORSEO_USERNAME=tu_login
+export DATAFORSEO_PASSWORD=tu_password
+```
+
+Se habilita en `.claude/settings.local.json` (ya configurado).
+
 ## Uso
 
 ### Agregar un cliente nuevo
 
-Crear `clients/<slug>/config.json`:
-
-```json
-{
-  "slug": "mi-cliente",
-  "name": "Nombre del cliente",
-  "domain": "midominio.com",
-  "gsc": { "siteUrl": "https://midominio.com/" },
-  "crawl": {
-    "seedUrls": ["/", "/pagina-1.html", "/pagina-2.html"],
-    "maxPages": 10
-  }
-}
-```
+Copiar `clients/_template/config.json` a `clients/<slug>/config.json`. La
+estructura completa del config, el significado de cada campo y las reglas
+que debe seguir un agente al leerlo están en **[CONFIG_SPEC.md](CONFIG_SPEC.md)**
+— es la fuente de verdad, no se improvisan campos nuevos fuera de ahí.
 
 `gsc.siteUrl` debe coincidir exactamente con una propiedad verificada en
 Search Console (usa la tool `list_sites` del MCP para ver las disponibles;
@@ -124,6 +152,13 @@ puede ser `https://dominio.com/` o `sc-domain:dominio.com`).
 
 ## Skills disponibles (Claude Code)
 
+- **`flow`** — orquesta la rutina completa: lee `clients/<slug>/config.json`
+  (respeta `site.active`), corre las 10 secciones en el orden correcto
+  (respetando dependencias, ej. `landings-crawl` antes de `findings`),
+  arma `data.json` y genera `report.html`. Es el punto de entrada para
+  "corre Flow para `<cliente>`".
+- **`analista`** — analiza el HTML descargado por el crawler contra
+  `best-practices.md` y genera los hallazgos de "Acciones recomendadas".
 - **`cloudflare-crawl`** — descarga el HTML renderizado (post-JS) de una o
   varias URLs vía Cloudflare Browser Rendering; guarda en
   `reports/<slug>/<fecha>/data/crawl/`.

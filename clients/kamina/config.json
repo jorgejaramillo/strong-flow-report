@@ -1,0 +1,56 @@
+{
+  "slug": "kamina",
+  "name": "Kamina",
+  "domain": "kamina.ai",
+  "site": {
+    "active": true,
+    "country": "ecu",
+    "language": "es"
+  },
+  "gsc": {
+    "siteUrl": "sc-domain:kamina.ai"
+  },
+  "crawl": {
+    "seedUrls": [
+      "/",
+      "/credito",
+      "/personas",
+      "/quienes-somos",
+      "/comercios-aliados",
+      "/donde-comprar",
+      "/terminos-y-condiciones-kamina-pay",
+      "/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
+      "/solicita-una-demo",
+      "/guias",
+      "/politicas-de-privacidad",
+      "/donde-comprar-electrodomesticos",
+      "/modelo-negocio",
+      "/terminos-y-condiciones",
+      "/manual-de-primeros-auxilios-financieros",
+      "/donde-comprar-tecnologia",
+      "/donde-comprar-ferreteria",
+      "/donde-comprar-acabados",
+      "/donde-comprar-muebles",
+      "/donde-comprar-limpieza"
+    ],
+    "maxPages": 20
+  },
+  "seedKeywords": [
+    "credito directo",
+    "compras sin interes",
+    "educación financiera",
+    "decimo cuarto sueldo",
+    "decimo tercer sueldo",
+    "historial crediticio",
+    "finanzas personales",
+    "salud financiera",
+    "capacidad de endeudamiento"
+  ],
+  "keywords": {
+    "days": 28,
+    "brand": [
+      "kamina"
+    ],
+    "non_brand": []
+  }
+}

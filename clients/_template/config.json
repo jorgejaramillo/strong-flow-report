@@ -1,0 +1,25 @@
+{
+  "slug": "nombre-cliente",
+  "name": "Nombre del cliente",
+  "domain": "dominio.com",
+  "site": {
+    "active": true,
+    "country": "col",
+    "language": "es"
+  },
+  "gsc": {
+    "siteUrl": "https://dominio.com/"
+  },
+  "crawl": {
+    "seedUrls": [
+      "/"
+    ],
+    "maxPages": 10
+  },
+  "seedKeywords": [],
+  "keywords": {
+    "days": 28,
+    "brand": [],
+    "non_brand": []
+  }
+}

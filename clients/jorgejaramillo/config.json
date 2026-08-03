@@ -2,6 +2,11 @@
   "slug": "jorgejaramillo",
   "name": "Jorge Jaramillo",
   "domain": "jorgejaramillo.com",
+  "site": {
+    "active": true,
+    "country": "col",
+    "language": "es"
+  },
   "gsc": {
     "siteUrl": "https://jorgejaramillo.com/"
   },
@@ -21,5 +26,18 @@
       "/google-search-console.html"
     ],
     "maxPages": 10
+  },
+  "seedKeywords": [
+    "consultor seo",
+    "ejemplo sitemap",
+    "contenido seo"
+  ],
+  "keywords": {
+    "days": 28,
+    "brand": [
+      "jorge jaramillo",
+      "jorgejaramillo"
+    ],
+    "non_brand": []
   }
 }
