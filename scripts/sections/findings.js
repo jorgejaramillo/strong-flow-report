@@ -42,6 +42,11 @@ function normalize(text) {
     .trim();
 }
 
+function isBrandQuery(query, brandTerms) {
+  const q = query.toLowerCase();
+  return brandTerms.some(term => q.includes(term.toLowerCase()));
+}
+
 /** true si la query aparece como frase completa, o si todas sus palabras clave (>2 letras) están presentes */
 function isQueryMissing(query, wordSetPadded, phraseSet) {
   const normQuery = normalize(query);
@@ -74,6 +79,7 @@ export async function fetchFindings(config, landingsCrawl, range = lastNDays(28)
     const extracted = extractFromHtml(html);
     const wordSetPadded = ` ${extracted.wordSet.join(' ')} `;
     const phraseSet = new Set(extracted.phrases);
+    const brandTerms = config.keywords?.brand || [];
 
     const { rows } = await getSearchAnalytics(auth, {
       siteUrl: config.gsc.siteUrl,
@@ -87,6 +93,7 @@ export async function fetchFindings(config, landingsCrawl, range = lastNDays(28)
     for (const row of rows) {
       if (row.impressions < MIN_IMPRESSIONS) continue;
       if (row.query.includes('://')) continue; // query = URL literal (ruido, no es un término de contenido)
+      if (isBrandQuery(row.query, brandTerms)) continue; // queries de marca no son "contenido faltante"
       if (!isQueryMissing(row.query, wordSetPadded, phraseSet)) continue;
 
       candidates.push({

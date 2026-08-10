@@ -181,12 +181,19 @@
     </div>
   </section>
 
-  <!-- ═══════════════ POSICIONES DE KEYWORDS EN EL TIEMPO ═══════════════ -->
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
   <section class="section-card card shadow-md" style="background:#ffffff;">
     <div class="card-body">
-      <h2 class="card-title">Posiciones de keywords en el tiempo</h2>
-      <p class="text-base-content/60 mb-2">Posición por mes (más oscuro = más cerca del puesto 1) · consultas objetivo (seedKeywords)</p>
-      <div id="chart-kw-heatmap" class="chart" style="height: 420px;"></div>
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) y su volumen de búsqueda mensual promedio (DataForSEO)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -395,41 +402,9 @@
   });
   window.addEventListener('resize', () => { clicksAreaChart.resize(); });
 
-  // ── Posiciones de keywords en el tiempo (heatmap) ──
-  const kwPos = REPORT_DATA.keywordPositions;
-  const kwLabels = kwPos.rows.map(r => r.keyword);
-  const kwData = [];
-  kwPos.rows.forEach((row, ki) => {
-    row.positions.forEach((pos, mi) => {
-      if (pos !== null && pos !== undefined) kwData.push([mi, ki, pos]);
-    });
-  });
-  const kwHeatmapChart = echarts.init(document.getElementById('chart-kw-heatmap'));
-  kwHeatmapChart.setOption({
-    tooltip: {
-      position: 'top',
-      formatter: (p) => `${kwPos.rows[p.data[1]].keyword}<br>${kwPos.months[p.data[0]]}: posición ${p.data[2]}`,
-    },
-    grid: { left: 240, right: 20, top: 20, bottom: 40 },
-    xAxis: { type: 'category', data: kwPos.months, splitArea: { show: true } },
-    yAxis: { type: 'category', data: kwLabels, splitArea: { show: true } },
-    visualMap: {
-      min: 1,
-      max: 30,
-      calculable: true,
-      orient: 'horizontal',
-      left: 'center',
-      bottom: 0,
-      inRange: { color: ['#134e4a', '#5eead4', '#f0fdfa'] },
-    },
-    series: [{
-      type: 'heatmap',
-      data: kwData,
-      label: { show: true },
-      emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.5)' } },
-    }],
-  });
-  window.addEventListener('resize', () => { kwHeatmapChart.resize(); });
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = REPORT_DATA.keywordVolume.rows.map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td></tr>`).join('');
 
   // ── Ganadores / Perdedores (landings) ──
   const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;

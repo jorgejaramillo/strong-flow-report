@@ -44,7 +44,7 @@ const STEPS = [
   { name: 'keywords', script: 'keywords.js', args: [slug, reportDate], outputKeys: ['keywords'] },
   { name: 'sitemap', script: 'sitemap.js', args: [slug], outputKeys: ['sitemap'] },
   { name: 'robotsTxt', script: 'robots.js', args: [slug, reportDate], outputKeys: ['robotsTxt'] },
-  { name: 'keywordPositions', script: 'keyword-positions.js', args: [slug], outputKeys: ['keywordPositions'] },
+  { name: 'keywordVolume', script: 'keyword-volume.js', args: [slug], outputKeys: ['keywordVolume'] },
 ];
 const LABEL_WIDTH = Math.max(...STEPS.map(s => s.name.length)) + 2;
 

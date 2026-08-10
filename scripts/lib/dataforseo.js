@@ -41,22 +41,19 @@ export async function llmResponse({ llmType = 'chat_gpt', userPrompt, modelName,
 }
 
 /**
- * Llama /v3/dataforseo_labs/google/ranked_keywords/live y devuelve la
- * posición orgánica actual (rank_absolute) por keyword para el dominio
- * dado, filtrando solo a `keywords`. Las keywords que el dominio no rankea
- * (no aparecen en el índice de DataForSEO Labs) no vienen en el resultado
- * — quedan ausentes de `positionByKeyword`.
+ * Llama /v3/keywords_data/google_ads/search_volume/live y devuelve el
+ * volumen de búsqueda mensual promedio por keyword. Las keywords sin datos
+ * suficientes en Google Ads no vienen en el resultado — quedan ausentes de
+ * `volumeByKeyword`.
  */
-export async function googleRankedKeywordPositions({ target, keywords, locationName, languageCode }) {
-  const res = await fetch(`${BASE_URL}/v3/dataforseo_labs/google/ranked_keywords/live`, {
+export async function googleKeywordSearchVolume({ keywords, locationName, languageCode }) {
+  const res = await fetch(`${BASE_URL}/v3/keywords_data/google_ads/search_volume/live`, {
     method: 'POST',
     headers: { Authorization: authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify([{
-      target,
+      keywords,
       location_name: locationName,
       language_code: languageCode,
-      limit: Math.max(keywords.length, 1),
-      filters: [['keyword_data.keyword', 'in', keywords]],
     }]),
   });
   const json = await res.json();
@@ -67,11 +64,11 @@ export async function googleRankedKeywordPositions({ target, keywords, locationN
   if (!task || task.status_code !== 20000) {
     throw new Error(`DataForSEO task error: ${task?.status_message || 'sin resultado'}`);
   }
-  const positionByKeyword = {};
-  for (const item of task.result?.[0]?.items || []) {
-    positionByKeyword[item.keyword_data.keyword] = item.ranked_serp_element?.serp_item?.rank_absolute ?? null;
+  const volumeByKeyword = {};
+  for (const item of task.result || []) {
+    volumeByKeyword[item.keyword] = item.search_volume ?? null;
   }
-  return { positionByKeyword, cost: task.cost || 0 };
+  return { volumeByKeyword, cost: task.cost || 0 };
 }
 
 /**
