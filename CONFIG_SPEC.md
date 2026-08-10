@@ -58,9 +58,12 @@ config nuevo se copia de ahí, no se inventa desde cero.
 | `keywords.brand` | string[] | Términos que clasifican una query como marca (match por substring, case-insensitive). |
 | `keywords.non_brand` | string[] | Opcional. Si tiene entradas, restringe "no-marca" a esos términos explícitos. Si está vacío, "no-marca" es todo lo que no matcheó `brand` (default). |
 
-## Futuro (no implementar aún)
+## Origen del config
 
-El config se obtendrá de un API remoto. El `config.json` local pasará a
-contener solo `{"config_api_key": "..."}` y un script descargará el config
-completo antes de correr el pipeline. La estructura del JSON descargado
-será exactamente esta.
+El config real vive en Flow (`https://flow.jorgejaramillo.com`), no en este
+repo. `clients/<slug>/config.json` local solo contiene
+`{"config_api_key": "sk_live_..."}`; `node scripts/sync-config.js <slug>`
+descarga el config vigente desde Flow y lo cachea en
+`clients/<slug>/.flow-cache.json`, que sigue exactamente la estructura
+documentada arriba. `_template/config.json` es la excepción — sigue siendo
+un `config.json` completo de referencia (sin API key), no un cliente real.

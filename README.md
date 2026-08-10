@@ -9,21 +9,26 @@ o se exporta a PDF.
 ## Cómo está armado
 
 ```
-clients/<slug>/config.json          # datos del cliente: dominio, propiedad GSC, URLs a crawlear
+clients/<slug>/config.json          # solo { config_api_key }; el config real vive en Flow
+clients/<slug>/.flow-cache.json     # config descargado de Flow (scripts/sync-config.js), no se versiona
 templates/report.template.html      # el template visual (Tailwind + daisyUI + ECharts + Tabulator)
 scripts/build-report.js             # inyecta data.json en el template -> report.html
 reports/<slug>/<fecha>/
   data.json                         # los datos de esa corrida del reporte (se versiona)
   report.html                       # el reporte generado (se versiona)
   data/crawl/                       # HTML crudo descargado por el crawler (NO se versiona, es regenerable)
+  data/pagespeed/                   # scores + screenshots de Unlighthouse (NO se versiona, es regenerable)
 crawler/SKILL.md                    # skill: descarga HTML renderizado de una o varias URLs vía Cloudflare
+scripts/sections/pagespeed.js       # corre Unlighthouse (Lighthouse a escala) sobre crawl.seedUrls
 mcp-google-search-console/          # servidor MCP de Google Search Console (repo aparte, con su propio git)
 dataforseo-mcp/                     # servidor MCP de DataForSEO (repo aparte, con su propio git)
 ```
 
-- `clients/<slug>/config.json` define un cliente: `domain`, `gsc.siteUrl`
-  (la propiedad exacta en Search Console) y `crawl.seedUrls`/`crawl.maxPages`
-  (qué páginas descargar cuando se corre el crawler).
+- El config de cada cliente (`domain`, `gsc.siteUrl`, `crawl.seedUrls`/
+  `crawl.maxPages`, etc.) vive en Flow (`https://flow.jorgejaramillo.com`),
+  no en este repo. `node scripts/sync-config.js <slug>` lo descarga usando
+  el `config_api_key` de `clients/<slug>/config.json` y lo cachea en
+  `clients/<slug>/.flow-cache.json` — ver [CONFIG_SPEC.md](CONFIG_SPEC.md).
 - `reports/<slug>/<fecha>/data.json` es la fuente de verdad de una corrida
   del reporte — el `report.html` de esa carpeta se genera 1:1 a partir de
   ese JSON con `scripts/build-report.js`. Nunca se edita `report.html` a
@@ -120,14 +125,43 @@ export DATAFORSEO_PASSWORD=tu_password
 
 Se habilita en `.claude/settings.local.json` (ya configurado).
 
+### 5. Unlighthouse (sección PageSpeed)
+
+Corre Lighthouse a escala sobre `crawl.seedUrls` para llenar la sección
+"PageSpeed" (scores de Performance/Accessibility/Best Practices/SEO +
+screenshots). Es un paquete npm normal (`unlighthouse`, instalado en la
+raíz de este repo), no un MCP ni un repo aparte — pero **requiere Node
+≥22** (usa `fs/promises#glob`, que no existe en Node 20) y **Chrome
+instalado localmente** (usa `puppeteer-core`, no descarga su propio
+Chromium).
+
+```bash
+npm install         # instala unlighthouse (raíz del repo)
+nvm install 22       # si tu Node por defecto es menor a 22
+```
+
+`scripts/sections/pagespeed.js` detecta la versión de Node activa y, si es
+menor a 22, relanza automáticamente el binario de Unlighthouse con el
+Node 22 de nvm (`~/.nvm/versions/node/v22.../bin/node`) — el resto del
+pipeline puede seguir corriendo con el Node del sistema. Hay un
+`.nvmrc` con `22` en la raíz por si preferís `nvm use` manualmente.
+
+No necesita credenciales. Es el paso más lento del flow (~15-30s por URL).
+
 ## Uso
 
 ### Agregar un cliente nuevo
 
-Copiar `clients/_template/config.json` a `clients/<slug>/config.json`. La
-estructura completa del config, el significado de cada campo y las reglas
-que debe seguir un agente al leerlo están en **[CONFIG_SPEC.md](CONFIG_SPEC.md)**
-— es la fuente de verdad, no se improvisan campos nuevos fuera de ahí.
+1. En Flow, crear el site del cliente (dominio + nombre). Se puede partir
+   de `clients/_template/config.json` pegándolo en el tab "Raw JSON" del
+   site. La estructura completa del config, el significado de cada campo y
+   las reglas que debe seguir un agente al leerlo están en
+   **[CONFIG_SPEC.md](CONFIG_SPEC.md)** — es la fuente de verdad, no se
+   improvisan campos nuevos fuera de ahí.
+2. Generar un API key para ese site (tab "API Keys" → "+ Generate key",
+   se muestra una sola vez).
+3. Guardar `{"config_api_key": "sk_live_..."}` en `clients/<slug>/config.json`
+   local.
 
 `gsc.siteUrl` debe coincidir exactamente con una propiedad verificada en
 Search Console (usa la tool `list_sites` del MCP para ver las disponibles;
@@ -152,8 +186,9 @@ puede ser `https://dominio.com/` o `sc-domain:dominio.com`).
 
 ## Skills disponibles (Claude Code)
 
-- **`flow`** — orquesta la rutina completa: lee `clients/<slug>/config.json`
-  (respeta `site.active`), corre las 10 secciones en el orden correcto
+- **`flow`** — orquesta la rutina completa: corre `scripts/sync-config.js`
+  para traer el config vigente desde Flow (respeta `site.active`), corre
+  las secciones en el orden correcto
   (respetando dependencias, ej. `landings-crawl` antes de `findings`),
   arma `data.json` y genera `report.html`. Es el punto de entrada para
   "corre Flow para `<cliente>`".

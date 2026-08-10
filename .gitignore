@@ -3,6 +3,13 @@
 .DS_Store
 node_modules/
 
+# Config real de cada cliente vive en Flow; el config.json local solo
+# guarda el API key (ver CONFIG_SPEC.md). _template sigue trackeado como
+# referencia de forma, no tiene secretos.
+clients/*/config.json
+!clients/_template/config.json
+clients/*/.flow-cache.json
+
 # Fuentes crudas de cada corrida (regenerables desde GSC/crawler) — se versiona report.html y data.json
 reports/*/*/data/
 

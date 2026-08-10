@@ -10,12 +10,24 @@ description: >
 
 # Flow — rutina de generación de reportes
 
-## 0. Leer el config del cliente
+## 0. Traer el config actualizado de Flow
 
-Antes de cualquier otra cosa, leer `clients/<slug>/config.json`.
+Antes de cualquier otra cosa, correr:
 
-- Si `site.active` es `false`: **detente y avisa** al usuario. No generes
-  el reporte. Esto es una regla dura, no una sugerencia (ver
+```bash
+node scripts/sync-config.js <slug>
+```
+
+Esto descarga el config vigente desde Flow (usando el `config_api_key` de
+`clients/<slug>/config.json`) y lo cachea en `clients/<slug>/.flow-cache.json`.
+Todos los scripts de `scripts/sections/*.js` leen de ahí automáticamente vía
+`loadClientConfig(slug)` — no hace falta tocar nada más.
+
+- Si el comando falla (key inválida, cliente sin config en Flow), **detente
+  y avisa** al usuario — no sigas con datos viejos.
+- Revisar `clients/<slug>/.flow-cache.json` → `data.site.active`. Si es
+  `false`: **detente y avisa** al usuario. No generes el reporte. Esto es
+  una regla dura, no una sugerencia (ver
   [CONFIG_SPEC.md](../../../CONFIG_SPEC.md)).
 - Si falta algún dato que un paso necesita (ej. `gsc.siteUrl`,
   `crawl.seedUrls`), repórtalo y pregunta — no lo inventes.
@@ -51,6 +63,7 @@ descargado HTML y esté mergeado en `data.json`.
 | 11 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
 | 12 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
 | 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — volumen de búsqueda (`keywords_data/google_ads/search_volume`) y posición orgánica (`dataforseo_labs/google/ranked_keywords`) reales, ambos vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
+| 14 | `pagespeed` | `node scripts/sections/pagespeed.js <slug> <reportDate>` — corre Unlighthouse (Lighthouse) sobre `crawl.seedUrls`: scores de Performance/Accessibility/Best Practices/SEO y screenshots (foto final + filmstrip de carga) por página, guardados en `reports/<slug>/<reportDate>/data/pagespeed/`. Sin dependencias de otros pasos, pero es el más lento (~15-30s por URL) — con `maxPages` alto puede tardar varios minutos. Requiere Chrome instalado localmente y Node ≥22 (ver README); si el Node activo es menor, el script relanza automáticamente con el Node 22 de nvm. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key

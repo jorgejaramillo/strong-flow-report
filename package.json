@@ -1,0 +1,11 @@
+{
+  "name": "strong-flow-report",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pagespeed": "node scripts/sections/pagespeed.js"
+  },
+  "devDependencies": {
+    "unlighthouse": "^0.18.0"
+  }
+}

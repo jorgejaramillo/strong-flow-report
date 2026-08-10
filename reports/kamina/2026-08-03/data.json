@@ -612,10 +612,135 @@
   "sitemap": {
     "totalSitemaps": 1,
     "totalSubmitted": 53,
-    "totalIndexed": 0,
-    "indexRate": "0%",
     "sitemapsWithErrors": 0,
-    "sitemapsWithWarnings": 0
+    "sitemapsWithWarnings": 0,
+    "seedUrlsIndexing": {
+      "totalChecked": 20,
+      "totalIndexed": 20,
+      "indexRate": "100.0%",
+      "pages": [
+        {
+          "path": "/",
+          "url": "https://kamina.ai/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/credito",
+          "url": "https://kamina.ai/credito",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/personas",
+          "url": "https://kamina.ai/personas",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/quienes-somos",
+          "url": "https://kamina.ai/quienes-somos",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/comercios-aliados",
+          "url": "https://kamina.ai/comercios-aliados",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar",
+          "url": "https://kamina.ai/donde-comprar",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/terminos-y-condiciones-kamina-pay",
+          "url": "https://kamina.ai/terminos-y-condiciones-kamina-pay",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
+          "url": "https://kamina.ai/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/solicita-una-demo",
+          "url": "https://kamina.ai/solicita-una-demo",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/guias",
+          "url": "https://kamina.ai/guias",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/politicas-de-privacidad",
+          "url": "https://kamina.ai/politicas-de-privacidad",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-electrodomesticos",
+          "url": "https://kamina.ai/donde-comprar-electrodomesticos",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/modelo-negocio",
+          "url": "https://kamina.ai/modelo-negocio",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/terminos-y-condiciones",
+          "url": "https://kamina.ai/terminos-y-condiciones",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/manual-de-primeros-auxilios-financieros",
+          "url": "https://kamina.ai/manual-de-primeros-auxilios-financieros",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-tecnologia",
+          "url": "https://kamina.ai/donde-comprar-tecnologia",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-ferreteria",
+          "url": "https://kamina.ai/donde-comprar-ferreteria",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-acabados",
+          "url": "https://kamina.ai/donde-comprar-acabados",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-muebles",
+          "url": "https://kamina.ai/donde-comprar-muebles",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/donde-comprar-limpieza",
+          "url": "https://kamina.ai/donde-comprar-limpieza",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        }
+      ]
+    }
   },
   "robotsTxt": {
     "url": "https://kamina.ai/robots.txt",
@@ -749,5 +874,390 @@
     "organicTrafficValue": 5001,
     "backlinks": 354,
     "referringDomains": 203
+  },
+  "pagespeed": {
+    "generatedAt": "2026-08-09T17:19:51.821Z",
+    "pages": [
+      {
+        "url": "https://kamina.ai/",
+        "path": "/",
+        "performance": 71,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/comercios-aliados",
+        "path": "/comercios-aliados",
+        "performance": 75,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/comercios-aliados/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/credito",
+        "path": "/credito",
+        "performance": 61,
+        "accessibility": 78,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/credito/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/credito/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar",
+        "path": "/donde-comprar",
+        "performance": 60,
+        "accessibility": 81,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-acabados",
+        "path": "/donde-comprar-acabados",
+        "performance": 60,
+        "accessibility": 84,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-acabados/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-electrodomesticos",
+        "path": "/donde-comprar-electrodomesticos",
+        "performance": 59,
+        "accessibility": 80,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-electrodomesticos/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-ferreteria",
+        "path": "/donde-comprar-ferreteria",
+        "performance": 76,
+        "accessibility": 84,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-ferreteria/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-limpieza",
+        "path": "/donde-comprar-limpieza",
+        "performance": 68,
+        "accessibility": 84,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-limpieza/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-muebles",
+        "path": "/donde-comprar-muebles",
+        "performance": 72,
+        "accessibility": 80,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-muebles/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/donde-comprar-tecnologia",
+        "path": "/donde-comprar-tecnologia",
+        "performance": 76,
+        "accessibility": 80,
+        "bestPractices": 73,
+        "seo": 92,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/donde-comprar-tecnologia/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/guias",
+        "path": "/guias",
+        "performance": 67,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/guias/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/guias/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/manual-de-primeros-auxilios-financieros",
+        "path": "/manual-de-primeros-auxilios-financieros",
+        "performance": 60,
+        "accessibility": 87,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/manual-de-primeros-auxilios-financieros/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/modelo-negocio",
+        "path": "/modelo-negocio",
+        "performance": 66,
+        "accessibility": 92,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/modelo-negocio/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/personas",
+        "path": "/personas",
+        "performance": 81,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/personas/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/personas/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/politicas-de-privacidad",
+        "path": "/politicas-de-privacidad",
+        "performance": 79,
+        "accessibility": 92,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/politicas-de-privacidad/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/quienes-somos",
+        "path": "/quienes-somos",
+        "performance": 81,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/quienes-somos/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/solicita-una-demo",
+        "path": "/solicita-una-demo",
+        "performance": 67,
+        "accessibility": 89,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/solicita-una-demo/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/terminos-y-condiciones",
+        "path": "/terminos-y-condiciones",
+        "performance": 84,
+        "accessibility": 82,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/terminos-y-condiciones-kamina-pay",
+        "path": "/terminos-y-condiciones-kamina-pay",
+        "performance": 81,
+        "accessibility": 91,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/terminos-y-condiciones-kamina-pay/__screenshot-thumbnails__/7.jpeg"
+        ]
+      },
+      {
+        "url": "https://kamina.ai/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
+        "path": "/vende-mas-sin-riesgos-de-cartera-con-credito-directo",
+        "performance": 67,
+        "accessibility": 92,
+        "bestPractices": 73,
+        "seo": 100,
+        "screenshot": "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/screenshot.jpeg",
+        "thumbnails": [
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/0.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/1.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/2.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/3.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/4.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/5.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/6.jpeg",
+          "reports/kamina/2026-08-03/data/pagespeed/reports/vende-mas-sin-riesgos-de-cartera-con-credito-directo/__screenshot-thumbnails__/7.jpeg"
+        ]
+      }
+    ]
   }
 }

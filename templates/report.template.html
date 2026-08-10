@@ -71,6 +71,21 @@
     .section-card { break-inside: avoid; }
   }
   .chart { width: 100%; height: 320px; }
+
+  /* PageSpeed */
+  .pagespeed-table td { vertical-align: middle; }
+  .ps-page { display: flex; gap: 10px; align-items: flex-start; }
+  .ps-thumb { width: 48px; height: 64px; border-radius: 4px; flex-shrink: 0; background-size: cover; background-position: top; border: 1px solid #E5E7EB; }
+  .ps-page-title { font-weight: 500; font-size: 0.85rem; line-height: 1.2; }
+  .ps-page-date { font-size: 0.75rem; color: #6b7280; margin-top: 2px; }
+  .ps-lh-link { font-size: 0.75rem; display: flex; align-items: center; gap: 4px; margin-top: 4px; color: #14B8A6; }
+  .ps-gauges { display: flex; gap: 18px; }
+  .ps-gauge { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .ps-gauge .radial-progress { font-size: 0.8rem; font-weight: 700; }
+  .ps-gauge-label { font-size: 0.7rem; color: #6b7280; }
+  .ps-timeline { display: flex; gap: 6px; }
+  .ps-shot { position: relative; width: 56px; height: 64px; border-radius: 4px; background-size: cover; background-position: top; border: 1px solid #E5E7EB; }
+  .ps-shot::after { content: ""; position: absolute; bottom: 3px; right: 3px; width: 6px; height: 6px; border-radius: 9999px; background: #22c55e; box-shadow: 0 0 0 1px #fff; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -113,6 +128,26 @@
       <h2 class="card-title">Clicks a lo largo del tiempo</h2>
       <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
       <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGESPEED ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">PageSpeed</h2>
+      <p class="text-base-content/60 mb-2">Lighthouse por página · Performance, Accessibility, Best Practices, SEO</p>
+      <div class="overflow-x-auto">
+        <table class="table pagespeed-table">
+          <thead>
+            <tr>
+              <th style="min-width:260px;">Page</th>
+              <th style="min-width:340px;">Score</th>
+              <th>Screenshot Timeline</th>
+            </tr>
+          </thead>
+          <tbody id="pagespeed-rows"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -203,6 +238,16 @@
           <tbody id="sitemap-rows"></tbody>
         </table>
       </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -260,16 +305,64 @@
   const da = REPORT_DATA.domainAnalytics;
   const domainAnalyticsStats = da ? [
     { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
-    { title: 'Valor tráfico orgánico est.', value: da.organicTrafficValue != null ? '$' + da.organicTrafficValue.toLocaleString() : '—' },
     { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
   ] : [];
 
-  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...domainAnalyticsStats].map(s => `
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
     <div class="stat bg-base-200/50 rounded-lg">
       <div class="stat-title">${s.title}</div>
       <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
       <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
     </div>`).join('');
+
+  // ── PageSpeed (Unlighthouse: scripts/sections/pagespeed.js) ──
+  const psScoreClass = (v) => v >= 90 ? 'text-success' : v >= 50 ? 'text-warning' : 'text-error';
+  // localPath viene relativo a la raíz del repo (ej. "reports/kamina/2026-08-09/data/pagespeed/reports/credito/screenshot.jpeg");
+  // report.html vive en reports/<slug>/<fecha>/, así que hay que recortarlo a partir de "data/pagespeed/".
+  const psRelHref = (localPath) => localPath ? 'data/pagespeed/' + localPath.split('/data/pagespeed/')[1] : '';
+
+  const psGauge = (label, value) => `
+    <div class="ps-gauge">
+      <div class="radial-progress ${psScoreClass(value)}" style="--value:${value}; --size:3rem; --thickness: 3px;" role="progressbar">${value}</div>
+      <span class="ps-gauge-label">${label}</span>
+    </div>`;
+
+  const psPages = REPORT_DATA.pagespeed?.pages || [];
+  document.getElementById('pagespeed-rows').innerHTML = psPages.length === 0
+    ? '<tr><td colspan="3" class="text-base-content/60">Sin datos de PageSpeed todavía — corre <code>node scripts/sections/pagespeed.js &lt;cliente&gt; &lt;fecha&gt;</code>.</td></tr>'
+    : psPages.map(p => `
+    <tr>
+      <td>
+        <div class="ps-page">
+          <div class="ps-thumb" style="background-image:url('${psRelHref(p.screenshot)}');"></div>
+          <div>
+            <a href="${p.url}" class="ps-page-title link link-hover" target="_blank">${p.path || '/'}</a>
+            <div class="ps-page-date">${new Date(REPORT_DATA.pagespeed.generatedAt).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>
+            <a href="${psRelHref(p.screenshot).replace(/screenshot\.jpeg$/, 'lighthouse.html')}" class="ps-lh-link link link-hover" target="_blank">View Lighthouse Report</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="ps-gauges">
+          ${psGauge('Performance', p.performance)}
+          ${psGauge('Accessibility', p.accessibility)}
+          ${psGauge('Best Practices', p.bestPractices)}
+          ${psGauge('SEO', p.seo)}
+        </div>
+      </td>
+      <td>
+        <div class="ps-timeline">
+          ${p.thumbnails.map(t => `<div class="ps-shot" style="background-image:url('${psRelHref(t)}');"></div>`).join('')}
+        </div>
+      </td>
+    </tr>`).join('');
 
   // ── Canibalización ──
   document.getElementById('cannibalization-groups').innerHTML = REPORT_DATA.cannibalization.length === 0
@@ -293,15 +386,22 @@
       </div>
     </div>`).join('');
 
-  // ── Sitemap (a nivel de sitio, vía list_sitemaps) ──
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
   const sm = REPORT_DATA.sitemap;
+  const su = sm.seedUrlsIndexing;
   document.getElementById('sitemap-rows').innerHTML = `
     <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps}</td></tr>
-    <tr><td>URLs enviadas</td><td>${sm.totalSubmitted}</td></tr>
-    <tr><td>URLs indexadas</td><td class="text-success">${sm.totalIndexed}</td></tr>
-    <tr><td>Tasa de indexación</td><td>${sm.indexRate}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
     <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors}</td></tr>
     <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings}</td></tr>`;
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = su.pages.map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
 
   // ── robots.txt (fetch real, contenido crudo) ──
   const rb = REPORT_DATA.robotsTxt;
