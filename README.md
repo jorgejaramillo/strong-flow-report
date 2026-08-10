@@ -162,10 +162,20 @@ No necesita credenciales. Es el paso más lento del flow (~15-30s por URL).
    se muestra una sola vez).
 3. Guardar `{"config_api_key": "sk_live_..."}` en `clients/<slug>/config.json`
    local.
+4. Verificar que la key funciona y bajar el config real:
 
-`gsc.siteUrl` debe coincidir exactamente con una propiedad verificada en
-Search Console (usa la tool `list_sites` del MCP para ver las disponibles;
-puede ser `https://dominio.com/` o `sc-domain:dominio.com`).
+   ```bash
+   node scripts/sync-config.js <slug>
+   # ej: node scripts/sync-config.js constructoracapital
+   ```
+
+   Esto crea `clients/<slug>/.flow-cache.json` (no se versiona). Revisá que
+   `site.active` sea `true` y que `gsc.siteUrl` coincida exactamente con una
+   propiedad verificada en Search Console (usa la tool `list_sites` del MCP
+   para ver las disponibles; puede ser `https://dominio.com/` o
+   `sc-domain:dominio.com`).
+5. Generar el primer reporte con el skill `flow` ("corre Flow para
+   `<slug>`") — ver [Generar un reporte](#generar-un-reporte).
 
 ### Generar un reporte
 
