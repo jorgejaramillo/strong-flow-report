@@ -10,6 +10,37 @@ description: >
 
 # Flow — rutina de generación de reportes
 
+## Vía rápida (recomendada)
+
+Para una corrida completa, usar el orquestador en vez de correr cada script
+a mano:
+
+```bash
+node scripts/run-flow.js <slug> [reportDate YYYY-MM-DD]
+```
+
+Esto corre sync-config, valida `site.active`, y luego todas las secciones
+automatizables (todo excepto `aiActions`) en el orden correcto, mergeando
+cada resultado en `reports/<slug>/<reportDate>/data.json` y regenerando
+`report.html` al final. Muestra en terminal el avance y el tiempo de cada
+paso, y al terminar resume qué falló o se saltó.
+
+`aiActions` sigue siendo manual (skill `analista`, ver paso 7 abajo) — después
+de correrlo, volver a llamar `node scripts/build-report.js <slug> <reportDate>`
+para que el HTML lo incluya.
+
+`run-flow.js` hace **resume por defecto**: si una sección ya escribió sus
+keys en `data.json` (de una corrida anterior, completa o interrumpida por
+un error), se saltea y se marca "ya hecho (cache)" en vez de volver a
+correrla — así no repite llamadas pagas (DataForSEO en `domainAnalytics`,
+`contentImprove`, `keywordPositions`) ni pasos lentos (`pagespeed`) que ya
+quedaron guardados. Si un paso falló, correr el comando de nuevo reintenta
+solo ese paso (y los que falten). Para forzar una corrida completa desde
+cero, ignorando el cache, agregar `--fresh`.
+
+El resto de esta sección detalla qué hace cada paso — útil para debugging
+o para correr uno solo.
+
 ## 0. Traer el config actualizado de Flow
 
 Antes de cualquier otra cosa, correr:
@@ -50,7 +81,7 @@ descargado HTML y esté mergeado en `data.json`.
 
 | # | Sección (key en data.json) | Cómo se obtiene |
 |---|---|---|
-| 1 | `meta`, `headerBadges`, `stats` | **Manual, sin script todavía.** Llamar `get_search_analytics` (dims `device`) del MCP de GSC para el período actual y el anterior, y `list_sitemaps` para conteos de URLs. Replicar el patrón ya usado en corridas anteriores (ver `reports/jorgejaramillo/*/data.json` como referencia de forma). `headerBadges` ya no se renderiza en el template (se quitó del header), pero el paso sigue generándolo por si se reusa más adelante. |
+| 1 | `meta`, `headerBadges`, `stats` | `node scripts/sections/header.js <slug> <reportDate>` — clicks/impresiones/CTR/posición del período actual vs. anterior (vía GSC) y conteos de sitemap. `headerBadges` ya no se renderiza en el template (se quitó del header), pero el paso sigue generándolo por si se reusa más adelante. |
 | 2 | `domainAnalytics` | `node scripts/sections/domain-analytics.js <slug>` — DataForSEO Domain Analytics API (`domain_analytics/whois/overview`): keywords orgánicas, tráfico estimado, backlinks y fecha de registro del dominio. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env`. Sin dependencias de otros pasos. |
 | 3 | `clicksOverTime` | `node scripts/sections/clicks-over-time.js <slug> <reportDate>` |
 | 4 | `cannibalization` | `node scripts/sections/cannibalization.js <slug>` — excluye queries de marca (`config.keywords.brand`). |
@@ -63,7 +94,7 @@ descargado HTML y esté mergeado en `data.json`.
 | 11 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
 | 12 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
 | 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — volumen de búsqueda (`keywords_data/google_ads/search_volume`) y posición orgánica (`dataforseo_labs/google/ranked_keywords`) reales, ambos vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
-| 14 | `pagespeed` | `node scripts/sections/pagespeed.js <slug> <reportDate>` — corre Unlighthouse (Lighthouse) sobre `crawl.seedUrls`: scores de Performance/Accessibility/Best Practices/SEO y screenshots (foto final + filmstrip de carga) por página, guardados en `reports/<slug>/<reportDate>/data/pagespeed/`. Sin dependencias de otros pasos, pero es el más lento (~15-30s por URL) — con `maxPages` alto puede tardar varios minutos. Requiere Chrome instalado localmente y Node ≥22 (ver README); si el Node activo es menor, el script relanza automáticamente con el Node 22 de nvm. |
+| 14 | `pagespeed` | `node scripts/sections/pagespeed.js <slug> <reportDate>` — corre Unlighthouse (Lighthouse) ÚNICAMENTE sobre `crawl.seedUrls` (sitemap/robots.txt/link crawler desactivados a propósito, nunca audita URLs fuera de esa lista): scores de Performance/Accessibility/Best Practices/SEO y screenshots (foto final + filmstrip de carga) por página, guardados en `reports/<slug>/<reportDate>/data/pagespeed/`. Sin dependencias de otros pasos, pero es el más lento — corre una URL a la vez a propósito (liviano en CPU/RAM en vez de varias URLs en paralelo), así que con `maxPages` alto puede tardar varios minutos. En `run-flow.js` este paso muestra su avance página por página en vivo (no solo al terminar). Requiere Chrome instalado localmente y Node ≥22 (ver README); si el Node activo es menor, el script relanza automáticamente con el Node 22 de nvm. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key
@@ -91,6 +122,3 @@ asumas que el usuario quiere abrir el archivo, solo dile dónde quedó.
 - Si un paso falla (ej. faltan credenciales, la propiedad GSC no tiene
   datos), repórtalo y sigue con las demás secciones en vez de abortar todo
   el reporte — cada key de `data.json` es independiente.
-- El paso 1 (header/stats) es el único que no tiene script propio todavía;
-  si se construye `scripts/sections/header.js` en el futuro, esta tabla
-  debe actualizarse para reflejarlo.

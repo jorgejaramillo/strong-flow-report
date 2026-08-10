@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+
+  /* PageSpeed */
+  .pagespeed-table td { vertical-align: middle; }
+  .ps-page { display: flex; gap: 10px; align-items: flex-start; }
+  .ps-thumb { width: 48px; height: 64px; border-radius: 4px; flex-shrink: 0; background-size: cover; background-position: top; border: 1px solid #E5E7EB; }
+  .ps-page-title { font-weight: 500; font-size: 0.85rem; line-height: 1.2; }
+  .ps-page-date { font-size: 0.75rem; color: #6b7280; margin-top: 2px; }
+  .ps-lh-link { font-size: 0.75rem; display: flex; align-items: center; gap: 4px; margin-top: 4px; color: #14B8A6; }
+  .ps-gauges { display: flex; gap: 18px; }
+  .ps-gauge { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .ps-gauge .radial-progress { font-size: 0.8rem; font-weight: 700; }
+  .ps-gauge-label { font-size: 0.7rem; color: #6b7280; }
+  .ps-timeline { display: flex; gap: 6px; }
+  .ps-shot { position: relative; width: 56px; height: 64px; border-radius: 4px; background-size: cover; background-position: top; border: 1px solid #E5E7EB; }
+  .ps-shot::after { content: ""; position: absolute; bottom: 3px; right: 3px; width: 6px; height: 6px; border-radius: 9999px; background: #22c55e; box-shadow: 0 0 0 1px #fff; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"cafam","clientName":"Cafam","domain":"cafam.com.co","periodStart":"12 jul 2026","periodEnd":"08 ago 2026","generatedAt":"10 ago 2026","pagesAnalyzed":30},"headerBadges":[{"text":"↓ 1.6% clicks","class":"badge-error"},{"text":"4689 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"401,329","valueClass":"text-primary","desc":"↓ 1.6% vs período anterior","descClass":"text-error"},{"title":"Impresiones","value":"4,484,050","desc":"↓ 3.3%","descClass":"text-error"},{"title":"CTR medio","value":"8.95%","desc":"↑ 0.15pp","descClass":"text-success"},{"title":"Posición media","value":"5.3","desc":"↓ 0.1 (mejor)","descClass":"text-error"},{"title":"URLs encontradas","value":"4,689","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"4,689","desc":"A Search Console"}],"domainAnalytics":null,"clicksOverTime":{"startDate":"2026-05-11","endDate":"2026-08-08","clicks":[18506,18059,18252,18902,14454,9650,6713,8421,17337,17122,15307,13657,8532,7666,17499,15473,16474,15643,13610,8522,6027,20718,18988,18845,17217,14716,9994,7080,8863,18628,18566,22370,16879,9858,6494,8780,18558,14373,14756,13933,8838,6417,20293,17044,16743,18090,17303,8900,8415,11377,22882,21700,19700,15263,10846,8992,19237,13518,18557,18163,17443,11166,8202,9467,22008,17359,16916,16226,10595,6881,8515,20338,19263,17948,16751,11095,9254,20637,18227,18458,16982,13990,10010,8344,18875,16999,17213,14451,7915,8410],"impressions":[246130,242064,237285,233360,218534,149630,103869,127932,249288,242185,218968,186929,121613,103789,221519,212001,223006,217177,206243,132778,101032,240923,228850,229471,221115,196224,130771,101363,120150,245343,238448,223123,205380,128932,89161,112284,223510,188737,186470,178856,115085,86017,208406,186633,188287,189722,181001,106017,90505,110484,250404,235162,218316,178590,118106,101262,205836,154519,203490,202727,193415,132650,98258,111488,224277,205078,185806,167943,112006,79811,96226,215071,209871,188253,181372,118025,102689,227672,210670,205032,204421,185692,115947,95061,204665,190725,185404,163053,94282,105252]},"cannibalization":[{"query":"famisanar","rows":[{"url":"https://www.cafam.com.co/afiliados-famisanar","impressions":94425,"clicks":665,"position":3.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/salud","impressions":1851,"clicks":10,"position":7.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas","impressions":2363,"clicks":6,"position":8.2,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"caja de compensación familiar","rows":[{"url":"https://www.cafam.com.co/noticias/para-que-sirven-las-cajas-de-compensacion-familiar","impressions":10898,"clicks":16,"position":8.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/","impressions":2306,"clicks":3,"position":9.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/noticias/que-es-una-caja-de-compensacion","impressions":4622,"clicks":3,"position":10.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"melgar","rows":[{"url":"https://www.cafam.com.co/noticias/melgar-todo-lo-que-debes-saber-sobre-este-destino","impressions":14921,"clicks":41,"position":10.6,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/noticias/actividades-melgar","impressions":77,"clicks":4,"position":2.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/noticias/planes-melgar","impressions":695,"clicks":4,"position":12.9,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"subsidio de desempleo","rows":[{"url":"https://www.cafam.com.co/agencia-empleo/subsidio-desempleo","impressions":11779,"clicks":584,"position":3.4,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/agencia-empleo/subsidio-desempleo/requisitos-para-postularte","impressions":299,"clicks":5,"position":5.9,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"cafa","rows":[{"url":"https://www.cafam.com.co/","impressions":2144,"clicks":151,"position":2,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/servicios-en-linea","impressions":1670,"clicks":18,"position":1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/salud","impressions":1749,"clicks":17,"position":1.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/turismo","impressions":1669,"clicks":16,"position":1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/empleo-y-bienestar-financiero/subsidios","impressions":1647,"clicks":15,"position":1.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/turismo/centro-vacaciones-cafam-melgar","impressions":1487,"clicks":10,"position":1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/salud/citas-medicas","impressions":695,"clicks":10,"position":1.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/hogar/subsidios-de-vivienda","impressions":498,"clicks":5,"position":1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"caja de compensacion","rows":[{"url":"https://www.cafam.com.co/noticias/que-es-una-caja-de-compensacion","impressions":5093,"clicks":10,"position":7.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/noticias/para-que-sirven-las-cajas-de-compensacion-familiar","impressions":1836,"clicks":9,"position":6.7,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/noticias/afiliarte-a-una-caja-de-compensacion-familiar","impressions":138,"clicks":4,"position":16.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/","impressions":1049,"clicks":2,"position":6.8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"famisanar citas","rows":[{"url":"https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas","impressions":5381,"clicks":20,"position":7.7,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/afiliados-famisanar","impressions":2405,"clicks":15,"position":7.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/salud","impressions":131,"clicks":3,"position":8.5,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"subsidio de vivienda","rows":[{"url":"https://www.cafam.com.co/hogar","impressions":4564,"clicks":28,"position":7.7,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/noticias/obtener-subsidio-vivienda-bogota","impressions":1166,"clicks":8,"position":5.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/hogar/subsidios-de-vivienda","impressions":348,"clicks":7,"position":8.3,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"citas famisanar","rows":[{"url":"https://www.cafam.com.co/afiliados-famisanar","impressions":2296,"clicks":23,"position":7.2,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas","impressions":2928,"clicks":22,"position":7.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.cafam.com.co/salud","impressions":352,"clicks":2,"position":8.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"medicina prepagada","rows":[{"url":"https://www.cafam.com.co/noticias/programa-medicina-prepagada","impressions":3600,"clicks":28,"position":6.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.cafam.com.co/noticias/medicina-prepagada-cafam-coomeva","impressions":118,"clicks":2,"position":12.4,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://www.agendamientodroguerias.cafam.com.co/","clicks":2519,"prev":1240,"delta":"+1279"},{"page":"https://www.cafam.com.co/agencia-empleo/subsidio-desempleo","clicks":2587,"prev":1563,"delta":"+1024"},{"page":"https://www.cafam.com.co/salud/portafolio-servicios-cafam/droguerias-y-medicamentos","clicks":1167,"prev":631,"delta":"+536"},{"page":"https://www.cafam.com.co/turismo/pasadias","clicks":3120,"prev":2590,"delta":"+530"},{"page":"https://www.cafam.com.co/hogar/subsidios-de-vivienda","clicks":638,"prev":487,"delta":"+151"}],"losers":[{"page":"https://selfservice.cafam.com.co/webkactus/frmLogin.aspx","clicks":2617,"prev":10027,"delta":"-7410"},{"page":"https://www.cafam.com.co/salud/citas-medicas","clicks":13991,"prev":16498,"delta":"-2507"},{"page":"https://www.cafam.com.co/salud/laboratorios-clinicos","clicks":3654,"prev":5549,"delta":"-1895"},{"page":"https://www.cafam.com.co/salud","clicks":4254,"prev":5519,"delta":"-1265"},{"page":"https://afiliaciones.cafam.com.co/","clicks":3140,"prev":3902,"delta":"-762"}],"landingsPeriodLabel":"02 ago 2026 → 08 ago 2026","landingsCrawl":[{"url":"https://cafam.com.co/","localPath":"reports/cafam/2026-08-10/data/crawl/index.html"},{"url":"https://cafam.com.co/noticias/que-es-subsidio-familiar","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_que-es-subsidio-familiar.html"},{"url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_que-es-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural","localPath":"reports/cafam/2026-08-10/data/crawl/afiliate-a-cafam_afiliacion-empleador-persona-natural.html"},{"url":"https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_quienes-son-los-beneficiarios-en-la-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/ahorrar-comprar-casa","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_ahorrar-comprar-casa.html"},{"url":"https://cafam.com.co/noticias/acceder-subsidio-familiar","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_acceder-subsidio-familiar.html"},{"url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_que-es-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/como-retirar-el-subsidio-de-mi-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-retirar-el-subsidio-de-mi-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/afiliar-grupo-familiar-caja-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_afiliar-grupo-familiar-caja-compensacion.html"},{"url":"https://cafam.com.co/noticias/afiliacion-a-caja-de-compensacion-como-independiente","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_afiliacion-a-caja-de-compensacion-como-independiente.html"},{"url":"https://cafam.com.co/agencia-empleo/subsidio-desempleo","localPath":"reports/cafam/2026-08-10/data/crawl/agencia-empleo_subsidio-desempleo.html"},{"url":"https://cafam.com.co/noticias/como-afiliar-a-mi-hijo-a-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-afiliar-a-mi-hijo-a-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/subsidio-de-arrendamiento","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_subsidio-de-arrendamiento.html"},{"url":"https://cafam.com.co/noticias/subsidios-caja-compensacion-familiar-cafam","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_subsidios-caja-compensacion-familiar-cafam.html"},{"url":"https://cafam.com.co/noticias/como-afiliarme-a-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-afiliarme-a-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/acceder-subsidio-familiar","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_acceder-subsidio-familiar.html"},{"url":"https://cafam.com.co/noticias/certificado-afiliacion-caja-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_certificado-afiliacion-caja-compensacion.html"},{"url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_que-es-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-saber-si-estoy-afiliado-a-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/subsidio-fallecimiento","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_subsidio-fallecimiento.html"},{"url":"https://cafam.com.co/noticias/subsidios-trabajadores-independientes","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_subsidios-trabajadores-independientes.html"},{"url":"https://cafam.com.co/hogar/subsidios-de-vivienda","localPath":"reports/cafam/2026-08-10/data/crawl/hogar_subsidios-de-vivienda.html"},{"url":"https://cafam.com.co/noticias/formulario-afiliacion-caja-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_formulario-afiliacion-caja-compensacion.html"},{"url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-saber-si-estoy-afiliado-a-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_como-saber-si-estoy-afiliado-a-una-caja-de-compensacion.html"},{"url":"https://cafam.com.co/como-calcular-ibc","localPath":"reports/cafam/2026-08-10/data/crawl/como-calcular-ibc.html"},{"url":"https://cafam.com.co/noticias/afiliar-empleado-caja-compensacion","localPath":"reports/cafam/2026-08-10/data/crawl/noticias_afiliar-empleado-caja-compensacion.html"}],"aiActions":["<code>/agencia-empleo/subsidio-desempleo</code> tiene 4 etiquetas H1: debe haber exactamente una por página para jerarquizar correctamente el contenido ante Google.","<code>/como-calcular-ibc</code> tiene la meta description vacía: agregar un resumen de 120-155 caracteres para mejorar el CTR en resultados de búsqueda.","Varias páginas (como <code>/noticias/acceder-subsidio-familiar</code>) devuelven un error 'We are sorry...' en el contenido: revisar enlaces rotos o problemas de renderizado en el servidor.","<code>/noticias/subsidios-caja-compensacion-familiar-cafam</code> tiene una meta description muy genérica: incluir la keyword principal 'subsidios' y un llamado a la acción claro.","La página de inicio tiene una jerarquía de encabezados inconsistente (salta de H1 a H2 y luego a elementos sin etiquetas de encabezado claras): unificar la estructura HTML.","<code>/hogar/subsidios-de-vivienda</code> tiene una etiqueta H1 vacía detectada en algunos bloques de código: asegurar que el título principal sea siempre visible y descriptivo."],"findings":[],"contentImprove":[{"page":"https://cafam.com.co/","detail":"<strong>¿Qué es Cafam y cuáles son sus objetivos, misión y cobertura territorial?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/","detail":"<strong>¿Cómo afiliarse, requisitos para afiliados y empresas, y cómo calcular aportes y subsidios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural","detail":"<strong>¿Cómo registrarse y qué documentos/credenciales se necesitan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural","detail":"<strong>¿Qué trámites y servicios se pueden realizar (afiliación, cambios, certificaciones, pagos, consultas)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion","detail":"<strong>¿Cuál es el procedimiento y la documentación necesaria para inscribir, actualizar o reclamar a un beneficiario ante la Caja de Compensación?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion","detail":"<strong>¿Qué eventos modifican la condición de beneficiario (fallecimiento, emancipación, divorcio, cambios de afiliación) y cómo se gestionan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/ahorrar-comprar-casa","detail":"<strong>¿Cuánto necesito ahorrar (enganche, costos de escrituración, impuestos y gastos asociados) y cómo calcular ese monto para mi ciudad en Colombia?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/ahorrar-comprar-casa","detail":"<strong>¿Qué tipos de financiación y créditos hipotecarios existen en Colombia, y cuáles son requisitos, tasas y comparaciones entre entidades bancarias y cooperativas?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/acceder-subsidio-familiar","detail":"<strong>¿Qué significa exactamente el mensaje \"We are sorry...\" en este contexto?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://cafam.com.co/noticias/acceder-subsidio-familiar","detail":"<strong>¿Cuáles son las causas comunes (errores técnicos, permisos, URL incorrecta, bloqueos, políticas) que lo generan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"keywords":{"general":[{"query":"salario mínimo 2026","clicks":324,"impressions":206985,"position":4.6,"delta":"-326"},{"query":"ruaf","clicks":200,"impressions":117250,"position":8.5,"delta":"-150"},{"query":"famisanar","clicks":694,"impressions":94760,"position":3.9,"delta":"+268"},{"query":"salario minimo 2026","clicks":77,"impressions":81348,"position":4.7,"delta":"-34"},{"query":"alone pana","clicks":41,"impressions":26287,"position":5.8,"delta":"+1"},{"query":"salario mínimo 2025","clicks":41,"impressions":25208,"position":4.1,"delta":"-4"},{"query":"minimo en colombia 2026","clicks":110,"impressions":21803,"position":2.7,"delta":"+23"},{"query":"salario mínimo 2026 colombia","clicks":138,"impressions":21101,"position":3.5,"delta":"+26"}],"target":[{"query":"hotel almirante","clicks":51,"impressions":940,"position":3.9,"delta":"-1"},{"query":"subsidio de arrendamiento","clicks":53,"impressions":2097,"position":5.3,"delta":"-26"},{"query":"subsidio de desempleo","clicks":588,"impressions":11941,"position":3.5,"delta":"+15"},{"query":"subsidio de vivienda","clicks":47,"impressions":6456,"position":7.3,"delta":"0"}],"brand":[{"query":"cafam","clicks":44504,"impressions":88165,"position":1.1,"delta":"-1427"},{"query":"citas cafam","clicks":26224,"impressions":30201,"position":1.1,"delta":"-680"},{"query":"kactus cafam","clicks":24864,"impressions":26744,"position":1,"delta":"+2929"},{"query":"cafam citas","clicks":15646,"impressions":18346,"position":1.1,"delta":"-1315"},{"query":"cafam melgar","clicks":13971,"impressions":32243,"position":1.1,"delta":"-5858"},{"query":"www.cafam.com.co salud","clicks":4860,"impressions":5970,"position":1.1,"delta":"+108"}],"nonBrand":[{"query":"famisanar","clicks":694,"impressions":94760,"position":3.9,"delta":"+268"},{"query":"resultados.radiofam","clicks":627,"impressions":1214,"position":1.2,"delta":"+114"},{"query":"subsidio de desempleo","clicks":588,"impressions":11941,"position":3.5,"delta":"+15"},{"query":"kactus","clicks":572,"impressions":20739,"position":5,"delta":"+323"},{"query":"resultados radiofam","clicks":478,"impressions":971,"position":1.3,"delta":"+62"},{"query":"salario mínimo 2026","clicks":324,"impressions":206985,"position":4.6,"delta":"-326"}]},"sitemap":{"totalSitemaps":9,"totalSubmitted":4689,"sitemapsWithErrors":0,"sitemapsWithWarnings":2,"seedUrlsIndexing":{"totalChecked":28,"totalIndexed":0,"indexRate":"0.0%","pages":[{"path":"/","url":"https://cafam.com.co/","coverageState":"Página con redirección","indexed":false},{"path":"/noticias/que-es-subsidio-familiar","url":"https://cafam.com.co/noticias/que-es-subsidio-familiar","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/que-es-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/afiliate-a-cafam/afiliacion-empleador-persona-natural","url":"https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion","url":"https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/ahorrar-comprar-casa","url":"https://cafam.com.co/noticias/ahorrar-comprar-casa","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/acceder-subsidio-familiar","url":"https://cafam.com.co/noticias/acceder-subsidio-familiar","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/que-es-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-retirar-el-subsidio-de-mi-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-retirar-el-subsidio-de-mi-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/afiliar-grupo-familiar-caja-compensacion","url":"https://cafam.com.co/noticias/afiliar-grupo-familiar-caja-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/afiliacion-a-caja-de-compensacion-como-independiente","url":"https://cafam.com.co/noticias/afiliacion-a-caja-de-compensacion-como-independiente","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/agencia-empleo/subsidio-desempleo","url":"https://cafam.com.co/agencia-empleo/subsidio-desempleo","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-afiliar-a-mi-hijo-a-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-afiliar-a-mi-hijo-a-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/subsidio-de-arrendamiento","url":"https://cafam.com.co/noticias/subsidio-de-arrendamiento","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/subsidios-caja-compensacion-familiar-cafam","url":"https://cafam.com.co/noticias/subsidios-caja-compensacion-familiar-cafam","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-afiliarme-a-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-afiliarme-a-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/acceder-subsidio-familiar","url":"https://cafam.com.co/noticias/acceder-subsidio-familiar","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/certificado-afiliacion-caja-compensacion","url":"https://cafam.com.co/noticias/certificado-afiliacion-caja-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/que-es-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/que-es-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/subsidio-fallecimiento","url":"https://cafam.com.co/noticias/subsidio-fallecimiento","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/subsidios-trabajadores-independientes","url":"https://cafam.com.co/noticias/subsidios-trabajadores-independientes","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/hogar/subsidios-de-vivienda","url":"https://cafam.com.co/hogar/subsidios-de-vivienda","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/formulario-afiliacion-caja-compensacion","url":"https://cafam.com.co/noticias/formulario-afiliacion-caja-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","url":"https://cafam.com.co/noticias/como-saber-si-estoy-afiliado-a-una-caja-de-compensacion","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/como-calcular-ibc","url":"https://cafam.com.co/como-calcular-ibc","coverageState":"Google no reconoce esta URL","indexed":false},{"path":"/noticias/afiliar-empleado-caja-compensacion","url":"https://cafam.com.co/noticias/afiliar-empleado-caja-compensacion","coverageState":"Google no reconoce esta URL","indexed":false}]}},"robotsTxt":{"url":"https://cafam.com.co/robots.txt","content":"User-agent: *\nAllow: /\nSitemap: https://www.cafam.com.co/sitemap.xml\n","localPath":"reports/cafam/2026-08-10/data/robots.txt"},"keywordPositions":{"months":["ago 2026"],"rows":[{"keyword":"Casas vacacionales Melgar","searchVolume":210,"positions":[null]},{"keyword":"Hotel Kualamaná","searchVolume":2400,"positions":[null]},{"keyword":"Bioparque Melgar","searchVolume":20,"positions":[null]},{"keyword":"Centro de vacaciones","searchVolume":10,"positions":[null]},{"keyword":"Club Madelena","searchVolume":170,"positions":[null]},{"keyword":"Hotel Almirante","searchVolume":2900,"positions":[null]},{"keyword":"Cursos cortos","searchVolume":590,"positions":[null]},{"keyword":"Vacaciones recreativas","searchVolume":1900,"positions":[null]},{"keyword":"Afiliación a caja de compensación","searchVolume":720,"positions":[null]},{"keyword":"Club campestre Bogotá","searchVolume":20,"positions":[null]},{"keyword":"Técnicos laborales","searchVolume":390,"positions":[null]},{"keyword":"Caja de Compensación Familiar","searchVolume":4400,"positions":[null]},{"keyword":"Pasadía","searchVolume":3600,"positions":[null]},{"keyword":"Subsidio de arrendamiento","searchVolume":4400,"positions":[null]},{"keyword":"Caja de compensación","searchVolume":18100,"positions":[null]},{"keyword":"Subsidio de desempleo","searchVolume":18100,"positions":[null]},{"keyword":"Escuelas deportivas","searchVolume":260,"positions":[null]},{"keyword":"Subsidio de vivienda","searchVolume":18100,"positions":[null]},{"keyword":"Subsidio familiar","searchVolume":1600,"positions":[null]},{"keyword":"Teatro en Bogotá","searchVolume":390,"positions":[null]},{"keyword":"Créditos de consumo","searchVolume":880,"positions":[null]}]}}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGESPEED ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">PageSpeed</h2>
+      <p class="text-base-content/60 mb-2">Lighthouse por página · Performance, Accessibility, Best Practices, SEO</p>
+      <div class="overflow-x-auto">
+        <table class="table pagespeed-table">
+          <thead>
+            <tr>
+              <th style="min-width:260px;">Page</th>
+              <th style="min-width:340px;">Score</th>
+              <th>Screenshot Timeline</th>
+            </tr>
+          </thead>
+          <tbody id="pagespeed-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul class="list-disc list-inside space-y-2 text-sm" id="ai-actions"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ POSICIONES DE KEYWORDS EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Posiciones de keywords en el tiempo</h2>
+      <p class="text-base-content/60 mb-2">Posición por mes (más oscuro = más cerca del puesto 1) · volumen de búsqueda por keyword · consultas objetivo (seedKeywords)</p>
+      <div id="chart-kw-heatmap" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FICHAS DE HALLAZGOS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="findings-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-base-content/50 py-6 no-print">
+    Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+  </footer>
+
+</div>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── PageSpeed (Unlighthouse: scripts/sections/pagespeed.js) ──
+  const psScoreClass = (v) => v >= 90 ? 'text-success' : v >= 50 ? 'text-warning' : 'text-error';
+  // localPath viene relativo a la raíz del repo (ej. "reports/kamina/2026-08-09/data/pagespeed/reports/credito/screenshot.jpeg");
+  // report.html vive en reports/<slug>/<fecha>/, así que hay que recortarlo a partir de "data/pagespeed/".
+  const psRelHref = (localPath) => localPath ? 'data/pagespeed/' + localPath.split('/data/pagespeed/')[1] : '';
+
+  const psGauge = (label, value) => `
+    <div class="ps-gauge">
+      <div class="radial-progress ${psScoreClass(value)}" style="--value:${value}; --size:3rem; --thickness: 3px;" role="progressbar">${value}</div>
+      <span class="ps-gauge-label">${label}</span>
+    </div>`;
+
+  const psPages = REPORT_DATA.pagespeed?.pages || [];
+  document.getElementById('pagespeed-rows').innerHTML = psPages.length === 0
+    ? '<tr><td colspan="3" class="text-base-content/60">Sin datos de PageSpeed todavía — corre <code>node scripts/sections/pagespeed.js &lt;cliente&gt; &lt;fecha&gt;</code>.</td></tr>'
+    : psPages.map(p => `
+    <tr>
+      <td>
+        <div class="ps-page">
+          <div class="ps-thumb" style="background-image:url('${psRelHref(p.screenshot)}');"></div>
+          <div>
+            <a href="${p.url}" class="ps-page-title link link-hover" target="_blank">${p.path || '/'}</a>
+            <div class="ps-page-date">${new Date(REPORT_DATA.pagespeed.generatedAt).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>
+            <a href="${psRelHref(p.screenshot).replace(/screenshot\.jpeg$/, 'lighthouse.html')}" class="ps-lh-link link link-hover" target="_blank">View Lighthouse Report</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="ps-gauges">
+          ${psGauge('Performance', p.performance)}
+          ${psGauge('Accessibility', p.accessibility)}
+          ${psGauge('Best Practices', p.bestPractices)}
+          ${psGauge('SEO', p.seo)}
+        </div>
+      </td>
+      <td>
+        <div class="ps-timeline">
+          ${p.thumbnails.map(t => `<div class="ps-shot" style="background-image:url('${psRelHref(t)}');"></div>`).join('')}
+        </div>
+      </td>
+    </tr>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = REPORT_DATA.cannibalization.length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : REPORT_DATA.cannibalization.map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${canib.rows.map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap;
+  const su = sm.seedUrlsIndexing;
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings}</td></tr>`;
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = su.pages.map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt;
+  document.getElementById('robots-source').textContent = `Descargado de ${rb.url}`;
+  document.getElementById('robots-textarea').value = rb.content;
+
+  // ── Findings (fichas) ──
+  document.getElementById('findings-grid').innerHTML = REPORT_DATA.findings.map(f => `
+    <div class="card bg-base-200/50 border border-base-300">
+      <div class="card-body p-4">
+        <h3 class="font-semibold">${f.page}</h3>
+        <p class="text-sm text-base-content/70">${f.detail}</p>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = REPORT_DATA.contentImprove.map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+  const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+  const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+    const d = new Date(cy, cm - 1, cd);
+    d.setDate(d.getDate() + i);
+    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+  });
+  clicksAreaChart.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+    grid: { left: 50, right: 50, top: 40, bottom: 30 },
+    xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+    yAxis: [
+      { type: 'value', name: 'Clicks', position: 'left' },
+      { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+    ],
+    series: [
+      {
+        name: 'Clicks',
+        type: 'line',
+        yAxisIndex: 0,
+        smooth: true,
+        symbol: 'none',
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(20,184,166,0.4)' },
+            { offset: 1, color: 'rgba(20,184,166,0.02)' },
+          ]),
+        },
+        lineStyle: { color: '#14B8A6', width: 2 },
+        itemStyle: { color: '#14B8A6' },
+        data: REPORT_DATA.clicksOverTime.clicks,
+      },
+      {
+        name: 'Impresiones',
+        type: 'line',
+        yAxisIndex: 1,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#0ea5e9', width: 2 },
+        itemStyle: { color: '#0ea5e9' },
+        data: REPORT_DATA.clicksOverTime.impressions,
+      },
+    ],
+  });
+  window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+
+  // ── Posiciones de keywords en el tiempo (heatmap, volumen en el label del eje Y) ──
+  const kwPos = REPORT_DATA.keywordPositions;
+  const kwLabels = kwPos.rows.map(r => `${r.keyword}  ·  Vol: ${r.searchVolume !== null && r.searchVolume !== undefined ? r.searchVolume.toLocaleString() : '—'}`);
+  const kwData = [];
+  kwPos.rows.forEach((row, ki) => {
+    row.positions.forEach((pos, mi) => {
+      if (pos !== null && pos !== undefined) kwData.push([mi, ki, pos]);
+    });
+  });
+  const kwHeatmapChart = echarts.init(document.getElementById('chart-kw-heatmap'));
+  kwHeatmapChart.setOption({
+    tooltip: {
+      position: 'top',
+      formatter: (p) => `${kwPos.rows[p.data[1]].keyword}<br>${kwPos.months[p.data[0]]}: posición ${p.data[2]}`,
+    },
+    grid: { left: 240, right: 20, top: 20, bottom: 40 },
+    xAxis: { type: 'category', data: kwPos.months, splitArea: { show: true } },
+    yAxis: { type: 'category', data: kwLabels, splitArea: { show: true } },
+    visualMap: {
+      min: 1,
+      max: 30,
+      calculable: true,
+      orient: 'horizontal',
+      left: 'center',
+      bottom: 0,
+      inRange: { color: ['#134e4a', '#5eead4', '#f0fdfa'] },
+    },
+    series: [{
+      type: 'heatmap',
+      data: kwData,
+      label: { show: true },
+      emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.5)' } },
+    }],
+  });
+  window.addEventListener('resize', () => { kwHeatmapChart.resize(); });
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners,
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers,
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl,
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions').innerHTML = REPORT_DATA.aiActions.map(a => `<li>${a}</li>`).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general, columns: kwColumns });
+  new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target, columns: kwColumns });
+  new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand, columns: kwColumns });
+  new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand, columns: kwColumns });
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
