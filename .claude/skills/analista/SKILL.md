@@ -47,9 +47,8 @@ reales en vez de datos de ejemplo.
    Ejemplo:
    `"<code>/servicios.html</code> no tiene meta description: agregar una de 120-155 caracteres con la keyword principal."`
 
-7. Limita el resultado a los hallazgos más relevantes (orden de magnitud:
-   5-10 items) — es una lista de acciones para el cliente, no un reporte
-   exhaustivo de cada regla contra cada página.
+7. Reporta todos los incumplimientos reales y accionables que encuentres,
+   sin límite de cantidad — ordenados según la priorización del punto 5.
 
 ## Output
 

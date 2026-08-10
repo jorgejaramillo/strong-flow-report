@@ -33,10 +33,10 @@ para que el HTML lo incluya.
 keys en `data.json` (de una corrida anterior, completa o interrumpida por
 un error), se saltea y se marca "ya hecho (cache)" en vez de volver a
 correrla — así no repite llamadas pagas (DataForSEO en `domainAnalytics`,
-`contentImprove`, `keywordPositions`) ni pasos lentos (`pagespeed`) que ya
-quedaron guardados. Si un paso falló, correr el comando de nuevo reintenta
-solo ese paso (y los que falten). Para forzar una corrida completa desde
-cero, ignorando el cache, agregar `--fresh`.
+`contentImprove`, `keywordPositions`) que ya quedaron guardadas. Si un paso
+falló, correr el comando de nuevo reintenta solo ese paso (y los que
+falten). Para forzar una corrida completa desde cero, ignorando el cache,
+agregar `--fresh`.
 
 El resto de esta sección detalla qué hace cada paso — útil para debugging
 o para correr uno solo.
@@ -93,8 +93,7 @@ descargado HTML y esté mergeado en `data.json`.
 | 10 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
 | 11 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
 | 12 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
-| 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — volumen de búsqueda (`keywords_data/google_ads/search_volume`) y posición orgánica (`dataforseo_labs/google/ranked_keywords`) reales, ambos vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
-| 14 | `pagespeed` | `node scripts/sections/pagespeed.js <slug> <reportDate>` — corre Unlighthouse (Lighthouse) ÚNICAMENTE sobre `crawl.seedUrls` (sitemap/robots.txt/link crawler desactivados a propósito, nunca audita URLs fuera de esa lista): scores de Performance/Accessibility/Best Practices/SEO y screenshots (foto final + filmstrip de carga) por página, guardados en `reports/<slug>/<reportDate>/data/pagespeed/`. Sin dependencias de otros pasos, pero es el más lento — corre una URL a la vez a propósito (liviano en CPU/RAM en vez de varias URLs en paralelo), así que con `maxPages` alto puede tardar varios minutos. En `run-flow.js` este paso muestra su avance página por página en vivo (no solo al terminar). Requiere Chrome instalado localmente y Node ≥22 (ver README); si el Node activo es menor, el script relanza automáticamente con el Node 22 de nvm. |
+| 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — posición orgánica real (`dataforseo_labs/google/ranked_keywords`) vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key

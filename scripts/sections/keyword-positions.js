@@ -2,11 +2,10 @@
 /**
  * scripts/sections/keyword-positions.js — sección "Posiciones de keywords en el tiempo"
  *
- * Genera una fila por seedKeyword con: volumen de búsqueda actual (vía
- * DataForSEO keywords_data/google_ads/search_volume) y posición orgánica
- * actual (vía DataForSEO dataforseo_labs/google/ranked_keywords) — país e
- * idioma tomados de config.site. Si el dominio no rankea esa keyword en el
- * índice de DataForSEO Labs, la posición queda null.
+ * Genera una fila por seedKeyword con la posición orgánica actual (vía
+ * DataForSEO dataforseo_labs/google/ranked_keywords) — país e idioma
+ * tomados de config.site. Si el dominio no rankea esa keyword en el índice
+ * de DataForSEO Labs, la posición queda null.
  *
  * De momento el gráfico arranca con un solo mes (el actual). La idea es
  * que sea acumulativa: cada corrida mensual futura debe agregar una
@@ -21,7 +20,7 @@
  * Imprime a stdout: { "keywordPositions": { months, rows } }
  */
 import { loadClientConfig } from '../lib/config.js';
-import { googleAdsSearchVolume, googleRankedKeywordPositions } from '../lib/dataforseo.js';
+import { googleRankedKeywordPositions } from '../lib/dataforseo.js';
 
 const MONTH_NAMES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
@@ -49,22 +48,16 @@ export async function fetchKeywordPositions(config) {
     throw new Error(`No hay location_name mapeado para site.country="${config.site?.country}". Agrégalo a LOCATION_NAMES en scripts/sections/keyword-positions.js.`);
   }
 
-  let volumeByKeyword = {};
   let positionByKeyword = {};
   let cost = 0;
   if (keywords.length > 0) {
-    const [volumeResult, positionResult] = await Promise.all([
-      googleAdsSearchVolume({ keywords, locationName, languageCode: config.site.language }),
-      googleRankedKeywordPositions({ target: config.domain, keywords, locationName, languageCode: config.site.language }),
-    ]);
-    volumeByKeyword = volumeResult.volumeByKeyword;
+    const positionResult = await googleRankedKeywordPositions({ target: config.domain, keywords, locationName, languageCode: config.site.language });
     positionByKeyword = positionResult.positionByKeyword;
-    cost = volumeResult.cost + positionResult.cost;
+    cost = positionResult.cost;
   }
 
   const rows = keywords.map(keyword => ({
     keyword,
-    searchVolume: volumeByKeyword[keyword] ?? null,
     positions: [positionByKeyword[keyword] ?? null],
   }));
 

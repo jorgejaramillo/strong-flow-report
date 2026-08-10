@@ -17,9 +17,7 @@ reports/<slug>/<fecha>/
   data.json                         # los datos de esa corrida del reporte (se versiona)
   report.html                       # el reporte generado (se versiona)
   data/crawl/                       # HTML crudo descargado por el crawler (NO se versiona, es regenerable)
-  data/pagespeed/                   # scores + screenshots de Unlighthouse (NO se versiona, es regenerable)
 crawler/SKILL.md                    # skill: descarga HTML renderizado de una o varias URLs vía Cloudflare
-scripts/sections/pagespeed.js       # corre Unlighthouse (Lighthouse a escala) sobre crawl.seedUrls
 mcp-google-search-console/          # servidor MCP de Google Search Console (repo aparte, con su propio git)
 dataforseo-mcp/                     # servidor MCP de DataForSEO (repo aparte, con su propio git)
 ```
@@ -124,29 +122,6 @@ export DATAFORSEO_PASSWORD=tu_password
 ```
 
 Se habilita en `.claude/settings.local.json` (ya configurado).
-
-### 5. Unlighthouse (sección PageSpeed)
-
-Corre Lighthouse a escala sobre `crawl.seedUrls` para llenar la sección
-"PageSpeed" (scores de Performance/Accessibility/Best Practices/SEO +
-screenshots). Es un paquete npm normal (`unlighthouse`, instalado en la
-raíz de este repo), no un MCP ni un repo aparte — pero **requiere Node
-≥22** (usa `fs/promises#glob`, que no existe en Node 20) y **Chrome
-instalado localmente** (usa `puppeteer-core`, no descarga su propio
-Chromium).
-
-```bash
-npm install         # instala unlighthouse (raíz del repo)
-nvm install 22       # si tu Node por defecto es menor a 22
-```
-
-`scripts/sections/pagespeed.js` detecta la versión de Node activa y, si es
-menor a 22, relanza automáticamente el binario de Unlighthouse con el
-Node 22 de nvm (`~/.nvm/versions/node/v22.../bin/node`) — el resto del
-pipeline puede seguir corriendo con el Node del sistema. Hay un
-`.nvmrc` con `22` en la raíz por si preferís `nvm use` manualmente.
-
-No necesita credenciales. Es el paso más lento del flow (~15-30s por URL).
 
 ## Uso
 

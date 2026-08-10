@@ -11,7 +11,7 @@
  * corrida anterior, completa o interrumpida), se saltea en vez de repetirse
  * — así una corrida que se cortó a la mitad (o falló en un paso) puede
  * volver a lanzarse igual y solo hace el trabajo que falta. `--fresh`
- * ignora ese cache y re-corre las 13 secciones desde cero.
+ * ignora ese cache y re-corre las 12 secciones desde cero.
  *
  * Pasos que este script NO cubre (quedan pendientes, ver resumen final):
  *   - aiActions: requiere el skill `analista` sobre el HTML que descarga
@@ -19,7 +19,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { spawnSync, spawn } from 'child_process';
+import { spawnSync } from 'child_process';
 import { clearLine, cursorTo } from 'readline';
 import { ROOT } from './lib/config.js';
 
@@ -45,7 +45,6 @@ const STEPS = [
   { name: 'sitemap', script: 'sitemap.js', args: [slug], outputKeys: ['sitemap'] },
   { name: 'robotsTxt', script: 'robots.js', args: [slug, reportDate], outputKeys: ['robotsTxt'] },
   { name: 'keywordPositions', script: 'keyword-positions.js', args: [slug], outputKeys: ['keywordPositions'] },
-  { name: 'pagespeed', script: 'pagespeed.js', args: [slug, reportDate], outputKeys: ['pagespeed'], stream: true },
 ];
 const LABEL_WIDTH = Math.max(...STEPS.map(s => s.name.length)) + 2;
 
@@ -82,33 +81,6 @@ function runNode(scriptFile, args) {
     encoding: 'utf-8',
   });
   return { ...res, elapsed: (Date.now() - t0) / 1000 };
-}
-
-// Igual que runNode, pero reenvía el stderr del hijo línea por línea a medida
-// que llega, en vez de esperar a que termine — para pasos lentos (pagespeed)
-// donde el script hijo ya imprime avance propio por URL.
-function runNodeStreaming(scriptFile, args, onLine) {
-  const t0 = Date.now();
-  return new Promise((resolve) => {
-    const child = spawn('node', [join(ROOT, 'scripts', scriptFile), ...args], { cwd: ROOT });
-    let stdout = '';
-    let stderr = '';
-    let buf = '';
-    child.stdout.on('data', (d) => { stdout += d; });
-    child.stderr.on('data', (d) => {
-      stderr += d;
-      buf += d;
-      let idx;
-      while ((idx = buf.indexOf('\n')) >= 0) {
-        onLine(buf.slice(0, idx));
-        buf = buf.slice(idx + 1);
-      }
-    });
-    child.on('close', (status) => {
-      if (buf.trim()) onLine(buf);
-      resolve({ status, stdout, stderr, elapsed: (Date.now() - t0) / 1000 });
-    });
-  });
 }
 
 console.log(`Flow — ${slug} — ${reportDate}\n`);
@@ -155,24 +127,11 @@ for (const [i, step] of STEPS.entries()) {
     }
   }
 
-  // Pasos con `stream` imprimen su propio avance línea por línea (ya
-  // salieron del renglón overwrite-able), así que su estado final va
-  // siempre en línea aparte en vez de sobreescribir la última línea viva.
-  const finish = step.stream ? (line) => console.log(line.trimEnd()) : write;
-
-  let res;
-  if (step.stream) {
-    console.log(`${prefix} running...`);
-    res = await runNodeStreaming(step.script, step.args, (line) => {
-      if (line.trim()) console.log(`    ${line}`);
-    });
-  } else {
-    write(`${prefix} running...`);
-    res = runNode(step.script, step.args);
-  }
+  write(`${prefix} running...`);
+  const res = runNode(step.script, step.args);
 
   if (res.status !== 0) {
-    finish(`${prefix} FAILED (${fmt(res.elapsed)})\n`);
+    write(`${prefix} FAILED (${fmt(res.elapsed)})\n`);
     failed.push({ name: step.name, error: res.stderr.trim().split('\n').slice(-3).join(' | ') });
     continue;
   }
@@ -182,12 +141,12 @@ for (const [i, step] of STEPS.entries()) {
     Object.assign(data, parsed);
     saveData();
   } catch {
-    finish(`${prefix} FAILED (${fmt(res.elapsed)})\n`);
+    write(`${prefix} FAILED (${fmt(res.elapsed)})\n`);
     failed.push({ name: step.name, error: 'salida no es JSON válido' });
     continue;
   }
 
-  finish(`${prefix} ok (${fmt(res.elapsed)})\n`);
+  write(`${prefix} ok (${fmt(res.elapsed)})\n`);
 }
 
 const totalElapsed = (Date.now() - t0Total) / 1000;
