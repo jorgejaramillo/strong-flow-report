@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "clientSlug": "constructoracapital",
+    "clientName": "Constructora Capital",
+    "domain": "constructoracapital.com",
+    "periodStart": "12 jul 2026",
+    "periodEnd": "08 ago 2026",
+    "generatedAt": "10 ago 2026",
+    "pagesAnalyzed": 10
+  },
+  "headerBadges": [
+    {
+      "text": "↑ 9.7% clicks",
+      "class": "badge-success"
+    },
+    {
+      "text": "677 URLs en sitemap",
+      "class": "badge-info"
+    }
+  ],
+  "stats": [
+    {
+      "title": "Clicks",
+      "value": "60,129",
+      "valueClass": "text-primary",
+      "desc": "↑ 9.7% vs período anterior",
+      "descClass": "text-success"
+    },
+    {
+      "title": "Impresiones",
+      "value": "880,076",
+      "desc": "↑ 6.3%",
+      "descClass": "text-success"
+    },
+    {
+      "title": "CTR medio",
+      "value": "6.83%",
+      "desc": "↑ 0.21pp",
+      "descClass": "text-success"
+    },
+    {
+      "title": "Posición media",
+      "value": "6.1",
+      "desc": "↑ 0.4 (mejor)",
+      "descClass": "text-success"
+    },
+    {
+      "title": "URLs encontradas",
+      "value": "677",
+      "desc": "Vía sitemap.xml"
+    },
+    {
+      "title": "URLs enviadas",
+      "value": "677",
+      "desc": "A Search Console"
+    }
+  ]
+}

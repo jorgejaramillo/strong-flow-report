@@ -10,7 +10,9 @@
  */
 import { loadClientConfig } from '../lib/config.js';
 import { lastNDays, previousPeriod, formatDateEs } from '../lib/dates.js';
-import { getAuthClient, getSearchAnalytics, listSitemaps } from '../lib/gsc.js';
+import { getAuthClient } from '../../mcp-google-search-console/auth.js';
+import { getSearchAnalytics } from '../../mcp-google-search-console/tools/search-analytics.js';
+import { listSitemaps } from '../../mcp-google-search-console/tools/sitemaps.js';
 
 async function fetchHeader(config, reportDate) {
   const windowDays = config.keywords?.days || 28;
