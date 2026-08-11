@@ -37,24 +37,31 @@ reales en vez de datos de ejemplo.
    sí cumple, no repitas el checklist como si fuera el output.
 5. Prioriza los hallazgos según la sección "Cómo priorizar hallazgos" del
    checklist (impacto en indexación/ranking primero).
-6. Formatea cada hallazgo como un string HTML corto, mismo estilo que ya
-   usa el template del reporte:
+6. Formatea cada hallazgo como un objeto `{ page, detail }`, mismo shape
+   que ya usan `findings` y `contentImprove` en el template del reporte:
 
    ```
-   <code>{ruta relativa de la URL}</code> {qué está mal}: {acción concreta}.
+   { "page": "{URL completa de la landing}", "detail": "{qué está mal}: {acción concreta}." }
    ```
 
    Ejemplo:
-   `"<code>/servicios.html</code> no tiene meta description: agregar una de 120-155 caracteres con la keyword principal."`
+   `{ "page": "https://dominio.com/servicios.html", "detail": "No tiene meta description: agregar una de 120-155 caracteres con la keyword principal." }`
 
-7. Reporta todos los incumplimientos reales y accionables que encuentres,
-   sin límite de cantidad — ordenados según la priorización del punto 5.
+7. Recorre **cada** página de `landingsCrawl` una por una contra el
+   checklist completo — no te quedes con el primer hallazgo de cada
+   página, revisá las 8 categorías del checklist (título/metadatos,
+   encabezados, contenido, imágenes, enlaces, datos estructurados, señales
+   técnicas) antes de pasar a la siguiente. Reporta todos los
+   incumplimientos reales y accionables que encuentres en el crawl
+   completo, sin límite de cantidad — ordenados según la priorización del
+   punto 5.
 
 ## Output
 
-Un array de strings en ese formato. Se guarda reemplazando **solo** el
-campo `aiActions` de `reports/<slug>/<fecha>/data.json` (no tocar ninguna
-otra key del archivo). Después de escribirlo, correr:
+Un array de objetos `{page, detail}` en ese formato. Se guarda
+reemplazando **solo** el campo `aiActions` de
+`reports/<slug>/<fecha>/data.json` (no tocar ninguna otra key del
+archivo). Después de escribirlo, correr:
 
 ```bash
 node scripts/build-report.js <slug> <fecha>

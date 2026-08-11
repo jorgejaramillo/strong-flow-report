@@ -12,6 +12,12 @@ export function loadClientConfig(slug) {
     throw new Error(`No hay config cacheado para "${slug}" — corre "node scripts/sync-config.js ${slug}" primero.`);
   }
   const { data } = JSON.parse(readFileSync(cachePath, 'utf-8'));
+
+  // Overrides locales para corregir problemas de permisos en GSC u otros
+  if (slug === 'cafam' && data.gsc?.siteUrl === 'https://cafam.com.co/') {
+    data.gsc.siteUrl = 'sc-domain:cafam.com.co';
+  }
+
   return data;
 }
 

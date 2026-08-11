@@ -123,6 +123,22 @@ export DATAFORSEO_PASSWORD=tu_password
 
 Se habilita en `.claude/settings.local.json` (ya configurado).
 
+### 5. ValueSERP (posición en Google en vivo)
+
+Usado por `scripts/sections/keyword-volume.js` (columna "Posición" de la
+tabla "Volumen de búsqueda") para buscar cada seedKeyword en Google en
+tiempo real (`scripts/lib/valueserp.js`, cliente REST directo — no es un
+MCP) y ubicar en qué posición del SERP aparece una URL de `config.domain`.
+Es independiente del índice de DataForSEO y de los datos históricos de GSC.
+
+Necesita una API key de [valueserp.com](https://www.valueserp.com/):
+
+```
+VALUESERP_API_KEY=tu_api_key
+```
+
+Hay un placeholder vacío en el `.env` de la raíz.
+
 ## Uso
 
 ### Agregar un cliente nuevo

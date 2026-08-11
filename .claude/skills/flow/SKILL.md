@@ -33,7 +33,8 @@ para que el HTML lo incluya.
 keys en `data.json` (de una corrida anterior, completa o interrumpida por
 un error), se saltea y se marca "ya hecho (cache)" en vez de volver a
 correrla — así no repite llamadas pagas (DataForSEO en `domainAnalytics`,
-`contentImprove`, `keywordPositions`) que ya quedaron guardadas. Si un paso
+`contentImprove`, `keywordVolume`; ValueSERP también en `keywordVolume`)
+que ya quedaron guardadas. Si un paso
 falló, correr el comando de nuevo reintenta solo ese paso (y los que
 falten). Para forzar una corrida completa desde cero, ignorando el cache,
 agregar `--fresh`.
@@ -76,24 +77,30 @@ en ese `data.json` — nunca pisa las keys de otro paso.
 
 ## 2. Orden de ejecución
 
-El orden importa: los pasos 6 y 7 dependen de que el paso 5 ya haya
-descargado HTML y esté mergeado en `data.json`.
+Esta tabla usa la misma numeración 1-12 que `STEPS` en `run-flow.js` (y que
+el progreso `[n/12]` que imprime en terminal) — `aiActions` no está en
+`STEPS` (no es automatizable), así que aparece como fila manual entre los
+pasos 6 y 7 en vez de ocupar un número. El orden importa: los pasos 7
+(`findings`) y 8 (`contentImprove`) dependen de que el paso 6
+(`landingsCrawl`) ya haya descargado HTML y esté mergeado en `data.json` —
+`aiActions` también, aunque al ser manual no está sujeto al orden del
+array.
 
 | # | Sección (key en data.json) | Cómo se obtiene |
 |---|---|---|
 | 1 | `meta`, `headerBadges`, `stats` | `node scripts/sections/header.js <slug> <reportDate>` — clicks/impresiones/CTR/posición del período actual vs. anterior (vía GSC) y conteos de sitemap. `headerBadges` ya no se renderiza en el template (se quitó del header), pero el paso sigue generándolo por si se reusa más adelante. |
 | 2 | `domainAnalytics` | `node scripts/sections/domain-analytics.js <slug>` — DataForSEO Domain Analytics API (`domain_analytics/whois/overview`): keywords orgánicas, tráfico estimado, backlinks y fecha de registro del dominio. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env`. Sin dependencias de otros pasos. |
 | 3 | `clicksOverTime` | `node scripts/sections/clicks-over-time.js <slug> <reportDate>` |
-| 4 | `cannibalization` | `node scripts/sections/cannibalization.js <slug>` — excluye queries de marca (`config.keywords.brand`). |
+| 4 | `cannibalization` | `node scripts/sections/cannibalization.js <slug>` — excluye queries de marca (`config.keywords.brand`). No toma `reportDate`: siempre usa los últimos N días desde hoy (`--days`, default 28), no el período del reporte. |
 | 5 | `winners`, `losers`, `landingsPeriodLabel` | `node scripts/sections/landings-delta.js <slug> <reportDate>` |
 | 6 | `landingsCrawl` | `node scripts/sections/landings-crawl.js <slug> <reportDate>` — requiere `CF_ACCOUNT_ID`/`CF_API_TOKEN` en `.env` |
-| 7 | `aiActions` | **Manual: skill `analista`**, sobre el HTML que acaba de descargar el paso 6 (`reports/<slug>/<reportDate>/data/crawl/`). Requiere que el paso 6 ya haya corrido. |
-| 8 | `findings` | `node scripts/sections/findings.js <slug> <reportDate>` — requiere que `landingsCrawl` (paso 6) ya esté en `data.json`. |
-| 9 | `contentImprove` | `node scripts/sections/content-improve.js <slug> <reportDate>` — DataForSEO AI Optimization API (ChatGPT), requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `landingsCrawl` (paso 6) ya esté en `data.json`. Tiene costo por llamada (~$0.002/página). |
-| 10 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
-| 11 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
-| 12 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
-| 13 | `keywordPositions` | `node scripts/sections/keyword-positions.js <slug>` — posición orgánica real (`dataforseo_labs/google/ranked_keywords`) vía DataForSEO. Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `site.country` esté mapeado en `LOCATION_NAMES` dentro del script. Si una keyword no rankea en el índice de DataForSEO Labs, su posición queda vacía (celda sin color en el heatmap). El heatmap arranca con un solo mes (el actual); acumular meses anteriores en corridas futuras todavía no está implementado. |
+| — | `aiActions` (manual, no está en `STEPS`) | **Manual: skill `analista`**, sobre el HTML que acaba de descargar el paso 6 (`reports/<slug>/<reportDate>/data/crawl/`). Requiere que el paso 6 ya haya corrido. `run-flow.js` no lo corre — hay que invocarlo aparte (ver paso 7 más abajo) y volver a correr `build-report.js`. |
+| 7 | `findings` | `node scripts/sections/findings.js <slug> <reportDate>` — requiere que `landingsCrawl` (paso 6) ya esté en `data.json`. Excluye el home/index ("/", "/index"): prioriza páginas internas. |
+| 8 | `contentImprove` | `node scripts/sections/content-improve.js <slug> <reportDate>` — DataForSEO AI Optimization API (ChatGPT), requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` en `.env` y que `landingsCrawl` (paso 6) ya esté en `data.json`. Tiene costo por llamada (~$0.002/página). |
+| 9 | `keywords` | `node scripts/sections/keywords.js <slug> <reportDate>` |
+| 10 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
+| 11 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
+| 12 | `keywordVolume` | `node scripts/sections/keyword-volume.js <slug> <reportDate>` — sección "Volumen de búsqueda": una fila por seedKeyword cruzando tres fuentes independientes: volumen de búsqueda mensual (DataForSEO `keywords_data/google_ads/search_volume`), clicks/impresiones reales en el período (GSC, dimensión `query`, match exacto case-insensitive) y posición actual en Google vía búsqueda en vivo (ValueSERP) — busca la keyword y ubica en qué posición del SERP aparece una URL de `config.domain` (o un subdominio). Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` y `VALUESERP_API_KEY` en `.env`, y que `site.country` esté mapeado en `LOCATION_NAMES`/`COUNTRY_CODES` dentro del script. Si una keyword no tiene datos en alguna fuente, esa celda queda vacía ("sin datos") sin afectar a las demás. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key
@@ -101,7 +108,8 @@ correspondiente antes de pasar al siguiente paso.
 
 ## 3. Generar el HTML
 
-Cuando las 10 secciones estén en `data.json`:
+Cuando las 12 secciones automáticas (+ `aiActions` manual, si aplica) estén
+en `data.json`:
 
 ```bash
 node scripts/build-report.js <slug> <reportDate>

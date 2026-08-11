@@ -956,24 +956,44 @@
   ],
   "findings": [
     {
-      "page": "https://www.constructoracapital.com/",
-      "detail": "Rankea para <strong>\"constructoras bogota\"</strong> (pos. 6.1, 703 impr.) pero el término no aparece en el texto de la página."
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"proyecto de vivienda en bello\"</strong> (pos. 2.1, 59 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/",
-      "detail": "Rankea para <strong>\"constructoras\"</strong> (pos. 5.9, 623 impr.) pero el término no aparece en el texto de la página."
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"apartamentos sobre planos\"</strong> (pos. 14.9, 43 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/",
-      "detail": "Rankea para <strong>\"constructoras en bogota\"</strong> (pos. 6.7, 299 impr.) pero el término no aparece en el texto de la página."
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/",
-      "detail": "Rankea para <strong>\"constructoras en colombia\"</strong> (pos. 5.4, 289 impr.) pero el término no aparece en el texto de la página."
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/",
-      "detail": "Rankea para <strong>\"constructoras medellin\"</strong> (pos. 4.8, 148 impr.) pero el término no aparece en el texto de la página."
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"apartamentos sobre planos en bello\"</strong> (pos. 1, 30 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"proyectos de vivienda en bello antioquia\"</strong> (pos. 4.8, 29 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"apartamentos nuevos en bello\"</strong> (pos. 11.4, 29 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "Rankea para <strong>\"proyectos de vivienda en bello sobre planos\"</strong> (pos. 1, 28 impr.) pero el término no aparece en el texto de la página."
     }
   ],
   "contentImprove": [
@@ -1029,141 +1049,280 @@
     }
   ],
   "aiActions": [
-    "<code>/mp/174/proyectos-vivienda-usaquen</code> la página no tiene proyectos activos: evaluar si debe mantenerse indexada o redirigir a una zona con oferta.",
-    "<code>/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio</code> meta description demasiado corta (68 caracteres): ampliar a 120-155 caracteres incluyendo beneficios del proyecto.",
-    "<code>/</code> el <h1> es \"Somos Constructora Capital\": optimizar agregando keywords de negocio como \"Vivienda en Medellín y Bogotá\".",
-    "<code>/mp/20/apartamentos-sobre-planos-bello</code> la jerarquía de headings salta de <h1> a <h3> en algunos bloques: revisar estructura para mejorar accesibilidad.",
-    "Varios enlaces internos en el footer usan URLs absolutas con www: es preferible usar rutas relativas para evitar dependencia del dominio."
+    {
+      "page": "https://www.constructoracapital.com/",
+      "detail": "El menú de navegación (antes del <code>h1</code>) y bloques del footer usan <code>h3</code>-<code>h5</code> para texto de UI (categorías del menú, \"Oficina Bogotá\", \"Apps internas\") en las 8 páginas analizadas: cambiarlos a elementos sin semántica de heading (span/div) y reservar h1-h6 para la jerarquía real de contenido."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
+      "detail": "La página no tiene proyectos activos (\"Lo sentimos, actualmente no tenemos proyectos en esta zona\") y tiene el contenido más delgado de las páginas analizadas (230 palabras únicas vs. 320-550 en el resto): evaluar si debe seguir indexada así o redirigir/consolidar con una zona cercana con oferta real."
+    },
+    {
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "La meta description tiene solo 71 caracteres (\"Nature Bio, proyecto de Apartamentos en Sabaneta | Constructora Capital\"), muy por debajo del rango recomendado (120-155): ampliarla incluyendo ubicación, tipo de proyecto y un llamado a la acción."
+    },
+    {
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "Es una ficha de proyecto con precio, forma de pago y fecha de entrega ya publicados pero sin ningún schema.org: agregar structured data de tipo Product o RealEstateListing para habilitar rich results (precio, disponibilidad) en Google."
+    },
+    {
+      "page": "https://www.constructoracapital.com/",
+      "detail": "El home no tiene schema.org de Organization/LocalBusiness pese a ser una constructora con +33 años de trayectoria: agregarlo para reforzar la entidad de marca en los resultados de Google."
+    },
+    {
+      "page": "https://www.constructoracapital.com/",
+      "detail": "7 de las 8 páginas analizadas (todas excepto la ficha de proyecto Nature Bio) no tienen <code>og:title</code>/<code>og:description</code>: agregarlos para que los links compartidos en redes/WhatsApp muestren título e imagen correctos."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "detail": "8 imágenes de contenido (logos de otros proyectos, fotos) sin atributo alt: agregar alt descriptivo a cada una (ej. nombre del proyecto o de la zona que muestra la foto)."
+    },
+    {
+      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "10 fotos del proyecto (fachada, unidades, zonas comunes) sin atributo alt: agregar alt descriptivo a cada una."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/87/proyectos-inmobiliarios-zipaquira",
+      "detail": "5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
+      "detail": "1 imagen de contenido sin atributo alt: agregar alt descriptivo."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/34/apartamentos-sobre-planos-tocancipa",
+      "detail": "3 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
+    },
+    {
+      "page": "https://www.constructoracapital.com/mp/96/proyectos-vis-mosquera",
+      "detail": "5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
+    }
   ],
   "keywordVolume": {
     "rows": [
       {
         "query": "Apartamentos sobre planos en Bello",
-        "volume": 30
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Proyectos de vivienda en Usaquen",
-        "volume": 20
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 10
       },
       {
         "query": "Proyectos de vivienda Sabaneta",
-        "volume": 260
+        "volume": 260,
+        "clicks": 7,
+        "impressions": 59,
+        "position": 2
       },
       {
         "query": "Proyectos Vis Robledo",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "Apartamentos nuevos Sabaneta",
-        "volume": 50
+        "volume": 50,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 6
       },
       {
         "query": "Proyectos inmobiliarios en Zipaquirá",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "Apartamentos VIS en Robledo",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "Apartamentos nuevos en Tocancipá",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Proyectos Vis en Mosquera",
-        "volume": 30
+        "volume": 30,
+        "clicks": 5,
+        "impressions": 33,
+        "position": 2
       },
       {
         "query": "Proyectos de vivienda Antioquia",
-        "volume": 140
+        "volume": 140,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Proyectos de vivienda Chía",
-        "volume": 20
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
       },
       {
         "query": "proyectos inmobiliarios en Robledo",
-        "volume": 10
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "Proyectos con subsidio de vivienda en Bello",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Invertir en Zipaquirá",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 3
       },
       {
         "query": "Proyectos inmobiliarios en Ciudad del Río",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 3
       },
       {
         "query": "Invertir en Itagüí",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 3
       },
       {
         "query": "Invertir en Chía",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "proyectos inmobiliarios en Niquia",
-        "volume": 10
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 3
       },
       {
         "query": "Invertir en Envigado",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 6
       },
       {
         "query": "Apartamentos sobre planos en Madrid Cundinamarca",
-        "volume": 10
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Proyectos de vivienda Zipaquirá",
-        "volume": 30
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Invertir en Ciudad del Río",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Apartamentos en Zipaquirá",
-        "volume": 90
+        "volume": 90,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Proyectos Vis Zipaquirá",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "Invertir en Mosquera",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Apartamentos nuevos Robledo",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Proyectos Vis Antioquia",
-        "volume": 110
+        "volume": 110,
+        "clicks": 16,
+        "impressions": 95,
+        "position": null
       },
       {
         "query": "Apartamentos nuevos Bello",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 1
       },
       {
         "query": "Apartamentos nuevos Antioquia",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "proyectos inmobiliarios en Sabaneta",
-        "volume": 40
+        "volume": 40,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       },
       {
         "query": "proyectos inmobiliarios en el Poblado",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
       },
       {
         "query": "Proyectos inmobiliarios en Mosquera",
-        "volume": null
+        "volume": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
       }
     ]
   }

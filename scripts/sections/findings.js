@@ -15,6 +15,10 @@
  * esa landing — es decir, contenido que falta pese a que Google ya la asocia
  * con esa página.
  *
+ * El home ("/") y páginas índice ("/index", "/index.html") quedan afuera:
+ * priorizamos páginas internas, donde "contenido faltante" es un hallazgo
+ * más accionable.
+ *
  * Requiere que landingsCrawl ya esté en reports/<slug>/<reportDate>/data.json
  * (correr primero scripts/sections/landings-crawl.js).
  *
@@ -47,6 +51,12 @@ function isBrandQuery(query, brandTerms) {
   return brandTerms.some(term => q.includes(term.toLowerCase()));
 }
 
+/** true si la URL es el home ("/") o una página índice ("/index", "/index.html") */
+function isHomeOrIndexPage(url) {
+  const path = url.replace(/^https?:\/\/[^/]+/, '');
+  return path === '' || path === '/' || /^\/index(\.\w+)?\/?$/i.test(path);
+}
+
 /** true si la query aparece como frase completa, o si todas sus palabras clave (>2 letras) están presentes */
 function isQueryMissing(query, wordSetPadded, phraseSet) {
   const normQuery = normalize(query);
@@ -66,9 +76,12 @@ function isQueryMissing(query, wordSetPadded, phraseSet) {
 export async function fetchFindings(config, landingsCrawl, range = lastNDays(28)) {
   const auth = await getAuthClient();
   const candidates = [];
+  let pagesAnalyzed = 0;
 
   for (const { url, localPath } of landingsCrawl) {
     if (!localPath) continue;
+    if (isHomeOrIndexPage(url)) continue; // priorizamos páginas internas — el home no es un hallazgo accionable de "contenido faltante"
+    pagesAnalyzed++;
 
     let html;
     try {
@@ -109,7 +122,7 @@ export async function fetchFindings(config, landingsCrawl, range = lastNDays(28)
     .slice(0, MAX_FINDINGS)
     .map(({ page, detail }) => ({ page, detail }));
 
-  return { findings, _meta: { pagesAnalyzed: landingsCrawl.filter(l => l.localPath).length, candidatesFound: candidates.length } };
+  return { findings, _meta: { pagesAnalyzed, candidatesFound: candidates.length } };
 }
 
 // ── CLI ──

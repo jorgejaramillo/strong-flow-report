@@ -44,7 +44,7 @@ const STEPS = [
   { name: 'keywords', script: 'keywords.js', args: [slug, reportDate], outputKeys: ['keywords'] },
   { name: 'sitemap', script: 'sitemap.js', args: [slug], outputKeys: ['sitemap'] },
   { name: 'robotsTxt', script: 'robots.js', args: [slug, reportDate], outputKeys: ['robotsTxt'] },
-  { name: 'keywordVolume', script: 'keyword-volume.js', args: [slug], outputKeys: ['keywordVolume'] },
+  { name: 'keywordVolume', script: 'keyword-volume.js', args: [slug, reportDate], outputKeys: ['keywordVolume'] },
 ];
 const LABEL_WIDTH = Math.max(...STEPS.map(s => s.name.length)) + 2;
 
@@ -74,9 +74,10 @@ function fmt(seconds) {
   return `${seconds.toFixed(1)}s`;
 }
 
-function runNode(scriptFile, args) {
+function runNode(scriptFile, args, isSection = true) {
   const t0 = Date.now();
-  const res = spawnSync('node', [join(ROOT, 'scripts', scriptFile), ...args], {
+  const scriptPath = isSection ? join(ROOT, 'scripts', 'sections', scriptFile) : join(ROOT, 'scripts', scriptFile);
+  const res = spawnSync('node', [scriptPath, ...args], {
     cwd: ROOT,
     encoding: 'utf-8',
   });
@@ -86,8 +87,9 @@ function runNode(scriptFile, args) {
 console.log(`Flow — ${slug} — ${reportDate}\n`);
 
 // Paso 0: sync-config (obligatorio, aborta el flow si falla)
+// Paso 0: sync-config (obligatorio, aborta el flow si falla)
 write('sync-config'.padEnd(LABEL_WIDTH, '.') + ' running...');
-const syncRes = runNode('sync-config.js', [slug]);
+const syncRes = runNode('sync-config.js', [slug], false);
 if (syncRes.status !== 0) {
   write('sync-config'.padEnd(LABEL_WIDTH, '.') + ` FAILED (${fmt(syncRes.elapsed)})\n`);
   console.error(syncRes.stderr.trim());
@@ -152,7 +154,7 @@ for (const [i, step] of STEPS.entries()) {
 const totalElapsed = (Date.now() - t0Total) / 1000;
 
 console.log('\nGenerando report.html...');
-const buildRes = runNode('build-report.js', [slug, reportDate]);
+const buildRes = runNode('build-report.js', [slug, reportDate], false);
 if (buildRes.status !== 0) {
   console.error(buildRes.stderr.trim());
 } else {

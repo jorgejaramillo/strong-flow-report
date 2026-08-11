@@ -250,23 +250,23 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/afiliados-famisanar",
-          "impressions": 94425,
-          "clicks": 665,
+          "impressions": 94232,
+          "clicks": 678,
           "position": 3.9,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/salud",
-          "impressions": 1851,
+          "impressions": 1877,
           "clicks": 10,
-          "position": 7.8,
+          "position": 7.7,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
           "url": "https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas",
-          "impressions": 2363,
+          "impressions": 2367,
           "clicks": 6,
           "position": 8.2,
           "status": "Canibaliza",
@@ -287,7 +287,7 @@
         },
         {
           "url": "https://www.cafam.com.co/",
-          "impressions": 2306,
+          "impressions": 2305,
           "clicks": 3,
           "position": 9.3,
           "status": "Canibaliza",
@@ -295,7 +295,7 @@
         },
         {
           "url": "https://www.cafam.com.co/noticias/que-es-una-caja-de-compensacion",
-          "impressions": 4622,
+          "impressions": 4624,
           "clicks": 3,
           "position": 10.1,
           "status": "Canibaliza",
@@ -308,15 +308,15 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/noticias/melgar-todo-lo-que-debes-saber-sobre-este-destino",
-          "impressions": 14921,
-          "clicks": 41,
-          "position": 10.6,
+          "impressions": 14720,
+          "clicks": 42,
+          "position": 10.5,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/noticias/actividades-melgar",
-          "impressions": 77,
+          "impressions": 78,
           "clicks": 4,
           "position": 2.2,
           "status": "Canibaliza",
@@ -324,8 +324,8 @@
         },
         {
           "url": "https://www.cafam.com.co/noticias/planes-melgar",
-          "impressions": 695,
-          "clicks": 4,
+          "impressions": 679,
+          "clicks": 2,
           "position": 12.9,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
@@ -337,8 +337,8 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/agencia-empleo/subsidio-desempleo",
-          "impressions": 11779,
-          "clicks": 584,
+          "impressions": 11795,
+          "clicks": 585,
           "position": 3.4,
           "status": "Principal",
           "statusClass": "badge-success"
@@ -358,55 +358,55 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/",
-          "impressions": 2144,
-          "clicks": 151,
+          "impressions": 2135,
+          "clicks": 149,
           "position": 2,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/servicios-en-linea",
-          "impressions": 1670,
-          "clicks": 18,
+          "impressions": 1665,
+          "clicks": 19,
           "position": 1,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.cafam.com.co/salud",
-          "impressions": 1749,
-          "clicks": 17,
-          "position": 1.2,
-          "status": "Canibaliza",
-          "statusClass": "badge-warning"
-        },
-        {
           "url": "https://www.cafam.com.co/turismo",
-          "impressions": 1669,
+          "impressions": 1667,
           "clicks": 16,
           "position": 1,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
+          "url": "https://www.cafam.com.co/salud",
+          "impressions": 1743,
+          "clicks": 16,
+          "position": 1.2,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
           "url": "https://www.cafam.com.co/empleo-y-bienestar-financiero/subsidios",
-          "impressions": 1647,
-          "clicks": 15,
+          "impressions": 1645,
+          "clicks": 14,
           "position": 1.1,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
           "url": "https://www.cafam.com.co/turismo/centro-vacaciones-cafam-melgar",
-          "impressions": 1487,
-          "clicks": 10,
+          "impressions": 1482,
+          "clicks": 11,
           "position": 1,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
           "url": "https://www.cafam.com.co/salud/citas-medicas",
-          "impressions": 695,
+          "impressions": 671,
           "clicks": 10,
           "position": 1.1,
           "status": "Canibaliza",
@@ -414,9 +414,30 @@
         },
         {
           "url": "https://www.cafam.com.co/hogar/subsidios-de-vivienda",
-          "impressions": 498,
-          "clicks": 5,
+          "impressions": 529,
+          "clicks": 4,
           "position": 1,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "sanitas",
+      "rows": [
+        {
+          "url": "https://www.cafam.com.co/afiliados-sanitas",
+          "impressions": 51,
+          "clicks": 7,
+          "position": 2.8,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.cafam.com.co/salud/citas-medicas/sanitas-citas-medicas",
+          "impressions": 11090,
+          "clicks": 6,
+          "position": 6.5,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         }
@@ -427,7 +448,7 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/noticias/que-es-una-caja-de-compensacion",
-          "impressions": 5093,
+          "impressions": 5096,
           "clicks": 10,
           "position": 7.9,
           "status": "Principal",
@@ -435,23 +456,23 @@
         },
         {
           "url": "https://www.cafam.com.co/noticias/para-que-sirven-las-cajas-de-compensacion-familiar",
-          "impressions": 1836,
-          "clicks": 9,
+          "impressions": 1853,
+          "clicks": 8,
           "position": 6.7,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
           "url": "https://www.cafam.com.co/noticias/afiliarte-a-una-caja-de-compensacion-familiar",
-          "impressions": 138,
+          "impressions": 142,
           "clicks": 4,
-          "position": 16.9,
+          "position": 17.3,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         },
         {
           "url": "https://www.cafam.com.co/",
-          "impressions": 1049,
+          "impressions": 1056,
           "clicks": 2,
           "position": 6.8,
           "status": "Canibaliza",
@@ -464,15 +485,15 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas",
-          "impressions": 5381,
-          "clicks": 20,
-          "position": 7.7,
+          "impressions": 5358,
+          "clicks": 19,
+          "position": 7.8,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/afiliados-famisanar",
-          "impressions": 2405,
+          "impressions": 2409,
           "clicks": 15,
           "position": 7.2,
           "status": "Canibaliza",
@@ -480,9 +501,9 @@
         },
         {
           "url": "https://www.cafam.com.co/salud",
-          "impressions": 131,
+          "impressions": 130,
           "clicks": 3,
-          "position": 8.5,
+          "position": 8.6,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         }
@@ -493,15 +514,15 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/hogar",
-          "impressions": 4564,
-          "clicks": 28,
+          "impressions": 4585,
+          "clicks": 31,
           "position": 7.7,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/noticias/obtener-subsidio-vivienda-bogota",
-          "impressions": 1166,
+          "impressions": 1133,
           "clicks": 8,
           "position": 5.9,
           "status": "Canibaliza",
@@ -509,9 +530,9 @@
         },
         {
           "url": "https://www.cafam.com.co/hogar/subsidios-de-vivienda",
-          "impressions": 348,
-          "clicks": 7,
-          "position": 8.3,
+          "impressions": 365,
+          "clicks": 6,
+          "position": 8.2,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         }
@@ -522,15 +543,15 @@
       "rows": [
         {
           "url": "https://www.cafam.com.co/afiliados-famisanar",
-          "impressions": 2296,
-          "clicks": 23,
+          "impressions": 2371,
+          "clicks": 25,
           "position": 7.2,
           "status": "Principal",
           "statusClass": "badge-success"
         },
         {
           "url": "https://www.cafam.com.co/salud/citas-medicas/famisanar-citas-medicas",
-          "impressions": 2928,
+          "impressions": 2913,
           "clicks": 22,
           "position": 7.9,
           "status": "Canibaliza",
@@ -538,30 +559,9 @@
         },
         {
           "url": "https://www.cafam.com.co/salud",
-          "impressions": 352,
+          "impressions": 355,
           "clicks": 2,
           "position": 8.1,
-          "status": "Canibaliza",
-          "statusClass": "badge-warning"
-        }
-      ]
-    },
-    {
-      "query": "medicina prepagada",
-      "rows": [
-        {
-          "url": "https://www.cafam.com.co/noticias/programa-medicina-prepagada",
-          "impressions": 3600,
-          "clicks": 28,
-          "position": 6.5,
-          "status": "Principal",
-          "statusClass": "badge-success"
-        },
-        {
-          "url": "https://www.cafam.com.co/noticias/medicina-prepagada-cafam-coomeva",
-          "impressions": 118,
-          "clicks": 2,
-          "position": 12.4,
           "status": "Canibaliza",
           "statusClass": "badge-warning"
         }
@@ -759,52 +759,52 @@
   "contentImprove": [
     {
       "page": "https://cafam.com.co/",
-      "detail": "<strong>¿Qué es Cafam y cuáles son sus objetivos, misión y cobertura territorial?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Cómo afiliarse a Cafam y cuáles son los requisitos para personas y empresas?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
       "page": "https://cafam.com.co/",
-      "detail": "<strong>¿Cómo afiliarse, requisitos para afiliados y empresas, y cómo calcular aportes y subsidios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Cómo realizar trámites y consultas: canales de atención, citas, Sucursal Virtual y aplicación móvil?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://cafam.com.co/noticias/que-es-subsidio-familiar",
+      "detail": "<strong>¿Qué tipos de subsidios existen (económico, en especie, servicios) y cómo se calculan o cuantifican?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://cafam.com.co/noticias/que-es-subsidio-familiar",
+      "detail": "<strong>¿Cómo y dónde se solicita, qué documentos se requieren y cuál es el procedimiento?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://cafam.com.co/noticias/que-es-una-caja-de-compensacion",
+      "detail": "<strong>¿Qué significa “We are sorry…” y en qué contextos se utiliza (páginas de error, correos, atención al cliente)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://cafam.com.co/noticias/que-es-una-caja-de-compensacion",
+      "detail": "<strong>Ejemplos y plantillas prácticas en inglés y su equivalente en español para diferentes situaciones.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
       "page": "https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural",
-      "detail": "<strong>¿Cómo registrarse y qué documentos/credenciales se necesitan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Quiénes pueden afiliarse y cuáles son los requisitos y documentos necesarios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
       "page": "https://cafam.com.co/afiliate-a-cafam/afiliacion-empleador-persona-natural",
-      "detail": "<strong>¿Qué trámites y servicios se pueden realizar (afiliación, cambios, certificaciones, pagos, consultas)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Cómo es el proceso paso a paso para registrarse, iniciar sesión y realizar trámites en línea?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
       "page": "https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion",
-      "detail": "<strong>¿Cuál es el procedimiento y la documentación necesaria para inscribir, actualizar o reclamar a un beneficiario ante la Caja de Compensación?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Qué requisitos, documentos y trámites se necesitan para afiliar, registrar o actualizar a un beneficiario y dónde realizarlos (presencial y en línea)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
       "page": "https://cafam.com.co/noticias/quienes-son-los-beneficiarios-en-la-caja-de-compensacion",
-      "detail": "<strong>¿Qué eventos modifican la condición de beneficiario (fallecimiento, emancipación, divorcio, cambios de afiliación) y cómo se gestionan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
-      "source": "ChatGPT"
-    },
-    {
-      "page": "https://cafam.com.co/noticias/ahorrar-comprar-casa",
-      "detail": "<strong>¿Cuánto necesito ahorrar (enganche, costos de escrituración, impuestos y gastos asociados) y cómo calcular ese monto para mi ciudad en Colombia?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
-      "source": "ChatGPT"
-    },
-    {
-      "page": "https://cafam.com.co/noticias/ahorrar-comprar-casa",
-      "detail": "<strong>¿Qué tipos de financiación y créditos hipotecarios existen en Colombia, y cuáles son requisitos, tasas y comparaciones entre entidades bancarias y cooperativas?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
-      "source": "ChatGPT"
-    },
-    {
-      "page": "https://cafam.com.co/noticias/acceder-subsidio-familiar",
-      "detail": "<strong>¿Qué significa exactamente el mensaje \"We are sorry...\" en este contexto?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
-      "source": "ChatGPT"
-    },
-    {
-      "page": "https://cafam.com.co/noticias/acceder-subsidio-familiar",
-      "detail": "<strong>¿Cuáles son las causas comunes (errores técnicos, permisos, URL incorrecta, bloqueos, políticas) que lo generan?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "detail": "<strong>¿Cuál es la vigencia, causales de pérdida o suspensión de la calidad de beneficiario y el procedimiento para reclamar o apelar decisiones?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     }
   ],
@@ -1323,6 +1323,136 @@
         "positions": [
           null
         ]
+      }
+    ]
+  },
+  "keywordVolume": {
+    "rows": [
+      {
+        "query": "Casas vacacionales Melgar",
+        "volume": 210,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Hotel Kualamaná",
+        "volume": 2400,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Bioparque Melgar",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Centro de vacaciones",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Club Madelena",
+        "volume": 170,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Hotel Almirante",
+        "volume": 2900,
+        "clicks": 51,
+        "impressions": 940
+      },
+      {
+        "query": "Cursos cortos",
+        "volume": 590,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Vacaciones recreativas",
+        "volume": 1900,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Afiliación a caja de compensación",
+        "volume": 720,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Club campestre Bogotá",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Técnicos laborales",
+        "volume": 390,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Caja de Compensación Familiar",
+        "volume": 4400,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Pasadía",
+        "volume": 3600,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Subsidio de arrendamiento",
+        "volume": 4400,
+        "clicks": 53,
+        "impressions": 2097
+      },
+      {
+        "query": "Caja de compensación",
+        "volume": 18100,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Subsidio de desempleo",
+        "volume": 18100,
+        "clicks": 588,
+        "impressions": 11941
+      },
+      {
+        "query": "Escuelas deportivas",
+        "volume": 260,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Subsidio de vivienda",
+        "volume": 18100,
+        "clicks": 47,
+        "impressions": 6456
+      },
+      {
+        "query": "Subsidio familiar",
+        "volume": 1600,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Teatro en Bogotá",
+        "volume": 390,
+        "clicks": 0,
+        "impressions": 0
+      },
+      {
+        "query": "Créditos de consumo",
+        "volume": 880,
+        "clicks": 0,
+        "impressions": 0
       }
     ]
   }
