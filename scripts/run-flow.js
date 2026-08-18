@@ -42,7 +42,7 @@ const STEPS = [
   { name: 'findings', script: 'findings.js', args: [slug, reportDate], requires: 'landingsCrawl', outputKeys: ['findings'] },
   { name: 'contentImprove', script: 'content-improve.js', args: [slug, reportDate], requires: 'landingsCrawl', outputKeys: ['contentImprove'] },
   { name: 'keywords', script: 'keywords.js', args: [slug, reportDate], outputKeys: ['keywords'] },
-  { name: 'sitemap', script: 'sitemap.js', args: [slug], outputKeys: ['sitemap'] },
+  { name: 'sitemap', script: 'sitemap.js', args: [slug, reportDate], outputKeys: ['sitemap'] },
   { name: 'robotsTxt', script: 'robots.js', args: [slug, reportDate], outputKeys: ['robotsTxt'] },
   { name: 'keywordVolume', script: 'keyword-volume.js', args: [slug, reportDate], outputKeys: ['keywordVolume'] },
   { name: 'queryVariations', script: 'query-variations.js', args: [slug, reportDate], outputKeys: ['queryVariations'] },

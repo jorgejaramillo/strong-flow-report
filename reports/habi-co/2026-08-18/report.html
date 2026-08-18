@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"domainAnalytics":null,"landingsCrawl":[{"url":"https://habi.co/","localPath":"reports/habi/2026-08-18/data/crawl/index.html"},{"url":"https://habi.co/venta-apartamentos/bogota","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_bogota.html"},{"url":"https://habi.co/venta-apartamentos","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos.html"},{"url":"https://habi.co/blog/que-puedo-vender-desde-casa","localPath":"reports/habi/2026-08-18/data/crawl/blog_que-puedo-vender-desde-casa.html"},{"url":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","localPath":"reports/habi/2026-08-18/data/crawl/blog_como-calcular-metros-cuadrados-de-un-inmueble.html"},{"url":"https://habi.co/blog/valor-metro-cuadrado-bogota","localPath":"reports/habi/2026-08-18/data/crawl/blog_valor-metro-cuadrado-bogota.html"},{"url":"https://habi.co/venta-apartamentos/soacha","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_soacha.html"},{"url":"https://habi.co/blog/que-es-patrimonio-familiar","localPath":"reports/habi/2026-08-18/data/crawl/blog_que-es-patrimonio-familiar.html"},{"url":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","localPath":"reports/habi/2026-08-18/data/crawl/blog_rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos.html"},{"url":"https://habi.co/venta-apartamentos/cali","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_cali.html"},{"url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","localPath":"reports/habi/2026-08-18/data/crawl/blog_donde-es-mas-barata-la-vivienda-en-colombia.html"},{"url":"https://habi.co/venta-apartamentos/medellin","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_medellin.html"},{"url":"https://habi.co/venta-apartamentos/bogota/suba","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_bogota_suba.html"},{"url":"https://habi.co/habimetro/casas/venta/bogota/index.html","localPath":"reports/habi/2026-08-18/data/crawl/habimetro_casas_venta_bogota_index.html"},{"url":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","localPath":"reports/habi/2026-08-18/data/crawl/blog_pueden-embargar-casa-no-soy-deudor.html"},{"url":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","localPath":"reports/habi/2026-08-18/data/crawl/blog_gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa.html"},{"url":"https://habi.co/venta-apartamentos/barranquilla","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_barranquilla.html"},{"url":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","localPath":"reports/habi/2026-08-18/data/crawl/blog_cuanto-impuesto-se-paga-por-vender-una-casa.html"},{"url":"https://habi.co/porque-comprar","localPath":"reports/habi/2026-08-18/data/crawl/porque-comprar.html"},{"url":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","localPath":"reports/habi/2026-08-18/data/crawl/blog_habimetro-cuanto-cuesta-mi-casa.html"},{"url":"https://habi.co/agentes-inmobiliarios","localPath":"reports/habi/2026-08-18/data/crawl/agentes-inmobiliarios.html"},{"url":"https://habi.co/blog/inversion-en-bienes-raices","localPath":"reports/habi/2026-08-18/data/crawl/blog_inversion-en-bienes-raices.html"},{"url":"https://habi.co/venta-apartamentos/mosquera","localPath":"reports/habi/2026-08-18/data/crawl/venta-apartamentos_mosquera.html"},{"url":"https://habi.co/blog/que-es-habi-y-como-funciona","localPath":"reports/habi/2026-08-18/data/crawl/blog_que-es-habi-y-como-funciona.html"},{"url":"https://habi.co/ubicaciones/habimetro-bogota","localPath":"reports/habi/2026-08-18/data/crawl/ubicaciones_habimetro-bogota.html"}],"contentImprove":[{"page":"https://habi.co/","detail":"<strong>Requisitos y documentación necesarios (títulos, paz y salvo, estado físico y legal, hipotecas o embargos).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/","detail":"<strong>Cómo se calcula la oferta y el precio final: criterios, avalúo, comisiones, costos ocultos y forma de pago.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/venta-apartamentos/bogota","detail":"<strong>Requisitos legales y documentación necesaria para comprar o vender un apartamento en Colombia.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/venta-apartamentos/bogota","detail":"<strong>Pasos del proceso de compraventa (oferta, promesa, escrituración, registro).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/venta-apartamentos","detail":"<strong>¿Cuáles son los pasos legales y documentos necesarios para comprar o vender un apartamento en Colombia?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/venta-apartamentos","detail":"<strong>¿Cómo funciona el proceso de escrituración, impuestos y costos asociados (IVA, impuesto de registro, notaría, plusvalía, retenciones)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"<strong>¿Cuál es la inversión inicial, el margen de ganancia esperado y el tiempo para recuperar la inversión?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"<strong>¿Qué trámites legales, fiscales y de facturación debo cumplir en Colombia para vender desde casa?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"<strong>¿Qué herramientas y materiales necesito para medir un inmueble (cinta, láser, planos, etc.)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"<strong>¿Cómo medir y calcular áreas irregulares, escaleras, balcones y patios (métodos de descomposición y fórmulas)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"robotsTxt":{"url":"https://habi.co/robots.txt","content":"User-Agent: *\r\nDisallow: /final/\r\nDisallow: /undefined\r\n\r\nUser-Agent: Googlebot \r\nAllow: /*.css$ \r\nAllow: /*.js$\r\n\r\nSitemap: https://habi.co/sitemap.xml\r\nSitemap: https://habi.co/sitemappage.xml\r\nSitemap: https://habi.co/sitemapblog.xml\r\nSitemap: https://habi.co/sitemapinmueble.xml\r\nSitemap: https://habi.co/sitemaphabimetro.xml\r\nSitemap: https://habi.co/sitemaphabimetrozonas.xml\r\n","localPath":"reports/habi/2026-08-18/data/robots.txt"},"meta":{"clientSlug":"habi","clientName":"Habi Colombia","domain":"habi.co","periodStart":"20 jul 2026","periodEnd":"16 ago 2026","generatedAt":"18 ago 2026","pagesAnalyzed":100},"headerBadges":[{"text":"↓ 2.5% clicks","class":"badge-error"},{"text":"15006 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"31,223","valueClass":"text-primary","desc":"↓ 2.5% vs período anterior","descClass":"text-error"},{"title":"Impresiones","value":"1,626,618","desc":"↓ 2.4%","descClass":"text-error"},{"title":"CTR medio","value":"1.92%","desc":"↓ 0.00pp","descClass":"text-error"},{"title":"Posición media","value":"6.7","desc":"↓ 0.1 (mejor)","descClass":"text-error"},{"title":"URLs encontradas","value":"15,006","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"15,006","desc":"A Search Console"}],"clicksOverTime":{"startDate":"2026-05-19","endDate":"2026-08-16","clicks":[1720,1661,1607,1306,1191,1481,1706,1623,1605,1404,1235,1060,839,1433,1437,1399,1391,1155,1121,1007,1266,1420,1555,1248,1194,1043,887,1095,1426,1291,1255,1250,884,702,1236,1274,1211,1249,1085,699,775,999,1506,1201,1349,1032,1024,1114,1379,1038,1381,1417,1072,879,1000,1131,1441,1211,1284,1137,1002,885,1118,1533,1405,1380,1386,1059,1130,1533,1467,1364,1246,1027,978,987,1299,1327,1290,1109,874,888,980,934,973,964,931,762,671,608],"impressions":[88259,87199,82878,72772,60937,61728,84552,82628,77781,75183,68846,54026,46554,74509,79328,80415,74489,66150,55968,55046,61693,79497,77757,71368,67698,54605,49970,60378,78028,71187,68362,65203,51204,42950,68377,65825,65866,64975,59459,42123,44012,51900,69638,70374,70075,59120,48494,49670,71628,58576,73430,71183,64525,48680,46902,55993,70684,65904,64568,60340,45768,39286,50613,72383,72340,69734,62446,49114,49920,75839,69733,68095,65688,57465,43602,45610,67324,64888,65152,58794,42748,44310,47064,62167,64231,62516,60778,54503,40442,39119]},"cannibalization":[{"query":"metro cuadrado","rows":[{"url":"https://habi.co/blog/valor-metro-cuadrado-bogota","impressions":29833,"clicks":95,"position":3.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/blog/precio-metro-cuadrado-medellin","impressions":4624,"clicks":21,"position":3.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","impressions":5236,"clicks":10,"position":5.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/que-es-un-metro-cuadrado","impressions":7522,"clicks":6,"position":8.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/cuanto-cuesta-el-metro-cuadrado-en-cali","impressions":2172,"clicks":5,"position":3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/cual-es-el-precio-del-metro-cuadrado-en-armenia-quindio","impressions":262,"clicks":2,"position":2.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/valor-metro-cuadrado-barranquilla","impressions":773,"clicks":1,"position":4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"metrocuadrado","rows":[{"url":"https://habi.co/blog/valor-metro-cuadrado-bogota","impressions":44357,"clicks":163,"position":3.7,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/blog/precio-metro-cuadrado-medellin","impressions":715,"clicks":3,"position":3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/cuanto-cuesta-el-metro-cuadrado-en-cali","impressions":2079,"clicks":2,"position":3.5,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","impressions":521,"clicks":2,"position":7.3,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamentos en venta bogota","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":6435,"clicks":199,"position":4.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos","impressions":343,"clicks":9,"position":7,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/bogota/kennedy","impressions":591,"clicks":1,"position":12.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/ubicaciones/comprar-bogota","impressions":77,"clicks":0,"position":12.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/bogota/suba","impressions":72,"clicks":0,"position":20.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"metro cuadrado colombia","rows":[{"url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","impressions":2315,"clicks":10,"position":3.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/blog/valor-metro-cuadrado-bogota","impressions":415,"clicks":2,"position":4.2,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamento","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":945,"clicks":6,"position":9.2,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos/soacha","impressions":137,"clicks":2,"position":8.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos","impressions":387,"clicks":1,"position":9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/barranquilla","impressions":208,"clicks":1,"position":9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/cali","impressions":373,"clicks":1,"position":10.4,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/bello","impressions":59,"clicks":0,"position":7.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/medellin","impressions":345,"clicks":0,"position":11.8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"abi","rows":[{"url":"https://habi.co/","impressions":1089,"clicks":98,"position":1.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos","impressions":898,"clicks":9,"position":1.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/?utm_source=mybusiness&utm_medium=org&utm_campaign=habi-venta-co-cn-tod-mb-vr-organic-oficina-linkperfil","impressions":365,"clicks":0,"position":5,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamentos","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":1326,"clicks":14,"position":6.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos/cali","impressions":268,"clicks":3,"position":10.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos","impressions":210,"clicks":0,"position":9.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/barranquilla","impressions":153,"clicks":0,"position":10.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/soacha","impressions":65,"clicks":0,"position":11.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/medellin","impressions":169,"clicks":0,"position":17.3,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamentos bogota","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":1591,"clicks":24,"position":5.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos","impressions":229,"clicks":2,"position":8.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamentos en venta","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":1283,"clicks":41,"position":4.8,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos/barranquilla","impressions":82,"clicks":4,"position":16.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/cali","impressions":138,"clicks":2,"position":9.4,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos","impressions":109,"clicks":2,"position":12.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/medellin","impressions":172,"clicks":0,"position":14.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"apartamento en venta bogota","rows":[{"url":"https://habi.co/venta-apartamentos/bogota","impressions":1425,"clicks":48,"position":4.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://habi.co/venta-apartamentos","impressions":75,"clicks":3,"position":7.5,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://habi.co/venta-apartamentos/bogota/kennedy","impressions":201,"clicks":0,"position":12.3,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://habi.co/blog/guia-certificado-tradicion-libertad","clicks":80,"prev":55,"delta":"+25"},{"page":"https://habi.co/venta-apartamentos/madrid","clicks":29,"prev":10,"delta":"+19"},{"page":"https://habi.co/formulario/compra","clicks":26,"prev":12,"delta":"+14"},{"page":"https://habi.co/blog/areas-comunes-construida-privada","clicks":19,"prev":11,"delta":"+8"},{"page":"https://habi.co/blog/tasacion-de-vivienda-referencia-de-precio-o-peritaje-cual-necesito","clicks":11,"prev":4,"delta":"+7"}],"losers":[{"page":"https://habi.co/","clicks":1431,"prev":1867,"delta":"-436"},{"page":"https://habi.co/venta-apartamentos/bogota","clicks":542,"prev":794,"delta":"-252"},{"page":"https://habi.co/venta-apartamentos","clicks":642,"prev":881,"delta":"-239"},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","clicks":354,"prev":490,"delta":"-136"},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","clicks":152,"prev":231,"delta":"-79"}],"landingsPeriodLabel":"10 ago 2026 → 16 ago 2026","findings":[{"page":"https://habi.co/blog/valor-metro-cuadrado-bogota","detail":"Rankea para <strong>\"metrocuadrado\"</strong> (pos. 3.7, 44357 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"que puedo vender para ganar dinero sin invertir mucho\"</strong> (pos. 7.4, 4761 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"que vender para ganar dinero\"</strong> (pos. 4.6, 2867 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"que puedo vender para ganar dinero\"</strong> (pos. 4.6, 2847 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/valor-metro-cuadrado-bogota","detail":"Rankea para <strong>\"metrocuadrado bogota\"</strong> (pos. 4.4, 2128 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"cosas para vender\"</strong> (pos. 7.4, 2118 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"que puedo vender en mi casa para ganar dinero\"</strong> (pos. 2.9, 1809 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Rankea para <strong>\"que puedo vender\"</strong> (pos. 2.7, 1139 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","detail":"Rankea para <strong>\"metrocuadrado colombia\"</strong> (pos. 5.8, 1097 impr.) pero el término no aparece en el texto de la página."},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"Rankea para <strong>\"cuanto es 10 metros cuadrados en una casa\"</strong> (pos. 4, 1088 impr.) pero el término no aparece en el texto de la página."}],"keywords":{"general":[{"query":"metro cuadrado","clicks":140,"impressions":52176,"position":4.5,"delta":"+18"},{"query":"certificado de libertad y tradicion","clicks":40,"impressions":51042,"position":6.9,"delta":"+12"},{"query":"metrocuadrado","clicks":170,"impressions":47902,"position":3.7,"delta":"+80"},{"query":"certificado de tradicion y libertad","clicks":23,"impressions":23275,"position":7.3,"delta":"+8"},{"query":"certificado de tradicion","clicks":4,"impressions":9083,"position":7.6,"delta":"+2"},{"query":"metro cuadrado bogota","clicks":32,"impressions":7812,"position":3,"delta":"-5"},{"query":"propiedad horizontal","clicks":30,"impressions":7343,"position":7.1,"delta":"+14"},{"query":"apartamentos en venta bogota","clicks":209,"impressions":6813,"position":4.9,"delta":"+65"}],"target":[{"query":"apartamentos en venta en kennedy","clicks":3,"impressions":84,"position":4,"delta":"+3"},{"query":"apartamentos en venta en zipaquirá","clicks":2,"impressions":28,"position":6.1,"delta":"+2"},{"query":"apartamentos en venta en fontibon","clicks":4,"impressions":80,"position":3.9,"delta":"0"},{"query":"apartamentos en venta en soacha","clicks":5,"impressions":51,"position":3.3,"delta":"+5"},{"query":"apartamentos en venta en cali","clicks":6,"impressions":210,"position":5.4,"delta":"-2"},{"query":"apartamentos en venta en bogotá","clicks":6,"impressions":162,"position":5.9,"delta":"+3"},{"query":"apartamentos en venta en funza","clicks":2,"impressions":32,"position":5.3,"delta":"+2"},{"query":"apartamentos en venta en medellín","clicks":3,"impressions":81,"position":7.4,"delta":"+3"},{"query":"apartamentos en venta en suba","clicks":8,"impressions":163,"position":4.8,"delta":"0"},{"query":"apartamentos en venta en bello","clicks":3,"impressions":58,"position":7.3,"delta":"+3"},{"query":"apartamentos en venta en madrid","clicks":2,"impressions":167,"position":8,"delta":"+2"},{"query":"apartamentos en venta en barranquilla","clicks":5,"impressions":213,"position":5.6,"delta":"-1"},{"query":"apartamentos en venta en mosquera","clicks":6,"impressions":95,"position":4,"delta":"+3"},{"query":"casas en venta en medellín","clicks":2,"impressions":33,"position":9.6,"delta":"+2"},{"query":"casas en venta en bogotá","clicks":2,"impressions":82,"position":16.5,"delta":"+2"}],"brand":[{"query":"habi","clicks":6402,"impressions":22410,"position":3,"delta":"-56"},{"query":"habbi","clicks":623,"impressions":2185,"position":2.1,"delta":"+9"},{"query":"habi comprar","clicks":405,"impressions":501,"position":1,"delta":"+50"},{"query":"habi inmobiliaria","clicks":250,"impressions":667,"position":1.8,"delta":"+37"},{"query":"habit","clicks":234,"impressions":857,"position":1.5,"delta":"-16"},{"query":"habimetro","clicks":200,"impressions":974,"position":1.9,"delta":"-36"}],"nonBrand":[{"query":"apartamentos en venta bogota","clicks":209,"impressions":6813,"position":4.9,"delta":"+65"},{"query":"metrocuadrado","clicks":170,"impressions":47902,"position":3.7,"delta":"+80"},{"query":"metro cuadrado","clicks":140,"impressions":52176,"position":4.5,"delta":"+18"},{"query":"abbi","clicks":110,"impressions":641,"position":2.8,"delta":"+27"},{"query":"abi","clicks":106,"impressions":1089,"position":1.1,"delta":"+9"},{"query":"que puedo vender en mi casa para ganar dinero","clicks":82,"impressions":1809,"position":2.9,"delta":"+20"}]},"sitemap":{"totalSitemaps":2,"totalSubmitted":15006,"sitemapsWithErrors":0,"sitemapsWithWarnings":1,"sitemaps":[{"path":"https://habi.co/blog/blog-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2025-08-22T21:02:41.291Z","lastDownloaded":"2026-08-18T01:01:21.277Z","submitted":184,"indexed":0,"indexRate":"0%","errors":"0","warnings":"0","status":"low-indexing","download":{"ok":true,"urlCount":184,"localPath":"reports/habi/2026-08-18/data/sitemaps/blog-sitemap.xml"}},{"path":"https://habi.co/sitemap.xml","isSitemapsIndex":true,"lastSubmitted":"2021-06-24T23:40:34.226Z","lastDownloaded":"2026-08-16T10:54:12.101Z","submitted":14822,"indexed":0,"indexRate":"0%","errors":"0","warnings":"16","status":"low-indexing","download":{"ok":true,"urlCount":1199,"localPath":"reports/habi/2026-08-18/data/sitemaps/sitemap.xml"}}],"totalUrlsInSitemaps":1256,"seedUrlsIndexing":{"totalChecked":25,"totalIndexed":24,"indexRate":"96.0%","pages":[{"path":"/","url":"https://habi.co/","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/bogota","url":"https://habi.co/venta-apartamentos/bogota","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos","url":"https://habi.co/venta-apartamentos","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/que-puedo-vender-desde-casa","url":"https://habi.co/blog/que-puedo-vender-desde-casa","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/como-calcular-metros-cuadrados-de-un-inmueble","url":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/valor-metro-cuadrado-bogota","url":"https://habi.co/blog/valor-metro-cuadrado-bogota","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/soacha","url":"https://habi.co/venta-apartamentos/soacha","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/que-es-patrimonio-familiar","url":"https://habi.co/blog/que-es-patrimonio-familiar","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","url":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/cali","url":"https://habi.co/venta-apartamentos/cali","coverageState":"Rastreada: actualmente sin indexar","indexed":false},{"path":"/blog/donde-es-mas-barata-la-vivienda-en-colombia","url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/medellin","url":"https://habi.co/venta-apartamentos/medellin","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/bogota/suba","url":"https://habi.co/venta-apartamentos/bogota/suba","coverageState":"Enviada e indexada","indexed":true},{"path":"/habimetro/casas/venta/bogota/index.html","url":"https://habi.co/habimetro/casas/venta/bogota/index.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/pueden-embargar-casa-no-soy-deudor","url":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","url":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/barranquilla","url":"https://habi.co/venta-apartamentos/barranquilla","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/cuanto-impuesto-se-paga-por-vender-una-casa","url":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","coverageState":"Enviada e indexada","indexed":true},{"path":"/porque-comprar","url":"https://habi.co/porque-comprar","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/habimetro-cuanto-cuesta-mi-casa","url":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","coverageState":"Enviada e indexada","indexed":true},{"path":"/agentes-inmobiliarios","url":"https://habi.co/agentes-inmobiliarios","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/inversion-en-bienes-raices","url":"https://habi.co/blog/inversion-en-bienes-raices","coverageState":"Enviada e indexada","indexed":true},{"path":"/venta-apartamentos/mosquera","url":"https://habi.co/venta-apartamentos/mosquera","coverageState":"Enviada e indexada","indexed":true},{"path":"/blog/que-es-habi-y-como-funciona","url":"https://habi.co/blog/que-es-habi-y-como-funciona","coverageState":"Enviada e indexada","indexed":true},{"path":"/ubicaciones/habimetro-bogota","url":"https://habi.co/ubicaciones/habimetro-bogota","coverageState":"Enviada e indexada","indexed":true}]},"seedUrlsNotInSitemap":[{"path":"/habimetro/casas/venta/bogota/index.html","url":"https://habi.co/habimetro/casas/venta/bogota/index.html"},{"path":"/ubicaciones/habimetro-bogota","url":"https://habi.co/ubicaciones/habimetro-bogota"}]},"keywordVolume":{"rows":[{"query":"Apartamentos en venta en Kennedy","volume":210,"clicks":3,"impressions":84,"position":2},{"query":"Apartamentos en venta en Bosa","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Occidente Barranquilla","volume":null,"clicks":0,"impressions":0,"position":1},{"query":"Apartamentos en venta en Zipaquirá","volume":40,"clicks":2,"impressions":28,"position":3},{"query":"Apartamentos en venta en Fontibon","volume":480,"clicks":4,"impressions":80,"position":3},{"query":"Apartamentos en venta en Soacha","volume":480,"clicks":5,"impressions":51,"position":4},{"query":"Apartamentos en venta en Puente Aranda","volume":170,"clicks":0,"impressions":0,"position":3},{"query":"Apartamentos en venta en Oriente Barranquilla","volume":null,"clicks":0,"impressions":0,"position":4},{"query":"Apartamentos en venta en Usme","volume":40,"clicks":0,"impressions":0,"position":3},{"query":"Apartamentos en venta en Cajicá","volume":10,"clicks":0,"impressions":0,"position":4},{"query":"Apartamentos en venta en Engativa","volume":320,"clicks":0,"impressions":0,"position":6},{"query":"Apartamentos en venta en Antonio Nariño","volume":10,"clicks":0,"impressions":0,"position":5},{"query":"Apartamentos en venta en Cali","volume":2900,"clicks":6,"impressions":210,"position":null},{"query":"Apartamentos en venta en Usaquen","volume":210,"clicks":0,"impressions":0,"position":6},{"query":"Apartamentos en venta en Bogotá","volume":12100,"clicks":6,"impressions":162,"position":5},{"query":"Apartamentos en venta en Ciudad Bolivar","volume":20,"clicks":0,"impressions":0,"position":5},{"query":"Apartamentos en venta en Funza","volume":320,"clicks":2,"impressions":32,"position":5},{"query":"Apartamentos en venta en Jamundí","volume":10,"clicks":0,"impressions":0,"position":7},{"query":"Apartamentos en venta en Medellín","volume":5400,"clicks":3,"impressions":81,"position":6},{"query":"Apartamentos en venta en Suba","volume":1300,"clicks":8,"impressions":163,"position":6},{"query":"Apartamentos en venta en Chía","volume":10,"clicks":0,"impressions":0,"position":9},{"query":"Apartamentos en venta en Bello","volume":590,"clicks":3,"impressions":58,"position":6},{"query":"Apartamentos en venta en Sabaneta","volume":1300,"clicks":0,"impressions":0,"position":8},{"query":"Apartamentos en venta en Sur Barranquilla","volume":null,"clicks":0,"impressions":0,"position":6},{"query":"Apartamentos en venta en Madrid","volume":260,"clicks":2,"impressions":167,"position":8},{"query":"Apartamentos en venta en Metropolitana","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Rionegro","volume":390,"clicks":0,"impressions":0,"position":9},{"query":"Apartamentos en venta en Soledad","volume":50,"clicks":0,"impressions":0,"position":7},{"query":"Apartamentos en venta en Barranquilla","volume":210,"clicks":5,"impressions":213,"position":5},{"query":"Apartamentos en venta en Tocancipa","volume":260,"clicks":0,"impressions":0,"position":6},{"query":"Apartamentos en venta en Rafael Uribe Uribe","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Mosquera","volume":720,"clicks":6,"impressions":95,"position":3},{"query":"Apartamentos en venta en Chapinero","volume":1000,"clicks":0,"impressions":0,"position":7},{"query":"Apartamentos en venta en Puerto Colombia","volume":30,"clicks":0,"impressions":0,"position":8},{"query":"Apartamentos en venta en Facatativá","volume":null,"clicks":0,"impressions":0,"position":8},{"query":"Apartamentos en venta en Yumbo","volume":10,"clicks":0,"impressions":0,"position":10},{"query":"Apartamentos en venta en Teusaquillo","volume":590,"clicks":0,"impressions":0,"position":10},{"query":"Apartamentos en venta en San Cristobal","volume":30,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Santa Fe","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Altavista","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Belén","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Cartagena","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Envigado","volume":2400,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Itagüí","volume":30,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en La Estrella","volume":170,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Los Martires","volume":10,"clicks":0,"impressions":0,"position":10},{"query":"Apartamentos en venta en Norte Barranquilla","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en Robledo","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Apartamentos en venta en San Javier","volume":50,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Mosquera","volume":1000,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Medellín","volume":4400,"clicks":2,"impressions":33,"position":null},{"query":"Casas en venta en Bogotá","volume":6600,"clicks":2,"impressions":82,"position":null},{"query":"Casas en venta en Bosa","volume":590,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Madrid","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Usme","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Rionegro","volume":390,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Cajicá","volume":1300,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Engativa","volume":480,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Los Martires","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Norte Barranquilla","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Zipaquirá","volume":50,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Itagüí","volume":40,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Occidente Barranquilla","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Antonio Nariño","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Cartagena","volume":1300,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Funza","volume":590,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Ciudad Bolivar","volume":110,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Belén","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Puente Aranda","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Soacha","volume":720,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Cali","volume":4400,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Metropolitana","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Bello","volume":480,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Tocancipa","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en San Javier","volume":90,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Kennedy","volume":480,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Sur Barranquilla","volume":null,"clicks":0,"impressions":0,"position":4},{"query":"Casas en venta en Usaquen","volume":90,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Robledo","volume":110,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Sabaneta","volume":480,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en La Estrella","volume":320,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Yumbo","volume":90,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Santa Fe","volume":20,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Facatativá","volume":40,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en San Cristobal","volume":70,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Jamundí","volume":480,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Envigado","volume":1300,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Rafael Uribe Uribe","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Suba","volume":1300,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Puerto Colombia","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Barranquilla","volume":2900,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Teusaquillo","volume":170,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Soledad","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Chía","volume":30,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Oriente Barranquilla","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Chapinero","volume":140,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Fontibon","volume":590,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Altavista","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Barrios Unidos","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Tunjuelito","volume":20,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en El Poblado","volume":170,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en La América","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Buenos Aires","volume":110,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Laureles Estadio","volume":null,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en San Antonio de Prado","volume":260,"clicks":0,"impressions":0,"position":null},{"query":"Casas en venta en Palmira","volume":880,"clicks":0,"impressions":0,"position":null}]},"queryVariations":[{"url":"https://habi.co/","mainQuery":"habi","variations":["habbi","habit","habi colombia","abbi","abi"]},{"url":"https://habi.co/venta-apartamentos/bogota","mainQuery":"habi","variations":["apartamentos en venta bogota","habi apartamentos","habi venta de apartamentos bogota","habi venta de apartamentos","apartamento en venta bogota"]},{"url":"https://habi.co/venta-apartamentos","mainQuery":"habi","variations":["habi comprar","habi inmobiliaria","habi venta de casas","habi venta de casas bogota","habbi"]},{"url":"https://habi.co/blog/que-puedo-vender-desde-casa","mainQuery":"que puedo vender en mi casa para ganar dinero","variations":["que vender para ganar dinero","que puedo vender para ganar dinero","que puedo vender para ganar dinero sin invertir mucho","que puedo vender","que vender"]},{"url":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","mainQuery":"como saber cuantos metros cuadrados tiene mi casa","variations":["cuanto es 10 metros cuadrados en una casa","como calcular los metros cuadrados de una casa","como sacar los metros cuadrados de una casa","como saber los metros cuadrados de una propiedad","como se calcula los metros cuadrados de una casa"]},{"url":"https://habi.co/blog/valor-metro-cuadrado-bogota","mainQuery":"metrocuadrado","variations":["metro cuadrado","metro cuadrado bogota","metrocuadrado bogota","valor metro cuadrado por barrio","valor metro cuadrado"]},{"url":"https://habi.co/venta-apartamentos/soacha","mainQuery":"habi","variations":["habi venta de apartamentos soacha","apartamentos en venta ciudad verde","apartamentos ciudad verde soacha","apartamentos en venta habi","apartamentos en venta soacha"]},{"url":"https://habi.co/blog/que-es-patrimonio-familiar","mainQuery":"como levantar el patrimonio familiar de un inmueble","variations":["patrimonio familiar","levantamiento de patrimonio familiar","levantamiento de patrimonio de familia","levantamiento de patrimonio de familia ante juzgado","se puede vender una casa con patrimonio familiar"]},{"url":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","mainQuery":"ritual para vender una casa","variations":["ritual para vender una casa urgente","ritual para vender una casa urgente a buen precio","truco para vender una casa urgente","ritual para vender algo rápido","código sagrado para vender una casa urgente"]},{"url":"https://habi.co/venta-apartamentos/cali","mainQuery":"apartamentos en venta cali","variations":["habi cali","apartamento en venta cali","habi","apartamentos en venta en cali","venta de apartamentos en cali económicos"]},{"url":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","mainQuery":"metro cuadrado","variations":["metro cuadrado colombia","metrocuadrado colombia","valor metro cuadrado rural colombia","habi metro cuadrado","cuanto cuesta una casa en colombia"]},{"url":"https://habi.co/venta-apartamentos/medellin","mainQuery":"apartamentos en venta medellin","variations":["habi","venta de apartamentos usados en medellín baratos","apartamentos en venta en medellin","apartamentos medellin","apartamento en venta medellin"]},{"url":"https://habi.co/venta-apartamentos/bogota/suba","mainQuery":"apartamentos en venta suba","variations":["apartamentos en venta en suba","venta de apartamentos suba","venta de apartamentos en suba baratos","apartamentos en venta suba plaza imperial","apartamento en venta en suba"]},{"url":"https://habi.co/habimetro/casas/venta/bogota/index.html","mainQuery":"habi","variations":["habi venta de casas","habi venta de casas bogota","habi casas usadas","habi casas en venta","habi venta de casas bogotá"]},{"url":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","mainQuery":"que significa embargar una casa","variations":["embargo","se puede embargar una casa hipotecada","porque pueden embargar una casa","te pueden embargar una casa hipotecada","casa embargada"]},{"url":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","mainQuery":"promesa de compraventa","variations":["gastos notariales","gastos de escrituracion de un inmueble en colombia","cuanto cuesta escriturar una casa","cuanto cuesta una promesa de compraventa","cuanto valen unas escrituras de una casa"]},{"url":"https://habi.co/venta-apartamentos/barranquilla","mainQuery":"apartamentos en venta barranquilla","variations":["venta de apartamentos barranquilla","habi inmobiliaria barranquilla","apartamentos en barranquilla","apartamentos barranquilla","apartamento en venta barranquilla"]},{"url":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","mainQuery":"cuanto se paga de impuesto por una casa en colombia","variations":["que impuestos se pagan al vender una casa en colombia","impuesto venta de inmuebles","si yo vendo una propiedad tengo que pagar impuestos","si vendo mi casa debo pagar impuestos","cuanto se paga por la venta de una casa"]},{"url":"https://habi.co/porque-comprar","mainQuery":"habbi","variations":["habí","www.habi","cómo adquirir","habbity","habi colombia"]},{"url":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","mainQuery":"habimetro","variations":["habi avalúo gratis","habimetro colombia","habimetro avalúo en línea","habi metro","habi avaluo"]},{"url":"https://habi.co/agentes-inmobiliarios","mainQuery":"habi brokers","variations":["habi brokers inventario","habi broker","habi broker inmobiliario","habibrokers","habi"]},{"url":"https://habi.co/blog/inversion-en-bienes-raices","mainQuery":"como invertir en bienes raices","variations":["invertir en bienes raices en colombia","bienes raices","inversion inmobiliaria en colombia","como invertir en bienes raíces con poco dinero en colombia","inversiones en bienes raices"]},{"url":"https://habi.co/venta-apartamentos/mosquera","mainQuery":"apartamentos en venta mosquera","variations":["apartamentos en mosquera","apartamentos en venta en mosquera cundinamarca","apartamentos en venta en mosquera","apartamento en mosquera","apartamentos mosquera"]},{"url":"https://habi.co/blog/que-es-habi-y-como-funciona","mainQuery":"habi","variations":["que es habi","habi colombia","habi inmobiliaria","habi que es","que es habi en colombia"]},{"url":"https://habi.co/ubicaciones/habimetro-bogota","mainQuery":"habimetro","variations":["habimetro colombia","habi metro","habimetro de habi","habi avaluo","avaluo habi"]}],"aiActions":[{"page":"https://habi.co/agentes-inmobiliarios","detail":"HTML renderizado con <body> completamente vacío: sin <title>, sin meta description, sin canonical, sin <html lang>, sin H1 ni imágenes (todo el contenido depende de JS que no llegó a renderizar para el crawler). La página aparece como vacía para Google. Implementar SSR o pre-renderizado con title, meta description, H1 y contenido indexable."},{"page":"https://habi.co/porque-comprar","detail":"Mismo problema que /agentes-inmobiliarios: HTML renderizado sin <title>, sin meta description, sin canonical y con <body> vacío. Implementar SSR o pre-renderizado."},{"page":"https://habi.co/habimetro/casas/venta/bogota/index.html","detail":"Canonical roto: apunta a \"https://habi.coundefined\" (bug de template, la variable de dominio quedó \"undefined\" — confirmado, esa URL ni siquiera resuelve). Corregir a la URL real de la página."},{"page":"https://habi.co/habimetro/casas/venta/bogota/index.html","detail":"Body renderizado vacío pese a tener <title>: sin H1, sin subtítulos, sin imágenes ni texto visible. El contenido depende de JS que no terminó de hidratar para el crawler; evaluar SSR/pre-renderizado para esta ruta."},{"page":"https://habi.co/","detail":"El home no tiene <link rel=\"canonical\">: agregar uno auto-referenciado a https://habi.co/ para evitar problemas de contenido duplicado (con/sin parámetros de tracking)."},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"Canonical mal apuntado: el HTML declara \"https://habi.co/blog/blog/como-calcular-metros-cuadrados-de-un-inmueble\" (con /blog/ duplicado) — confirmado, esa URL responde 403 mientras la real responde 200. Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/cuanto-impuesto-se-paga-por-vender-una-casa (doble /blog/, confirmado 403). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","detail":"El H1 (\"¿Qué pago de impuestos se realizan por vender una casa?\") duplica el <title> (\"¿Que pago de impuestos se realizan por vender una casa?\") casi palabra por palabra: diferenciarlos, extendiendo el H1 con un valor agregado sobre el tema."},{"page":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/donde-es-mas-barata-la-vivienda-en-colombia (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","detail":"El H1 duplica el <title> palabra por palabra (\"Conoce cuánto es el valor metro cuadrado en Colombia\"): diferenciarlos."},{"page":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","detail":"El H1 duplica el <title> palabra por palabra (\"Gastos notariales y escrituración en la compra y venta de vivienda\"): diferenciarlos."},{"page":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","detail":"2 imágenes con alt vacío o genérico: reemplazar por alt descriptivos con la keyword del artículo."},{"page":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/habimetro-cuanto-cuesta-mi-casa (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","detail":"El H1 duplica el <title> palabra por palabra (\"Habimetro ¿Cuánto cuesta mi casa con un avalúo en línea?\"): diferenciarlos."},{"page":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","detail":"2 imágenes con alt vacío o genérico: reemplazar por alt descriptivos con la keyword del artículo."},{"page":"https://habi.co/blog/inversion-en-bienes-raices","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/inversion-en-bienes-raices (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/inversion-en-bienes-raices","detail":"El H1 duplica el <title> palabra por palabra (\"6 formas de invertir en bienes raíces en Colombia con poco dinero\"): diferenciarlos."},{"page":"https://habi.co/blog/inversion-en-bienes-raices","detail":"1 imagen con alt vacío o genérico: reemplazar por alt descriptivo con la keyword del artículo."},{"page":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/pueden-embargar-casa-no-soy-deudor (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","detail":"El H1 (\"¿cuándo se puede embargar una casa?\") duplica el <title> (\"¿Cuándo se puede embargar una casa?\") y además empieza en minúscula, rompiendo la convención del resto del sitio: capitalizar y diferenciar del title."},{"page":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","detail":"1 imagen con alt vacío o genérico: reemplazar por alt descriptivo con la keyword del artículo."},{"page":"https://habi.co/blog/que-es-habi-y-como-funciona","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/que-es-habi-y-como-funciona (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/que-es-habi-y-como-funciona","detail":"El H1 duplica el <title> palabra por palabra (\"¿Qué es Habi y cómo funciona el proceso de venta de vivienda?\"): diferenciarlos."},{"page":"https://habi.co/blog/que-es-patrimonio-familiar","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/que-es-patrimonio-familiar (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/que-es-patrimonio-familiar","detail":"El H1 duplica el <title> palabra por palabra (\"Todo sobre el levantamiento de patrimonio de familia para vender\"): diferenciarlos."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/que-puedo-vender-desde-casa (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"El H1 duplica el <title> palabra por palabra (\"¿Qué puedo vender desde casa? 12 ideas fáciles y exitosas\"): diferenciarlos."},{"page":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","detail":"El H1 duplica el <title> palabra por palabra (\"Rituales para vender una casa rápido\"): diferenciarlos."},{"page":"https://habi.co/blog/valor-metro-cuadrado-bogota","detail":"Canonical mal apuntado: apunta a https://habi.co/blog/blog/valor-metro-cuadrado-bogota (doble /blog/). Corregir a https://habi.co/blog/{slug}."},{"page":"https://habi.co/blog/valor-metro-cuadrado-bogota","detail":"El H1 duplica el <title> palabra por palabra (\"Valor del metro cuadrado en Bogotá por localidad y barrio\"): diferenciarlos."},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description para enriquecer el resultado en Google y el compartido en redes."},{"page":"https://habi.co/blog/como-calcular-metros-cuadrados-de-un-inmueble","detail":"3 imágenes con alt vacío o genérico: reemplazar por alt descriptivos con la keyword del artículo."},{"page":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/cuanto-impuesto-se-paga-por-vender-una-casa","detail":"3 imágenes con alt vacío o genérico: reemplazar por alt descriptivos con la keyword del artículo."},{"page":"https://habi.co/blog/donde-es-mas-barata-la-vivienda-en-colombia","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/gastos-notariales-e-inmobiliarios-que-costos-debo-incluir-en-la-compra-de-mi-casa","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/habimetro-cuanto-cuesta-mi-casa","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/inversion-en-bienes-raices","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/pueden-embargar-casa-no-soy-deudor","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/que-es-habi-y-como-funciona","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/que-es-patrimonio-familiar","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/que-puedo-vender-desde-casa","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/rituales-para-vender-una-casa-rapido-los-mas-populares-y-efectivos","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/blog/valor-metro-cuadrado-bogota","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph: agregar schema.org tipo Article y og:title/og:description."},{"page":"https://habi.co/ubicaciones/habimetro-bogota","detail":"Canonical desalineado: apunta a https://habi.co/blog/ubicaciones/habimetro-bogota (prefijo /blog/ que no corresponde — confirmado, esa URL responde 403 mientras la real responde 200). Corregir a https://habi.co/ubicaciones/habimetro-bogota."},{"page":"https://habi.co/ubicaciones/habimetro-bogota","detail":"Meta description muy corta (49 caracteres): extenderla a 120-155 caracteres incluyendo la keyword \"avalúo\" y un llamado a la acción."},{"page":"https://habi.co/venta-apartamentos","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: todas comparten el mismo <title> (\"Venta de Casas y Aptos - Vivienda usada pero Remodelada | Habi\") y el mismo H1 (\"Venta de apartamentos en Colombia\"), y ninguna tiene meta description (no solo duplicada: directamente ausente). Personalizar title, agregar description y diferenciar H1 por ciudad/ubicación."},{"page":"https://habi.co/venta-apartamentos","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio) para accesibilidad e indexación de imágenes."},{"page":"https://habi.co/venta-apartamentos/bogota","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/bogota","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/bogota/suba","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad/localidad."},{"page":"https://habi.co/venta-apartamentos/bogota/suba","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/cali","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/cali","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/medellin","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/medellin","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/barranquilla","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/barranquilla","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/soacha","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/soacha","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."},{"page":"https://habi.co/venta-apartamentos/mosquera","detail":"Canibalización entre las 8 páginas de /venta-apartamentos*: mismo title, mismo H1 y sin meta description en ninguna. Personalizar title, agregar description y diferenciar H1 por ciudad."},{"page":"https://habi.co/venta-apartamentos/mosquera","detail":"20 de 61 imágenes con alt vacío: agregar alt descriptivos (zona, tipo de inmueble, precio)."}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul id="ai-actions-list" class="list-disc pl-5 space-y-3"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) · volumen mensual promedio (DataForSEO), clicks/impresiones reales (Search Console) y posición actual en Google (ValueSERP)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th><th>Clicks</th><th>Impresiones</th><th>Posición</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Sitemaps encontrados</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Sitemap</th><th>Tipo</th><th>Enviadas</th><th>Indexadas (GSC)</th><th>URLs al descargar</th><th>Errores</th><th>Warnings</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="sitemap-list-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Resumen: seedUrls no encontradas en los sitemaps</div>
+      <div id="sitemap-missing-summary"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO FALTANTE ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="findings-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-base-content/50 py-6 no-print">
+    Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+  </footer>
+
+</div>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // Los hallazgos de aiActions describen HTML (mencionan literalmente
+  // <title>, <body>, <h1>, etc.) — sin escapar, el navegador los parsea
+  // como tags reales y el primero sin cierre (ej. "<title>") se traga todo
+  // el resto del contenido como RCDATA invisible. Por eso este escape es
+  // obligatorio, no cosmético.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : (REPORT_DATA.cannibalization || []).map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${(canib.rows || []).map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
+
+  const SITEMAP_STATUS_CLASS = {
+    healthy: 'badge-success', partial: 'badge-warning', 'low-indexing': 'badge-error',
+    error: 'badge-error', pending: 'badge-ghost', empty: 'badge-ghost',
+  };
+  document.getElementById('sitemap-list-rows').innerHTML = (sm.sitemaps || []).length === 0
+    ? '<tr><td colspan="8" class="text-base-content/60">No hay sitemaps registrados en Search Console.</td></tr>'
+    : (sm.sitemaps || []).map(s => `
+    <tr>
+      <td class="break-all">${s.path}</td>
+      <td>${s.isSitemapsIndex ? 'Índice' : 'Sitemap'}</td>
+      <td>${s.submitted}</td>
+      <td>${s.indexed}</td>
+      <td>${s.download.ok ? s.download.urlCount : `<span class="text-error">error: ${s.download.error}</span>`}</td>
+      <td class="${s.errors > 0 ? 'text-error' : ''}">${s.errors}</td>
+      <td class="${s.warnings > 0 ? 'text-warning' : ''}">${s.warnings}</td>
+      <td><span class="badge ${SITEMAP_STATUS_CLASS[s.status] || 'badge-ghost'}">${s.status}</span></td>
+    </tr>`).join('');
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  const missingFromSitemap = sm.seedUrlsNotInSitemap || [];
+  document.getElementById('sitemap-missing-summary').innerHTML = missingFromSitemap.length === 0
+    ? `<p class="text-success">Todas las seedUrls (${(su.pages || []).length}) aparecen en el contenido de algún sitemap descargado.</p>`
+    : `
+    <p class="text-warning mb-2">${missingFromSitemap.length} de ${(su.pages || []).length} seedUrls NO aparecen en ningún sitemap descargado:</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead><tr><th>URL</th></tr></thead>
+        <tbody>
+          ${missingFromSitemap.map(u => `<tr><td>${u.url}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
+
+  // ── Findings ──
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
+    <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
+        },
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
+
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery || 'sin datos'}</strong></td><td>${q.variations.length ? q.variations.join(', ') : '—'}</td></tr>`).join('');
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl || [],
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions-list').innerHTML = (REPORT_DATA.aiActions || []).map(a => {
+    const detail = escapeHtml(a.detail);
+    const sepIdx = detail.indexOf(': ');
+    const issue = sepIdx === -1 ? detail : detail.slice(0, sepIdx);
+    const action = sepIdx === -1 ? '' : detail.slice(sepIdx + 2);
+    return `
+    <li>
+      <p><strong>${issue}</strong>${action ? ': ' + action : ''}</p>
+      <a href="${escapeHtml(a.page)}" target="_blank" class="text-xs text-primary/70 hover:underline break-all">${escapeHtml(a.page)}</a>
+    </li>`;
+  }).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

@@ -47,6 +47,32 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 - `rejectResourceTypes` excluye imágenes, fuentes y CSS para acelerar la descarga sin perder contenido indexable
 - Guarda siempre como `.html`, nunca como `.md`
 
+### Si el HTML no trae texto
+
+Algunos sitios (hidratación JS lenta) devuelven el DOM "a medias" con la
+llamada rápida de arriba — poco o nada de texto visible en el body. Si al
+revisar el HTML descargado ves esto, reintentá la misma URL agregando
+espera:
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/content" \
+  -H "Authorization: Bearer {api_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://example.com",
+    "rejectResourceTypes": ["image", "media", "font", "stylesheet"],
+    "gotoOptions": {"waitUntil": "networkidle0"},
+    "waitForTimeout": 5000
+  }'
+```
+
+`gotoOptions.waitUntil: "networkidle0"` simula que la navegación termine de
+verdad (espera a que no haya conexiones de red activas) y `waitForTimeout`
+le da unos segundos extra al JS antes de capturar el HTML — con el costo de
+que la descarga tarda más. Mismo criterio (y mismos parámetros) que usa
+automáticamente `scripts/sections/landings-crawl.js` cuando el texto visible
+del HTML es menor a 200 caracteres.
+
 ---
 
 ## Opción B — Buscar y descargar varias
@@ -116,3 +142,4 @@ Si no los tiene, pide que los obtengan desde el dashboard de Cloudflare → My P
 - Plan gratuito: 5 crawls/día, máx 100 páginas por crawl
 - Plan de pago ($5/mes): crawls ilimitados, hasta 100,000 páginas
 - El crawler **no** puede bypassear protección bot de Cloudflare (Turnstile, WAF). Para crawlear tu propio sitio protegido, crear una regla WAF skip rule.
+- El reintento con espera larga (ver arriba) consume una llamada extra a la API por cada URL que lo necesite.

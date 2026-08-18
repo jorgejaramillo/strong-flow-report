@@ -151,14 +151,7 @@
       <div id="table-landings-crawl"></div>
 
       <div class="divider">Acciones recomendadas (análisis IA)</div>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
-          <thead>
-            <tr><th>Hallazgo</th><th>Página</th></tr>
-          </thead>
-          <tbody id="ai-actions-rows"></tbody>
-        </table>
-      </div>
+      <ul id="ai-actions-list" class="list-disc pl-5 space-y-3"></ul>
     </div>
   </section>
 
@@ -234,6 +227,16 @@
         </table>
       </div>
 
+      <div class="divider">Sitemaps encontrados</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Sitemap</th><th>Tipo</th><th>Enviadas</th><th>Indexadas (GSC)</th><th>URLs al descargar</th><th>Errores</th><th>Warnings</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="sitemap-list-rows"></tbody>
+        </table>
+      </div>
+
       <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
       <div class="overflow-x-auto">
         <table class="table">
@@ -243,6 +246,9 @@
           <tbody id="sitemap-inspection-rows"></tbody>
         </table>
       </div>
+
+      <div class="divider">Resumen: seedUrls no encontradas en los sitemaps</div>
+      <div id="sitemap-missing-summary"></div>
     </div>
   </section>
 
@@ -295,6 +301,20 @@
 
 <script>
   const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // Los hallazgos de aiActions describen HTML (mencionan literalmente
+  // <title>, <body>, <h1>, etc.) — sin escapar, el navegador los parsea
+  // como tags reales y el primero sin cierre (ej. "<title>") se traga todo
+  // el resto del contenido como RCDATA invisible. Por eso este escape es
+  // obligatorio, no cosmético.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   // ── Header ──
   document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
@@ -357,11 +377,43 @@
     <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
     <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
 
+  const SITEMAP_STATUS_CLASS = {
+    healthy: 'badge-success', partial: 'badge-warning', 'low-indexing': 'badge-error',
+    error: 'badge-error', pending: 'badge-ghost', empty: 'badge-ghost',
+  };
+  document.getElementById('sitemap-list-rows').innerHTML = (sm.sitemaps || []).length === 0
+    ? '<tr><td colspan="8" class="text-base-content/60">No hay sitemaps registrados en Search Console.</td></tr>'
+    : (sm.sitemaps || []).map(s => `
+    <tr>
+      <td class="break-all">${s.path}</td>
+      <td>${s.isSitemapsIndex ? 'Índice' : 'Sitemap'}</td>
+      <td>${s.submitted}</td>
+      <td>${s.indexed}</td>
+      <td>${s.download.ok ? s.download.urlCount : `<span class="text-error">error: ${s.download.error}</span>`}</td>
+      <td class="${s.errors > 0 ? 'text-error' : ''}">${s.errors}</td>
+      <td class="${s.warnings > 0 ? 'text-warning' : ''}">${s.warnings}</td>
+      <td><span class="badge ${SITEMAP_STATUS_CLASS[s.status] || 'badge-ghost'}">${s.status}</span></td>
+    </tr>`).join('');
+
   document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
     <tr>
       <td>${p.path || '/'}</td>
       <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
     </tr>`).join('');
+
+  const missingFromSitemap = sm.seedUrlsNotInSitemap || [];
+  document.getElementById('sitemap-missing-summary').innerHTML = missingFromSitemap.length === 0
+    ? `<p class="text-success">Todas las seedUrls (${(su.pages || []).length}) aparecen en el contenido de algún sitemap descargado.</p>`
+    : `
+    <p class="text-warning mb-2">${missingFromSitemap.length} de ${(su.pages || []).length} seedUrls NO aparecen en ningún sitemap descargado:</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead><tr><th>URL</th></tr></thead>
+        <tbody>
+          ${missingFromSitemap.map(u => `<tr><td>${u.url}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
 
   // ── robots.txt (fetch real, contenido crudo) ──
   const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
@@ -486,8 +538,17 @@
     ],
   });
 
-  document.getElementById('ai-actions-rows').innerHTML = (REPORT_DATA.aiActions || []).map(a => `
-    <tr><td>${a.detail}</td><td>${a.page}</td></tr>`).join('');
+  document.getElementById('ai-actions-list').innerHTML = (REPORT_DATA.aiActions || []).map(a => {
+    const detail = escapeHtml(a.detail);
+    const sepIdx = detail.indexOf(': ');
+    const issue = sepIdx === -1 ? detail : detail.slice(0, sepIdx);
+    const action = sepIdx === -1 ? '' : detail.slice(sepIdx + 2);
+    return `
+    <li>
+      <p><strong>${issue}</strong>${action ? ': ' + action : ''}</p>
+      <a href="${escapeHtml(a.page)}" target="_blank" class="text-xs text-primary/70 hover:underline break-all">${escapeHtml(a.page)}</a>
+    </li>`;
+  }).join('');
 
   // ── Keywords ──
   // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
