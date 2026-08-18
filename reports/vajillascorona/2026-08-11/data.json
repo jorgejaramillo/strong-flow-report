@@ -1,8 +1,8 @@
 {
   "meta": {
-    "clientSlug": "constructoracapital",
-    "clientName": "Constructora Capital",
-    "domain": "constructoracapital.com",
+    "clientSlug": "vajillascorona",
+    "clientName": "Vajillas Corona",
+    "domain": "vajillascorona.com.co",
     "periodStart": "12 jul 2026",
     "periodEnd": "08 ago 2026",
     "generatedAt": "10 ago 2026",
@@ -254,7 +254,7 @@
       "query": "select 68",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/lpage/257/select-68/16",
+          "url": "https://www.vajillascorona.com.co/lpage/257/select-68/16",
           "impressions": 2342,
           "clicks": 592,
           "position": 1,
@@ -262,7 +262,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/lanzamientos/2/bogota-y-alrededores/nuevo-salitre/257/select-68",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/lanzamientos/2/bogota-y-alrededores/nuevo-salitre/257/select-68",
           "impressions": 863,
           "clicks": 78,
           "position": 3.1,
@@ -270,7 +270,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/proximos-lanzamientos",
+          "url": "https://www.vajillascorona.com.co/proximos-lanzamientos",
           "impressions": 1755,
           "clicks": 29,
           "position": 5.2,
@@ -278,7 +278,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/lanzamientos/2/bogota-y-alrededores",
+          "url": "https://www.vajillascorona.com.co/lanzamientos/2/bogota-y-alrededores",
           "impressions": 1517,
           "clicks": 18,
           "position": 5,
@@ -286,7 +286,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/agendas/lanzamiento/109/select-68",
+          "url": "https://www.vajillascorona.com.co/agendas/lanzamiento/109/select-68",
           "impressions": 380,
           "clicks": 4,
           "position": 7.2,
@@ -294,7 +294,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/web_datas/1784809554_20260722-sel68-especificaciones-sv.pdf",
+          "url": "https://www.vajillascorona.com.co/web_datas/1784809554_20260722-sel68-especificaciones-sv.pdf",
           "impressions": 79,
           "clicks": 2,
           "position": 8.1,
@@ -302,7 +302,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/",
+          "url": "https://www.vajillascorona.com.co/",
           "impressions": 290,
           "clicks": 1,
           "position": 9.7,
@@ -315,7 +315,7 @@
       "query": "bulevar verde",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde-apartamentos",
+          "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde-apartamentos",
           "impressions": 1377,
           "clicks": 133,
           "position": 1.8,
@@ -323,7 +323,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage-m/186/bulevar-verde/9",
+          "url": "https://www.vajillascorona.com.co/lpage-m/186/bulevar-verde/9",
           "impressions": 1327,
           "clicks": 14,
           "position": 5.2,
@@ -331,7 +331,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde",
+          "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde",
           "impressions": 1363,
           "clicks": 7,
           "position": 4.2,
@@ -339,7 +339,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/avance/186/bulevar-verde-apartamentos",
+          "url": "https://www.vajillascorona.com.co/avance/186/bulevar-verde-apartamentos",
           "impressions": 144,
           "clicks": 1,
           "position": 10.1,
@@ -352,7 +352,7 @@
       "query": "proyectos de vivienda en bogota",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyectos/2/bogota-y-alrededores",
+          "url": "https://www.vajillascorona.com.co/proyectos/2/bogota-y-alrededores",
           "impressions": 3021,
           "clicks": 75,
           "position": 6,
@@ -360,7 +360,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/",
+          "url": "https://www.vajillascorona.com.co/",
           "impressions": 139,
           "clicks": 2,
           "position": 10.2,
@@ -373,7 +373,7 @@
       "query": "proyectos de vivienda",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyectos/2/bogota-y-alrededores",
+          "url": "https://www.vajillascorona.com.co/proyectos/2/bogota-y-alrededores",
           "impressions": 2320,
           "clicks": 84,
           "position": 5.3,
@@ -381,7 +381,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/proyectos/1/medellin-y-alrededores",
+          "url": "https://www.vajillascorona.com.co/proyectos/1/medellin-y-alrededores",
           "impressions": 460,
           "clicks": 16,
           "position": 10.4,
@@ -389,7 +389,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/",
+          "url": "https://www.vajillascorona.com.co/",
           "impressions": 323,
           "clicks": 5,
           "position": 8.4,
@@ -402,7 +402,7 @@
       "query": "eskala",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/puente-aranda/229/eskala",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/puente-aranda/229/eskala",
           "impressions": 1230,
           "clicks": 151,
           "position": 4.3,
@@ -410,7 +410,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/229/eskala",
+          "url": "https://www.vajillascorona.com.co/lpage/229/eskala",
           "impressions": 545,
           "clicks": 2,
           "position": 6.9,
@@ -418,7 +418,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/cerca-al-c.cial-carrera-y-avda.-las-americas/229/eskala",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/cerca-al-c.cial-carrera-y-avda.-las-americas/229/eskala",
           "impressions": 746,
           "clicks": 1,
           "position": 3.3,
@@ -426,7 +426,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/229/eskala/23",
+          "url": "https://www.vajillascorona.com.co/lpage/229/eskala/23",
           "impressions": 110,
           "clicks": 1,
           "position": 7.4,
@@ -434,7 +434,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/blog/eskala-proyecto-bogota/",
+          "url": "https://www.vajillascorona.com.co/blog/eskala-proyecto-bogota/",
           "impressions": 461,
           "clicks": 1,
           "position": 7.8,
@@ -447,7 +447,7 @@
       "query": "puerto madero",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/bello-santa-ana/258/puerto-madero",
+          "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/bello-santa-ana/258/puerto-madero",
           "impressions": 1648,
           "clicks": 128,
           "position": 4.9,
@@ -455,7 +455,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/258/puerto-madero",
+          "url": "https://www.vajillascorona.com.co/lpage/258/puerto-madero",
           "impressions": 1146,
           "clicks": 9,
           "position": 7.7,
@@ -468,7 +468,7 @@
       "query": "urbania eco",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco",
           "impressions": 1033,
           "clicks": 152,
           "position": 1.8,
@@ -476,7 +476,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/207/urbania-eco",
+          "url": "https://www.vajillascorona.com.co/lpage/207/urbania-eco",
           "impressions": 884,
           "clicks": 11,
           "position": 5.6,
@@ -484,7 +484,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/avance/207/urbania-eco",
+          "url": "https://www.vajillascorona.com.co/avance/207/urbania-eco",
           "impressions": 432,
           "clicks": 2,
           "position": 9.5,
@@ -492,7 +492,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/proyecto/2/bogota-y-alrededores/chia/179/bogota-y-alrededores/fontibon/207/urbania-eco",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/proyecto/2/bogota-y-alrededores/chia/179/bogota-y-alrededores/fontibon/207/urbania-eco",
           "impressions": 109,
           "clicks": 1,
           "position": 8.8,
@@ -500,7 +500,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/web_datas/1709744950_20230920-eco_-especificaciones-cambio-proyecto.pdf",
+          "url": "https://www.vajillascorona.com.co/web_datas/1709744950_20230920-eco_-especificaciones-cambio-proyecto.pdf",
           "impressions": 298,
           "clicks": 1,
           "position": 9.1,
@@ -513,7 +513,7 @@
       "query": "zona clientes",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/zona-clientes/public/bogota/",
+          "url": "https://www.vajillascorona.com.co/zona-clientes/public/bogota/",
           "impressions": 968,
           "clicks": 230,
           "position": 1.5,
@@ -521,7 +521,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/zona-clientes/",
+          "url": "https://www.vajillascorona.com.co/zona-clientes/",
           "impressions": 965,
           "clicks": 50,
           "position": 2.3,
@@ -529,7 +529,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/zona-clientes/public/medellin/",
+          "url": "https://www.vajillascorona.com.co/zona-clientes/public/medellin/",
           "impressions": 811,
           "clicks": 35,
           "position": 5.5,
@@ -542,7 +542,7 @@
       "query": "pacifika",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/mosquera/200/pacifika",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/mosquera/200/pacifika",
           "impressions": 1563,
           "clicks": 5,
           "position": 6.1,
@@ -550,7 +550,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/200/pacifika",
+          "url": "https://www.vajillascorona.com.co/lpage/200/pacifika",
           "impressions": 1107,
           "clicks": 1,
           "position": 5.8,
@@ -563,7 +563,7 @@
       "query": "urbania bio",
       "rows": [
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/fontibon/188/urbania-bio",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/188/urbania-bio",
           "impressions": 1079,
           "clicks": 171,
           "position": 1.4,
@@ -571,7 +571,7 @@
           "statusClass": "badge-success"
         },
         {
-          "url": "https://www.constructoracapital.com/lpage/188/urbania-bio",
+          "url": "https://www.vajillascorona.com.co/lpage/188/urbania-bio",
           "impressions": 1038,
           "clicks": 7,
           "position": 5.6,
@@ -579,7 +579,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco",
+          "url": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco",
           "impressions": 209,
           "clicks": 2,
           "position": 9.2,
@@ -587,7 +587,7 @@
           "statusClass": "badge-warning"
         },
         {
-          "url": "https://www.constructoracapital.com/avance/188/urbania-bio",
+          "url": "https://www.vajillascorona.com.co/avance/188/urbania-bio",
           "impressions": 331,
           "clicks": 1,
           "position": 10.3,
@@ -599,31 +599,31 @@
   ],
   "winners": [
     {
-      "page": "https://www.constructoracapital.com/proyecto-terminado/37/oasis-de-los-bernal",
+      "page": "https://www.vajillascorona.com.co/proyecto-terminado/37/oasis-de-los-bernal",
       "clicks": 104,
       "prev": 3,
       "delta": "+101"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/2/bogota-y-alrededores/mosquera-cundinamarca/251/laggo",
+      "page": "https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/mosquera-cundinamarca/251/laggo",
       "clicks": 76,
       "prev": 51,
       "delta": "+25"
     },
     {
-      "page": "https://www.constructoracapital.com/lpage/262/axis",
+      "page": "https://www.vajillascorona.com.co/lpage/262/axis",
       "clicks": 48,
       "prev": 25,
       "delta": "+23"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto-terminado/133/luna-del-bosque",
+      "page": "https://www.vajillascorona.com.co/proyecto-terminado/133/luna-del-bosque",
       "clicks": 46,
       "prev": 25,
       "delta": "+21"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/san-antonio-de-prado/264/tropico",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/san-antonio-de-prado/264/tropico",
       "clicks": 57,
       "prev": 37,
       "delta": "+20"
@@ -631,31 +631,31 @@
   ],
   "losers": [
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "clicks": 3732,
       "prev": 4337,
       "delta": "-605"
     },
     {
-      "page": "https://www.constructoracapital.com/zona-clientes/public/bogota/",
+      "page": "https://www.vajillascorona.com.co/zona-clientes/public/bogota/",
       "clicks": 1033,
       "prev": 1267,
       "delta": "-234"
     },
     {
-      "page": "https://www.constructoracapital.com/lpage/257/select-68/16",
+      "page": "https://www.vajillascorona.com.co/lpage/257/select-68/16",
       "clicks": 135,
       "prev": 353,
       "delta": "-218"
     },
     {
-      "page": "https://www.constructoracapital.com/proyectos/1/medellin-y-alrededores",
+      "page": "https://www.vajillascorona.com.co/proyectos/1/medellin-y-alrededores",
       "clicks": 477,
       "prev": 585,
       "delta": "-108"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/santa-fe/250/urbanity-renta-selecta",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/santa-fe/250/urbanity-renta-selecta",
       "clicks": 62,
       "prev": 170,
       "delta": "-108"
@@ -845,61 +845,61 @@
       "pages": [
         {
           "path": "/",
-          "url": "https://www.constructoracapital.com/",
+          "url": "https://www.vajillascorona.com.co/",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/20/apartamentos-sobre-planos-bello",
-          "url": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+          "url": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/174/proyectos-vivienda-usaquen",
-          "url": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
+          "url": "https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-          "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+          "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/98/proyectos-vis-robledo",
-          "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
+          "url": "https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-          "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+          "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/87/proyectos-inmobiliarios-zipaquira",
-          "url": "https://www.constructoracapital.com/mp/87/proyectos-inmobiliarios-zipaquira",
+          "url": "https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/98/proyectos-vis-robledo",
-          "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
+          "url": "https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/34/apartamentos-sobre-planos-tocancipa",
-          "url": "https://www.constructoracapital.com/mp/34/apartamentos-sobre-planos-tocancipa",
+          "url": "https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa",
           "coverageState": "Enviada e indexada",
           "indexed": true
         },
         {
           "path": "/mp/96/proyectos-vis-mosquera",
-          "url": "https://www.constructoracapital.com/mp/96/proyectos-vis-mosquera",
+          "url": "https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera",
           "coverageState": "Enviada e indexada",
           "indexed": true
         }
@@ -907,194 +907,194 @@
     }
   },
   "robotsTxt": {
-    "url": "https://www.constructoracapital.com/robots.txt",
-    "content": "User-agent: *\r\nSitemap: https://www.constructoracapital.com/sitemap.xml",
-    "localPath": "reports/constructoracapital/2026-08-10/data/robots.txt"
+    "url": "https://www.vajillascorona.com.co/robots.txt",
+    "content": "User-agent: *\r\nSitemap: https://www.vajillascorona.com.co/sitemap.xml",
+    "localPath": "reports/vajillascorona/2026-08-10/data/robots.txt"
   },
   "landingsCrawl": [
     {
-      "url": "https://www.constructoracapital.com/",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/index.html"
+      "url": "https://www.vajillascorona.com.co/",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/index.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_20_apartamentos-sobre-planos-bello.html"
+      "url": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_20_apartamentos-sobre-planos-bello.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_174_proyectos-vivienda-usaquen.html"
+      "url": "https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_174_proyectos-vivienda-usaquen.html"
     },
     {
-      "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"
+      "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
+      "url": "https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo",
       "localPath": null,
       "error": "Status 500"
     },
     {
-      "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"
+      "url": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/87/proyectos-inmobiliarios-zipaquira",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_87_proyectos-inmobiliarios-zipaquira.html"
+      "url": "https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_87_proyectos-inmobiliarios-zipaquira.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_98_proyectos-vis-robledo.html"
+      "url": "https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_98_proyectos-vis-robledo.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/34/apartamentos-sobre-planos-tocancipa",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_34_apartamentos-sobre-planos-tocancipa.html"
+      "url": "https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_34_apartamentos-sobre-planos-tocancipa.html"
     },
     {
-      "url": "https://www.constructoracapital.com/mp/96/proyectos-vis-mosquera",
-      "localPath": "reports/constructoracapital/2026-08-10/data/crawl/mp_96_proyectos-vis-mosquera.html"
+      "url": "https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera",
+      "localPath": "reports/vajillascorona/2026-08-10/data/crawl/mp_96_proyectos-vis-mosquera.html"
     }
   ],
   "findings": [
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"proyecto de vivienda en bello\"</strong> (pos. 2.1, 59 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"apartamentos sobre planos\"</strong> (pos. 14.9, 43 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"apartamentos sobre planos en bello\"</strong> (pos. 1, 30 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"proyectos de vivienda en bello antioquia\"</strong> (pos. 4.8, 29 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"apartamentos nuevos en bello\"</strong> (pos. 11.4, 29 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "Rankea para <strong>\"proyectos de vivienda en bello sobre planos\"</strong> (pos. 1, 28 impr.) pero el término no aparece en el texto de la página."
     }
   ],
   "contentImprove": [
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "detail": "<strong>¿Qué proyectos han desarrollado y dónde están ubicados? (portafolio con fechas y tipos de obra)</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "detail": "<strong>¿Qué servicios ofrecen y cuáles son sus especialidades técnicas? (construcción, interventoría, diseño, comercialización)</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "<strong>Ubicación y barrios de Bello: accesibilidad, transporte, colegios y servicios cercanos.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "<strong>Precios, esquemas de pago y opciones de financiación (cuotas, crédito, subsidios).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
+      "page": "https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen",
       "detail": "<strong>¿Dónde está ubicado exactamente el proyecto en Usaquén y qué sectores/vecindarios colindan con él?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
+      "page": "https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen",
       "detail": "<strong>¿Cuáles son los precios, promociones, formas de pago y opciones de financiación disponibles?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "<strong>¿Cuál es su historia y fecha de fundación, y quiénes fueron sus fundadores?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "<strong>¿Cómo funciona la membresía: requisitos, costos, modalidades y beneficios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "<strong>Historia y origen: quiénes lo fundaron y por qué.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "<strong>Ubicación exacta, instalaciones y accesibilidad dentro de Sabaneta.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
       "source": "ChatGPT"
     }
   ],
   "aiActions": [
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "detail": "El menú de navegación (antes del <code>h1</code>) y bloques del footer usan <code>h3</code>-<code>h5</code> para texto de UI (categorías del menú, \"Oficina Bogotá\", \"Apps internas\") en las 8 páginas analizadas: cambiarlos a elementos sin semántica de heading (span/div) y reservar h1-h6 para la jerarquía real de contenido."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
+      "page": "https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen",
       "detail": "La página no tiene proyectos activos (\"Lo sentimos, actualmente no tenemos proyectos en esta zona\") y tiene el contenido más delgado de las páginas analizadas (230 palabras únicas vs. 320-550 en el resto): evaluar si debe seguir indexada así o redirigir/consolidar con una zona cercana con oferta real."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-      "detail": "La meta description tiene solo 71 caracteres (\"Nature Bio, proyecto de Apartamentos en Sabaneta | Constructora Capital\"), muy por debajo del rango recomendado (120-155): ampliarla incluyendo ubicación, tipo de proyecto y un llamado a la acción."
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "detail": "La meta description tiene solo 71 caracteres (\"Nature Bio, proyecto de Apartamentos en Sabaneta | Vajillas Corona\"), muy por debajo del rango recomendado (120-155): ampliarla incluyendo ubicación, tipo de proyecto y un llamado a la acción."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "Es una ficha de proyecto con precio, forma de pago y fecha de entrega ya publicados pero sin ningún schema.org: agregar structured data de tipo Product o RealEstateListing para habilitar rich results (precio, disponibilidad) en Google."
     },
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "detail": "El home no tiene schema.org de Organization/LocalBusiness pese a ser una constructora con +33 años de trayectoria: agregarlo para reforzar la entidad de marca en los resultados de Google."
     },
     {
-      "page": "https://www.constructoracapital.com/",
+      "page": "https://www.vajillascorona.com.co/",
       "detail": "7 de las 8 páginas analizadas (todas excepto la ficha de proyecto Nature Bio) no tienen <code>og:title</code>/<code>og:description</code>: agregarlos para que los links compartidos en redes/WhatsApp muestren título e imagen correctos."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
+      "page": "https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello",
       "detail": "8 imágenes de contenido (logos de otros proyectos, fotos) sin atributo alt: agregar alt descriptivo a cada una (ej. nombre del proyecto o de la zona que muestra la foto)."
     },
     {
-      "page": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
+      "page": "https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
       "detail": "10 fotos del proyecto (fachada, unidades, zonas comunes) sin atributo alt: agregar alt descriptivo a cada una."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/87/proyectos-inmobiliarios-zipaquira",
+      "page": "https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira",
       "detail": "5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
+      "page": "https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo",
       "detail": "1 imagen de contenido sin atributo alt: agregar alt descriptivo."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/34/apartamentos-sobre-planos-tocancipa",
+      "page": "https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa",
       "detail": "3 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
     },
     {
-      "page": "https://www.constructoracapital.com/mp/96/proyectos-vis-mosquera",
+      "page": "https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera",
       "detail": "5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."
     }
   ],
@@ -1328,223 +1328,75 @@
   },
   "queryVariations": [
     {
-      "url": "https://www.constructoracapital.com/",
-      "mainQuery": "constructora capital",
+      "url": "https://www.vajillascorona.com.co/categorias/hogar/vajillas/mugs/c/vj-mugs",
+      "mainQuery": "pocillos",
       "variations": [
-        "capital",
-        "capital constructora",
-        "constructora capital medellin",
-        "constructora capital proyectos",
-        "contructora capital"
+        "pocillos corona",
+        "mugs",
+        "mugs corona"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/mp/20/apartamentos-sobre-planos-bello",
-      "mainQuery": "proyectos de vivienda en bello",
+      "url": "https://www.vajillascorona.com.co/_ui/sp/bowl.html",
+      "mainQuery": "bowl",
       "variations": [
-        "proyectos de vivienda bello",
-        "proyectos inmobiliarios bello",
-        "proyectos en bello",
-        "proyectos de vivienda en bello antioquia",
-        "apartamentos sobre planos en bello"
+        "bowls corona",
+        "bowl ceramica",
+        "bowls para sopa"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/mp/174/proyectos-vivienda-usaquen",
-      "mainQuery": "proyectos de vivienda en usaquén",
+      "url": "https://www.vajillascorona.com.co/categorias/hogar/colecciones-destacadas/licencias/disney/c/disney",
+      "mainQuery": "vajillas disney",
       "variations": [
-        "proyectos de vivienda en usaquen",
-        "proyectos de casas en usaquen",
-        "proyectos de vivienda nueva en usaquen",
-        "proyectos de apartamentos en usaquen",
-        "proyectos de apartaestudios en usaquen"
+        "vajillas infantiles disney",
+        "platos disney corona",
+        "vajillas para niños"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-      "mainQuery": "nature bio",
+      "url": "https://www.vajillascorona.com.co/categorias/hogar/vajillas/vajillas/c/vj-vajillas",
+      "mainQuery": "vajillas",
       "variations": [
-        "nature bio sabaneta",
-        "nature bio apartamentos",
-        "bio nature sabaneta",
-        "bio nature",
-        "natural bio"
+        "vajillas corona",
+        "vajillas de loza",
+        "set de vajillas"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
-      "mainQuery": "apartamentos vis medellin",
+      "url": "https://www.vajillascorona.com.co/categorias/hogar/vajillas/piezas-individuales/platos/c/platos",
+      "mainQuery": "platos",
       "variations": [
-        "proyectos vis medellin",
-        "proyectos de vivienda vis en medellin",
-        "proyectos vis en medellín",
-        "constructora capital proyectos vis",
-        "proyectos de vivienda en robledo la campiñña"
+        "platos corona",
+        "platos de loza",
+        "platos para restaurante"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio",
-      "mainQuery": "nature bio",
+      "url": "https://www.vajillascorona.com.co/categorias/hoteles-y-restaurantes/cubiertos/c/cubiertos",
+      "mainQuery": "cubiertos para restaurantes",
       "variations": [
-        "nature bio sabaneta",
-        "nature bio apartamentos",
-        "bio nature sabaneta",
-        "bio nature",
-        "natural bio"
+        "cubiertos corona",
+        "cubiertos para hoteles",
+        "set de cubiertos"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/mp/87/proyectos-inmobiliarios-zipaquira",
-      "mainQuery": "capital zipaquira",
+      "url": "https://www.vajillascorona.com.co/_ui/sp/ensaladera.html",
+      "mainQuery": "ensaladera",
       "variations": [
-        "constructora capital zipaquira",
-        "proyectos de vivienda zipaquira",
-        "proyectos en zipaquira",
-        "zipaquira proyectos de vivienda",
-        "proyectos vivienda zipaquira"
+        "ensaladera corona",
+        "ensaladera de loza",
+        "bowl ensaladera"
       ]
     },
     {
-      "url": "https://www.constructoracapital.com/mp/98/proyectos-vis-robledo",
-      "mainQuery": "apartamentos vis medellin",
+      "url": "https://www.vajillascorona.com.co/categorias/hogar/vajillas/sets/set-de-te-kai-4-puestos-8-piezas-2295ml/p/SL124K030108",
+      "mainQuery": "set de te",
       "variations": [
-        "proyectos vis medellin",
-        "proyectos de vivienda vis en medellin",
-        "proyectos vis en medellín",
-        "constructora capital proyectos vis",
-        "proyectos de vivienda en robledo la campiñña"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/34/apartamentos-sobre-planos-tocancipa",
-      "mainQuery": "proyectos de vivienda tocancipá 2026",
-      "variations": [
-        "apartamentos en tocancipa",
-        "proyectos de vivienda en tocancipa",
-        "apartamentos nuevos en tocancipa",
-        "vivienda nueva en tocancipa",
-        "apatamentos vis en tocancipa"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/96/proyectos-vis-mosquera",
-      "mainQuery": "apartamentos vis mosquera",
-      "variations": [
-        "proyectos vis mosquera",
-        "proyectos de vivienda mosquera",
-        "proyectos en mosquera vis",
-        "apartamentos vis en mosquera",
-        "proyectos vis en mosquera"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/proyectos/1/medellin-y-alrededores",
-      "mainQuery": "proyectos de vivienda medellin",
-      "variations": [
-        "proyectos de vivienda en medellin",
-        "apartamentos en venta medellin",
-        "constructora capital",
-        "constructora capital medellin",
-        "capital"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/8/apartamentos-chia",
-      "mainQuery": "apartamentos en chia",
-      "variations": [
-        "capital chia",
-        "proyectos de vivienda en chía",
-        "constructora capital",
-        "chia apartamentos",
-        "apartamentos con subsidio chia"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/39/proyectos-vivienda-robledo",
-      "mainQuery": "proyectos de vivienda en robledo",
-      "variations": [
-        "constructora capital medellin",
-        "proyectos de vivienda en robledo la campiñña",
-        "constructora capital medellín",
-        "constructora capital",
-        "constructora capital proyectos"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/89/proyectos-vis-bello",
-      "mainQuery": "proyectos vis bello",
-      "variations": [
-        "proyectos vis en bello",
-        "apartamentos vis en bello",
-        "proyecto vis bello",
-        "proyectos vis",
-        "proyectos de vivienda vis"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/136/invertir-zipaquira",
-      "mainQuery": "constructora capital zipaquira",
-      "variations": [
-        "proyectos vis zipaquira",
-        "en zipaquirá",
-        "proyectos vis en zipaquira"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/proyecto/1/medellin-y-alrededores/ciudad-del-rio/151/bosque-del-rio",
-      "mainQuery": "bosque del rio",
-      "variations": [
-        "bosques del rio medellin",
-        "bosques del rio",
-        "bosque del rio medellin",
-        "bosque del rio apartamentos",
-        "bosques del rio ciudad del rio"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/128/invertir-itagui",
-      "mainQuery": null,
-      "variations": []
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/123/invertir-chia",
-      "mainQuery": "capital chia",
-      "variations": [
-        "chia capital",
-        "proyectos de vivienda chia",
-        "proyectos de vivienda en chia",
-        "construcciones en chia",
-        "proyectos en chia"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/97/proyectos-vis-niquia",
-      "mainQuery": "proyectos vis",
-      "variations": [
-        "niquia",
-        "proyectos de vivienda vis en medellin",
-        "proyectos vis en bello",
-        "proyectos vis en medellín",
-        "niquia camacol"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/126/invertir-envigado",
-      "mainQuery": "constructora envigado",
-      "variations": [
-        "como invertir en apartamentos modernos",
-        "envigado"
-      ]
-    },
-    {
-      "url": "https://www.constructoracapital.com/mp/29/apartamentos-sobre-planos-madrid-cundinamarca",
-      "mainQuery": "proyectos de vivienda en madrid cundinamarca sobre planos 2026",
-      "variations": [
-        "proyectos de apartamentos en madrid cundinamarca",
-        "proyectos de vivienda en madrid",
-        "proyectos madrid cundinamarca",
-        "proyectos de vivienda sobre planos 2026",
-        "proyectos de vivienda en madrid cundinamarca"
+        "juego de te corona",
+        "set de te kai",
+        "vajilla para te"
       ]
     }
   ]

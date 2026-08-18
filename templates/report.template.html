@@ -204,6 +204,22 @@
     </div>
   </section>
 
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
   <section class="section-card card shadow-md" style="background:#ffffff;">
     <div class="card-body">
@@ -309,9 +325,9 @@
     </div>`).join('');
 
   // ── Canibalización ──
-  document.getElementById('cannibalization-groups').innerHTML = REPORT_DATA.cannibalization.length === 0
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
     ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
-    : REPORT_DATA.cannibalization.map(canib => `
+    : (REPORT_DATA.cannibalization || []).map(canib => `
     <div>
       <p class="font-medium mb-1">"${canib.query}"</p>
       <div class="overflow-x-auto">
@@ -320,7 +336,7 @@
             <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
           </thead>
           <tbody>
-            ${canib.rows.map(r => `
+            ${(canib.rows || []).map(r => `
               <tr>
                 <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
                 <td><span class="badge ${r.statusClass}">${r.status}</span></td>
@@ -331,32 +347,32 @@
     </div>`).join('');
 
   // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
-  const sm = REPORT_DATA.sitemap;
-  const su = sm.seedUrlsIndexing;
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
   document.getElementById('sitemap-rows').innerHTML = `
-    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps}</td></tr>
-    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted}</td></tr>
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
     <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
     <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
-    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors}</td></tr>
-    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings}</td></tr>`;
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
 
-  document.getElementById('sitemap-inspection-rows').innerHTML = su.pages.map(p => `
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
     <tr>
       <td>${p.path || '/'}</td>
       <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
     </tr>`).join('');
 
   // ── robots.txt (fetch real, contenido crudo) ──
-  const rb = REPORT_DATA.robotsTxt;
-  document.getElementById('robots-source').textContent = `Descargado de ${rb.url}`;
-  document.getElementById('robots-textarea').value = rb.content;
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
 
   // ── Findings ──
-  document.getElementById('findings-rows').innerHTML = REPORT_DATA.findings.map(f => `
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
     <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
 
-  document.getElementById('content-improve-grid').innerHTML = REPORT_DATA.contentImprove.map(f => `
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
     <tr>
       <td>${f.detail}</td>
       <td>${f.page}</td>
@@ -364,63 +380,69 @@
     </tr>`).join('');
 
   // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
-  const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
-  const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
-  const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
-    const d = new Date(cy, cm - 1, cd);
-    d.setDate(d.getDate() + i);
-    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
-  });
-  clicksAreaChart.setOption({
-    tooltip: { trigger: 'axis' },
-    legend: { data: ['Clicks', 'Impresiones'], top: 0 },
-    grid: { left: 50, right: 50, top: 40, bottom: 30 },
-    xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
-    yAxis: [
-      { type: 'value', name: 'Clicks', position: 'left' },
-      { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
-    ],
-    series: [
-      {
-        name: 'Clicks',
-        type: 'line',
-        yAxisIndex: 0,
-        smooth: true,
-        symbol: 'none',
-        areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: 'rgba(20,184,166,0.4)' },
-            { offset: 1, color: 'rgba(20,184,166,0.02)' },
-          ]),
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
         },
-        lineStyle: { color: '#14B8A6', width: 2 },
-        itemStyle: { color: '#14B8A6' },
-        data: REPORT_DATA.clicksOverTime.clicks,
-      },
-      {
-        name: 'Impresiones',
-        type: 'line',
-        yAxisIndex: 1,
-        smooth: true,
-        symbol: 'none',
-        lineStyle: { color: '#0ea5e9', width: 2 },
-        itemStyle: { color: '#0ea5e9' },
-        data: REPORT_DATA.clicksOverTime.impressions,
-      },
-    ],
-  });
-  window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
 
   // ── Volumen de búsqueda (consultas objetivo) ──
-  document.getElementById('keyword-volume-rows').innerHTML = REPORT_DATA.keywordVolume.rows.map(r => `
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
     <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery || 'sin datos'}</strong></td><td>${q.variations.length ? q.variations.join(', ') : '—'}</td></tr>`).join('');
 
   // ── Ganadores / Perdedores (landings) ──
   const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
 
   new Tabulator("#table-winners", {
     layout: "fitColumns",
-    data: REPORT_DATA.winners,
+    data: REPORT_DATA.winners || [],
     columns: [
       { title: "Página", field: "page", widthGrow: 6 },
       { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
@@ -431,7 +453,7 @@
 
   new Tabulator("#table-losers", {
     layout: "fitColumns",
-    data: REPORT_DATA.losers,
+    data: REPORT_DATA.losers || [],
     columns: [
       { title: "Página", field: "page", widthGrow: 6 },
       { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
@@ -443,7 +465,7 @@
   // ── Landings a crawlear ──
   new Tabulator("#table-landings-crawl", {
     layout: "fitColumns",
-    data: REPORT_DATA.landingsCrawl,
+    data: REPORT_DATA.landingsCrawl || [],
     columns: [
       { title: "URL", field: "url" },
       {
@@ -464,7 +486,7 @@
     ],
   });
 
-  document.getElementById('ai-actions-rows').innerHTML = REPORT_DATA.aiActions.map(a => `
+  document.getElementById('ai-actions-rows').innerHTML = (REPORT_DATA.aiActions || []).map(a => `
     <tr><td>${a.detail}</td><td>${a.page}</td></tr>`).join('');
 
   // ── Keywords ──
@@ -478,10 +500,12 @@
     { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
     { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
   ];
-  new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general, columns: kwColumns });
-  new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target, columns: kwColumns });
-  new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand, columns: kwColumns });
-  new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand, columns: kwColumns });
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
 
 </script>
 

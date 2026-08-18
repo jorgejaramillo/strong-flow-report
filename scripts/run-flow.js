@@ -11,7 +11,7 @@
  * corrida anterior, completa o interrumpida), se saltea en vez de repetirse
  * — así una corrida que se cortó a la mitad (o falló en un paso) puede
  * volver a lanzarse igual y solo hace el trabajo que falta. `--fresh`
- * ignora ese cache y re-corre las 12 secciones desde cero.
+ * ignora ese cache y re-corre las 13 secciones desde cero.
  *
  * Pasos que este script NO cubre (quedan pendientes, ver resumen final):
  *   - aiActions: requiere el skill `analista` sobre el HTML que descarga
@@ -45,6 +45,7 @@ const STEPS = [
   { name: 'sitemap', script: 'sitemap.js', args: [slug], outputKeys: ['sitemap'] },
   { name: 'robotsTxt', script: 'robots.js', args: [slug, reportDate], outputKeys: ['robotsTxt'] },
   { name: 'keywordVolume', script: 'keyword-volume.js', args: [slug, reportDate], outputKeys: ['keywordVolume'] },
+  { name: 'queryVariations', script: 'query-variations.js', args: [slug, reportDate], outputKeys: ['queryVariations'] },
 ];
 const LABEL_WIDTH = Math.max(...STEPS.map(s => s.name.length)) + 2;
 

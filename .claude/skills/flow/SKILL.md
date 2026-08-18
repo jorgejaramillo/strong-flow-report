@@ -77,8 +77,8 @@ en ese `data.json` — nunca pisa las keys de otro paso.
 
 ## 2. Orden de ejecución
 
-Esta tabla usa la misma numeración 1-12 que `STEPS` en `run-flow.js` (y que
-el progreso `[n/12]` que imprime en terminal) — `aiActions` no está en
+Esta tabla usa la misma numeración 1-13 que `STEPS` en `run-flow.js` (y que
+el progreso `[n/13]` que imprime en terminal) — `aiActions` no está en
 `STEPS` (no es automatizable), así que aparece como fila manual entre los
 pasos 6 y 7 en vez de ocupar un número. El orden importa: los pasos 7
 (`findings`) y 8 (`contentImprove`) dependen de que el paso 6
@@ -101,6 +101,7 @@ array.
 | 10 | `sitemap` | `node scripts/sections/sitemap.js <slug>` |
 | 11 | `robotsTxt` | `node scripts/sections/robots.js <slug> <reportDate>` |
 | 12 | `keywordVolume` | `node scripts/sections/keyword-volume.js <slug> <reportDate>` — sección "Volumen de búsqueda": una fila por seedKeyword cruzando tres fuentes independientes: volumen de búsqueda mensual (DataForSEO `keywords_data/google_ads/search_volume`), clicks/impresiones reales en el período (GSC, dimensión `query`, match exacto case-insensitive) y posición actual en Google vía búsqueda en vivo (ValueSERP) — busca la keyword y ubica en qué posición del SERP aparece una URL de `config.domain` (o un subdominio). Requiere `DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` y `VALUESERP_API_KEY` en `.env`, y que `site.country` esté mapeado en `LOCATION_NAMES`/`COUNTRY_CODES` dentro del script. Si una keyword no tiene datos en alguna fuente, esa celda queda vacía ("sin datos") sin afectar a las demás. |
+| 13 | `queryVariations` | `node scripts/sections/query-variations.js <slug> <reportDate>` — sección "Consulta principal y variaciones": una fila por URL de `config.crawl.seedUrls` (todas, no solo las primeras `maxPages` — ese límite es de costo de crawl, no aplica acá) con la query de mayor clicks para esa URL (GSC, dimensión `query` filtrada por `PAGE equals`) como `mainQuery`, y hasta 5 queries siguientes por clicks como `variations`. A diferencia de `findings`, acá SÍ se incluyen queries de marca a propósito (para el home, la marca suele ser la consulta principal real). Sin dependencias de otros pasos — no requiere `landingsCrawl`. Si una URL no tiene tráfico en GSC, `mainQuery` queda `null` y `variations` vacío. |
 
 Cada script CLI imprime el fragmento JSON a stdout (logs de progreso van a
 stderr) — mergéalo en `reports/<slug>/<reportDate>/data.json` bajo su key
@@ -108,7 +109,7 @@ correspondiente antes de pasar al siguiente paso.
 
 ## 3. Generar el HTML
 
-Cuando las 12 secciones automáticas (+ `aiActions` manual, si aplica) estén
+Cuando las 13 secciones automáticas (+ `aiActions` manual, si aplica) estén
 en `data.json`:
 
 ```bash

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"vajillascorona","clientName":"Vajillas Corona","domain":"vajillascorona.com.co","periodStart":"12 jul 2026","periodEnd":"08 ago 2026","generatedAt":"10 ago 2026","pagesAnalyzed":10},"headerBadges":[{"text":"↑ 9.7% clicks","class":"badge-success"},{"text":"677 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"60,129","valueClass":"text-primary","desc":"↑ 9.7% vs período anterior","descClass":"text-success"},{"title":"Impresiones","value":"880,076","desc":"↑ 6.3%","descClass":"text-success"},{"title":"CTR medio","value":"6.83%","desc":"↑ 0.21pp","descClass":"text-success"},{"title":"Posición media","value":"6.1","desc":"↑ 0.4 (mejor)","descClass":"text-success"},{"title":"URLs encontradas","value":"677","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"677","desc":"A Search Console"}],"domainAnalytics":{"organicKeywords":3432,"organicTrafficValue":167838,"backlinks":1117,"referringDomains":300},"clicksOverTime":{"startDate":"2026-05-11","endDate":"2026-08-08","clicks":[2477,2426,2234,2230,2065,1568,1711,1954,2592,2477,2337,2147,2224,2163,2933,2840,2633,2385,2167,1625,1315,2422,2185,2087,2093,2022,1833,1731,1824,2376,2269,1854,1690,1357,1257,1514,2178,2069,1874,1919,1497,1035,2305,1883,2085,2328,1952,1127,1203,1602,2851,2502,2542,2030,1976,2097,2530,1752,2348,2275,2220,1870,1791,2003,2495,2262,2096,1992,1543,1254,1646,2558,2419,2194,2401,2258,2211,2695,2563,2502,2385,2463,1994,1722,2657,2391,2252,2205,1530,1647],"impressions":[34932,34290,33071,31953,29069,25720,25844,27700,34928,33480,32879,33594,30047,30046,37455,35795,34564,33279,31839,26560,22146,33916,33816,31193,31957,32389,27813,27704,26701,36121,33530,31648,29905,25786,23639,27110,34871,31699,30436,32384,26354,23404,33579,30250,30440,31443,28901,21439,22762,26161,35115,32739,31976,30478,25537,28101,33857,26820,33539,34036,32629,28002,27025,28861,36172,33274,32634,34066,28567,23508,25947,36353,35275,33326,32778,30074,28312,36138,36772,35049,33209,31849,26305,27152,35863,35042,33508,31961,24371,26685]},"cannibalization":[{"query":"select 68","rows":[{"url":"https://www.vajillascorona.com.co/lpage/257/select-68/16","impressions":2342,"clicks":592,"position":1,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/proyecto/2/lanzamientos/2/bogota-y-alrededores/nuevo-salitre/257/select-68","impressions":863,"clicks":78,"position":3.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/proximos-lanzamientos","impressions":1755,"clicks":29,"position":5.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/lanzamientos/2/bogota-y-alrededores","impressions":1517,"clicks":18,"position":5,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/agendas/lanzamiento/109/select-68","impressions":380,"clicks":4,"position":7.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/web_datas/1784809554_20260722-sel68-especificaciones-sv.pdf","impressions":79,"clicks":2,"position":8.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/","impressions":290,"clicks":1,"position":9.7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"bulevar verde","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde-apartamentos","impressions":1377,"clicks":133,"position":1.8,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage-m/186/bulevar-verde/9","impressions":1327,"clicks":14,"position":5.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/itagui/186/bulevar-verde","impressions":1363,"clicks":7,"position":4.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/avance/186/bulevar-verde-apartamentos","impressions":144,"clicks":1,"position":10.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"proyectos de vivienda en bogota","rows":[{"url":"https://www.vajillascorona.com.co/proyectos/2/bogota-y-alrededores","impressions":3021,"clicks":75,"position":6,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/","impressions":139,"clicks":2,"position":10.2,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"proyectos de vivienda","rows":[{"url":"https://www.vajillascorona.com.co/proyectos/2/bogota-y-alrededores","impressions":2320,"clicks":84,"position":5.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/proyectos/1/medellin-y-alrededores","impressions":460,"clicks":16,"position":10.4,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/","impressions":323,"clicks":5,"position":8.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"eskala","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/puente-aranda/229/eskala","impressions":1230,"clicks":151,"position":4.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage/229/eskala","impressions":545,"clicks":2,"position":6.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/cerca-al-c.cial-carrera-y-avda.-las-americas/229/eskala","impressions":746,"clicks":1,"position":3.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/lpage/229/eskala/23","impressions":110,"clicks":1,"position":7.4,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/blog/eskala-proyecto-bogota/","impressions":461,"clicks":1,"position":7.8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"puerto madero","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/bello-santa-ana/258/puerto-madero","impressions":1648,"clicks":128,"position":4.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage/258/puerto-madero","impressions":1146,"clicks":9,"position":7.7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"urbania eco","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco","impressions":1033,"clicks":152,"position":1.8,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage/207/urbania-eco","impressions":884,"clicks":11,"position":5.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/avance/207/urbania-eco","impressions":432,"clicks":2,"position":9.5,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/proyecto/2/proyecto/2/bogota-y-alrededores/chia/179/bogota-y-alrededores/fontibon/207/urbania-eco","impressions":109,"clicks":1,"position":8.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/web_datas/1709744950_20230920-eco_-especificaciones-cambio-proyecto.pdf","impressions":298,"clicks":1,"position":9.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"zona clientes","rows":[{"url":"https://www.vajillascorona.com.co/zona-clientes/public/bogota/","impressions":968,"clicks":230,"position":1.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/zona-clientes/","impressions":965,"clicks":50,"position":2.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/zona-clientes/public/medellin/","impressions":811,"clicks":35,"position":5.5,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"pacifika","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/mosquera/200/pacifika","impressions":1563,"clicks":5,"position":6.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage/200/pacifika","impressions":1107,"clicks":1,"position":5.8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"urbania bio","rows":[{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/188/urbania-bio","impressions":1079,"clicks":171,"position":1.4,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.vajillascorona.com.co/lpage/188/urbania-bio","impressions":1038,"clicks":7,"position":5.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/fontibon/207/urbania-eco","impressions":209,"clicks":2,"position":9.2,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.vajillascorona.com.co/avance/188/urbania-bio","impressions":331,"clicks":1,"position":10.3,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://www.vajillascorona.com.co/proyecto-terminado/37/oasis-de-los-bernal","clicks":104,"prev":3,"delta":"+101"},{"page":"https://www.vajillascorona.com.co/proyecto/2/bogota-y-alrededores/mosquera-cundinamarca/251/laggo","clicks":76,"prev":51,"delta":"+25"},{"page":"https://www.vajillascorona.com.co/lpage/262/axis","clicks":48,"prev":25,"delta":"+23"},{"page":"https://www.vajillascorona.com.co/proyecto-terminado/133/luna-del-bosque","clicks":46,"prev":25,"delta":"+21"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/san-antonio-de-prado/264/tropico","clicks":57,"prev":37,"delta":"+20"}],"losers":[{"page":"https://www.vajillascorona.com.co/","clicks":3732,"prev":4337,"delta":"-605"},{"page":"https://www.vajillascorona.com.co/zona-clientes/public/bogota/","clicks":1033,"prev":1267,"delta":"-234"},{"page":"https://www.vajillascorona.com.co/lpage/257/select-68/16","clicks":135,"prev":353,"delta":"-218"},{"page":"https://www.vajillascorona.com.co/proyectos/1/medellin-y-alrededores","clicks":477,"prev":585,"delta":"-108"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/santa-fe/250/urbanity-renta-selecta","clicks":62,"prev":170,"delta":"-108"}],"landingsPeriodLabel":"02 ago 2026 → 08 ago 2026","keywords":{"general":[{"query":"vento","clicks":29,"impressions":11961,"position":5.5,"delta":"-3"},{"query":"nuvo","clicks":51,"impressions":7749,"position":8.1,"delta":"+29"},{"query":"proyectos de vivienda en bogota","clicks":77,"impressions":3215,"position":7.3,"delta":"+10"},{"query":"proyectos de vivienda","clicks":106,"impressions":2979,"position":5.9,"delta":"+28"},{"query":"lumina","clicks":10,"impressions":2791,"position":9.7,"delta":"-2"},{"query":"pacifika","clicks":6,"impressions":2679,"position":6,"delta":"+6"},{"query":"apartamentos en venta medellin","clicks":95,"impressions":2360,"position":4,"delta":"+22"},{"query":"select 68","clicks":649,"impressions":2349,"position":1,"delta":"+361"}],"target":[{"query":"proyectos de vivienda sabaneta","clicks":7,"impressions":59,"position":3.6,"delta":"+1"},{"query":"proyectos vis en mosquera","clicks":5,"impressions":33,"position":2,"delta":"+5"},{"query":"proyectos vis antioquia","clicks":16,"impressions":95,"position":10.8,"delta":"+10"}],"brand":[{"query":"constructora capital","clicks":7950,"impressions":14172,"position":1.2,"delta":"+731"},{"query":"capital","clicks":3895,"impressions":9665,"position":1.3,"delta":"+338"},{"query":"zona clientes capital","clicks":1370,"impressions":2987,"position":1.7,"delta":"-69"},{"query":"capital constructora","clicks":1207,"impressions":4762,"position":1.2,"delta":"+7"},{"query":"constructora capital medellin","clicks":600,"impressions":1016,"position":1.1,"delta":"-33"},{"query":"constructora capital zona clientes","clicks":379,"impressions":838,"position":1.9,"delta":"-38"}],"nonBrand":[{"query":"zona asesores","clicks":669,"impressions":712,"position":1.1,"delta":"+150"},{"query":"select 68","clicks":649,"impressions":2349,"position":1,"delta":"+361"},{"query":"zona clientes","clicks":313,"impressions":1001,"position":1.4,"delta":"-130"},{"query":"urbanity","clicks":183,"impressions":1459,"position":6.7,"delta":"+93"},{"query":"urbania bio","clicks":176,"impressions":1105,"position":2.7,"delta":"+19"},{"query":"urbania eco","clicks":159,"impressions":1036,"position":1.8,"delta":"+34"}]},"sitemap":{"totalSitemaps":2,"totalSubmitted":677,"sitemapsWithErrors":0,"sitemapsWithWarnings":1,"seedUrlsIndexing":{"totalChecked":10,"totalIndexed":10,"indexRate":"100.0%","pages":[{"path":"/","url":"https://www.vajillascorona.com.co/","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/20/apartamentos-sobre-planos-bello","url":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/174/proyectos-vivienda-usaquen","url":"https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen","coverageState":"Enviada e indexada","indexed":true},{"path":"/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/98/proyectos-vis-robledo","url":"https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo","coverageState":"Enviada e indexada","indexed":true},{"path":"/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/87/proyectos-inmobiliarios-zipaquira","url":"https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/98/proyectos-vis-robledo","url":"https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/34/apartamentos-sobre-planos-tocancipa","url":"https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa","coverageState":"Enviada e indexada","indexed":true},{"path":"/mp/96/proyectos-vis-mosquera","url":"https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera","coverageState":"Enviada e indexada","indexed":true}]}},"robotsTxt":{"url":"https://www.vajillascorona.com.co/robots.txt","content":"User-agent: *\r\nSitemap: https://www.vajillascorona.com.co/sitemap.xml","localPath":"reports/vajillascorona/2026-08-10/data/robots.txt"},"landingsCrawl":[{"url":"https://www.vajillascorona.com.co/","localPath":"reports/vajillascorona/2026-08-10/data/crawl/index.html"},{"url":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_20_apartamentos-sobre-planos-bello.html"},{"url":"https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_174_proyectos-vivienda-usaquen.html"},{"url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","localPath":"reports/vajillascorona/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"},{"url":"https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo","localPath":null,"error":"Status 500"},{"url":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","localPath":"reports/vajillascorona/2026-08-10/data/crawl/proyecto_1_medellin-y-alrededores_sabaneta_197_nature-bio.html"},{"url":"https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_87_proyectos-inmobiliarios-zipaquira.html"},{"url":"https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_98_proyectos-vis-robledo.html"},{"url":"https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_34_apartamentos-sobre-planos-tocancipa.html"},{"url":"https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera","localPath":"reports/vajillascorona/2026-08-10/data/crawl/mp_96_proyectos-vis-mosquera.html"}],"findings":[{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"proyecto de vivienda en bello\"</strong> (pos. 2.1, 59 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"apartamentos sobre planos\"</strong> (pos. 14.9, 43 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"Rankea para <strong>\"apartamentos nuevos en sabaneta\"</strong> (pos. 6.9, 37 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"apartamentos sobre planos en bello\"</strong> (pos. 1, 30 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"proyectos de vivienda en bello antioquia\"</strong> (pos. 4.8, 29 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"apartamentos nuevos en bello\"</strong> (pos. 11.4, 29 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"Rankea para <strong>\"apartamentos sobre planos sabaneta\"</strong> (pos. 7.7, 29 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"Rankea para <strong>\"proyectos de vivienda en bello sobre planos\"</strong> (pos. 1, 28 impr.) pero el término no aparece en el texto de la página."}],"contentImprove":[{"page":"https://www.vajillascorona.com.co/","detail":"<strong>¿Qué proyectos han desarrollado y dónde están ubicados? (portafolio con fechas y tipos de obra)</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/","detail":"<strong>¿Qué servicios ofrecen y cuáles son sus especialidades técnicas? (construcción, interventoría, diseño, comercialización)</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"<strong>Ubicación y barrios de Bello: accesibilidad, transporte, colegios y servicios cercanos.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"<strong>Precios, esquemas de pago y opciones de financiación (cuotas, crédito, subsidios).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen","detail":"<strong>¿Dónde está ubicado exactamente el proyecto en Usaquén y qué sectores/vecindarios colindan con él?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen","detail":"<strong>¿Cuáles son los precios, promociones, formas de pago y opciones de financiación disponibles?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"<strong>¿Cuál es su historia y fecha de fundación, y quiénes fueron sus fundadores?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"<strong>¿Cómo funciona la membresía: requisitos, costos, modalidades y beneficios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"<strong>Historia y origen: quiénes lo fundaron y por qué.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"<strong>Ubicación exacta, instalaciones y accesibilidad dentro de Sabaneta.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"aiActions":[{"page":"https://www.vajillascorona.com.co/","detail":"El menú de navegación (antes del <code>h1</code>) y bloques del footer usan <code>h3</code>-<code>h5</code> para texto de UI (categorías del menú, \"Oficina Bogotá\", \"Apps internas\") en las 8 páginas analizadas: cambiarlos a elementos sin semántica de heading (span/div) y reservar h1-h6 para la jerarquía real de contenido."},{"page":"https://www.vajillascorona.com.co/mp/174/proyectos-vivienda-usaquen","detail":"La página no tiene proyectos activos (\"Lo sentimos, actualmente no tenemos proyectos en esta zona\") y tiene el contenido más delgado de las páginas analizadas (230 palabras únicas vs. 320-550 en el resto): evaluar si debe seguir indexada así o redirigir/consolidar con una zona cercana con oferta real."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"La meta description tiene solo 71 caracteres (\"Nature Bio, proyecto de Apartamentos en Sabaneta | Vajillas Corona\"), muy por debajo del rango recomendado (120-155): ampliarla incluyendo ubicación, tipo de proyecto y un llamado a la acción."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"Es una ficha de proyecto con precio, forma de pago y fecha de entrega ya publicados pero sin ningún schema.org: agregar structured data de tipo Product o RealEstateListing para habilitar rich results (precio, disponibilidad) en Google."},{"page":"https://www.vajillascorona.com.co/","detail":"El home no tiene schema.org de Organization/LocalBusiness pese a ser una constructora con +33 años de trayectoria: agregarlo para reforzar la entidad de marca en los resultados de Google."},{"page":"https://www.vajillascorona.com.co/","detail":"7 de las 8 páginas analizadas (todas excepto la ficha de proyecto Nature Bio) no tienen <code>og:title</code>/<code>og:description</code>: agregarlos para que los links compartidos en redes/WhatsApp muestren título e imagen correctos."},{"page":"https://www.vajillascorona.com.co/mp/20/apartamentos-sobre-planos-bello","detail":"8 imágenes de contenido (logos de otros proyectos, fotos) sin atributo alt: agregar alt descriptivo a cada una (ej. nombre del proyecto o de la zona que muestra la foto)."},{"page":"https://www.vajillascorona.com.co/proyecto/1/medellin-y-alrededores/sabaneta/197/nature-bio","detail":"10 fotos del proyecto (fachada, unidades, zonas comunes) sin atributo alt: agregar alt descriptivo a cada una."},{"page":"https://www.vajillascorona.com.co/mp/87/proyectos-inmobiliarios-zipaquira","detail":"5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."},{"page":"https://www.vajillascorona.com.co/mp/98/proyectos-vis-robledo","detail":"1 imagen de contenido sin atributo alt: agregar alt descriptivo."},{"page":"https://www.vajillascorona.com.co/mp/34/apartamentos-sobre-planos-tocancipa","detail":"3 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."},{"page":"https://www.vajillascorona.com.co/mp/96/proyectos-vis-mosquera","detail":"5 imágenes de contenido sin atributo alt: agregar alt descriptivo a cada una."}],"keywordVolume":{"rows":[{"query":"Apartamentos sobre planos en Bello","volume":30,"clicks":0,"impressions":0,"position":1},{"query":"Proyectos de vivienda en Usaquen","volume":20,"clicks":0,"impressions":0,"position":10},{"query":"Proyectos de vivienda Sabaneta","volume":260,"clicks":7,"impressions":59,"position":2},{"query":"Proyectos Vis Robledo","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"Apartamentos nuevos Sabaneta","volume":50,"clicks":0,"impressions":0,"position":6},{"query":"Proyectos inmobiliarios en Zipaquirá","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"Apartamentos VIS en Robledo","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"Apartamentos nuevos en Tocancipá","volume":null,"clicks":0,"impressions":0,"position":4},{"query":"Proyectos Vis en Mosquera","volume":30,"clicks":5,"impressions":33,"position":2},{"query":"Proyectos de vivienda Antioquia","volume":140,"clicks":0,"impressions":0,"position":4},{"query":"Proyectos de vivienda Chía","volume":20,"clicks":0,"impressions":0,"position":null},{"query":"proyectos inmobiliarios en Robledo","volume":10,"clicks":0,"impressions":0,"position":2},{"query":"Proyectos con subsidio de vivienda en Bello","volume":null,"clicks":0,"impressions":0,"position":1},{"query":"Invertir en Zipaquirá","volume":null,"clicks":0,"impressions":0,"position":3},{"query":"Proyectos inmobiliarios en Ciudad del Río","volume":null,"clicks":0,"impressions":0,"position":3},{"query":"Invertir en Itagüí","volume":null,"clicks":0,"impressions":0,"position":3},{"query":"Invertir en Chía","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"proyectos inmobiliarios en Niquia","volume":10,"clicks":0,"impressions":0,"position":3},{"query":"Invertir en Envigado","volume":null,"clicks":0,"impressions":0,"position":6},{"query":"Apartamentos sobre planos en Madrid Cundinamarca","volume":10,"clicks":0,"impressions":0,"position":1},{"query":"Proyectos de vivienda Zipaquirá","volume":30,"clicks":0,"impressions":0,"position":4},{"query":"Invertir en Ciudad del Río","volume":null,"clicks":0,"impressions":0,"position":1},{"query":"Apartamentos en Zipaquirá","volume":90,"clicks":0,"impressions":0,"position":4},{"query":"Proyectos Vis Zipaquirá","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"Invertir en Mosquera","volume":null,"clicks":0,"impressions":0,"position":1},{"query":"Apartamentos nuevos Robledo","volume":null,"clicks":0,"impressions":0,"position":4},{"query":"Proyectos Vis Antioquia","volume":110,"clicks":16,"impressions":95,"position":null},{"query":"Apartamentos nuevos Bello","volume":null,"clicks":0,"impressions":0,"position":1},{"query":"Apartamentos nuevos Antioquia","volume":null,"clicks":0,"impressions":0,"position":2},{"query":"proyectos inmobiliarios en Sabaneta","volume":40,"clicks":0,"impressions":0,"position":2},{"query":"proyectos inmobiliarios en el Poblado","volume":null,"clicks":0,"impressions":0,"position":4},{"query":"Proyectos inmobiliarios en Mosquera","volume":null,"clicks":0,"impressions":0,"position":2}]},"queryVariations":[{"url":"https://www.vajillascorona.com.co/categorias/hogar/vajillas/mugs/c/vj-mugs","mainQuery":"pocillos","variations":["pocillos corona","mugs","mugs corona"]},{"url":"https://www.vajillascorona.com.co/_ui/sp/bowl.html","mainQuery":"bowl","variations":["bowls corona","bowl ceramica","bowls para sopa"]},{"url":"https://www.vajillascorona.com.co/categorias/hogar/colecciones-destacadas/licencias/disney/c/disney","mainQuery":"vajillas disney","variations":["vajillas infantiles disney","platos disney corona","vajillas para niños"]},{"url":"https://www.vajillascorona.com.co/categorias/hogar/vajillas/vajillas/c/vj-vajillas","mainQuery":"vajillas","variations":["vajillas corona","vajillas de loza","set de vajillas"]},{"url":"https://www.vajillascorona.com.co/categorias/hogar/vajillas/piezas-individuales/platos/c/platos","mainQuery":"platos","variations":["platos corona","platos de loza","platos para restaurante"]},{"url":"https://www.vajillascorona.com.co/categorias/hoteles-y-restaurantes/cubiertos/c/cubiertos","mainQuery":"cubiertos para restaurantes","variations":["cubiertos corona","cubiertos para hoteles","set de cubiertos"]},{"url":"https://www.vajillascorona.com.co/_ui/sp/ensaladera.html","mainQuery":"ensaladera","variations":["ensaladera corona","ensaladera de loza","bowl ensaladera"]},{"url":"https://www.vajillascorona.com.co/categorias/hogar/vajillas/sets/set-de-te-kai-4-puestos-8-piezas-2295ml/p/SL124K030108","mainQuery":"set de te","variations":["juego de te corona","set de te kai","vajilla para te"]}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="ai-actions-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) · volumen mensual promedio (DataForSEO), clicks/impresiones reales (Search Console) y posición actual en Google (ValueSERP)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th><th>Clicks</th><th>Impresiones</th><th>Posición</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO FALTANTE ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="findings-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-base-content/50 py-6 no-print">
+    Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+  </footer>
+
+</div>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : (REPORT_DATA.cannibalization || []).map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${(canib.rows || []).map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
+
+  // ── Findings ──
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
+    <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
+        },
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
+
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery}</strong></td><td>${q.variations.join(', ')}</td></tr>`).join('');
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl || [],
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions-rows').innerHTML = (REPORT_DATA.aiActions || []).map(a => `
+    <tr><td>${a.detail}</td><td>${a.page}</td></tr>`).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

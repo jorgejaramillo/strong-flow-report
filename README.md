@@ -143,6 +143,11 @@ Hay un placeholder vacío en el `.env` de la raíz.
 
 ### Agregar un cliente nuevo
 
+Los pasos 2-4 de abajo (validar la key, sincronizar el config, verificar
+`site.active` y `gsc.siteUrl`) los cubre el skill `cliente-nuevo`
+("instala el cliente `<slug>`") — se puede invocar directo en vez de
+correrlos a mano.
+
 1. En Flow, crear el site del cliente (dominio + nombre). Se puede partir
    de `clients/_template/config.json` pegándolo en el tab "Raw JSON" del
    site. La estructura completa del config, el significado de cada campo y
@@ -162,9 +167,12 @@ Hay un placeholder vacío en el `.env` de la raíz.
 
    Esto crea `clients/<slug>/.flow-cache.json` (no se versiona). Revisá que
    `site.active` sea `true` y que `gsc.siteUrl` coincida exactamente con una
-   propiedad verificada en Search Console (usa la tool `list_sites` del MCP
-   para ver las disponibles; puede ser `https://dominio.com/` o
-   `sc-domain:dominio.com`).
+   propiedad verificada en Search Console (puede ser `https://dominio.com/`
+   o `sc-domain:dominio.com`):
+
+   ```bash
+   node scripts/verify-gsc-site.js <slug>
+   ```
 5. Generar el primer reporte con el skill `flow` ("corre Flow para
    `<slug>`") — ver [Generar un reporte](#generar-un-reporte).
 
