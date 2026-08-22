@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+
+  /* Tabla de contenidos / scroll-spy */
+  html { scroll-behavior: smooth; }
+  section.section-card { scroll-margin-top: 5rem; }
+  .toc-link {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    color: rgba(17, 24, 39, 0.6);
+    border-left: 3px solid transparent;
+    text-decoration: none;
+  }
+  .toc-link:hover { background: #f3f4f6; color: #111827; }
+  .toc-link.toc-active {
+    background: #f0fdfa;
+    color: #042F2E;
+    font-weight: 600;
+    border-left-color: #14B8A6;
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"coronamexico","clientName":"Corona México","domain":"coronamexico.com","periodStart":"21 jul 2026","periodEnd":"17 ago 2026","generatedAt":"19 ago 2026","pagesAnalyzed":20},"headerBadges":[{"text":"↓ 0.0% clicks","class":"badge-error"},{"text":"516 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"7,042","valueClass":"text-primary","desc":"↓ 0.0% vs período anterior","descClass":"text-error"},{"title":"Impresiones","value":"486,850","desc":"↑ 1.8%","descClass":"text-success"},{"title":"CTR medio","value":"1.45%","desc":"↓ 0.03pp","descClass":"text-error"},{"title":"Posición media","value":"6.6","desc":"↓ 0.0 (mejor)","descClass":"text-error"},{"title":"URLs encontradas","value":"516","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"516","desc":"A Search Console"}],"domainAnalytics":{"organicKeywords":1354,"organicTrafficValue":68515,"backlinks":1176,"referringDomains":64},"clicksOverTime":{"startDate":"2026-05-20","endDate":"2026-08-17","clicks":[332,311,288,228,155,375,412,310,292,281,194,170,279,346,342,265,268,190,138,318,288,292,243,271,196,154,329,319,275,269,254,196,116,299,292,266,293,284,191,137,315,247,291,285,266,152,104,260,337,299,345,274,160,129,298,313,322,319,287,172,99,306,315,290,318,247,180,144,312,314,319,320,247,151,118,297,332,287,344,266,191,148,303,325,283,252,229,147,110,253],"impressions":[21208,20049,18699,16933,16303,21514,22712,21999,20455,18198,15303,15513,19800,20506,19707,19418,17408,16054,15391,19726,20832,20650,18034,17158,14778,14512,18282,19092,19534,17723,16271,14587,11931,18156,18052,17208,18002,16919,14920,14885,18953,17912,19034,19074,17902,15818,13007,17489,18823,19711,18438,16733,14524,14145,17908,18368,18174,18813,17423,14325,12977,18687,19201,19157,18557,16757,15061,14463,19498,19469,19722,19006,17050,14717,13699,18601,19331,19682,19017,17521,14573,14002,18064,19578,19080,18701,16604,14774,13644,17321]},"cannibalization":[{"query":"accesorios para baño","rows":[{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/juego-de-6-accesorios-aluvia/p/AV6000001-1","impressions":8021,"clicks":9,"position":4.6,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/c/accesorios-para-banos","impressions":715,"clicks":2,"position":11.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lavamanos","rows":[{"url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","impressions":5559,"clicks":9,"position":9.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-de-pedestal/c/lavamanos-de-pedestal","impressions":1751,"clicks":2,"position":7.1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-clasicos/c/lavamanos-clasicos","impressions":652,"clicks":1,"position":9.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-para-sobreponer/c/lavamanos-para-sobreponer","impressions":74,"clicks":0,"position":6.3,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"sanitario","rows":[{"url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","impressions":1548,"clicks":6,"position":6.7,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/c/sanitarios-individuales","impressions":1035,"clicks":2,"position":7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"accesorios de baño","rows":[{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/c/accesorios-para-banos","impressions":536,"clicks":2,"position":8.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/juego-de-6-accesorios-aluvia/p/AV6000001-1","impressions":1255,"clicks":1,"position":14.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/_ui/spcm/blog/accesorios-indispensables-bano.html","impressions":634,"clicks":0,"position":14.7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"sanitarios","rows":[{"url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","impressions":1410,"clicks":5,"position":7.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/c/sanitarios-individuales","impressions":332,"clicks":1,"position":8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"accesorios para baño modernos","rows":[{"url":"https://coronamexico.com/_ui/spcm/blog/accesorios-indispensables-bano.html","impressions":877,"clicks":0,"position":2.2,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/c/accesorios-para-banos","impressions":321,"clicks":0,"position":11.2,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"aluvia","rows":[{"url":"https://coronamexico.com/productos/vanities-para-banos/vanities-con-lavamanos/aluvia-60-fresno/p/9554FR1-1","impressions":258,"clicks":3,"position":1.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/vanities-para-banos/vanities-con-lavamanos/aluvia-45-fresno/p/9555FR1-1","impressions":308,"clicks":0,"position":3.3,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/productos/griferia/accesorios-para-bano/juego-de-6-accesorios-aluvia/p/AV6000001-1","impressions":148,"clicks":0,"position":6.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/medias/FT-9554FR1-1-Aluvia60.pdf?context=bWFzdGVyfGRvY3VtZW50c3w3MTk0Nzg2fGFwcGxpY2F0aW9uL3BkZnxhRE15TDJnNFppODVPREl5T0RRNU9EVTVOakUwTDBaVVh6azFOVFJHVWpFdE1WOUJiSFYyYVdFMk1DNXdaR1l8Njg5NTY3NTdlNTY4Y2FhMjgwMjQ5NTE2NGEyNzBmY2ZkY2ZiZGFkMjgyOGQ3ZWQ5N2RmZmUwMWJhZDA2YjMxNw","impressions":50,"clicks":0,"position":8.6,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lavamanos de pedestal","rows":[{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-de-pedestal/c/lavamanos-de-pedestal","impressions":347,"clicks":2,"position":1.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","impressions":52,"clicks":0,"position":6.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/_ui/spcm/blog/diferencias-lavabos-pedestal-y-sobreponer.html","impressions":191,"clicks":0,"position":10,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lavamanos con pedestal","rows":[{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-de-pedestal/c/lavamanos-de-pedestal","impressions":393,"clicks":12,"position":3,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/_ui/spcm/blog/diferencias-lavabos-pedestal-y-sobreponer.html","impressions":192,"clicks":0,"position":9.7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lava manos","rows":[{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-de-pedestal/c/lavamanos-de-pedestal","impressions":125,"clicks":0,"position":7.2,"status":"Principal","statusClass":"badge-success"},{"url":"https://coronamexico.com/productos/lavamanos/lavamanos-clasicos/c/lavamanos-clasicos","impressions":51,"clicks":0,"position":8.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","impressions":392,"clicks":0,"position":9.9,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://coronamexico.com/productos/institucional/institucional-sanitarios/infantil/p/501111001-1","clicks":51,"prev":37,"delta":"+14"},{"page":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/sevilla/p/121731001-1","clicks":33,"prev":19,"delta":"+14"},{"page":"https://coronamexico.com/_ui/spcm/blog/lavabos-modernos-banos-pequenos.html","clicks":11,"prev":3,"delta":"+8"},{"page":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/cadiz-one/p/8542021-1","clicks":8,"prev":0,"delta":"+8"},{"page":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/one-piece-oporto/p/5136-02-1","clicks":50,"prev":43,"delta":"+7"}],"losers":[{"page":"https://coronamexico.com/","clicks":125,"prev":148,"delta":"-23"},{"page":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/cadiz/p/8537021-1","clicks":27,"prev":49,"delta":"-22"},{"page":"https://coronamexico.com/productos/lavamanos/c/lavamanos","clicks":22,"prev":44,"delta":"-22"},{"page":"https://coronamexico.com/productos/sanitarios/c/sanitarios","clicks":177,"prev":196,"delta":"-19"},{"page":"https://coronamexico.com/productos/sanitarios/sanitarios-individuales/c/sanitarios-individuales","clicks":31,"prev":50,"delta":"-19"}],"landingsPeriodLabel":"11 ago 2026 → 17 ago 2026","landingsCrawl":[{"url":"https://coronamexico.com/","localPath":"reports/coronamexico/2026-08-19/data/crawl/index.html","retried":false},{"url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","localPath":"reports/coronamexico/2026-08-19/data/crawl/productos_lavamanos_c_lavamanos.html","retried":false},{"url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","localPath":"reports/coronamexico/2026-08-19/data/crawl/productos_sanitarios_c_sanitarios.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_lavabo-sobreponer.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_lavabos-banos-pequenos.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_lavabos-pedestal.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/sanitarios-modernos.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_sanitarios-modernos.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_llaves-lavabo-bano.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_muebles-bano-madera.html","retried":false},{"url":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","localPath":"reports/coronamexico/2026-08-19/data/crawl/productos_griferia_regaderas_c_regaderas.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_muebles-bano.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/articulos-bano.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_articulos-bano.html","retried":false},{"url":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","localPath":"reports/coronamexico/2026-08-19/data/crawl/productos_sanitarios_mingitorios_c_mingitorios.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-moderno.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_muebles-bano-moderno.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_regaderas-bano.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/inodoros.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_inodoros.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-pequeno.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_muebles-bano-pequeno.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/regaderas-tipo-lluvia.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_regaderas-tipo-lluvia.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/taza-bano.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_taza-bano.html","retried":false},{"url":"https://coronamexico.com/_ui/spcm/regaderas-modernas.html","localPath":"reports/coronamexico/2026-08-19/data/crawl/_ui_spcm_regaderas-modernas.html","retried":false}],"findings":[{"page":"https://coronamexico.com/_ui/spcm/muebles-bano.html","detail":"Rankea para <strong>\"mueble para baño\"</strong> (pos. 10, 7092 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","detail":"Rankea para <strong>\"regaderas para baño modernas\"</strong> (pos. 1.6, 2132 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano.html","detail":"Rankea para <strong>\"muebles para baño\"</strong> (pos. 13.6, 1945 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","detail":"Rankea para <strong>\"tipos de regaderas para baño\"</strong> (pos. 1.1, 533 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","detail":"Rankea para <strong>\"regaderas para duchas\"</strong> (pos. 1.4, 476 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","detail":"Rankea para <strong>\"muebles para baño de madera\"</strong> (pos. 8.6, 400 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","detail":"Rankea para <strong>\"llaves para baño\"</strong> (pos. 9.2, 360 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","detail":"Rankea para <strong>\"llave lavabo baño\"</strong> (pos. 8.1, 320 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","detail":"Rankea para <strong>\"llave para baño\"</strong> (pos. 8.9, 289 impr.) pero el término no aparece en el texto de la página."},{"page":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","detail":"Rankea para <strong>\"llaves para lavabos\"</strong> (pos. 9.2, 250 impr.) pero el término no aparece en el texto de la página."}],"contentImprove":[{"page":"https://coronamexico.com/productos/lavamanos/c/lavamanos","detail":"<strong>¿Qué tipos y modelos de sanitarios existen (one-piece, two-piece, suspensión, para discapacitados)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/productos/lavamanos/c/lavamanos","detail":"<strong>¿Cuáles son las dimensiones, conexiones y compatibilidades necesarias para la instalación en casa?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/productos/sanitarios/c/sanitarios","detail":"<strong>¿Qué tipos de sanitarios existen (sifón, taza, cisterna, suspendido, de compostaje) y en qué se diferencian?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/productos/sanitarios/c/sanitarios","detail":"<strong>¿Qué normas, medidas y requisitos de instalación y evacuación aplican en México?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","detail":"<strong>¿Qué es un lavabo de sobreponer y qué tipos/materiales existen?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","detail":"<strong>¿Qué medidas y formas hay y cómo elegir la compatibilidad con el mueble y la grifería?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","detail":"<strong>Dimensiones y medidas recomendadas para lavabos en baños pequeños.</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","detail":"<strong>Tipos y diseños (lavabo de pared, de esquina, semiencastrado, sobreencimera, pedestal).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","detail":"<strong>¿Qué medidas (alto, ancho, profundidad) y dimensión de espacio debo considerar al elegir uno?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","detail":"<strong>¿Cómo es la instalación: requisitos de plomería, soporte en pared y compatibilidad con lavabos modernos?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"keywords":{"general":[{"query":"mingitorio","clicks":11,"impressions":12994,"position":8.1,"delta":"+4"},{"query":"baño","clicks":2,"impressions":8764,"position":2.6,"delta":"0"},{"query":"accesorios para baño","clicks":12,"impressions":8336,"position":4.8,"delta":"+5"},{"query":"mueble para baño","clicks":12,"impressions":7100,"position":10,"delta":"+8"},{"query":"sanitario","clicks":8,"impressions":3022,"position":9.6,"delta":"-4"},{"query":"medidas de un baño","clicks":6,"impressions":2452,"position":4.8,"delta":"-4"},{"query":"regaderas de baño","clicks":1,"impressions":2268,"position":1.6,"delta":"0"},{"query":"regaderas para baño modernas","clicks":4,"impressions":2136,"position":1.6,"delta":"+2"}],"target":[{"query":"lavamanos","clicks":12,"impressions":7043,"position":8.7,"delta":"-6"},{"query":"sanitarios","clicks":6,"impressions":1745,"position":7.5,"delta":"-7"},{"query":"lavabo de sobreponer","clicks":3,"impressions":952,"position":9.6,"delta":"+2"},{"query":"muebles para baño de madera","clicks":1,"impressions":400,"position":8.6,"delta":"+1"},{"query":"muebles para baño","clicks":9,"impressions":1950,"position":13.6,"delta":"-3"},{"query":"taza de baño","clicks":2,"impressions":333,"position":11,"delta":"+2"}],"brand":[{"query":"corona","clicks":101,"impressions":14338,"position":6.9,"delta":"+1"},{"query":"sanitarios corona","clicks":100,"impressions":627,"position":11.1,"delta":"+32"},{"query":"corona sanitarios","clicks":71,"impressions":502,"position":3.8,"delta":"+25"},{"query":"corona mexico","clicks":69,"impressions":337,"position":9.7,"delta":"+2"},{"query":"wc corona","clicks":44,"impressions":340,"position":9.1,"delta":"-16"},{"query":"porcelana corona de mexico","clicks":40,"impressions":101,"position":1,"delta":"-7"}],"nonBrand":[{"query":"accesorios para baño","clicks":12,"impressions":8336,"position":4.8,"delta":"+5"},{"query":"lavamanos","clicks":12,"impressions":7043,"position":8.7,"delta":"-6"},{"query":"lavamanos con pedestal","clicks":12,"impressions":419,"position":3.6,"delta":"+9"},{"query":"mueble para baño","clicks":12,"impressions":7100,"position":10,"delta":"+8"},{"query":"medidas de un baño completo","clicks":11,"impressions":1783,"position":4.5,"delta":"+5"},{"query":"mingitorio","clicks":11,"impressions":12994,"position":8.1,"delta":"+4"}]},"sitemap":{"totalSitemaps":5,"totalSubmitted":516,"sitemapsWithErrors":0,"sitemapsWithWarnings":4,"sitemaps":[{"path":"https://coronamexico.com/_ui/spcm/sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2025-10-21T15:03:15.187Z","lastDownloaded":"2026-08-16T09:17:36.847Z","submitted":17,"indexed":0,"indexRate":"0%","errors":"0","warnings":"3","status":"low-indexing","download":{"ok":true,"urlCount":17,"localPath":"reports/coronamexico/2026-08-19/data/sitemaps/sitemap.xml"}},{"path":"https://coronamexico.com/_ui/spcm/blog/sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2025-10-21T14:49:44.170Z","lastDownloaded":"2026-08-13T00:39:45.241Z","submitted":5,"indexed":0,"indexRate":"0%","errors":"0","warnings":"5","status":"low-indexing","download":{"ok":true,"urlCount":5,"localPath":"reports/coronamexico/2026-08-19/data/sitemaps/sitemap-2.xml"}},{"path":"https://coronamexico.com/sitemap/Category-corona-mx-es-MXN-1.xml","isSitemapsIndex":false,"lastSubmitted":"2025-08-29T16:30:07.258Z","lastDownloaded":"2026-08-16T19:21:59.803Z","submitted":15,"indexed":0,"indexRate":"0%","errors":"0","warnings":"2","status":"low-indexing","download":{"ok":true,"urlCount":15,"localPath":"reports/coronamexico/2026-08-19/data/sitemaps/Category-corona-mx-es-MXN-1.xml"}},{"path":"https://coronamexico.com/sitemap/CategoryLanding-corona-mx-es-MXN-1.xml","isSitemapsIndex":false,"lastSubmitted":"2025-08-29T16:29:34.245Z","lastDownloaded":"2026-08-12T15:15:16.893Z","submitted":19,"indexed":0,"indexRate":"0%","errors":"0","warnings":"0","status":"low-indexing","download":{"ok":true,"urlCount":19,"localPath":"reports/coronamexico/2026-08-19/data/sitemaps/CategoryLanding-corona-mx-es-MXN-1.xml"}},{"path":"https://coronamexico.com/sitemap/Product-corona-mx-es-MXN-1.xml","isSitemapsIndex":false,"lastSubmitted":"2025-08-25T16:35:43.487Z","lastDownloaded":"2026-08-13T10:57:04.979Z","submitted":460,"indexed":0,"indexRate":"0%","errors":"0","warnings":"1","status":"low-indexing","download":{"ok":true,"urlCount":245,"localPath":"reports/coronamexico/2026-08-19/data/sitemaps/Product-corona-mx-es-MXN-1.xml"}}],"totalUrlsInSitemaps":301,"seedUrlsIndexing":{"totalChecked":20,"totalIndexed":20,"indexRate":"100.0%","pages":[{"path":"/","url":"https://coronamexico.com/","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/lavamanos/c/lavamanos","url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/sanitarios/c/sanitarios","url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/lavabo-sobreponer.html","url":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/lavabos-banos-pequenos.html","url":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/lavabos-pedestal.html","url":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/sanitarios-modernos.html","url":"https://coronamexico.com/_ui/spcm/sanitarios-modernos.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/llaves-lavabo-bano.html","url":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/muebles-bano-madera.html","url":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/griferia/regaderas/c/regaderas","url":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/muebles-bano.html","url":"https://coronamexico.com/_ui/spcm/muebles-bano.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/articulos-bano.html","url":"https://coronamexico.com/_ui/spcm/articulos-bano.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/sanitarios/mingitorios/c/mingitorios","url":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/muebles-bano-moderno.html","url":"https://coronamexico.com/_ui/spcm/muebles-bano-moderno.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/regaderas-bano.html","url":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/inodoros.html","url":"https://coronamexico.com/_ui/spcm/inodoros.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/muebles-bano-pequeno.html","url":"https://coronamexico.com/_ui/spcm/muebles-bano-pequeno.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/regaderas-tipo-lluvia.html","url":"https://coronamexico.com/_ui/spcm/regaderas-tipo-lluvia.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/taza-bano.html","url":"https://coronamexico.com/_ui/spcm/taza-bano.html","coverageState":"Enviada e indexada","indexed":true},{"path":"/_ui/spcm/regaderas-modernas.html","url":"https://coronamexico.com/_ui/spcm/regaderas-modernas.html","coverageState":"Enviada e indexada","indexed":true}]},"seedUrlsNotInSitemap":[{"path":"/","url":"https://coronamexico.com/"}]},"robotsTxt":{"url":"https://coronamexico.com/robots.txt","content":"\n\nUser-agent: *\nAllow:\n\nDisallow: /cart\nDisallow: /checkout\nDisallow: /my-account\nDisallow: /search\nDisallow: /*?q=\nDisallow: /*?sort\n\n\n\nSitemap: https://coronamexico.com/sitemap.xml\n\nUser-agent: CazoodleBot\nDisallow: /\n\nUser-agent: MJ12bot\nDisallow: /\n\nUser-agent: dotbot/1.0\nDisallow: /\n\n# Block Gigabot\nUser-agent: Gigabot\nDisallow: /","localPath":"reports/coronamexico/2026-08-19/data/robots.txt"},"keywordVolume":{"rows":[{"query":"Lavamanos","volume":14800,"clicks":12,"impressions":7043,"position":2},{"query":"Sanitarios","volume":18100,"clicks":6,"impressions":1745,"position":null},{"query":"Lavabo de sobreponer","volume":1600,"clicks":3,"impressions":952,"position":4},{"query":"Lavabos para baños pequeños","volume":5400,"clicks":0,"impressions":0,"position":6},{"query":"Lavabos de pedestal","volume":1300,"clicks":0,"impressions":0,"position":4},{"query":"Sanitarios modernos","volume":210,"clicks":0,"impressions":0,"position":8},{"query":"Llaves para lavabo de baño","volume":5400,"clicks":0,"impressions":0,"position":6},{"query":"Muebles para baño de madera","volume":1600,"clicks":1,"impressions":400,"position":7},{"query":"Regaderas","volume":33100,"clicks":0,"impressions":0,"position":null},{"query":"Muebles para baño","volume":49500,"clicks":9,"impressions":1950,"position":null},{"query":"Artículos para baño","volume":480,"clicks":0,"impressions":0,"position":5},{"query":"Mingitorios","volume":33100,"clicks":0,"impressions":0,"position":null},{"query":"Muebles de baño moderno","volume":880,"clicks":0,"impressions":0,"position":null},{"query":"Regaderas para baño","volume":33100,"clicks":0,"impressions":0,"position":null},{"query":"Inodoro","volume":22200,"clicks":0,"impressions":0,"position":null},{"query":"Muebles de baño pequeño","volume":390,"clicks":0,"impressions":0,"position":null},{"query":"Regaderas tipo lluvia","volume":720,"clicks":0,"impressions":0,"position":null},{"query":"Taza de baño","volume":74000,"clicks":2,"impressions":333,"position":null},{"query":"Regaderas modernas","volume":2400,"clicks":0,"impressions":0,"position":null},{"query":"Lavabo doble para baño","volume":480,"clicks":0,"impressions":0,"position":null}]},"queryVariations":[{"url":"https://coronamexico.com/","mainQuery":"corona","variations":["corona mexico","porcelana corona de mexico","corona baños","coronamexico","porcelana corona de mexico sa de cv"]},{"url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","mainQuery":"corona lavabos","variations":["lavabo corona","lavamanos corona","lavabos corona","lavamanos","lavamanos marca corona"]},{"url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","mainQuery":"sanitarios corona","variations":["corona sanitarios","sanitario corona","wc corona","baños corona","corona wc"]},{"url":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","mainQuery":"lavabo de sobreponer pequeño","variations":["lavabo de sobreponer","lavabos sobre medida","lavabo sobrepuesto","lavabos sobreponer","lavabo para sobreponer"]},{"url":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","mainQuery":"lavabos pequeños","variations":["lavabos para baño pequeños","lavabo de baño pequeño","lavabos para baños pequeños","lavabo pequeño","lavabo para baño pequeño"]},{"url":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","mainQuery":"lavabos con pedestal","variations":["lavabo corona con pedestal","lavabo corona","lavabos de pedestal","lavabos corona","corona lavabos"]},{"url":"https://coronamexico.com/_ui/spcm/sanitarios-modernos.html","mainQuery":"corona muebles de baño","variations":["sanitarios modernos","baños corona","sanitarios modernos corona","lavabo corona","sanitarios corona catálogo"]},{"url":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","mainQuery":"llaves para lavabos","variations":["llaves para baño","llaves para lavabos de baño","llaves de lavado","llave lavabo baño","llave para baño"]},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","mainQuery":"muebles para baño de madera","variations":["muebles para baño de madera modernos","muebles para baño de madera sencillos","imágenes de muebles de madera para baño","mueble de madera baño","muebles baño madera"]},{"url":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","mainQuery":"regaderas","variations":["regadera","regadera sobrepuesta","regadera spa","duchas corona","regadera corona"]},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano.html","mainQuery":"corona muebles de baño","variations":["mueble para baño","muebles para baño","muebles de baño","mueble de baño","muebles corona"]},{"url":"https://coronamexico.com/_ui/spcm/articulos-bano.html","mainQuery":"mercado de accesorios de baño de lujo en méxico","variations":["kit de accesorios para baño corona","accesorios para baño corona","accesorios corona","corona accesorios","corona accesorios baño"]},{"url":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","mainQuery":"mingitorios","variations":["mingitorio corona","migitorios","mingitorio seco corona","mijitorios","mingitorio"]},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-moderno.html","mainQuery":"mueble de baño corona","variations":["corona muebles de baño","muebles para baño corona","muebles de baño corona","silla corona","muebles corona para baño"]},{"url":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","mainQuery":"regaderas para baño modernas","variations":["regaderas de bano","regaderas de baño","tipos de regaderas para baño","regaderas para duchas","regadera para baño moderna"]},{"url":"https://coronamexico.com/_ui/spcm/inodoros.html","mainQuery":"tazas de baño corona","variations":["inodoros modernos","taza de baño corona","wc corona precio","corona wc","sanitario marca corona"]},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-pequeno.html","mainQuery":"baños tivoli","variations":["corona muebles de baño","muebleria corona","muebles corona","muebles para baño corona","mueble de baño sencillo"]},{"url":"https://coronamexico.com/_ui/spcm/regaderas-tipo-lluvia.html","mainQuery":"regaderas tipo lluvia","variations":["regaderas para baño tipo lluvia","regadera de lluvia","regaderas de lluvia","regaderas corona","ducha tipo lluvia"]},{"url":"https://coronamexico.com/_ui/spcm/taza-bano.html","mainQuery":"taza de baño","variations":["tazas de baño en mexico","tazas de baño","taza de baño en mexico","tazas de baño para escuelas","tasa corona"]},{"url":"https://coronamexico.com/_ui/spcm/regaderas-modernas.html","mainQuery":"regadera corona","variations":["regaderas modernas","estilos de regaderas para baño","regadera moderna","llaves para regadera modernas","tipos de regaderas modernas"]},{"url":"https://coronamexico.com/_ui/spcm/lavabo-doble-bano.html","mainQuery":"lavabo doble","variations":["lavabos dobles","lavabo doble para baño","lavamanos doble para baño","lavabos dobles para baño","lavamanos doble"]}],"aiActions":[{"page":"https://coronamexico.com/","detail":"El home tiene 4 <h1> en vez de uno: son los ítems del menú de navegación (\"Sanitarios\", \"Lavamanos\", \"Vanities\", \"griferias\") marcados incorrectamente como <h1> en el HTML en vez de como links de nav. Ninguno describe el home en sí. Corregir el markup del menú a <nav>/<a> y agregar un único <h1> que describa la propuesta de valor del home."},{"page":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","detail":"La página tiene 5 <h1> en vez de uno: los primeros 4 (\"Sanitarios\", \"Lavamanos\", \"Vanities\", \"griferias\") son ítems del menú de navegación marcados por error como <h1>, y diluyen la relevancia del H1 real de la página (\"Regaderas\"). Corregir el markup del menú, dejando un solo H1 por página."},{"page":"https://coronamexico.com/productos/lavamanos/c/lavamanos","detail":"La página tiene 5 <h1> en vez de uno: los primeros 4 (\"Sanitarios\", \"Lavamanos\", \"Vanities\", \"griferias\") son ítems del menú de navegación marcados por error como <h1>, y diluyen la relevancia del H1 real de la página (\"Lavamanos\"). Corregir el markup del menú, dejando un solo H1 por página."},{"page":"https://coronamexico.com/productos/sanitarios/c/sanitarios","detail":"La página tiene 5 <h1> en vez de uno: los primeros 4 (\"Sanitarios\", \"Lavamanos\", \"Vanities\", \"griferias\") son ítems del menú de navegación marcados por error como <h1>, y diluyen la relevancia del H1 real de la página (\"Sanitarios\"). Corregir el markup del menú, dejando un solo H1 por página."},{"page":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","detail":"La página tiene 5 <h1> en vez de uno: los primeros 4 (\"Sanitarios\", \"Lavamanos\", \"Vanities\", \"griferias\") son ítems del menú de navegación marcados por error como <h1>, y diluyen la relevancia del H1 real de la página (\"Mingitorios\"). Corregir el markup del menú, dejando un solo H1 por página."},{"page":"https://coronamexico.com/","detail":"No tiene datos estructurados (JSON-LD): agregar schema.org tipo WebSite/Organization, igual que ya tienen las páginas /productos/.../c/* (WebPage + BreadcrumbList). Sí tiene Open Graph, ese está bien."},{"page":"https://coronamexico.com/","detail":"3 de 18 imágenes con alt vacío o genérico: agregar alt descriptivos con el nombre del producto/categoría."},{"page":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","detail":"2 de 29 imágenes con alt vacío o genérico: agregar alt descriptivos con el nombre del producto."},{"page":"https://coronamexico.com/productos/lavamanos/c/lavamanos","detail":"2 de 29 imágenes con alt vacío o genérico: agregar alt descriptivos con el nombre del producto."},{"page":"https://coronamexico.com/productos/sanitarios/c/sanitarios","detail":"2 de 29 imágenes con alt vacío o genérico: agregar alt descriptivos con el nombre del producto."},{"page":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","detail":"3 de 9 imágenes con alt vacío o genérico: agregar alt descriptivos con el nombre del producto."},{"page":"https://coronamexico.com/_ui/spcm/articulos-bano.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList (la página lista varios productos) y OG básico para mejorar el preview al compartir en redes."},{"page":"https://coronamexico.com/_ui/spcm/inodoros.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano-moderno.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano-pequeno.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/muebles-bano.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-modernas.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/regaderas-tipo-lluvia.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/sanitarios-modernos.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."},{"page":"https://coronamexico.com/_ui/spcm/taza-bano.html","detail":"No tiene datos estructurados (JSON-LD) ni Open Graph (og:title/og:description): agregar schema.org tipo Product/ItemList y OG básico."}],"titleDescriptionAnalysis":[{"url":"https://coronamexico.com/","title":"Corona | Productos para la remodelación de tu baño","description":"Con Corona México haz que tu baño sea el que siempre soñaste, aquí te ofrecemos las mejores opciones en diseño, tecnología y funcionalidad. ¡Dale lo mejor a tu hogar!"},{"url":"https://coronamexico.com/productos/lavamanos/c/lavamanos","title":"Lavamanos para baños, remodela tu baño con Corona México","description":"En Corona encuentras el lavamanos perfecto para tu baño. Conoce nuestros diferentes estilos de lavamanos que combinan elegancia, diseño y funcionalidad."},{"url":"https://coronamexico.com/productos/sanitarios/c/sanitarios","title":"Sanitarios Corona México, diseños que transforman tu espacio","description":"Renueva tu baño con el estilo y funcionalidad de los Sanitarios Corona México. Explora nuestro catálogo y encuentra el sanitario perfecto para tu espacio."},{"url":"https://coronamexico.com/_ui/spcm/lavabo-sobreponer.html","title":"Lavabo de sobreponer. Descubre los diseños Corona México","description":"Los lavabos de sobreponer de Corona México aseguran una inversión confiable para tu hogar. Encuentra en nuestro catálogo  todo lo que tu casa necesita."},{"url":"https://coronamexico.com/_ui/spcm/lavabos-banos-pequenos.html","title":"Lavabos para baños pequeños. Conoce el estilo Corona México","description":"Nuestros lavabos para baños pequeños ofrecen soluciones estéticas y prácticas. Añade el toque perfecto de elegancia y funcionalidad a tus espacios."},{"url":"https://coronamexico.com/_ui/spcm/lavabos-pedestal.html","title":"Lavabos de pedestal. Transforma tu baño con Corona México","description":"Los lavabos de pedestal de Corona México le dan un toque sofisticado a tu baño con su diseño atemporal y elegante. Aprovecha y renueva tus espacios."},{"url":"https://coronamexico.com/_ui/spcm/sanitarios-modernos.html","title":"Sanitarios modernos. Renueva tu baño con Corona México","description":"Los sanitarios de Corona México destacan por su estética moderna y su capacidad de descarga eficiente. ¡Encuentra el estilo ideal en nuestro catálogo!"},{"url":"https://coronamexico.com/_ui/spcm/llaves-lavabo-bano.html","title":"Llaves para lavabo de baño. Conoce los diseños Corona México","description":"Transforma tu baño con nuestras llaves para lavabo, donde la funcionalidad se encuentra con el diseño. ¡Explora los diseños exclusivos de Corona!"},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-madera.html","title":"Muebles para baño de madera. Elige el estilo Corona México","description":"Dale calidez y elegancia a tu baño con muebles de madera que combinan lo natural y lo moderno. ¡Corona México tiene los diseños para tus necesidades!"},{"url":"https://coronamexico.com/productos/griferia/regaderas/c/regaderas","title":"Regaderas Corona México: Innovación y estilo en cada gota","description":"Explora nuestra variedad de regaderas diseñadas para combinar estilo y funcionalidad en tu baño. Transforma tus espacios de la mano de Corona México."},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano.html","title":"Muebles para baño. Diseños exclusivos en Corona México","description":"Los muebles para baño de Corona México están diseñados para optimizar tus espacios. ¡Conoce nuestros diseños y dale a tu baño un toque sofisticado!"},{"url":"https://coronamexico.com/_ui/spcm/articulos-bano.html","title":"Artículos para baño. Transforma tus espacios con Corona México","description":"Los artículos de baño de Corona México combinan funcionalidad y un estilo ideal. Transforma cualquier espacio en un refugio de confort y elegancia."},{"url":"https://coronamexico.com/productos/sanitarios/mingitorios/c/mingitorios","title":"Elegancia funcional: Mingitorios innovadores de Corona México","description":"Transforma tu espacio con los mingitorios de Corona México. Descubre más sobre nuestras soluciones y encuentra el mingitorio perfecto para tu proyecto."},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-moderno.html","title":"Muebles de baño moderno. Renueva tu hogar con Corona México","description":"Optimiza tus espacios con los muebles de baño moderno Corona, que ofrecen soluciones de almacenamiento inteligentes. ¡Renueva con nuestro estilo!"},{"url":"https://coronamexico.com/_ui/spcm/regaderas-bano.html","title":"Regaderas para baño. Renueva tus espacios con Corona México","description":"Descubre la combinación perfecta entre diseño y funcionalidad en las regaderas Corona. Conoce nuestra colección y elige la regadera ideal para tu hogar."},{"url":"https://coronamexico.com/_ui/spcm/inodoros.html","title":"Inodoros modernos y eficientes. Renueva tu baño con Corona México","description":"Con innovaciones que reducen el consumo de agua, los inodoros de Corona México ahorran sin comprometer el rendimiento. ¡Cotiza el que más te guste!"},{"url":"https://coronamexico.com/_ui/spcm/muebles-bano-pequeno.html","title":"Muebles de baño pequeño. Corona México optimiza tu espacio","description":"Los muebles de baño pequeño de Corona México están diseñados para maximizar cada rincón. Descubre los diseños que tenemos especialmente para ti."},{"url":"https://coronamexico.com/_ui/spcm/regaderas-tipo-lluvia.html","title":"Regaderas tipo lluvia. Corona México tiene lo que necesitas","description":"Transforma tu baño con las regaderas tipo lluvia de Corona México: tecnologías que optimizan el consumo de agua.  ¡Encuentra lo que tu hogar necesita!"},{"url":"https://coronamexico.com/_ui/spcm/taza-bano.html","title":"Taza de baño. Confort y elegancia con Corona México","description":"Una solución ideal para quienes buscan un balance entre elegancia y funcionalidad. ¡Renueva tu baño con el estilo que solo puedes encontrar en Corona!"},{"url":"https://coronamexico.com/_ui/spcm/regaderas-modernas.html","title":"Regaderas modernas. Estilo y funcionalidad en Corona México","description":"Las regaderas modernas de Corona México combinan un estilo elegante y contemporáneo que se adapta a cualquier espacio. ¡Conoce nuestra colección!"}],"competitors":[{"link":"https://www.helvex.com.mx","title":"Helvex","icon":"https://www.google.com/s2/favicons?domain=helvex.com.mx&sz=64","domainAuthority":42,"pageAuthority":38,"backlinks":15230,"referringDomains":410},{"link":"https://www.foset.com.mx","title":"Foset","icon":"https://www.google.com/s2/favicons?domain=foset.com.mx&sz=64","domainAuthority":35,"pageAuthority":31,"backlinks":8760,"referringDomains":260},{"link":"https://www.vainsa.com.mx","title":"Vainsa","icon":"https://www.google.com/s2/favicons?domain=vainsa.com.mx&sz=64","domainAuthority":29,"pageAuthority":27,"backlinks":4200,"referringDomains":150}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-[1600px] mx-auto flex gap-6 p-4 md:p-8 items-start">
+
+  <!-- ═══════════════ TABLA DE CONTENIDOS ═══════════════ -->
+  <!-- Se llena por JS a partir del título (.card-title, o data-nav-title si
+       lo tiene) de cada <section class="section-card"> — no hace falta
+       mantener esta lista a mano cada vez que se agrega una sección. -->
+  <aside class="hidden lg:block sticky top-20 self-start w-64 shrink-0 no-print">
+    <nav class="card shadow-md p-4" style="background:#ffffff;">
+      <p class="text-xs font-semibold text-base-content/50 uppercase tracking-wide mb-3">Secciones</p>
+      <ul class="space-y-1 text-sm" id="toc-list"></ul>
+    </nav>
+  </aside>
+
+  <main class="flex-1 min-w-0 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" data-nav-title="Resumen ejecutivo" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul id="ai-actions-list" class="list-disc pl-5 space-y-3"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) · volumen mensual promedio (DataForSEO), clicks/impresiones reales (Search Console) y posición actual en Google (ValueSERP)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th><th>Clicks</th><th>Impresiones</th><th>Posición</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Sitemaps encontrados</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Sitemap</th><th>Tipo</th><th>Enviadas</th><th>Indexadas (GSC)</th><th>URLs al descargar</th><th>Errores</th><th>Warnings</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="sitemap-list-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Resumen: seedUrls no encontradas en los sitemaps</div>
+      <div id="sitemap-missing-summary"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO FALTANTE ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="findings-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TITLE AND DESCRIPTION ANALYSER ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Title and Description analyser</h2>
+      <p class="text-base-content/60 mb-2">Title y meta description de cada seed URL · longitud recomendada: title 50-60 caracteres, description 120-155</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>URL</th><th>Title</th><th>Description</th></tr>
+          </thead>
+          <tbody id="title-description-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPETIDORES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Competidores</h2>
+      <p class="text-base-content/60 mb-2">Análisis comparativo de autoridad de dominio frente a la competencia</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th></th><th>Competidor</th><th>Domain Authority</th><th>Page Authority</th><th>Backlinks</th><th>Dominios de referencia</th></tr>
+          </thead>
+          <tbody id="competitors-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer class="text-center text-sm text-base-content/50 py-6 no-print max-w-[1600px] mx-auto">
+  Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+</footer>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // Los hallazgos de aiActions describen HTML (mencionan literalmente
+  // <title>, <body>, <h1>, etc.) — sin escapar, el navegador los parsea
+  // como tags reales y el primero sin cierre (ej. "<title>") se traga todo
+  // el resto del contenido como RCDATA invisible. Por eso este escape es
+  // obligatorio, no cosmético.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : (REPORT_DATA.cannibalization || []).map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${(canib.rows || []).map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
+
+  const SITEMAP_STATUS_CLASS = {
+    healthy: 'badge-success', partial: 'badge-warning', 'low-indexing': 'badge-error',
+    error: 'badge-error', pending: 'badge-ghost', empty: 'badge-ghost',
+  };
+  document.getElementById('sitemap-list-rows').innerHTML = (sm.sitemaps || []).length === 0
+    ? '<tr><td colspan="8" class="text-base-content/60">No hay sitemaps registrados en Search Console.</td></tr>'
+    : (sm.sitemaps || []).map(s => `
+    <tr>
+      <td class="break-all">${s.path}</td>
+      <td>${s.isSitemapsIndex ? 'Índice' : 'Sitemap'}</td>
+      <td>${s.submitted}</td>
+      <td>${s.indexed}</td>
+      <td>${s.download.ok ? s.download.urlCount : `<span class="text-error">error: ${s.download.error}</span>`}</td>
+      <td class="${s.errors > 0 ? 'text-error' : ''}">${s.errors}</td>
+      <td class="${s.warnings > 0 ? 'text-warning' : ''}">${s.warnings}</td>
+      <td><span class="badge ${SITEMAP_STATUS_CLASS[s.status] || 'badge-ghost'}">${s.status}</span></td>
+    </tr>`).join('');
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  const missingFromSitemap = sm.seedUrlsNotInSitemap || [];
+  document.getElementById('sitemap-missing-summary').innerHTML = missingFromSitemap.length === 0
+    ? `<p class="text-success">Todas las seedUrls (${(su.pages || []).length}) aparecen en el contenido de algún sitemap descargado.</p>`
+    : `
+    <p class="text-warning mb-2">${missingFromSitemap.length} de ${(su.pages || []).length} seedUrls NO aparecen en ningún sitemap descargado:</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead><tr><th>URL</th></tr></thead>
+        <tbody>
+          ${missingFromSitemap.map(u => `<tr><td>${u.url}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
+
+  // ── Findings ──
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
+    <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
+        },
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
+
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery || 'sin datos'}</strong></td><td>${q.variations.length ? q.variations.join(', ') : '—'}</td></tr>`).join('');
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl || [],
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions-list').innerHTML = (REPORT_DATA.aiActions || []).map(a => {
+    const detail = escapeHtml(a.detail);
+    const sepIdx = detail.indexOf(': ');
+    const issue = sepIdx === -1 ? detail : detail.slice(0, sepIdx);
+    const action = sepIdx === -1 ? '' : detail.slice(sepIdx + 2);
+    return `
+    <li>
+      <p><strong>${issue}</strong>${action ? ': ' + action : ''}</p>
+      <a href="${escapeHtml(a.page)}" target="_blank" class="text-xs text-primary/70 hover:underline break-all">${escapeHtml(a.page)}</a>
+    </li>`;
+  }).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
+
+  // ── Title and Description analyser ──
+  function lengthBadgeClass(len, min, max) {
+    if (!len) return 'badge-error';
+    if (len < min || len > max) return 'badge-warning';
+    return 'badge-success';
+  }
+
+  document.getElementById('title-description-rows').innerHTML = (REPORT_DATA.titleDescriptionAnalysis || []).map(r => {
+    const titleLen = r.title ? r.title.length : 0;
+    const descLen = r.description ? r.description.length : 0;
+    return `
+    <tr>
+      <td class="break-all">${escapeHtml(r.url)}</td>
+      <td>
+        <p>${r.title ? escapeHtml(r.title) : '<span class="text-error">Sin title</span>'}</p>
+        <span class="badge badge-sm ${lengthBadgeClass(titleLen, 50, 60)}">${titleLen} car.</span>
+      </td>
+      <td>
+        <p>${r.description ? escapeHtml(r.description) : '<span class="text-error">Sin description</span>'}</p>
+        <span class="badge badge-sm ${lengthBadgeClass(descLen, 120, 155)}">${descLen} car.</span>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // ── Competidores ──
+  document.getElementById('competitors-rows').innerHTML = (REPORT_DATA.competitors || []).map(c => `
+    <tr>
+      <td><img src="${escapeHtml(c.icon)}" alt="" class="w-5 h-5" /></td>
+      <td><a href="${escapeHtml(c.link)}" target="_blank" class="hover:underline">${escapeHtml(c.title)}</a></td>
+      <td>${c.domainAuthority ?? '—'}</td>
+      <td>${c.pageAuthority ?? '—'}</td>
+      <td>${c.backlinks?.toLocaleString() ?? '—'}</td>
+      <td>${c.referringDomains?.toLocaleString() ?? '—'}</td>
+    </tr>`).join('');
+
+  // ── Tabla de contenidos + scroll-spy ──
+  function slugify(text) {
+    const COMBINING_MARKS = /[\u0300-\u036f]/g;
+    return text
+      .normalize('NFD').replace(COMBINING_MARKS, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  const tocSections = [...document.querySelectorAll('main.flex-1 > section.section-card')];
+  const tocList = document.getElementById('toc-list');
+  tocList.innerHTML = tocSections.map((sec, i) => {
+    const title = sec.dataset.navTitle || sec.querySelector('.card-title')?.textContent.trim() || `Sección ${i + 1}`;
+    const id = slugify(title) || `section-${i}`;
+    sec.id = id;
+    return `<li><a href="#${id}" class="toc-link" data-target="${id}">${title}</a></li>`;
+  }).join('');
+
+  const tocLinks = [...tocList.querySelectorAll('.toc-link')];
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const link = tocList.querySelector(`[data-target="${entry.target.id}"]`);
+      if (!link) return;
+      tocLinks.forEach(l => l.classList.remove('toc-active'));
+      link.classList.add('toc-active');
+    });
+  }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+  tocSections.forEach(sec => tocObserver.observe(sec));
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

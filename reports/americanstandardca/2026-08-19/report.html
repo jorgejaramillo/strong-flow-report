@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"americanstandardca","clientName":"American Standard CA","domain":"www.americanstandardca.com","periodStart":"21 jul 2026","periodEnd":"17 ago 2026","generatedAt":"19 ago 2026","pagesAnalyzed":10},"headerBadges":[{"text":"↓ 3.6% clicks","class":"badge-error"},{"text":"1592 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"5,545","valueClass":"text-primary","desc":"↓ 3.6% vs período anterior","descClass":"text-error"},{"title":"Impresiones","value":"138,042","desc":"↓ 1.2%","descClass":"text-error"},{"title":"CTR medio","value":"4.02%","desc":"↓ 0.10pp","descClass":"text-error"},{"title":"Posición media","value":"6.3","desc":"↑ 0.6 (mejor)","descClass":"text-success"},{"title":"URLs encontradas","value":"1,592","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"1,592","desc":"A Search Console"}],"domainAnalytics":null,"clicksOverTime":{"startDate":"2026-05-20","endDate":"2026-08-17","clicks":[239,245,203,148,85,324,278,249,255,186,105,73,267,252,293,256,179,152,96,250,261,270,222,219,124,105,260,224,212,206,212,95,79,244,218,237,233,257,152,91,189,266,253,236,233,116,86,251,235,242,275,263,125,91,268,280,273,233,208,107,69,263,269,238,213,189,104,79,269,266,247,239,177,109,85,274,269,269,252,196,126,91,194,258,261,245,191,85,91,259],"impressions":[6130,5605,4994,4166,3826,6535,6290,6315,5858,5160,4122,3514,5769,5993,6253,5726,5211,4450,3805,5585,6181,5761,5231,5484,4607,3659,5544,6043,6064,5646,4948,3710,3108,5394,5566,5436,5435,5321,4383,3625,5688,5861,5800,5881,4762,3737,3319,5395,5633,5756,5261,5002,4136,3691,5850,5774,5309,5447,5116,3861,3190,5469,5752,5230,5269,5026,3609,3831,5941,5551,5395,6085,5299,4026,3608,5388,5836,5195,5136,4964,3956,3428,5352,5596,5318,5552,5187,3948,3102,5462]},"cannibalization":[{"query":"lavamanos","rows":[{"url":"https://www.americanstandardca.com/categorias/lavamanos/","impressions":2653,"clicks":10,"position":7,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/","impressions":13678,"clicks":8,"position":4.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-meridien/","impressions":60,"clicks":0,"position":1,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/lavamanos-borneo/","impressions":184,"clicks":0,"position":2.5,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/lavamanos-institucional-ampliux/","impressions":56,"clicks":0,"position":9.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"sanitario","rows":[{"url":"https://www.americanstandardca.com/categorias/sanitarios/","impressions":1997,"clicks":2,"position":13.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/perfil-de-taza-alargada/","impressions":10200,"clicks":1,"position":7.4,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/sanitario-broadway-2/","impressions":93,"clicks":0,"position":10.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"orinal","rows":[{"url":"https://www.americanstandardca.com/categorias/orinales/","impressions":202,"clicks":1,"position":7.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/orinal-artico/","impressions":2278,"clicks":0,"position":4.7,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/orinal-washbrook-pint/","impressions":1630,"clicks":0,"position":5.1,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"fluxometro","rows":[{"url":"https://www.americanstandardca.com/productos/fluxometro-manual-para-sanitario/","impressions":1875,"clicks":3,"position":2.5,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/categorias/institucional/fluxometros/","impressions":136,"clicks":1,"position":6.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/fluxometro-sensor-para-orinal/","impressions":74,"clicks":0,"position":1.6,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/fluxometro-sensor-para-sanitario/","impressions":365,"clicks":0,"position":3.8,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lava manos","rows":[{"url":"https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/","impressions":1100,"clicks":0,"position":4.1,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/categorias/lavamanos/","impressions":207,"clicks":0,"position":6.4,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lavamanos con pedestal","rows":[{"url":"https://www.americanstandardca.com/productos/lavamanos-de-pedestal-colony/","impressions":1077,"clicks":8,"position":1.9,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/lavamanos-con-pedestal-olympus-o2/","impressions":152,"clicks":0,"position":5.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/categorias/lavamanos/","impressions":63,"clicks":0,"position":18.6,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"regadera de ducha","rows":[{"url":"https://www.americanstandardca.com/productos/regadera-cuadrada-de-20-cm/","impressions":680,"clicks":0,"position":2.2,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/regadera-redonda-de-30-cm/","impressions":123,"clicks":0,"position":3.3,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"orinales","rows":[{"url":"https://www.americanstandardca.com/categorias/orinales/","impressions":215,"clicks":2,"position":7.8,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/productos/orinal-artico/","impressions":450,"clicks":1,"position":3.8,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/catalogo/orinales-profesional/","impressions":91,"clicks":1,"position":4.7,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"fluxometro para inodoro","rows":[{"url":"https://www.americanstandardca.com/productos/fluxometro-manual-para-sanitario/","impressions":206,"clicks":2,"position":2.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/categorias/institucional/fluxometros/","impressions":404,"clicks":2,"position":6.9,"status":"Canibaliza","statusClass":"badge-warning"},{"url":"https://www.americanstandardca.com/productos/fluxometro-sensor-para-sanitario/","impressions":75,"clicks":0,"position":2,"status":"Canibaliza","statusClass":"badge-warning"}]},{"query":"lavamos","rows":[{"url":"https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/","impressions":260,"clicks":0,"position":3.3,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.americanstandardca.com/lavamos-venus-portada/","impressions":137,"clicks":0,"position":5,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://www.americanstandardca.com/catalogo-productos/","clicks":81,"prev":63,"delta":"+18"},{"page":"https://www.americanstandardca.com/productos/sanitario-de-una-pieza-fluid-ii-op/","clicks":36,"prev":22,"delta":"+14"},{"page":"https://www.americanstandardca.com/productos/sanitario-dos-piezas-15-cadet/","clicks":27,"prev":17,"delta":"+10"},{"page":"https://www.americanstandardca.com/categorias/asientos/","clicks":23,"prev":13,"delta":"+10"},{"page":"https://www.americanstandardca.com/productos/lavamanos-suspendido-saturnolavamanos-suspendido-saturno/","clicks":13,"prev":3,"delta":"+10"}],"losers":[{"page":"https://www.americanstandardca.com/categorias/griferia/","clicks":18,"prev":30,"delta":"-12"},{"page":"https://www.americanstandardca.com/productos/sanitario-equix-ii/","clicks":9,"prev":20,"delta":"-11"},{"page":"https://www.americanstandardca.com/productos/lavamanos-con-pedestal-olympus-o2/","clicks":8,"prev":19,"delta":"-11"},{"page":"https://www.americanstandardca.com/productos/lavamanos-de-incrustar-ovalyn-ii/","clicks":10,"prev":20,"delta":"-10"},{"page":"https://www.americanstandardca.com/productos/capacidad-de-evacuacion-500-gr/","clicks":15,"prev":24,"delta":"-9"}],"landingsPeriodLabel":"11 ago 2026 → 17 ago 2026","landingsCrawl":[{"url":"https://www.americanstandardca.com/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/index.html","retried":false},{"url":"https://www.americanstandardca.com/productos/orinal-seco-arica/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/productos_orinal-seco-arica.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/spa-baneras/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_spa-baneras.html","retried":false},{"url":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/productos_lavamanos-sobreponer-redondo.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/sanitarios/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_sanitarios.html","retried":false},{"url":"https://www.americanstandardca.com/elegir-griferia-bano/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/elegir-griferia-bano.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/asientos/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_asientos.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/orinales/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_orinales.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/sanitarios/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_sanitarios.html","retried":false},{"url":"https://www.americanstandardca.com/categorias/griferia/","localPath":"reports/americanstandardca/2026-08-19/data/crawl/categorias_griferia.html","retried":false}],"findings":[{"page":"https://www.americanstandardca.com/elegir-griferia-bano/","detail":"Rankea para <strong>\"griferia para baño\"</strong> (pos. 9.7, 283 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/categorias/orinales/","detail":"Rankea para <strong>\"mingitorio\"</strong> (pos. 7, 95 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/productos/orinal-seco-arica/","detail":"Rankea para <strong>\"urinario seco\"</strong> (pos. 1.5, 66 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/categorias/asientos/","detail":"Rankea para <strong>\"asiento de inodoro\"</strong> (pos. 10.5, 65 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","detail":"Rankea para <strong>\"lavamanos redondos\"</strong> (pos. 1.6, 45 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/categorias/griferia/","detail":"Rankea para <strong>\"griferia para baño\"</strong> (pos. 7.3, 35 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/elegir-griferia-bano/","detail":"Rankea para <strong>\"cómo elegir grifería para baño\"</strong> (pos. 6.5, 24 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/categorias/orinales/","detail":"Rankea para <strong>\"urinal o orinal\"</strong> (pos. 4.8, 24 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.americanstandardca.com/categorias/orinales/","detail":"Rankea para <strong>\"orinaderos\"</strong> (pos. 1, 22 impr.) pero el término no aparece en el texto de la página."}],"contentImprove":[{"page":"https://www.americanstandardca.com/","detail":"<strong>Tipos y estilos de grifería moderna (monomando, termostática, sensor, de cocina, de baño).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/","detail":"<strong>Materiales, acabados y durabilidad (latón, acero inoxidable, cromo, mate).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/productos/orinal-seco-arica/","detail":"<strong>¿Qué es una cotización y qué incluye (definición y alcance)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/productos/orinal-seco-arica/","detail":"<strong>¿Qué tipos de cotizaciones existen (por producto, servicio, moneda, seguro, importación/exportación)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/categorias/spa-baneras/","detail":"<strong>¿Qué modelos de bañeras American Standard existen y cuáles son sus características distintivas?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/categorias/spa-baneras/","detail":"<strong>¿De qué materiales están hechas y cuál es su durabilidad y resistencia a manchas/rasguños?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","detail":"<strong>¿Qué es una cotización y para qué sirve?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","detail":"<strong>¿Qué tipos de cotizaciones existen (productos, servicios, seguros, divisas)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/categorias/sanitarios/","detail":"<strong>¿Qué modelos y gamas premium ofrece la marca y en qué se diferencian entre sí?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.americanstandardca.com/categorias/sanitarios/","detail":"<strong>¿Qué tecnologías incorporan (ahorro de agua, sistemas de limpieza, confort acústico y ergonómico) y cómo benefician al usuario?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"keywords":{"general":[{"query":"lavamanos","clicks":17,"impressions":15152,"position":4.7,"delta":"+1"},{"query":"sanitario","clicks":3,"impressions":10513,"position":7.9,"delta":"0"},{"query":"orinal","clicks":1,"impressions":2396,"position":5.1,"delta":"+1"},{"query":"fluxometro","clicks":4,"impressions":1895,"position":2.5,"delta":"+1"},{"query":"baños modernos","clicks":1,"impressions":1379,"position":7.8,"delta":"+1"},{"query":"lavamanos con pedestal","clicks":8,"impressions":1136,"position":2.6,"delta":"0"},{"query":"lavamano","clicks":1,"impressions":986,"position":2.3,"delta":"-2"},{"query":"lavamanos de pedestal","clicks":2,"impressions":680,"position":1.9,"delta":"+2"}],"target":[{"query":"orinal seco","clicks":5,"impressions":37,"position":2.5,"delta":"-1"},{"query":"bañeras","clicks":2,"impressions":256,"position":4.6,"delta":"0"},{"query":"sanitarios","clicks":8,"impressions":2890,"position":18.9,"delta":"-1"},{"query":"orinales","clicks":4,"impressions":506,"position":4.4,"delta":"+2"},{"query":"inodoros","clicks":1,"impressions":88,"position":6.2,"delta":"+1"},{"query":"lavamanos cuadrado","clicks":1,"impressions":127,"position":3.6,"delta":"+1"},{"query":"ducha","clicks":2,"impressions":138,"position":8.5,"delta":"+2"},{"query":"accesorios para baños","clicks":0,"impressions":20,"position":3.9,"delta":"0"}],"brand":[{"query":"american standard","clicks":357,"impressions":2243,"position":5.3,"delta":"+44"},{"query":"american standard guatemala","clicks":172,"impressions":416,"position":2.2,"delta":"+21"},{"query":"incesa standard","clicks":119,"impressions":502,"position":3.1,"delta":"+4"},{"query":"american standard costa rica","clicks":89,"impressions":281,"position":2.2,"delta":"+5"},{"query":"inodoro american standard","clicks":41,"impressions":358,"position":3.9,"delta":"+6"},{"query":"american standard honduras","clicks":36,"impressions":101,"position":2.4,"delta":"+1"}],"nonBrand":[{"query":"incesa","clicks":29,"impressions":274,"position":3.3,"delta":"+14"},{"query":"lavamanos","clicks":17,"impressions":15152,"position":4.7,"delta":"+1"},{"query":"elderly cadet","clicks":9,"impressions":13,"position":1,"delta":"+6"},{"query":"baby toilet","clicks":8,"impressions":47,"position":3.5,"delta":"+3"},{"query":"incesa costa rica","clicks":8,"impressions":38,"position":2,"delta":"+2"},{"query":"lavamanos con pedestal","clicks":8,"impressions":1136,"position":2.6,"delta":"0"}]},"sitemap":{"totalSitemaps":6,"totalSubmitted":1592,"sitemapsWithErrors":0,"sitemapsWithWarnings":4,"sitemaps":[{"path":"https://www.americanstandardca.com/catalogo-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-05-20T22:23:22.237Z","lastDownloaded":"2026-08-18T23:17:04.501Z","submitted":95,"indexed":0,"indexRate":"0%","errors":"0","warnings":"6","status":"low-indexing","download":{"ok":true,"urlCount":92,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/catalogo-sitemap.xml"}},{"path":"https://www.americanstandardca.com/categorias-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-05-20T22:22:47.773Z","lastDownloaded":"2026-08-14T13:09:41.076Z","submitted":18,"indexed":0,"indexRate":"0%","errors":"0","warnings":"0","status":"low-indexing","download":{"ok":true,"urlCount":18,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/categorias-sitemap.xml"}},{"path":"https://www.americanstandardca.com/productos-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-05-20T22:22:18.926Z","lastDownloaded":"2026-08-13T03:03:57.236Z","submitted":146,"indexed":0,"indexRate":"0%","errors":"0","warnings":"1","status":"low-indexing","download":{"ok":true,"urlCount":146,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/productos-sitemap.xml"}},{"path":"https://www.americanstandardca.com/post-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-05-20T22:21:26.917Z","lastDownloaded":"2026-08-18T14:21:07.710Z","submitted":16,"indexed":0,"indexRate":"0%","errors":"0","warnings":"0","status":"low-indexing","download":{"ok":true,"urlCount":16,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/post-sitemap.xml"}},{"path":"https://www.americanstandardca.com/sitemap_index.xml","isSitemapsIndex":true,"lastSubmitted":"2024-05-20T20:01:09.479Z","lastDownloaded":"2026-08-15T10:28:40.513Z","submitted":1303,"indexed":0,"indexRate":"0%","errors":"0","warnings":"1","status":"low-indexing","download":{"ok":true,"urlCount":1299,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/sitemap_index.xml"}},{"path":"https://www.americanstandardca.com/page-sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-05-20T18:15:12.378Z","lastDownloaded":"2026-08-11T19:28:25.402Z","submitted":14,"indexed":0,"indexRate":"0%","errors":"0","warnings":"2","status":"low-indexing","download":{"ok":true,"urlCount":13,"localPath":"reports/americanstandardca/2026-08-19/data/sitemaps/page-sitemap-2.xml"}}],"totalUrlsInSitemaps":1299,"seedUrlsIndexing":{"totalChecked":10,"totalIndexed":10,"indexRate":"100.0%","pages":[{"path":"/","url":"https://www.americanstandardca.com/","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/orinal-seco-arica/","url":"https://www.americanstandardca.com/productos/orinal-seco-arica/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/spa-baneras/","url":"https://www.americanstandardca.com/categorias/spa-baneras/","coverageState":"Enviada e indexada","indexed":true},{"path":"/productos/lavamanos-sobreponer-redondo/","url":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/sanitarios/","url":"https://www.americanstandardca.com/categorias/sanitarios/","coverageState":"Enviada e indexada","indexed":true},{"path":"/elegir-griferia-bano/","url":"https://www.americanstandardca.com/elegir-griferia-bano/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/asientos/","url":"https://www.americanstandardca.com/categorias/asientos/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/orinales/","url":"https://www.americanstandardca.com/categorias/orinales/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/sanitarios/","url":"https://www.americanstandardca.com/categorias/sanitarios/","coverageState":"Enviada e indexada","indexed":true},{"path":"/categorias/griferia/","url":"https://www.americanstandardca.com/categorias/griferia/","coverageState":"Enviada e indexada","indexed":true}]},"seedUrlsNotInSitemap":[{"path":"/categorias/accesorios/","url":"https://www.americanstandardca.com/categorias/accesorios/"}]},"robotsTxt":{"url":"https://www.americanstandardca.com/robots.txt","content":"# START YOAST BLOCK\n# ---------------------------\nUser-agent: *\nDisallow:\n\nSitemap: http://www.americanstandardca.com/sitemap_index.xml\n# ---------------------------\n# END YOAST BLOCK","localPath":"reports/americanstandardca/2026-08-19/data/robots.txt"},"keywordVolume":{"rows":[{"query":"Orinal seco","volume":20,"clicks":5,"impressions":37,"position":1},{"query":"Bañeras","volume":320,"clicks":2,"impressions":256,"position":null},{"query":"Lavamanos redondo","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Sanitarios","volume":320,"clicks":8,"impressions":2890,"position":null},{"query":"Grifería para baño","volume":110,"clicks":0,"impressions":0,"position":4},{"query":"Tapas de inodoro","volume":260,"clicks":0,"impressions":0,"position":null},{"query":"Orinales","volume":140,"clicks":4,"impressions":506,"position":7},{"query":"Inodoros","volume":1300,"clicks":1,"impressions":88,"position":null},{"query":"Grifería","volume":260,"clicks":0,"impressions":0,"position":null},{"query":"Lavamanos cuadrado","volume":10,"clicks":1,"impressions":127,"position":6},{"query":"Orinal ecológico","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"Ducha","volume":1600,"clicks":2,"impressions":138,"position":null},{"query":"Accesorios para baños","volume":90,"clicks":0,"impressions":20,"position":null},{"query":"Fluxómetros","volume":10,"clicks":0,"impressions":0,"position":2},{"query":"Bañeras hidromasaje","volume":30,"clicks":0,"impressions":0,"position":null}]},"queryVariations":[{"url":"https://www.americanstandardca.com/","mainQuery":"american standard","variations":["american standard guatemala","incesa standard","american standard costa rica","american standard honduras","incesa"]},{"url":"https://www.americanstandardca.com/productos/orinal-seco-arica/","mainQuery":"orinal seco","variations":["urinario seco","american standar","mingitorio seco american standard","orinales secos","urinarios secos"]},{"url":"https://www.americanstandardca.com/categorias/spa-baneras/","mainQuery":"bañera","variations":["bañeras","tina american standard","bañera american standard","baneras","tina bañera"]},{"url":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","mainQuery":"lavamanos sobreponer","variations":["lavabo de sobreponer redondo","lavamanos redondo","lavamanos redondo de sobreponer","lavamanos redondos","lavamanos de sobreponer"]},{"url":"https://www.americanstandardca.com/categorias/sanitarios/","mainQuery":"inodoro american standard","variations":["american standard inodoros","american standard","american standard guatemala","incesa standard","inodoros american standard"]},{"url":"https://www.americanstandardca.com/elegir-griferia-bano/","mainQuery":"griferia para baño","variations":["grifos para baño","cómo elegir grifería para baño","griferia baño","griferia para baños","grifo para baño"]},{"url":"https://www.americanstandardca.com/categorias/asientos/","mainQuery":"american standard","variations":["tapa de inodoro american standard","tapa inodoro american standard costa rica","tapadera de baño american standard","tapas de inodoro american standard","tapa de baño american standard"]},{"url":"https://www.americanstandardca.com/categorias/orinales/","mainQuery":"mingitorio american standard","variations":["urinario american standard","orinales","american standard urinal","orinal","orinal seco"]},{"url":"https://www.americanstandardca.com/categorias/sanitarios/","mainQuery":"inodoro american standard","variations":["american standard inodoros","american standard","american standard guatemala","incesa standard","inodoros american standard"]},{"url":"https://www.americanstandardca.com/categorias/griferia/","mainQuery":"griferia american standard","variations":["american standard","griferia para baño","american standar","griferia","american standard costa rica"]},{"url":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-cuadrado/","mainQuery":"lavamanos cuadrado","variations":["lavamanos cuadrados de sobreponer","lavamanos de sobreponer cuadrado","lavamanos cuadrados","lavamanos cuadrado sobreponer","lavamano cuadrado"]},{"url":"https://www.americanstandardca.com/productos/orinal-seco-arica/","mainQuery":"orinal seco","variations":["urinario seco","american standar","mingitorio seco american standard","orinales secos","urinarios secos"]},{"url":"https://www.americanstandardca.com/categorias/ducha/","mainQuery":"duchas para baño","variations":["ducha","duchas","ducha american standard","duchas de baño","ducha americana"]},{"url":"https://www.americanstandardca.com/categorias/accesorios/","mainQuery":null,"variations":[]},{"url":"https://www.americanstandardca.com/catalogo/fluxometros/","mainQuery":"fluxometro american standard","variations":["fluxometros","fluxometro","fluxometro american standard manual","american standard fluxometro","fluxometro american standard para wc"]},{"url":"https://www.americanstandardca.com/categorias/baneras-hidromasaje/","mainQuery":"hidromasaje","variations":["jacuzzi american standard","bañera american standard","bañera de hidromasaje","american standard jacuzzi","bañera hidromasaje"]}],"aiActions":[{"page":"https://www.americanstandardca.com/categorias/asientos/","detail":"No tiene <h1>: el título real de la página (\"ASIENTOS\") está marcado como <h2> en su lugar. Agregar un <h1> único con el nombre de la categoría."},{"page":"https://www.americanstandardca.com/categorias/griferia/","detail":"No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."},{"page":"https://www.americanstandardca.com/categorias/orinales/","detail":"No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."},{"page":"https://www.americanstandardca.com/categorias/sanitarios/","detail":"No tiene <h1>: el título de la categoría (\"SANITARIOS\") está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."},{"page":"https://www.americanstandardca.com/categorias/spa-baneras/","detail":"No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."},{"page":"https://www.americanstandardca.com/","detail":"El home tiene 5 <h1> en vez de uno: son los títulos de cada item del carrusel de galería (\"Grifería Moderna\", \"Grifería Atemporal\", \"Grifería Zen\", \"Serie Elemento\", \"Grifería Spa Experience\") — ninguno describe el home en sí. Bajar esos a <h2>/<h3> y dejar un único <h1> con la propuesta de valor del sitio."},{"page":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","detail":"La página tiene 4 <h1>: \"COTIZACIÓN\" aparece 2 veces (encabezado del modal de cotización, duplicado por una variante mobile/desktop que quedan ambas en el DOM) y \"Lavamanos Elemento\" también 2 veces (mismo patrón mobile/desktop). Dejar un solo <h1> real con el nombre del producto y bajar \"COTIZACIÓN\" a <h2> o quitarlo del heading."},{"page":"https://www.americanstandardca.com/productos/orinal-seco-arica/","detail":"La página tiene 4 <h1>: \"COTIZACIÓN\" aparece 2 veces (modal de cotización duplicado mobile/desktop) y \"Orinal Seco Arica\" también 2 veces (mismo patrón mobile/desktop). Dejar un solo <h1> real con el nombre del producto y bajar \"COTIZACIÓN\" a <h2> o quitarlo del heading."},{"page":"https://www.americanstandardca.com/categorias/asientos/","detail":"14 de 17 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una — es la mayoría de las imágenes de la página."},{"page":"https://www.americanstandardca.com/categorias/griferia/","detail":"33 de 36 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."},{"page":"https://www.americanstandardca.com/categorias/orinales/","detail":"8 de 11 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."},{"page":"https://www.americanstandardca.com/categorias/sanitarios/","detail":"25 de 28 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."},{"page":"https://www.americanstandardca.com/categorias/spa-baneras/","detail":"15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."},{"page":"https://www.americanstandardca.com/elegir-griferia-bano/","detail":"6 de 9 imágenes sin alt (o alt vacío): agregar alt descriptivo relacionado al contenido del artículo."},{"page":"https://www.americanstandardca.com/","detail":"35 de 38 imágenes sin alt (o alt vacío) en el home: agregar alt descriptivo en cada una — es la mayoría de las imágenes del sitio."},{"page":"https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/","detail":"15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre y característica del producto en cada una."},{"page":"https://www.americanstandardca.com/productos/orinal-seco-arica/","detail":"15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre y característica del producto en cada una."}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul id="ai-actions-list" class="list-disc pl-5 space-y-3"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) · volumen mensual promedio (DataForSEO), clicks/impresiones reales (Search Console) y posición actual en Google (ValueSERP)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th><th>Clicks</th><th>Impresiones</th><th>Posición</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Sitemaps encontrados</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Sitemap</th><th>Tipo</th><th>Enviadas</th><th>Indexadas (GSC)</th><th>URLs al descargar</th><th>Errores</th><th>Warnings</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="sitemap-list-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Resumen: seedUrls no encontradas en los sitemaps</div>
+      <div id="sitemap-missing-summary"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO FALTANTE ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="findings-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-base-content/50 py-6 no-print">
+    Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+  </footer>
+
+</div>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // Los hallazgos de aiActions describen HTML (mencionan literalmente
+  // <title>, <body>, <h1>, etc.) — sin escapar, el navegador los parsea
+  // como tags reales y el primero sin cierre (ej. "<title>") se traga todo
+  // el resto del contenido como RCDATA invisible. Por eso este escape es
+  // obligatorio, no cosmético.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : (REPORT_DATA.cannibalization || []).map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${(canib.rows || []).map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
+
+  const SITEMAP_STATUS_CLASS = {
+    healthy: 'badge-success', partial: 'badge-warning', 'low-indexing': 'badge-error',
+    error: 'badge-error', pending: 'badge-ghost', empty: 'badge-ghost',
+  };
+  document.getElementById('sitemap-list-rows').innerHTML = (sm.sitemaps || []).length === 0
+    ? '<tr><td colspan="8" class="text-base-content/60">No hay sitemaps registrados en Search Console.</td></tr>'
+    : (sm.sitemaps || []).map(s => `
+    <tr>
+      <td class="break-all">${s.path}</td>
+      <td>${s.isSitemapsIndex ? 'Índice' : 'Sitemap'}</td>
+      <td>${s.submitted}</td>
+      <td>${s.indexed}</td>
+      <td>${s.download.ok ? s.download.urlCount : `<span class="text-error">error: ${s.download.error}</span>`}</td>
+      <td class="${s.errors > 0 ? 'text-error' : ''}">${s.errors}</td>
+      <td class="${s.warnings > 0 ? 'text-warning' : ''}">${s.warnings}</td>
+      <td><span class="badge ${SITEMAP_STATUS_CLASS[s.status] || 'badge-ghost'}">${s.status}</span></td>
+    </tr>`).join('');
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  const missingFromSitemap = sm.seedUrlsNotInSitemap || [];
+  document.getElementById('sitemap-missing-summary').innerHTML = missingFromSitemap.length === 0
+    ? `<p class="text-success">Todas las seedUrls (${(su.pages || []).length}) aparecen en el contenido de algún sitemap descargado.</p>`
+    : `
+    <p class="text-warning mb-2">${missingFromSitemap.length} de ${(su.pages || []).length} seedUrls NO aparecen en ningún sitemap descargado:</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead><tr><th>URL</th></tr></thead>
+        <tbody>
+          ${missingFromSitemap.map(u => `<tr><td>${u.url}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
+
+  // ── Findings ──
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
+    <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
+        },
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
+
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery || 'sin datos'}</strong></td><td>${q.variations.length ? q.variations.join(', ') : '—'}</td></tr>`).join('');
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl || [],
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions-list').innerHTML = (REPORT_DATA.aiActions || []).map(a => {
+    const detail = escapeHtml(a.detail);
+    const sepIdx = detail.indexOf(': ');
+    const issue = sepIdx === -1 ? detail : detail.slice(0, sepIdx);
+    const action = sepIdx === -1 ? '' : detail.slice(sepIdx + 2);
+    return `
+    <li>
+      <p><strong>${issue}</strong>${action ? ': ' + action : ''}</p>
+      <a href="${escapeHtml(a.page)}" target="_blank" class="text-xs text-primary/70 hover:underline break-all">${escapeHtml(a.page)}</a>
+    </li>`;
+  }).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

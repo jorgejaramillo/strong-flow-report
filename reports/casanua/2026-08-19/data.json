@@ -1,0 +1,2006 @@
+{
+  "meta": {
+    "clientSlug": "casanua",
+    "clientName": "Casa NUA",
+    "domain": "www.casanua.co",
+    "periodStart": "19 jul 2026",
+    "periodEnd": "17 ago 2026",
+    "generatedAt": "19 ago 2026",
+    "pagesAnalyzed": 25
+  },
+  "headerBadges": [
+    {
+      "text": "↑ 10.0% clicks",
+      "class": "badge-success"
+    },
+    {
+      "text": "37 URLs en sitemap",
+      "class": "badge-info"
+    }
+  ],
+  "stats": [
+    {
+      "title": "Clicks",
+      "value": "1,334",
+      "valueClass": "text-primary",
+      "desc": "↑ 10.0% vs período anterior",
+      "descClass": "text-success"
+    },
+    {
+      "title": "Impresiones",
+      "value": "17,686",
+      "desc": "↑ 32.0%",
+      "descClass": "text-success"
+    },
+    {
+      "title": "CTR medio",
+      "value": "7.54%",
+      "desc": "↓ 1.51pp",
+      "descClass": "text-error"
+    },
+    {
+      "title": "Posición media",
+      "value": "7.6",
+      "desc": "↓ 1.6 (mejor)",
+      "descClass": "text-error"
+    },
+    {
+      "title": "URLs encontradas",
+      "value": "37",
+      "desc": "Vía sitemap.xml"
+    },
+    {
+      "title": "URLs enviadas",
+      "value": "37",
+      "desc": "A Search Console"
+    }
+  ],
+  "domainAnalytics": null,
+  "clicksOverTime": {
+    "startDate": "2026-05-20",
+    "endDate": "2026-08-17",
+    "clicks": [
+      36,
+      43,
+      30,
+      26,
+      34,
+      40,
+      43,
+      30,
+      35,
+      15,
+      16,
+      15,
+      34,
+      52,
+      32,
+      33,
+      36,
+      17,
+      17,
+      22,
+      25,
+      24,
+      39,
+      38,
+      40,
+      26,
+      22,
+      51,
+      31,
+      38,
+      38,
+      40,
+      14,
+      35,
+      30,
+      20,
+      34,
+      26,
+      17,
+      32,
+      24,
+      51,
+      46,
+      47,
+      28,
+      20,
+      19,
+      35,
+      28,
+      51,
+      52,
+      34,
+      19,
+      31,
+      29,
+      50,
+      27,
+      49,
+      59,
+      228,
+      28,
+      33,
+      41,
+      63,
+      62,
+      49,
+      36,
+      51,
+      52,
+      70,
+      33,
+      60,
+      55,
+      43,
+      33,
+      46,
+      45,
+      45,
+      46,
+      31,
+      24,
+      35,
+      44,
+      44,
+      63,
+      43,
+      40,
+      35,
+      42,
+      42
+    ],
+    "impressions": [
+      408,
+      443,
+      453,
+      355,
+      414,
+      458,
+      534,
+      411,
+      418,
+      327,
+      238,
+      230,
+      381,
+      435,
+      395,
+      374,
+      366,
+      275,
+      308,
+      273,
+      414,
+      400,
+      390,
+      366,
+      341,
+      277,
+      344,
+      547,
+      430,
+      392,
+      416,
+      344,
+      282,
+      443,
+      434,
+      397,
+      397,
+      351,
+      277,
+      386,
+      344,
+      464,
+      480,
+      440,
+      409,
+      304,
+      366,
+      424,
+      428,
+      496,
+      439,
+      448,
+      351,
+      466,
+      389,
+      575,
+      448,
+      511,
+      623,
+      1266,
+      397,
+      442,
+      609,
+      626,
+      653,
+      609,
+      520,
+      555,
+      607,
+      702,
+      628,
+      665,
+      769,
+      688,
+      593,
+      603,
+      684,
+      692,
+      613,
+      496,
+      551,
+      538,
+      533,
+      550,
+      643,
+      653,
+      578,
+      470,
+      533,
+      486
+    ]
+  },
+  "cannibalization": [
+    {
+      "query": "senior living",
+      "rows": [
+        {
+          "url": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+          "impressions": 129,
+          "clicks": 7,
+          "position": 3.6,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.casanua.co/es_es/",
+          "impressions": 119,
+          "clicks": 3,
+          "position": 7.2,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    }
+  ],
+  "winners": [
+    {
+      "page": "https://www.casanua.co/es_es/",
+      "clicks": 144,
+      "prev": 100,
+      "delta": "+44"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "clicks": 60,
+      "prev": 50,
+      "delta": "+10"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "clicks": 24,
+      "prev": 17,
+      "delta": "+7"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "clicks": 9,
+      "prev": 4,
+      "delta": "+5"
+    },
+    {
+      "page": "https://www.casanua.co/en/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "clicks": 3,
+      "prev": 0,
+      "delta": "+3"
+    }
+  ],
+  "losers": [
+    {
+      "page": "https://www.casanua.co/wp-content/uploads/2022/05/Brochure-2022-Mayo.pdf",
+      "clicks": 0,
+      "prev": 7,
+      "delta": "-7"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "clicks": 5,
+      "prev": 10,
+      "delta": "-5"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/trabaja-con-nosotros/",
+      "clicks": 4,
+      "prev": 8,
+      "delta": "-4"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-country/",
+      "clicks": 0,
+      "prev": 3,
+      "delta": "-3"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/senior_living_colombia/",
+      "clicks": 9,
+      "prev": 11,
+      "delta": "-2"
+    }
+  ],
+  "landingsPeriodLabel": "11 ago 2026 → 17 ago 2026",
+  "landingsCrawl": [
+    {
+      "url": "https://www.casanua.co/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/index.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_vivienda-asistida-rompiendo-mitos-y-estigmas.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_el-primer-senior-living-age-friendly-de-colombia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/quienes-somos/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_quienes-somos.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_sedes_san-lucas.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_sedes_casa-country.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_sedes.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-nosotros-vivienda-adulto-mayor-colombia.html",
+      "retried": true
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-independiente.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_servicios_casa-nua-dia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/evento-clubes/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_evento-clubes.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_sedes_casa-nua-chia-vivienda-asistida-senior-living-colombia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable.html",
+      "retried": true
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-actividades-vivienda-adulto-mayo.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_vivienda-asistida-certificada-como-edificio-sostenible.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-country-adulto-mayo-senior-living-colombia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-temporal.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-san-lucas/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-san-lucas.html",
+      "retried": true
+    },
+    {
+      "url": "https://www.casanua.co/es_es/senior_living_colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_senior_living_colombia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-chia-vivienda-asistida-senior-living-colombia.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-asistida.html",
+      "retried": true
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "localPath": "reports/casanua/2026-08-19/data/crawl/es_es_servicios_recuperacion-postoperatoria.html",
+      "retried": false
+    }
+  ],
+  "findings": [
+    {
+      "page": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "detail": "Rankea para <strong>\"hogar san lucas\"</strong> (pos. 7.4, 47 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "detail": "Rankea para <strong>\"casa de recuperación post quirúrgica precio medellín\"</strong> (pos. 10.7, 24 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "detail": "Rankea para <strong>\"casa de recuperación post quirúrgica medellín\"</strong> (pos. 9.4, 22 impr.) pero el término no aparece en el texto de la página."
+    }
+  ],
+  "contentImprove": [
+    {
+      "page": "https://www.casanua.co/",
+      "detail": "<strong>¿Qué es la vivienda asistida para adultos mayores y qué tipos existen (residencias, apartamentos asistidos, hogares comunitarios)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/",
+      "detail": "<strong>¿Cuáles son los requisitos de ingreso, procesos de evaluación y documentación necesaria?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "detail": "<strong>¿Qué tipo de ejercicio diario es seguro y más efectivo para mejorar fuerza, equilibrio y movilidad después de los 60?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "detail": "<strong>¿Qué hábitos alimenticios y suplementos recomiendan para mantener energía, masa muscular y salud cerebral?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "detail": "<strong>¿Qué es la vivienda asistida y en qué se diferencia de otros modelos de vivienda (vivienda asistencial, hogares con servicios, apartamentos con apoyo)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "detail": "<strong>¿Qué servicios y apoyos ofrece Casa Nua en una vivienda asistida (salud, acompañamiento social, accesibilidad, actividades)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "detail": "<strong>¿Dónde se ubica exactamente y cómo es su infraestructura y accesibilidad física (habitaciones, áreas comunes, movilidad)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "detail": "<strong>¿Qué tipo de atención médica, personal calificado y protocolos de seguridad y emergencias tienen?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "detail": "<strong>¿Qué beneficios concretos (cognitivos y de calidad de vida) aporta cada hábito y en cuánto tiempo se ven cambios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "detail": "<strong>¿Cómo empezar hoy mismo: plan diario/semana de introducción paso a paso y ejemplos prácticos?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    }
+  ],
+  "keywords": {
+    "general": [
+      {
+        "query": "retirement communities near me",
+        "clicks": 0,
+        "impressions": 149,
+        "position": 4.2,
+        "delta": "0"
+      },
+      {
+        "query": "guardería para adultos mayores medellín",
+        "clicks": 2,
+        "impressions": 65,
+        "position": 9.9,
+        "delta": "-2"
+      },
+      {
+        "query": "retirement communities",
+        "clicks": 0,
+        "impressions": 59,
+        "position": 3.6,
+        "delta": "0"
+      },
+      {
+        "query": "hogar san lucas",
+        "clicks": 0,
+        "impressions": 55,
+        "position": 7.2,
+        "delta": "0"
+      },
+      {
+        "query": "hogar para adultos mayores",
+        "clicks": 0,
+        "impressions": 54,
+        "position": 18.1,
+        "delta": "0"
+      },
+      {
+        "query": "cerebro diarios",
+        "clicks": 0,
+        "impressions": 49,
+        "position": 7.6,
+        "delta": "0"
+      },
+      {
+        "query": "casa hogar medellin",
+        "clicks": 0,
+        "impressions": 47,
+        "position": 11.4,
+        "delta": "0"
+      },
+      {
+        "query": "hogar geriatrico chia",
+        "clicks": 1,
+        "impressions": 44,
+        "position": 16.8,
+        "delta": "+1"
+      }
+    ],
+    "target": [
+      {
+        "query": "hogar para el adulto mayor",
+        "clicks": 0,
+        "impressions": 17,
+        "position": 9.3,
+        "delta": "0"
+      },
+      {
+        "query": "senior living",
+        "clicks": 10,
+        "impressions": 233,
+        "position": 5.1,
+        "delta": "+9"
+      },
+      {
+        "query": "senior living bogota",
+        "clicks": 5,
+        "impressions": 37,
+        "position": 11,
+        "delta": "+3"
+      },
+      {
+        "query": "apartamentos para adultos mayores bogotá",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 10,
+        "delta": "0"
+      },
+      {
+        "query": "vivienda asistida para adultos mayores",
+        "clicks": 2,
+        "impressions": 78,
+        "position": 5.3,
+        "delta": "+1"
+      },
+      {
+        "query": "hogares para adultos mayores en medellín",
+        "clicks": 1,
+        "impressions": 2,
+        "position": 10,
+        "delta": "+1"
+      },
+      {
+        "query": "conjunto residencial para adultos mayores bogotá",
+        "clicks": 1,
+        "impressions": 4,
+        "position": 5.3,
+        "delta": "+1"
+      },
+      {
+        "query": "senior living chia",
+        "clicks": 9,
+        "impressions": 50,
+        "position": 1.9,
+        "delta": "+6"
+      },
+      {
+        "query": "casas de retiro para adultos mayores",
+        "clicks": 0,
+        "impressions": 6,
+        "position": 8,
+        "delta": "0"
+      },
+      {
+        "query": "senior living colombia",
+        "clicks": 5,
+        "impressions": 54,
+        "position": 6.1,
+        "delta": "+1"
+      },
+      {
+        "query": "vivienda asistida para adultos mayores bogotá",
+        "clicks": 2,
+        "impressions": 20,
+        "position": 6.8,
+        "delta": "+1"
+      },
+      {
+        "query": "viviendas asistidas",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 8,
+        "delta": "0"
+      },
+      {
+        "query": "hogar senior",
+        "clicks": 0,
+        "impressions": 6,
+        "position": 5.8,
+        "delta": "0"
+      },
+      {
+        "query": "residencia adulto mayor",
+        "clicks": 0,
+        "impressions": 8,
+        "position": 21.6,
+        "delta": "-1"
+      },
+      {
+        "query": "casas de cuidado adultos mayores",
+        "clicks": 0,
+        "impressions": 3,
+        "position": 8.3,
+        "delta": "0"
+      },
+      {
+        "query": "conjunto residencial para adultos mayores",
+        "clicks": 0,
+        "impressions": 7,
+        "position": 16.9,
+        "delta": "0"
+      },
+      {
+        "query": "senior living medellin",
+        "clicks": 5,
+        "impressions": 40,
+        "position": 2.8,
+        "delta": "+4"
+      },
+      {
+        "query": "apartamentos para personas mayores",
+        "clicks": 0,
+        "impressions": 5,
+        "position": 5,
+        "delta": "0"
+      },
+      {
+        "query": "condominios para adultos mayores",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 12,
+        "delta": "0"
+      },
+      {
+        "query": "hogar de retiro",
+        "clicks": 0,
+        "impressions": 6,
+        "position": 17.3,
+        "delta": "0"
+      },
+      {
+        "query": "vivienda asistida bogotá",
+        "clicks": 0,
+        "impressions": 9,
+        "position": 14,
+        "delta": "0"
+      },
+      {
+        "query": "hogar de retiro para adultos mayores",
+        "clicks": 0,
+        "impressions": 3,
+        "position": 5.3,
+        "delta": "0"
+      }
+    ],
+    "brand": [
+      {
+        "query": "casa nua",
+        "clicks": 155,
+        "impressions": 1412,
+        "position": 3.4,
+        "delta": "-22"
+      },
+      {
+        "query": "casa nua country",
+        "clicks": 58,
+        "impressions": 155,
+        "position": 1.4,
+        "delta": "+6"
+      },
+      {
+        "query": "casa nua san lucas",
+        "clicks": 55,
+        "impressions": 550,
+        "position": 4.1,
+        "delta": "+23"
+      },
+      {
+        "query": "casa nua chia",
+        "clicks": 51,
+        "impressions": 511,
+        "position": 1.9,
+        "delta": "-17"
+      },
+      {
+        "query": "casa nua precios",
+        "clicks": 23,
+        "impressions": 91,
+        "position": 1.6,
+        "delta": "+5"
+      },
+      {
+        "query": "casa nua medellin",
+        "clicks": 11,
+        "impressions": 54,
+        "position": 1.9,
+        "delta": "+2"
+      }
+    ],
+    "nonBrand": [
+      {
+        "query": "senior living",
+        "clicks": 10,
+        "impressions": 233,
+        "position": 5.1,
+        "delta": "+9"
+      },
+      {
+        "query": "senior living chia",
+        "clicks": 9,
+        "impressions": 50,
+        "position": 1.9,
+        "delta": "+6"
+      },
+      {
+        "query": "senior living bogota",
+        "clicks": 5,
+        "impressions": 37,
+        "position": 11,
+        "delta": "+3"
+      },
+      {
+        "query": "senior living colombia",
+        "clicks": 5,
+        "impressions": 54,
+        "position": 6.1,
+        "delta": "+1"
+      },
+      {
+        "query": "senior living medellin",
+        "clicks": 5,
+        "impressions": 40,
+        "position": 2.8,
+        "delta": "+4"
+      },
+      {
+        "query": "casa nu",
+        "clicks": 4,
+        "impressions": 14,
+        "position": 2.1,
+        "delta": "-5"
+      }
+    ]
+  },
+  "sitemap": {
+    "totalSitemaps": 17,
+    "totalSubmitted": 37,
+    "sitemapsWithErrors": 16,
+    "sitemapsWithWarnings": 13,
+    "sitemaps": [
+      {
+        "path": "https://www.casanua.co/sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-02-22T23:27:26.479Z",
+        "lastDownloaded": "2026-08-21T07:50:14.154Z",
+        "submitted": 37,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "4",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 37,
+          "localPath": "reports/casanua/2026-08-19/data/sitemaps/sitemap.xml"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/bobsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:15:40.636Z",
+        "lastDownloaded": "2021-01-06T14:31:58.780Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/dewsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:11:00.934Z",
+        "lastDownloaded": "2021-01-08T19:27:00.579Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "0",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/mfisitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:09:02.376Z",
+        "lastDownloaded": "2021-01-10T01:44:37.325Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "0",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/fnmsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:06:24.820Z",
+        "lastDownloaded": "2021-01-02T17:13:17.637Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/ohlsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:04:23.727Z",
+        "lastDownloaded": "2021-01-12T03:02:08.587Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "0",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/khnsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T03:01:32.874Z",
+        "lastDownloaded": "2021-01-10T22:53:07.759Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "0",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/rwvsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:59:33.861Z",
+        "lastDownloaded": "2021-01-07T20:02:43.126Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "1",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/yvhsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:57:36.774Z",
+        "lastDownloaded": "2021-01-09T19:53:57.851Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "1",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/hhcsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:55:39.439Z",
+        "lastDownloaded": "2021-01-09T06:48:35.592Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/wausitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:53:35.292Z",
+        "lastDownloaded": "2021-01-11T20:42:50.293Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "3",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/npwsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:50:52.204Z",
+        "lastDownloaded": "2021-01-12T23:06:39.533Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/pflsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:47:06.058Z",
+        "lastDownloaded": "2021-01-07T14:53:28.432Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "3",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/ucrsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:43:31.180Z",
+        "lastDownloaded": "2021-01-09T18:10:17.612Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/ydositemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:41:04.130Z",
+        "lastDownloaded": "2021-01-05T01:28:26.901Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "3",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/miusitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:31:43.399Z",
+        "lastDownloaded": "2021-01-08T08:42:14.087Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      },
+      {
+        "path": "https://www.casanua.co/khbsitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2020-09-17T02:29:49.346Z",
+        "lastDownloaded": "2021-01-11T23:35:42.929Z",
+        "submitted": 0,
+        "indexed": 0,
+        "indexRate": "N/A",
+        "errors": "2",
+        "warnings": "2",
+        "status": "error",
+        "download": {
+          "ok": false,
+          "urlCount": 0,
+          "error": "HTTP 404"
+        }
+      }
+    ],
+    "totalUrlsInSitemaps": 37,
+    "seedUrlsIndexing": {
+      "totalChecked": 25,
+      "totalIndexed": 22,
+      "indexRate": "88.0%",
+      "pages": [
+        {
+          "path": "/",
+          "url": "https://www.casanua.co/",
+          "coverageState": "Página con redirección",
+          "indexed": false
+        },
+        {
+          "path": "/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+          "url": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+          "url": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+          "url": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+          "url": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/quienes-somos/",
+          "url": "https://www.casanua.co/es_es/quienes-somos/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/sedes/san-lucas/",
+          "url": "https://www.casanua.co/es_es/sedes/san-lucas/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+          "url": "https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/sedes/casa-country/",
+          "url": "https://www.casanua.co/es_es/sedes/casa-country/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/sedes/",
+          "url": "https://www.casanua.co/es_es/sedes/",
+          "coverageState": "Descubierta: actualmente sin indexar",
+          "indexed": false
+        },
+        {
+          "path": "/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+          "url": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/servicios/vivienda-independiente/",
+          "url": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/servicios/casa-nua-dia/",
+          "url": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/evento-clubes/",
+          "url": "https://www.casanua.co/es_es/evento-clubes/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+          "url": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+          "url": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+          "url": "https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+          "url": "https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/",
+          "url": "https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/servicios/vivienda-temporal/",
+          "url": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/casa-nua-san-lucas/",
+          "url": "https://www.casanua.co/es_es/casa-nua-san-lucas/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/senior_living_colombia/",
+          "url": "https://www.casanua.co/es_es/senior_living_colombia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+          "url": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+          "coverageState": "Duplicada: Google ha elegido una versión canónica diferente a la del usuario",
+          "indexed": false
+        },
+        {
+          "path": "/es_es/servicios/vivienda-asistida/",
+          "url": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/es_es/servicios/recuperacion-postoperatoria/",
+          "url": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        }
+      ]
+    },
+    "seedUrlsNotInSitemap": []
+  },
+  "keywordVolume": {
+    "rows": [
+      {
+        "query": "hogar para el adulto mayor",
+        "volume": 390,
+        "clicks": 0,
+        "impressions": 17,
+        "position": null
+      },
+      {
+        "query": "senior living",
+        "volume": 320,
+        "clicks": 10,
+        "impressions": 233,
+        "position": 5
+      },
+      {
+        "query": "senior living bogota",
+        "volume": 260,
+        "clicks": 5,
+        "impressions": 37,
+        "position": null
+      },
+      {
+        "query": "cuidado de adultos mayores",
+        "volume": 210,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "apartamentos para adultos mayores bogotá",
+        "volume": 110,
+        "clicks": 0,
+        "impressions": 1,
+        "position": 6
+      },
+      {
+        "query": "hogares para adultos mayores en bogota",
+        "volume": 90,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "vivienda asistida para adultos mayores",
+        "volume": 70,
+        "clicks": 2,
+        "impressions": 78,
+        "position": 3
+      },
+      {
+        "query": "hogares para adultos mayores en medellín",
+        "volume": 70,
+        "clicks": 1,
+        "impressions": 2,
+        "position": null
+      },
+      {
+        "query": "conjunto residencial para adultos mayores bogotá",
+        "volume": 50,
+        "clicks": 1,
+        "impressions": 4,
+        "position": null
+      },
+      {
+        "query": "senior living chia",
+        "volume": 50,
+        "clicks": 9,
+        "impressions": 50,
+        "position": 1
+      },
+      {
+        "query": "casas de retiro para adultos mayores",
+        "volume": 40,
+        "clicks": 0,
+        "impressions": 6,
+        "position": 5
+      },
+      {
+        "query": "senior living colombia",
+        "volume": 40,
+        "clicks": 5,
+        "impressions": 54,
+        "position": 7
+      },
+      {
+        "query": "vivienda asistida para adultos mayores bogotá",
+        "volume": 40,
+        "clicks": 2,
+        "impressions": 20,
+        "position": 3
+      },
+      {
+        "query": "viviendas asistidas",
+        "volume": 50,
+        "clicks": 0,
+        "impressions": 1,
+        "position": null
+      },
+      {
+        "query": "hogar senior",
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 6,
+        "position": 5
+      },
+      {
+        "query": "residencia adulto mayor",
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 8,
+        "position": 4
+      },
+      {
+        "query": "casas de cuidado adultos mayores",
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 3,
+        "position": null
+      },
+      {
+        "query": "club para adulto mayor",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "conjunto residencial para adultos mayores",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 7,
+        "position": 8
+      },
+      {
+        "query": "senior living medellin",
+        "volume": 30,
+        "clicks": 5,
+        "impressions": 40,
+        "position": 2
+      },
+      {
+        "query": "alojamiento para adultos mayores",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 8
+      },
+      {
+        "query": "apartamentos para personas mayores",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 5,
+        "position": 4
+      },
+      {
+        "query": "condominios para adultos mayores",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 1,
+        "position": 6
+      },
+      {
+        "query": "conjunto residencial para adultos mayores medellín",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
+      },
+      {
+        "query": "cuidado adulto mayor medellin",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "hogar de retiro",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 6,
+        "position": null
+      },
+      {
+        "query": "hospedaje para adultos mayores",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 3
+      },
+      {
+        "query": "senior living resort",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "vivienda asistida bogotá",
+        "volume": 20,
+        "clicks": 0,
+        "impressions": 9,
+        "position": null
+      },
+      {
+        "query": "hogar de retiro para adultos mayores",
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 3,
+        "position": 7
+      }
+    ]
+  },
+  "queryVariations": [
+    {
+      "url": "https://www.casanua.co/",
+      "mainQuery": "casa nua precios",
+      "variations": [
+        "casa nua chia",
+        "casa nua",
+        "casanua",
+        "casa nua trabaja con nosotros",
+        "casa nuva"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "mainQuery": "vivienda asistida",
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "mainQuery": "cerebro diarios",
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/quienes-somos/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "casanua",
+        "casa nua san lucas",
+        "casa nua trabaja con nosotros",
+        "casa nuva",
+        "itsabinova nua"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "mainQuery": "casa nua san lucas",
+      "variations": [
+        "casa nua",
+        "casa nua medellin",
+        "casa nua precios",
+        "casa nua san lucas precios",
+        "nua"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+      "mainQuery": "vivienda asistida salud mental",
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "mainQuery": "casa nua country",
+      "variations": [
+        "casa nua restaurante",
+        "casa nua",
+        "casa nua medellin",
+        "casa nua direccion",
+        "casa nua san lucas"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "casa nua chia",
+        "casa nua senior living",
+        "casa nua trabaja con nosotros",
+        "casanua",
+        "casa nua san lucas"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "casa nua asunción",
+        "casanua",
+        "casa nua living",
+        "casa independiente",
+        "casa nua san lucas"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "casanua",
+        "casa nua chia",
+        "casa nuva",
+        "casa nua san lucas"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/evento-clubes/",
+      "mainQuery": "club nua",
+      "variations": [
+        "casa nuda"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "mainQuery": "casa nua chia",
+      "variations": [
+        "senior living",
+        "casa nua",
+        "casa nua chía fotos",
+        "casa nua chía",
+        "senior living chia"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+      "mainQuery": "vivir más y mejor",
+      "variations": [
+        "viviendo mejor",
+        "vivir con vitalidad",
+        "vivir más"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+      "mainQuery": "casa nua",
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/",
+      "mainQuery": "casa nua medellin",
+      "variations": [
+        "casa nua country",
+        "casa nua san lucas",
+        "casa nua",
+        "casa nua direccion",
+        "casa nua senior living"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "vivienda temporal tratamiento médico",
+        "casa nua san lucas",
+        "vivienda transitoria",
+        "vivienda temporal",
+        "casa nuva"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-san-lucas/",
+      "mainQuery": "casa nua san lucas",
+      "variations": [
+        "casa nua restaurante",
+        "casa nua san lucas fotos",
+        "casa nua ibiza"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/senior_living_colombia/",
+      "mainQuery": "casa nua",
+      "variations": [
+        "casa nua chia",
+        "casa nua colombia",
+        "cohousing senior colombia",
+        "retierment home",
+        "casanua"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "mainQuery": "vivienda asistida para adultos mayores bogotá",
+      "variations": [
+        "casa nua",
+        "vivienda asistida",
+        "vivienda asistida bogota",
+        "casanua",
+        "casa nua senior living"
+      ]
+    },
+    {
+      "url": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "mainQuery": "casa de recuperación post quirúrgica precio medellín",
+      "variations": [
+        "casa de recuperación post quirúrgica medellín",
+        "casa de recuperacion medellin",
+        "casas de recuperacion post operatoria",
+        "centros de recuperación postoperatorios",
+        "casa de recuperación post quirúrgica precio bogotá"
+      ]
+    }
+  ],
+  "aiActions": [
+    {
+      "page": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "detail": "Title muy largo (99 caracteres, recomendado 50-60): \"4 Hábitos diarios que fortalecen el cerebro después de los 60 (y cómo empezar hoy mismo) - Casa Nua\" — acortarlo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/",
+      "detail": "6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "detail": "Title muy largo (86 caracteres, recomendado 50-60): acortarlo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/",
+      "detail": "3 de 4 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/",
+      "detail": "6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+      "detail": "Tiene 2 <h1> (\"Actividades\" y \"ASÍ VIVIMOS LAS ACTIVIDADES EN CASA NUA\"): dejar solo uno."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/",
+      "detail": "17 de 17 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "No tiene <h1>: agregar uno con el tema central de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "Canibalización: existe otra URL sobre el mismo tema, https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/, con un title casi idéntico (\"Casa Nua Chía | Vivienda asistida adulto mayor | Senior living\" vs \"Casa Nua Chía | Vivienda Asistida Adulto Mayor | Senior Living\"). Definir cuál es la página canónica para \"Casa Nua Chía\" y diferenciar o consolidar la otra."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "8 de 8 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/",
+      "detail": "16 de 36 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "detail": "No tiene <h1>: agregar uno con el tema central de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "detail": "Title corto (43 caracteres, recomendado 50-60): \"Conoce Casa Nua | Senior Living en Colombia\" — extenderlo con más keywords relevantes."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/",
+      "detail": "3 de 6 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/casa-nua-san-lucas/",
+      "detail": "Title muy corto (29 caracteres) y en minúsculas (\"Casa nua San lucas - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres con keywords (ej. ubicación, servicio)."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/",
+      "detail": "5 de 6 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/evento-clubes/",
+      "detail": "No tiene <h1>: agregar uno con el tema central de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/evento-clubes/",
+      "detail": "Meta description rota (12 caracteres): el contenido es literalmente \"Contáctanos…\", no describe la página. Escribir una real de 120-155 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/evento-clubes/",
+      "detail": "Title corto (25 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/evento-clubes/",
+      "detail": "3 de 4 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/quienes-somos/",
+      "detail": "Tiene 2 <h1> (\"Nuestro Equipo\" y \"Una tripulación hecha de vocación y excelencia\"): dejar solo uno."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/quienes-somos/",
+      "detail": "Title corto (24 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/quienes-somos/",
+      "detail": "4 de 4 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/",
+      "detail": "No tiene <h1>: agregar uno (ej. \"Nuestras sedes\")."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/",
+      "detail": "Title muy corto (16 caracteres, \"Sedes - Casa Nua\"): extenderlo a 50-60 caracteres con keywords relevantes (ubicaciones, senior living)."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/",
+      "detail": "11 de 12 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "detail": "Title muy corto y en minúsculas (23 caracteres, \"sede country - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "detail": "No tiene meta description: agregar una de 120-155 caracteres con la keyword principal."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "detail": "Tiene 3 <h1> y los 3 están en INGLÉS (\"Senior Living for Independent Seniors\", \"Assisted living for seniors\" x2) en una página que por lo demás es en español (title y og:title dicen \"sede country - Casa Nua\"): traducir a español y dejar un solo <h1>."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "detail": "El og:description también está en inglés (\"Senior Living for Independent Seniors Independence, community, and well-being...\"), mezclado con un sitio en español: traducirlo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-country/",
+      "detail": "5 de 16 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "Canibalización: existe otra URL sobre el mismo tema, https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/, con un title casi idéntico. Definir cuál es la página canónica para \"Casa Nua Chía\"."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "Tiene 3 <h1>, con el texto \"Vivienda asistida para adultos mayores que valoran su independencia, con todo incluido\" repetido 2 veces: dejar un solo <h1>."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/",
+      "detail": "5 de 24 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "detail": "Title corto y en minúsculas (25 caracteres, \"sede san lucas - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "detail": "Tiene 4 <h1>, con \"Vivienda asistida para adultos mayores\" repetido 2 veces: dejar un solo <h1>."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/sedes/san-lucas/",
+      "detail": "5 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/senior_living_colombia/",
+      "detail": "Title corto (33 caracteres, \"CASA NUA SENIOR LIVING - Casa Nua\") y en mayúsculas: reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/senior_living_colombia/",
+      "detail": "7 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "detail": "Title corto y en minúsculas (23 caracteres, \"casa nua día - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "detail": "Tiene 2 <h1> (\"Casa Nua Día\" y \"OPCIONES A TU MEDIDA\"): dejar solo uno."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "detail": "12 de 14 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/casa-nua-dia/",
+      "detail": "3 enlaces con texto de anchor genérico (\"ver más\"/similar): agregar contexto (a qué lleva cada uno)."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "detail": "Title corto (38 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "detail": "Tiene 2 <h1> (\"Recuperación Postoperatoria\" y \"RECUPERACIÓN POSTPERATORIA EN CASA NUA\" — esta última además con un typo, \"POSTPERATORIA\"): dejar solo uno y corregir el typo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/",
+      "detail": "11 de 12 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "detail": "Title muy corto y en mayúsculas (28 caracteres, \"VIVIENDA ASISTIDA - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "detail": "Tiene 4 <h1>: dejar solo uno con el tema central de la página."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "detail": "25 de 26 imágenes con alt vacío (el 96%): agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-asistida/",
+      "detail": "2 enlaces con texto de anchor genérico: agregar contexto."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "detail": "Title corto y en mayúsculas (33 caracteres, \"VIVIENDA INDEPENDIENTE - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "detail": "Tiene 2 <h1>: dejar solo uno."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "detail": "10 de 11 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-independiente/",
+      "detail": "2 enlaces con texto de anchor genérico: agregar contexto."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "detail": "Title corto y en mayúsculas (28 caracteres, \"VIVIENDA TEMPORAL - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "detail": "Tiene 2 <h1>: dejar solo uno."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "detail": "15 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/servicios/vivienda-temporal/",
+      "detail": "3 enlaces con texto de anchor genérico: agregar contexto."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/",
+      "detail": "8 de 9 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/",
+      "detail": "6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+      "detail": "No tiene <h1>: agregar uno con el tema central del artículo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+      "detail": "Title muy largo (86 caracteres): acortarlo."
+    },
+    {
+      "page": "https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/",
+      "detail": "6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."
+    },
+    {
+      "page": "https://www.casanua.co/",
+      "detail": "22 enlaces con el mismo texto de anchor genérico \"Ver más\": agregar contexto específico (a qué sede o servicio lleva cada uno) en el texto o via aria-label, para accesibilidad y relevancia semántica."
+    }
+  ],
+  "published": {
+    "bucket": "flow-reports",
+    "keyPrefix": "casanua/2026-08-19",
+    "url": "https://pub-4ad580200a164e6e80ca78b9304487fe.r2.dev/casanua/2026-08-19/report.html",
+    "publishedAt": "2026-08-22T01:32:31.754Z",
+    "fileCount": 28,
+    "totalBytes": 5076411
+  }
+}

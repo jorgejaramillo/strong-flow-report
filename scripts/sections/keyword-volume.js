@@ -44,6 +44,7 @@ const LOCATION_NAMES = {
   per: 'Peru',
   chl: 'Chile',
   arg: 'Argentina',
+  cri: 'Costa Rica',
 };
 
 /** código de país alpha-2 que espera ValueSERP (param `gl`), por código alpha-3 de país (config.site.country) */
@@ -55,6 +56,7 @@ const COUNTRY_CODES = {
   per: 'pe',
   chl: 'cl',
   arg: 'ar',
+  cri: 'cr',
 };
 
 function normalizeHost(host) {

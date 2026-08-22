@@ -1,0 +1,1492 @@
+{
+  "meta": {
+    "clientSlug": "americanstandardca",
+    "clientName": "American Standard CA",
+    "domain": "www.americanstandardca.com",
+    "periodStart": "21 jul 2026",
+    "periodEnd": "17 ago 2026",
+    "generatedAt": "19 ago 2026",
+    "pagesAnalyzed": 10
+  },
+  "headerBadges": [
+    {
+      "text": "↓ 3.6% clicks",
+      "class": "badge-error"
+    },
+    {
+      "text": "1592 URLs en sitemap",
+      "class": "badge-info"
+    }
+  ],
+  "stats": [
+    {
+      "title": "Clicks",
+      "value": "5,545",
+      "valueClass": "text-primary",
+      "desc": "↓ 3.6% vs período anterior",
+      "descClass": "text-error"
+    },
+    {
+      "title": "Impresiones",
+      "value": "138,042",
+      "desc": "↓ 1.2%",
+      "descClass": "text-error"
+    },
+    {
+      "title": "CTR medio",
+      "value": "4.02%",
+      "desc": "↓ 0.10pp",
+      "descClass": "text-error"
+    },
+    {
+      "title": "Posición media",
+      "value": "6.3",
+      "desc": "↑ 0.6 (mejor)",
+      "descClass": "text-success"
+    },
+    {
+      "title": "URLs encontradas",
+      "value": "1,592",
+      "desc": "Vía sitemap.xml"
+    },
+    {
+      "title": "URLs enviadas",
+      "value": "1,592",
+      "desc": "A Search Console"
+    }
+  ],
+  "domainAnalytics": null,
+  "clicksOverTime": {
+    "startDate": "2026-05-20",
+    "endDate": "2026-08-17",
+    "clicks": [
+      239,
+      245,
+      203,
+      148,
+      85,
+      324,
+      278,
+      249,
+      255,
+      186,
+      105,
+      73,
+      267,
+      252,
+      293,
+      256,
+      179,
+      152,
+      96,
+      250,
+      261,
+      270,
+      222,
+      219,
+      124,
+      105,
+      260,
+      224,
+      212,
+      206,
+      212,
+      95,
+      79,
+      244,
+      218,
+      237,
+      233,
+      257,
+      152,
+      91,
+      189,
+      266,
+      253,
+      236,
+      233,
+      116,
+      86,
+      251,
+      235,
+      242,
+      275,
+      263,
+      125,
+      91,
+      268,
+      280,
+      273,
+      233,
+      208,
+      107,
+      69,
+      263,
+      269,
+      238,
+      213,
+      189,
+      104,
+      79,
+      269,
+      266,
+      247,
+      239,
+      177,
+      109,
+      85,
+      274,
+      269,
+      269,
+      252,
+      196,
+      126,
+      91,
+      194,
+      258,
+      261,
+      245,
+      191,
+      85,
+      91,
+      259
+    ],
+    "impressions": [
+      6130,
+      5605,
+      4994,
+      4166,
+      3826,
+      6535,
+      6290,
+      6315,
+      5858,
+      5160,
+      4122,
+      3514,
+      5769,
+      5993,
+      6253,
+      5726,
+      5211,
+      4450,
+      3805,
+      5585,
+      6181,
+      5761,
+      5231,
+      5484,
+      4607,
+      3659,
+      5544,
+      6043,
+      6064,
+      5646,
+      4948,
+      3710,
+      3108,
+      5394,
+      5566,
+      5436,
+      5435,
+      5321,
+      4383,
+      3625,
+      5688,
+      5861,
+      5800,
+      5881,
+      4762,
+      3737,
+      3319,
+      5395,
+      5633,
+      5756,
+      5261,
+      5002,
+      4136,
+      3691,
+      5850,
+      5774,
+      5309,
+      5447,
+      5116,
+      3861,
+      3190,
+      5469,
+      5752,
+      5230,
+      5269,
+      5026,
+      3609,
+      3831,
+      5941,
+      5551,
+      5395,
+      6085,
+      5299,
+      4026,
+      3608,
+      5388,
+      5836,
+      5195,
+      5136,
+      4964,
+      3956,
+      3428,
+      5352,
+      5596,
+      5318,
+      5552,
+      5187,
+      3948,
+      3102,
+      5462
+    ]
+  },
+  "cannibalization": [
+    {
+      "query": "lavamanos",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/categorias/lavamanos/",
+          "impressions": 2653,
+          "clicks": 10,
+          "position": 7,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/",
+          "impressions": 13678,
+          "clicks": 8,
+          "position": 4.6,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-meridien/",
+          "impressions": 60,
+          "clicks": 0,
+          "position": 1,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-borneo/",
+          "impressions": 184,
+          "clicks": 0,
+          "position": 2.5,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-institucional-ampliux/",
+          "impressions": 56,
+          "clicks": 0,
+          "position": 9.4,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "sanitario",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+          "impressions": 1997,
+          "clicks": 2,
+          "position": 13.3,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/perfil-de-taza-alargada/",
+          "impressions": 10200,
+          "clicks": 1,
+          "position": 7.4,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/sanitario-broadway-2/",
+          "impressions": 93,
+          "clicks": 0,
+          "position": 10.4,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "orinal",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/categorias/orinales/",
+          "impressions": 202,
+          "clicks": 1,
+          "position": 7.9,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/orinal-artico/",
+          "impressions": 2278,
+          "clicks": 0,
+          "position": 4.7,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/orinal-washbrook-pint/",
+          "impressions": 1630,
+          "clicks": 0,
+          "position": 5.1,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "fluxometro",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/fluxometro-manual-para-sanitario/",
+          "impressions": 1875,
+          "clicks": 3,
+          "position": 2.5,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/categorias/institucional/fluxometros/",
+          "impressions": 136,
+          "clicks": 1,
+          "position": 6.6,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/fluxometro-sensor-para-orinal/",
+          "impressions": 74,
+          "clicks": 0,
+          "position": 1.6,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/fluxometro-sensor-para-sanitario/",
+          "impressions": 365,
+          "clicks": 0,
+          "position": 3.8,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "lava manos",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/",
+          "impressions": 1100,
+          "clicks": 0,
+          "position": 4.1,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/categorias/lavamanos/",
+          "impressions": 207,
+          "clicks": 0,
+          "position": 6.4,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "lavamanos con pedestal",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-de-pedestal-colony/",
+          "impressions": 1077,
+          "clicks": 8,
+          "position": 1.9,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-con-pedestal-olympus-o2/",
+          "impressions": 152,
+          "clicks": 0,
+          "position": 5.9,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/categorias/lavamanos/",
+          "impressions": 63,
+          "clicks": 0,
+          "position": 18.6,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "regadera de ducha",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/regadera-cuadrada-de-20-cm/",
+          "impressions": 680,
+          "clicks": 0,
+          "position": 2.2,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/regadera-redonda-de-30-cm/",
+          "impressions": 123,
+          "clicks": 0,
+          "position": 3.3,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "orinales",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/categorias/orinales/",
+          "impressions": 215,
+          "clicks": 2,
+          "position": 7.8,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/orinal-artico/",
+          "impressions": 450,
+          "clicks": 1,
+          "position": 3.8,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/catalogo/orinales-profesional/",
+          "impressions": 91,
+          "clicks": 1,
+          "position": 4.7,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "fluxometro para inodoro",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/fluxometro-manual-para-sanitario/",
+          "impressions": 206,
+          "clicks": 2,
+          "position": 2.3,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/categorias/institucional/fluxometros/",
+          "impressions": 404,
+          "clicks": 2,
+          "position": 6.9,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        },
+        {
+          "url": "https://www.americanstandardca.com/productos/fluxometro-sensor-para-sanitario/",
+          "impressions": 75,
+          "clicks": 0,
+          "position": 2,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    },
+    {
+      "query": "lavamos",
+      "rows": [
+        {
+          "url": "https://www.americanstandardca.com/productos/lavamanos-fluid-ovalado/",
+          "impressions": 260,
+          "clicks": 0,
+          "position": 3.3,
+          "status": "Principal",
+          "statusClass": "badge-success"
+        },
+        {
+          "url": "https://www.americanstandardca.com/lavamos-venus-portada/",
+          "impressions": 137,
+          "clicks": 0,
+          "position": 5,
+          "status": "Canibaliza",
+          "statusClass": "badge-warning"
+        }
+      ]
+    }
+  ],
+  "winners": [
+    {
+      "page": "https://www.americanstandardca.com/catalogo-productos/",
+      "clicks": 81,
+      "prev": 63,
+      "delta": "+18"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/sanitario-de-una-pieza-fluid-ii-op/",
+      "clicks": 36,
+      "prev": 22,
+      "delta": "+14"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/sanitario-dos-piezas-15-cadet/",
+      "clicks": 27,
+      "prev": 17,
+      "delta": "+10"
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/asientos/",
+      "clicks": 23,
+      "prev": 13,
+      "delta": "+10"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-suspendido-saturnolavamanos-suspendido-saturno/",
+      "clicks": 13,
+      "prev": 3,
+      "delta": "+10"
+    }
+  ],
+  "losers": [
+    {
+      "page": "https://www.americanstandardca.com/categorias/griferia/",
+      "clicks": 18,
+      "prev": 30,
+      "delta": "-12"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/sanitario-equix-ii/",
+      "clicks": 9,
+      "prev": 20,
+      "delta": "-11"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-con-pedestal-olympus-o2/",
+      "clicks": 8,
+      "prev": 19,
+      "delta": "-11"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-de-incrustar-ovalyn-ii/",
+      "clicks": 10,
+      "prev": 20,
+      "delta": "-10"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/capacidad-de-evacuacion-500-gr/",
+      "clicks": 15,
+      "prev": 24,
+      "delta": "-9"
+    }
+  ],
+  "landingsPeriodLabel": "11 ago 2026 → 17 ago 2026",
+  "landingsCrawl": [
+    {
+      "url": "https://www.americanstandardca.com/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/index.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/productos_orinal-seco-arica.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_spa-baneras.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/productos_lavamanos-sobreponer-redondo.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_sanitarios.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/elegir-griferia-bano/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/elegir-griferia-bano.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/asientos/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_asientos.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/orinales/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_orinales.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_sanitarios.html",
+      "retried": false
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/griferia/",
+      "localPath": "reports/americanstandardca/2026-08-19/data/crawl/categorias_griferia.html",
+      "retried": false
+    }
+  ],
+  "findings": [
+    {
+      "page": "https://www.americanstandardca.com/elegir-griferia-bano/",
+      "detail": "Rankea para <strong>\"griferia para baño\"</strong> (pos. 9.7, 283 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/orinales/",
+      "detail": "Rankea para <strong>\"mingitorio\"</strong> (pos. 7, 95 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "detail": "Rankea para <strong>\"urinario seco\"</strong> (pos. 1.5, 66 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/asientos/",
+      "detail": "Rankea para <strong>\"asiento de inodoro\"</strong> (pos. 10.5, 65 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "detail": "Rankea para <strong>\"lavamanos redondos\"</strong> (pos. 1.6, 45 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/griferia/",
+      "detail": "Rankea para <strong>\"griferia para baño\"</strong> (pos. 7.3, 35 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/elegir-griferia-bano/",
+      "detail": "Rankea para <strong>\"cómo elegir grifería para baño\"</strong> (pos. 6.5, 24 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/orinales/",
+      "detail": "Rankea para <strong>\"urinal o orinal\"</strong> (pos. 4.8, 24 impr.) pero el término no aparece en el texto de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/orinales/",
+      "detail": "Rankea para <strong>\"orinaderos\"</strong> (pos. 1, 22 impr.) pero el término no aparece en el texto de la página."
+    }
+  ],
+  "contentImprove": [
+    {
+      "page": "https://www.americanstandardca.com/",
+      "detail": "<strong>Tipos y estilos de grifería moderna (monomando, termostática, sensor, de cocina, de baño).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/",
+      "detail": "<strong>Materiales, acabados y durabilidad (latón, acero inoxidable, cromo, mate).</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "detail": "<strong>¿Qué es una cotización y qué incluye (definición y alcance)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "detail": "<strong>¿Qué tipos de cotizaciones existen (por producto, servicio, moneda, seguro, importación/exportación)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "detail": "<strong>¿Qué modelos de bañeras American Standard existen y cuáles son sus características distintivas?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "detail": "<strong>¿De qué materiales están hechas y cuál es su durabilidad y resistencia a manchas/rasguños?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "detail": "<strong>¿Qué es una cotización y para qué sirve?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "detail": "<strong>¿Qué tipos de cotizaciones existen (productos, servicios, seguros, divisas)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "detail": "<strong>¿Qué modelos y gamas premium ofrece la marca y en qué se diferencian entre sí?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "detail": "<strong>¿Qué tecnologías incorporan (ahorro de agua, sistemas de limpieza, confort acústico y ergonómico) y cómo benefician al usuario?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>",
+      "source": "ChatGPT"
+    }
+  ],
+  "keywords": {
+    "general": [
+      {
+        "query": "lavamanos",
+        "clicks": 17,
+        "impressions": 15152,
+        "position": 4.7,
+        "delta": "+1"
+      },
+      {
+        "query": "sanitario",
+        "clicks": 3,
+        "impressions": 10513,
+        "position": 7.9,
+        "delta": "0"
+      },
+      {
+        "query": "orinal",
+        "clicks": 1,
+        "impressions": 2396,
+        "position": 5.1,
+        "delta": "+1"
+      },
+      {
+        "query": "fluxometro",
+        "clicks": 4,
+        "impressions": 1895,
+        "position": 2.5,
+        "delta": "+1"
+      },
+      {
+        "query": "baños modernos",
+        "clicks": 1,
+        "impressions": 1379,
+        "position": 7.8,
+        "delta": "+1"
+      },
+      {
+        "query": "lavamanos con pedestal",
+        "clicks": 8,
+        "impressions": 1136,
+        "position": 2.6,
+        "delta": "0"
+      },
+      {
+        "query": "lavamano",
+        "clicks": 1,
+        "impressions": 986,
+        "position": 2.3,
+        "delta": "-2"
+      },
+      {
+        "query": "lavamanos de pedestal",
+        "clicks": 2,
+        "impressions": 680,
+        "position": 1.9,
+        "delta": "+2"
+      }
+    ],
+    "target": [
+      {
+        "query": "orinal seco",
+        "clicks": 5,
+        "impressions": 37,
+        "position": 2.5,
+        "delta": "-1"
+      },
+      {
+        "query": "bañeras",
+        "clicks": 2,
+        "impressions": 256,
+        "position": 4.6,
+        "delta": "0"
+      },
+      {
+        "query": "sanitarios",
+        "clicks": 8,
+        "impressions": 2890,
+        "position": 18.9,
+        "delta": "-1"
+      },
+      {
+        "query": "orinales",
+        "clicks": 4,
+        "impressions": 506,
+        "position": 4.4,
+        "delta": "+2"
+      },
+      {
+        "query": "inodoros",
+        "clicks": 1,
+        "impressions": 88,
+        "position": 6.2,
+        "delta": "+1"
+      },
+      {
+        "query": "lavamanos cuadrado",
+        "clicks": 1,
+        "impressions": 127,
+        "position": 3.6,
+        "delta": "+1"
+      },
+      {
+        "query": "ducha",
+        "clicks": 2,
+        "impressions": 138,
+        "position": 8.5,
+        "delta": "+2"
+      },
+      {
+        "query": "accesorios para baños",
+        "clicks": 0,
+        "impressions": 20,
+        "position": 3.9,
+        "delta": "0"
+      }
+    ],
+    "brand": [
+      {
+        "query": "american standard",
+        "clicks": 357,
+        "impressions": 2243,
+        "position": 5.3,
+        "delta": "+44"
+      },
+      {
+        "query": "american standard guatemala",
+        "clicks": 172,
+        "impressions": 416,
+        "position": 2.2,
+        "delta": "+21"
+      },
+      {
+        "query": "incesa standard",
+        "clicks": 119,
+        "impressions": 502,
+        "position": 3.1,
+        "delta": "+4"
+      },
+      {
+        "query": "american standard costa rica",
+        "clicks": 89,
+        "impressions": 281,
+        "position": 2.2,
+        "delta": "+5"
+      },
+      {
+        "query": "inodoro american standard",
+        "clicks": 41,
+        "impressions": 358,
+        "position": 3.9,
+        "delta": "+6"
+      },
+      {
+        "query": "american standard honduras",
+        "clicks": 36,
+        "impressions": 101,
+        "position": 2.4,
+        "delta": "+1"
+      }
+    ],
+    "nonBrand": [
+      {
+        "query": "incesa",
+        "clicks": 29,
+        "impressions": 274,
+        "position": 3.3,
+        "delta": "+14"
+      },
+      {
+        "query": "lavamanos",
+        "clicks": 17,
+        "impressions": 15152,
+        "position": 4.7,
+        "delta": "+1"
+      },
+      {
+        "query": "elderly cadet",
+        "clicks": 9,
+        "impressions": 13,
+        "position": 1,
+        "delta": "+6"
+      },
+      {
+        "query": "baby toilet",
+        "clicks": 8,
+        "impressions": 47,
+        "position": 3.5,
+        "delta": "+3"
+      },
+      {
+        "query": "incesa costa rica",
+        "clicks": 8,
+        "impressions": 38,
+        "position": 2,
+        "delta": "+2"
+      },
+      {
+        "query": "lavamanos con pedestal",
+        "clicks": 8,
+        "impressions": 1136,
+        "position": 2.6,
+        "delta": "0"
+      }
+    ]
+  },
+  "sitemap": {
+    "totalSitemaps": 6,
+    "totalSubmitted": 1592,
+    "sitemapsWithErrors": 0,
+    "sitemapsWithWarnings": 4,
+    "sitemaps": [
+      {
+        "path": "https://www.americanstandardca.com/catalogo-sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-05-20T22:23:22.237Z",
+        "lastDownloaded": "2026-08-18T23:17:04.501Z",
+        "submitted": 95,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "6",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 92,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/catalogo-sitemap.xml"
+        }
+      },
+      {
+        "path": "https://www.americanstandardca.com/categorias-sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-05-20T22:22:47.773Z",
+        "lastDownloaded": "2026-08-14T13:09:41.076Z",
+        "submitted": 18,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "0",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 18,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/categorias-sitemap.xml"
+        }
+      },
+      {
+        "path": "https://www.americanstandardca.com/productos-sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-05-20T22:22:18.926Z",
+        "lastDownloaded": "2026-08-13T03:03:57.236Z",
+        "submitted": 146,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "1",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 146,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/productos-sitemap.xml"
+        }
+      },
+      {
+        "path": "https://www.americanstandardca.com/post-sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-05-20T22:21:26.917Z",
+        "lastDownloaded": "2026-08-18T14:21:07.710Z",
+        "submitted": 16,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "0",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 16,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/post-sitemap.xml"
+        }
+      },
+      {
+        "path": "https://www.americanstandardca.com/sitemap_index.xml",
+        "isSitemapsIndex": true,
+        "lastSubmitted": "2024-05-20T20:01:09.479Z",
+        "lastDownloaded": "2026-08-15T10:28:40.513Z",
+        "submitted": 1303,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "1",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 1299,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/sitemap_index.xml"
+        }
+      },
+      {
+        "path": "https://www.americanstandardca.com/page-sitemap.xml",
+        "isSitemapsIndex": false,
+        "lastSubmitted": "2024-05-20T18:15:12.378Z",
+        "lastDownloaded": "2026-08-11T19:28:25.402Z",
+        "submitted": 14,
+        "indexed": 0,
+        "indexRate": "0%",
+        "errors": "0",
+        "warnings": "2",
+        "status": "low-indexing",
+        "download": {
+          "ok": true,
+          "urlCount": 13,
+          "localPath": "reports/americanstandardca/2026-08-19/data/sitemaps/page-sitemap-2.xml"
+        }
+      }
+    ],
+    "totalUrlsInSitemaps": 1299,
+    "seedUrlsIndexing": {
+      "totalChecked": 10,
+      "totalIndexed": 10,
+      "indexRate": "100.0%",
+      "pages": [
+        {
+          "path": "/",
+          "url": "https://www.americanstandardca.com/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/productos/orinal-seco-arica/",
+          "url": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/spa-baneras/",
+          "url": "https://www.americanstandardca.com/categorias/spa-baneras/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/productos/lavamanos-sobreponer-redondo/",
+          "url": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/sanitarios/",
+          "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/elegir-griferia-bano/",
+          "url": "https://www.americanstandardca.com/elegir-griferia-bano/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/asientos/",
+          "url": "https://www.americanstandardca.com/categorias/asientos/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/orinales/",
+          "url": "https://www.americanstandardca.com/categorias/orinales/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/sanitarios/",
+          "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        },
+        {
+          "path": "/categorias/griferia/",
+          "url": "https://www.americanstandardca.com/categorias/griferia/",
+          "coverageState": "Enviada e indexada",
+          "indexed": true
+        }
+      ]
+    },
+    "seedUrlsNotInSitemap": [
+      {
+        "path": "/categorias/accesorios/",
+        "url": "https://www.americanstandardca.com/categorias/accesorios/"
+      }
+    ]
+  },
+  "robotsTxt": {
+    "url": "https://www.americanstandardca.com/robots.txt",
+    "content": "# START YOAST BLOCK\n# ---------------------------\nUser-agent: *\nDisallow:\n\nSitemap: http://www.americanstandardca.com/sitemap_index.xml\n# ---------------------------\n# END YOAST BLOCK",
+    "localPath": "reports/americanstandardca/2026-08-19/data/robots.txt"
+  },
+  "keywordVolume": {
+    "rows": [
+      {
+        "query": "Orinal seco",
+        "volume": 20,
+        "clicks": 5,
+        "impressions": 37,
+        "position": 1
+      },
+      {
+        "query": "Bañeras",
+        "volume": 320,
+        "clicks": 2,
+        "impressions": 256,
+        "position": null
+      },
+      {
+        "query": "Lavamanos redondo",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "Sanitarios",
+        "volume": 320,
+        "clicks": 8,
+        "impressions": 2890,
+        "position": null
+      },
+      {
+        "query": "Grifería para baño",
+        "volume": 110,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 4
+      },
+      {
+        "query": "Tapas de inodoro",
+        "volume": 260,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "Orinales",
+        "volume": 140,
+        "clicks": 4,
+        "impressions": 506,
+        "position": 7
+      },
+      {
+        "query": "Inodoros",
+        "volume": 1300,
+        "clicks": 1,
+        "impressions": 88,
+        "position": null
+      },
+      {
+        "query": "Grifería",
+        "volume": 260,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "Lavamanos cuadrado",
+        "volume": 10,
+        "clicks": 1,
+        "impressions": 127,
+        "position": 6
+      },
+      {
+        "query": "Orinal ecológico",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      },
+      {
+        "query": "Ducha",
+        "volume": 1600,
+        "clicks": 2,
+        "impressions": 138,
+        "position": null
+      },
+      {
+        "query": "Accesorios para baños",
+        "volume": 90,
+        "clicks": 0,
+        "impressions": 20,
+        "position": null
+      },
+      {
+        "query": "Fluxómetros",
+        "volume": 10,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 2
+      },
+      {
+        "query": "Bañeras hidromasaje",
+        "volume": 30,
+        "clicks": 0,
+        "impressions": 0,
+        "position": null
+      }
+    ]
+  },
+  "queryVariations": [
+    {
+      "url": "https://www.americanstandardca.com/",
+      "mainQuery": "american standard",
+      "variations": [
+        "american standard guatemala",
+        "incesa standard",
+        "american standard costa rica",
+        "american standard honduras",
+        "incesa"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "mainQuery": "orinal seco",
+      "variations": [
+        "urinario seco",
+        "american standar",
+        "mingitorio seco american standard",
+        "orinales secos",
+        "urinarios secos"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "mainQuery": "bañera",
+      "variations": [
+        "bañeras",
+        "tina american standard",
+        "bañera american standard",
+        "baneras",
+        "tina bañera"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "mainQuery": "lavamanos sobreponer",
+      "variations": [
+        "lavabo de sobreponer redondo",
+        "lavamanos redondo",
+        "lavamanos redondo de sobreponer",
+        "lavamanos redondos",
+        "lavamanos de sobreponer"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "mainQuery": "inodoro american standard",
+      "variations": [
+        "american standard inodoros",
+        "american standard",
+        "american standard guatemala",
+        "incesa standard",
+        "inodoros american standard"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/elegir-griferia-bano/",
+      "mainQuery": "griferia para baño",
+      "variations": [
+        "grifos para baño",
+        "cómo elegir grifería para baño",
+        "griferia baño",
+        "griferia para baños",
+        "grifo para baño"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/asientos/",
+      "mainQuery": "american standard",
+      "variations": [
+        "tapa de inodoro american standard",
+        "tapa inodoro american standard costa rica",
+        "tapadera de baño american standard",
+        "tapas de inodoro american standard",
+        "tapa de baño american standard"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/orinales/",
+      "mainQuery": "mingitorio american standard",
+      "variations": [
+        "urinario american standard",
+        "orinales",
+        "american standard urinal",
+        "orinal",
+        "orinal seco"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "mainQuery": "inodoro american standard",
+      "variations": [
+        "american standard inodoros",
+        "american standard",
+        "american standard guatemala",
+        "incesa standard",
+        "inodoros american standard"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/griferia/",
+      "mainQuery": "griferia american standard",
+      "variations": [
+        "american standard",
+        "griferia para baño",
+        "american standar",
+        "griferia",
+        "american standard costa rica"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-cuadrado/",
+      "mainQuery": "lavamanos cuadrado",
+      "variations": [
+        "lavamanos cuadrados de sobreponer",
+        "lavamanos de sobreponer cuadrado",
+        "lavamanos cuadrados",
+        "lavamanos cuadrado sobreponer",
+        "lavamano cuadrado"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "mainQuery": "orinal seco",
+      "variations": [
+        "urinario seco",
+        "american standar",
+        "mingitorio seco american standard",
+        "orinales secos",
+        "urinarios secos"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/ducha/",
+      "mainQuery": "duchas para baño",
+      "variations": [
+        "ducha",
+        "duchas",
+        "ducha american standard",
+        "duchas de baño",
+        "ducha americana"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/accesorios/",
+      "mainQuery": null,
+      "variations": []
+    },
+    {
+      "url": "https://www.americanstandardca.com/catalogo/fluxometros/",
+      "mainQuery": "fluxometro american standard",
+      "variations": [
+        "fluxometros",
+        "fluxometro",
+        "fluxometro american standard manual",
+        "american standard fluxometro",
+        "fluxometro american standard para wc"
+      ]
+    },
+    {
+      "url": "https://www.americanstandardca.com/categorias/baneras-hidromasaje/",
+      "mainQuery": "hidromasaje",
+      "variations": [
+        "jacuzzi american standard",
+        "bañera american standard",
+        "bañera de hidromasaje",
+        "american standard jacuzzi",
+        "bañera hidromasaje"
+      ]
+    }
+  ],
+  "aiActions": [
+    {
+      "page": "https://www.americanstandardca.com/categorias/asientos/",
+      "detail": "No tiene <h1>: el título real de la página (\"ASIENTOS\") está marcado como <h2> en su lugar. Agregar un <h1> único con el nombre de la categoría."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/griferia/",
+      "detail": "No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/orinales/",
+      "detail": "No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "detail": "No tiene <h1>: el título de la categoría (\"SANITARIOS\") está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "detail": "No tiene <h1>: el título de la categoría está marcado como <h2> en vez de <h1>. Agregar un <h1> único con el nombre de la categoría."
+    },
+    {
+      "page": "https://www.americanstandardca.com/",
+      "detail": "El home tiene 5 <h1> en vez de uno: son los títulos de cada item del carrusel de galería (\"Grifería Moderna\", \"Grifería Atemporal\", \"Grifería Zen\", \"Serie Elemento\", \"Grifería Spa Experience\") — ninguno describe el home en sí. Bajar esos a <h2>/<h3> y dejar un único <h1> con la propuesta de valor del sitio."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "detail": "La página tiene 4 <h1>: \"COTIZACIÓN\" aparece 2 veces (encabezado del modal de cotización, duplicado por una variante mobile/desktop que quedan ambas en el DOM) y \"Lavamanos Elemento\" también 2 veces (mismo patrón mobile/desktop). Dejar un solo <h1> real con el nombre del producto y bajar \"COTIZACIÓN\" a <h2> o quitarlo del heading."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "detail": "La página tiene 4 <h1>: \"COTIZACIÓN\" aparece 2 veces (modal de cotización duplicado mobile/desktop) y \"Orinal Seco Arica\" también 2 veces (mismo patrón mobile/desktop). Dejar un solo <h1> real con el nombre del producto y bajar \"COTIZACIÓN\" a <h2> o quitarlo del heading."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/asientos/",
+      "detail": "14 de 17 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una — es la mayoría de las imágenes de la página."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/griferia/",
+      "detail": "33 de 36 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/orinales/",
+      "detail": "8 de 11 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/sanitarios/",
+      "detail": "25 de 28 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."
+    },
+    {
+      "page": "https://www.americanstandardca.com/categorias/spa-baneras/",
+      "detail": "15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre del producto en cada una."
+    },
+    {
+      "page": "https://www.americanstandardca.com/elegir-griferia-bano/",
+      "detail": "6 de 9 imágenes sin alt (o alt vacío): agregar alt descriptivo relacionado al contenido del artículo."
+    },
+    {
+      "page": "https://www.americanstandardca.com/",
+      "detail": "35 de 38 imágenes sin alt (o alt vacío) en el home: agregar alt descriptivo en cada una — es la mayoría de las imágenes del sitio."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/lavamanos-sobreponer-redondo/",
+      "detail": "15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre y característica del producto en cada una."
+    },
+    {
+      "page": "https://www.americanstandardca.com/productos/orinal-seco-arica/",
+      "detail": "15 de 18 imágenes sin alt (o alt vacío): agregar alt descriptivo con el nombre y característica del producto en cada una."
+    }
+  ]
+}

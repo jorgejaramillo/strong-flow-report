@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aura">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Flow: SEO & Performance</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- daisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<!-- Apache ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.2.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@6.2.1/dist/js/tabulator.min.js"></script>
+<!-- Aura Design System — fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Aura Design System — theme tokens */
+  [data-theme="aura"] {
+    --p: #14B8A6;    /* primary */
+    --pc: #042F2E;   /* primary content */
+    --s: #042F2E;    /* secondary */
+    --sc: #E5E7EB;
+    --a: #042F2E;    /* accent */
+    --ac: #E5E7EB;
+    --n: #042F2E;    /* neutral */
+    --nc: #E5E7EB;
+    --b1: #ffffff;   /* base / card surface */
+    --b2: #f3f4f6;
+    --b3: #E5E7EB;
+    --bc: #111827;   /* base content (text-primary) */
+    --su: #14B8A6; --suc: #042F2E;
+    --wa: #eab308; --wac: #111827;
+    --er: #ef4444; --erc: #ffffff;
+    --in: #0ea5e9; --inc: #ffffff;
+    --rounded-box: 0.5rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 9999px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #E5E7EB;
+    color: #111827;
+  }
+  .stat-title, th, .tabulator-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-title::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #14B8A6;
+    display: inline-block;
+  }
+  .tabulator {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #E5E7EB;
+  }
+  .tabulator .tabulator-header {
+    background: #f0fdfa;
+    border-bottom: 2px solid #14B8A6;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .section-card { break-inside: avoid; }
+  }
+  .chart { width: 100%; height: 320px; }
+
+  /* Tabla de contenidos / scroll-spy */
+  html { scroll-behavior: smooth; }
+  section.section-card { scroll-margin-top: 5rem; }
+  .toc-link {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    color: rgba(17, 24, 39, 0.6);
+    border-left: 3px solid transparent;
+    text-decoration: none;
+  }
+  .toc-link:hover { background: #f3f4f6; color: #111827; }
+  .toc-link.toc-active {
+    background: #f0fdfa;
+    color: #042F2E;
+    font-weight: 600;
+    border-left-color: #14B8A6;
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ═══════════════ REPORT DATA ═══════════════ -->
+<!-- El build script (scripts/build-report.js) reemplaza el contenido de este script
+     con el data.json de la corrida. Es JSON embebido, no un fetch: funciona igual
+     abriendo el archivo con doble clic (file://) que en un servidor. -->
+<script id="report-data" type="application/json">{"meta":{"clientSlug":"casanua","clientName":"Casa NUA","domain":"www.casanua.co","periodStart":"19 jul 2026","periodEnd":"17 ago 2026","generatedAt":"19 ago 2026","pagesAnalyzed":25},"headerBadges":[{"text":"↑ 10.0% clicks","class":"badge-success"},{"text":"37 URLs en sitemap","class":"badge-info"}],"stats":[{"title":"Clicks","value":"1,334","valueClass":"text-primary","desc":"↑ 10.0% vs período anterior","descClass":"text-success"},{"title":"Impresiones","value":"17,686","desc":"↑ 32.0%","descClass":"text-success"},{"title":"CTR medio","value":"7.54%","desc":"↓ 1.51pp","descClass":"text-error"},{"title":"Posición media","value":"7.6","desc":"↓ 1.6 (mejor)","descClass":"text-error"},{"title":"URLs encontradas","value":"37","desc":"Vía sitemap.xml"},{"title":"URLs enviadas","value":"37","desc":"A Search Console"}],"domainAnalytics":null,"clicksOverTime":{"startDate":"2026-05-20","endDate":"2026-08-17","clicks":[36,43,30,26,34,40,43,30,35,15,16,15,34,52,32,33,36,17,17,22,25,24,39,38,40,26,22,51,31,38,38,40,14,35,30,20,34,26,17,32,24,51,46,47,28,20,19,35,28,51,52,34,19,31,29,50,27,49,59,228,28,33,41,63,62,49,36,51,52,70,33,60,55,43,33,46,45,45,46,31,24,35,44,44,63,43,40,35,42,42],"impressions":[408,443,453,355,414,458,534,411,418,327,238,230,381,435,395,374,366,275,308,273,414,400,390,366,341,277,344,547,430,392,416,344,282,443,434,397,397,351,277,386,344,464,480,440,409,304,366,424,428,496,439,448,351,466,389,575,448,511,623,1266,397,442,609,626,653,609,520,555,607,702,628,665,769,688,593,603,684,692,613,496,551,538,533,550,643,653,578,470,533,486]},"cannibalization":[{"query":"senior living","rows":[{"url":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","impressions":129,"clicks":7,"position":3.6,"status":"Principal","statusClass":"badge-success"},{"url":"https://www.casanua.co/es_es/","impressions":119,"clicks":3,"position":7.2,"status":"Canibaliza","statusClass":"badge-warning"}]}],"winners":[{"page":"https://www.casanua.co/es_es/","clicks":144,"prev":100,"delta":"+44"},{"page":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","clicks":60,"prev":50,"delta":"+10"},{"page":"https://www.casanua.co/es_es/sedes/san-lucas/","clicks":24,"prev":17,"delta":"+7"},{"page":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","clicks":9,"prev":4,"delta":"+5"},{"page":"https://www.casanua.co/en/casa-nua-chia-vivienda-asistida-senior-living-colombia/","clicks":3,"prev":0,"delta":"+3"}],"losers":[{"page":"https://www.casanua.co/wp-content/uploads/2022/05/Brochure-2022-Mayo.pdf","clicks":0,"prev":7,"delta":"-7"},{"page":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","clicks":5,"prev":10,"delta":"-5"},{"page":"https://www.casanua.co/es_es/trabaja-con-nosotros/","clicks":4,"prev":8,"delta":"-4"},{"page":"https://www.casanua.co/es_es/casa-nua-country/","clicks":0,"prev":3,"delta":"-3"},{"page":"https://www.casanua.co/es_es/senior_living_colombia/","clicks":9,"prev":11,"delta":"-2"}],"landingsPeriodLabel":"11 ago 2026 → 17 ago 2026","landingsCrawl":[{"url":"https://www.casanua.co/","localPath":"reports/casanua/2026-08-19/data/crawl/index.html","retried":false},{"url":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60.html","retried":false},{"url":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_vivienda-asistida-rompiendo-mitos-y-estigmas.html","retried":false},{"url":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_el-primer-senior-living-age-friendly-de-colombia.html","retried":false},{"url":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo.html","retried":false},{"url":"https://www.casanua.co/es_es/quienes-somos/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_quienes-somos.html","retried":false},{"url":"https://www.casanua.co/es_es/sedes/san-lucas/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_sedes_san-lucas.html","retried":false},{"url":"https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua.html","retried":false},{"url":"https://www.casanua.co/es_es/sedes/casa-country/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_sedes_casa-country.html","retried":false},{"url":"https://www.casanua.co/es_es/sedes/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_sedes.html","retried":false},{"url":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-nosotros-vivienda-adulto-mayor-colombia.html","retried":true},{"url":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-independiente.html","retried":false},{"url":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_servicios_casa-nua-dia.html","retried":false},{"url":"https://www.casanua.co/es_es/evento-clubes/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_evento-clubes.html","retried":false},{"url":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_sedes_casa-nua-chia-vivienda-asistida-senior-living-colombia.html","retried":false},{"url":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable.html","retried":true},{"url":"https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-actividades-vivienda-adulto-mayo.html","retried":false},{"url":"https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_vivienda-asistida-certificada-como-edificio-sostenible.html","retried":false},{"url":"https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-country-adulto-mayo-senior-living-colombia.html","retried":false},{"url":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-temporal.html","retried":false},{"url":"https://www.casanua.co/es_es/casa-nua-san-lucas/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-san-lucas.html","retried":true},{"url":"https://www.casanua.co/es_es/senior_living_colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_senior_living_colombia.html","retried":false},{"url":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_casa-nua-chia-vivienda-asistida-senior-living-colombia.html","retried":false},{"url":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_servicios_vivienda-asistida.html","retried":true},{"url":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","localPath":"reports/casanua/2026-08-19/data/crawl/es_es_servicios_recuperacion-postoperatoria.html","retried":false}],"findings":[{"page":"https://www.casanua.co/es_es/sedes/san-lucas/","detail":"Rankea para <strong>\"hogar san lucas\"</strong> (pos. 7.4, 47 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","detail":"Rankea para <strong>\"casa de recuperación post quirúrgica precio medellín\"</strong> (pos. 10.7, 24 impr.) pero el término no aparece en el texto de la página."},{"page":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","detail":"Rankea para <strong>\"casa de recuperación post quirúrgica medellín\"</strong> (pos. 9.4, 22 impr.) pero el término no aparece en el texto de la página."}],"contentImprove":[{"page":"https://www.casanua.co/","detail":"<strong>¿Qué es la vivienda asistida para adultos mayores y qué tipos existen (residencias, apartamentos asistidos, hogares comunitarios)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/","detail":"<strong>¿Cuáles son los requisitos de ingreso, procesos de evaluación y documentación necesaria?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","detail":"<strong>¿Qué tipo de ejercicio diario es seguro y más efectivo para mejorar fuerza, equilibrio y movilidad después de los 60?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","detail":"<strong>¿Qué hábitos alimenticios y suplementos recomiendan para mantener energía, masa muscular y salud cerebral?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","detail":"<strong>¿Qué es la vivienda asistida y en qué se diferencia de otros modelos de vivienda (vivienda asistencial, hogares con servicios, apartamentos con apoyo)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","detail":"<strong>¿Qué servicios y apoyos ofrece Casa Nua en una vivienda asistida (salud, acompañamiento social, accesibilidad, actividades)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","detail":"<strong>¿Dónde se ubica exactamente y cómo es su infraestructura y accesibilidad física (habitaciones, áreas comunes, movilidad)?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","detail":"<strong>¿Qué tipo de atención médica, personal calificado y protocolos de seguridad y emergencias tienen?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","detail":"<strong>¿Qué beneficios concretos (cognitivos y de calidad de vida) aporta cada hábito y en cuánto tiempo se ven cambios?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"},{"page":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","detail":"<strong>¿Cómo empezar hoy mismo: plan diario/semana de introducción paso a paso y ejemplos prácticos?</strong><br><span class=\"text-xs text-base-content/50\">No está cubierta en el contenido actual de la página.</span>","source":"ChatGPT"}],"keywords":{"general":[{"query":"retirement communities near me","clicks":0,"impressions":149,"position":4.2,"delta":"0"},{"query":"guardería para adultos mayores medellín","clicks":2,"impressions":65,"position":9.9,"delta":"-2"},{"query":"retirement communities","clicks":0,"impressions":59,"position":3.6,"delta":"0"},{"query":"hogar san lucas","clicks":0,"impressions":55,"position":7.2,"delta":"0"},{"query":"hogar para adultos mayores","clicks":0,"impressions":54,"position":18.1,"delta":"0"},{"query":"cerebro diarios","clicks":0,"impressions":49,"position":7.6,"delta":"0"},{"query":"casa hogar medellin","clicks":0,"impressions":47,"position":11.4,"delta":"0"},{"query":"hogar geriatrico chia","clicks":1,"impressions":44,"position":16.8,"delta":"+1"}],"target":[{"query":"hogar para el adulto mayor","clicks":0,"impressions":17,"position":9.3,"delta":"0"},{"query":"senior living","clicks":10,"impressions":233,"position":5.1,"delta":"+9"},{"query":"senior living bogota","clicks":5,"impressions":37,"position":11,"delta":"+3"},{"query":"apartamentos para adultos mayores bogotá","clicks":0,"impressions":1,"position":10,"delta":"0"},{"query":"vivienda asistida para adultos mayores","clicks":2,"impressions":78,"position":5.3,"delta":"+1"},{"query":"hogares para adultos mayores en medellín","clicks":1,"impressions":2,"position":10,"delta":"+1"},{"query":"conjunto residencial para adultos mayores bogotá","clicks":1,"impressions":4,"position":5.3,"delta":"+1"},{"query":"senior living chia","clicks":9,"impressions":50,"position":1.9,"delta":"+6"},{"query":"casas de retiro para adultos mayores","clicks":0,"impressions":6,"position":8,"delta":"0"},{"query":"senior living colombia","clicks":5,"impressions":54,"position":6.1,"delta":"+1"},{"query":"vivienda asistida para adultos mayores bogotá","clicks":2,"impressions":20,"position":6.8,"delta":"+1"},{"query":"viviendas asistidas","clicks":0,"impressions":1,"position":8,"delta":"0"},{"query":"hogar senior","clicks":0,"impressions":6,"position":5.8,"delta":"0"},{"query":"residencia adulto mayor","clicks":0,"impressions":8,"position":21.6,"delta":"-1"},{"query":"casas de cuidado adultos mayores","clicks":0,"impressions":3,"position":8.3,"delta":"0"},{"query":"conjunto residencial para adultos mayores","clicks":0,"impressions":7,"position":16.9,"delta":"0"},{"query":"senior living medellin","clicks":5,"impressions":40,"position":2.8,"delta":"+4"},{"query":"apartamentos para personas mayores","clicks":0,"impressions":5,"position":5,"delta":"0"},{"query":"condominios para adultos mayores","clicks":0,"impressions":1,"position":12,"delta":"0"},{"query":"hogar de retiro","clicks":0,"impressions":6,"position":17.3,"delta":"0"},{"query":"vivienda asistida bogotá","clicks":0,"impressions":9,"position":14,"delta":"0"},{"query":"hogar de retiro para adultos mayores","clicks":0,"impressions":3,"position":5.3,"delta":"0"}],"brand":[{"query":"casa nua","clicks":155,"impressions":1412,"position":3.4,"delta":"-22"},{"query":"casa nua country","clicks":58,"impressions":155,"position":1.4,"delta":"+6"},{"query":"casa nua san lucas","clicks":55,"impressions":550,"position":4.1,"delta":"+23"},{"query":"casa nua chia","clicks":51,"impressions":511,"position":1.9,"delta":"-17"},{"query":"casa nua precios","clicks":23,"impressions":91,"position":1.6,"delta":"+5"},{"query":"casa nua medellin","clicks":11,"impressions":54,"position":1.9,"delta":"+2"}],"nonBrand":[{"query":"senior living","clicks":10,"impressions":233,"position":5.1,"delta":"+9"},{"query":"senior living chia","clicks":9,"impressions":50,"position":1.9,"delta":"+6"},{"query":"senior living bogota","clicks":5,"impressions":37,"position":11,"delta":"+3"},{"query":"senior living colombia","clicks":5,"impressions":54,"position":6.1,"delta":"+1"},{"query":"senior living medellin","clicks":5,"impressions":40,"position":2.8,"delta":"+4"},{"query":"casa nu","clicks":4,"impressions":14,"position":2.1,"delta":"-5"}]},"sitemap":{"totalSitemaps":17,"totalSubmitted":37,"sitemapsWithErrors":16,"sitemapsWithWarnings":13,"sitemaps":[{"path":"https://www.casanua.co/sitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2024-02-22T23:27:26.479Z","lastDownloaded":"2026-08-21T07:50:14.154Z","submitted":37,"indexed":0,"indexRate":"0%","errors":"0","warnings":"4","status":"low-indexing","download":{"ok":true,"urlCount":37,"localPath":"reports/casanua/2026-08-19/data/sitemaps/sitemap.xml"}},{"path":"https://www.casanua.co/bobsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:15:40.636Z","lastDownloaded":"2021-01-06T14:31:58.780Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/dewsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:11:00.934Z","lastDownloaded":"2021-01-08T19:27:00.579Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"0","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/mfisitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:09:02.376Z","lastDownloaded":"2021-01-10T01:44:37.325Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"0","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/fnmsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:06:24.820Z","lastDownloaded":"2021-01-02T17:13:17.637Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/ohlsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:04:23.727Z","lastDownloaded":"2021-01-12T03:02:08.587Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"0","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/khnsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T03:01:32.874Z","lastDownloaded":"2021-01-10T22:53:07.759Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"0","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/rwvsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:59:33.861Z","lastDownloaded":"2021-01-07T20:02:43.126Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"1","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/yvhsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:57:36.774Z","lastDownloaded":"2021-01-09T19:53:57.851Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"1","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/hhcsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:55:39.439Z","lastDownloaded":"2021-01-09T06:48:35.592Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/wausitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:53:35.292Z","lastDownloaded":"2021-01-11T20:42:50.293Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"3","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/npwsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:50:52.204Z","lastDownloaded":"2021-01-12T23:06:39.533Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/pflsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:47:06.058Z","lastDownloaded":"2021-01-07T14:53:28.432Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"3","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/ucrsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:43:31.180Z","lastDownloaded":"2021-01-09T18:10:17.612Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/ydositemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:41:04.130Z","lastDownloaded":"2021-01-05T01:28:26.901Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"3","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/miusitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:31:43.399Z","lastDownloaded":"2021-01-08T08:42:14.087Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}},{"path":"https://www.casanua.co/khbsitemap.xml","isSitemapsIndex":false,"lastSubmitted":"2020-09-17T02:29:49.346Z","lastDownloaded":"2021-01-11T23:35:42.929Z","submitted":0,"indexed":0,"indexRate":"N/A","errors":"2","warnings":"2","status":"error","download":{"ok":false,"urlCount":0,"error":"HTTP 404"}}],"totalUrlsInSitemaps":37,"seedUrlsIndexing":{"totalChecked":25,"totalIndexed":22,"indexRate":"88.0%","pages":[{"path":"/","url":"https://www.casanua.co/","coverageState":"Página con redirección","indexed":false},{"path":"/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","url":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","url":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/el-primer-senior-living-age-friendly-de-colombia/","url":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","url":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/quienes-somos/","url":"https://www.casanua.co/es_es/quienes-somos/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/sedes/san-lucas/","url":"https://www.casanua.co/es_es/sedes/san-lucas/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","url":"https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/sedes/casa-country/","url":"https://www.casanua.co/es_es/sedes/casa-country/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/sedes/","url":"https://www.casanua.co/es_es/sedes/","coverageState":"Descubierta: actualmente sin indexar","indexed":false},{"path":"/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","url":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/servicios/vivienda-independiente/","url":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/servicios/casa-nua-dia/","url":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/evento-clubes/","url":"https://www.casanua.co/es_es/evento-clubes/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","url":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","url":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/casa-nua-actividades-vivienda-adulto-mayo/","url":"https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","url":"https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/","url":"https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/servicios/vivienda-temporal/","url":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/casa-nua-san-lucas/","url":"https://www.casanua.co/es_es/casa-nua-san-lucas/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/senior_living_colombia/","url":"https://www.casanua.co/es_es/senior_living_colombia/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","url":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","coverageState":"Duplicada: Google ha elegido una versión canónica diferente a la del usuario","indexed":false},{"path":"/es_es/servicios/vivienda-asistida/","url":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","coverageState":"Enviada e indexada","indexed":true},{"path":"/es_es/servicios/recuperacion-postoperatoria/","url":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","coverageState":"Enviada e indexada","indexed":true}]},"seedUrlsNotInSitemap":[]},"keywordVolume":{"rows":[{"query":"hogar para el adulto mayor","volume":390,"clicks":0,"impressions":17,"position":null},{"query":"senior living","volume":320,"clicks":10,"impressions":233,"position":5},{"query":"senior living bogota","volume":260,"clicks":5,"impressions":37,"position":null},{"query":"cuidado de adultos mayores","volume":210,"clicks":0,"impressions":0,"position":null},{"query":"apartamentos para adultos mayores bogotá","volume":110,"clicks":0,"impressions":1,"position":6},{"query":"hogares para adultos mayores en bogota","volume":90,"clicks":0,"impressions":0,"position":null},{"query":"vivienda asistida para adultos mayores","volume":70,"clicks":2,"impressions":78,"position":3},{"query":"hogares para adultos mayores en medellín","volume":70,"clicks":1,"impressions":2,"position":null},{"query":"conjunto residencial para adultos mayores bogotá","volume":50,"clicks":1,"impressions":4,"position":null},{"query":"senior living chia","volume":50,"clicks":9,"impressions":50,"position":1},{"query":"casas de retiro para adultos mayores","volume":40,"clicks":0,"impressions":6,"position":5},{"query":"senior living colombia","volume":40,"clicks":5,"impressions":54,"position":7},{"query":"vivienda asistida para adultos mayores bogotá","volume":40,"clicks":2,"impressions":20,"position":3},{"query":"viviendas asistidas","volume":50,"clicks":0,"impressions":1,"position":null},{"query":"hogar senior","volume":30,"clicks":0,"impressions":6,"position":5},{"query":"residencia adulto mayor","volume":30,"clicks":0,"impressions":8,"position":4},{"query":"casas de cuidado adultos mayores","volume":30,"clicks":0,"impressions":3,"position":null},{"query":"club para adulto mayor","volume":20,"clicks":0,"impressions":0,"position":null},{"query":"conjunto residencial para adultos mayores","volume":20,"clicks":0,"impressions":7,"position":8},{"query":"senior living medellin","volume":30,"clicks":5,"impressions":40,"position":2},{"query":"alojamiento para adultos mayores","volume":10,"clicks":0,"impressions":0,"position":8},{"query":"apartamentos para personas mayores","volume":10,"clicks":0,"impressions":5,"position":4},{"query":"condominios para adultos mayores","volume":10,"clicks":0,"impressions":1,"position":6},{"query":"conjunto residencial para adultos mayores medellín","volume":10,"clicks":0,"impressions":0,"position":2},{"query":"cuidado adulto mayor medellin","volume":20,"clicks":0,"impressions":0,"position":null},{"query":"hogar de retiro","volume":10,"clicks":0,"impressions":6,"position":null},{"query":"hospedaje para adultos mayores","volume":10,"clicks":0,"impressions":0,"position":3},{"query":"senior living resort","volume":10,"clicks":0,"impressions":0,"position":null},{"query":"vivienda asistida bogotá","volume":20,"clicks":0,"impressions":9,"position":null},{"query":"hogar de retiro para adultos mayores","volume":30,"clicks":0,"impressions":3,"position":7}]},"queryVariations":[{"url":"https://www.casanua.co/","mainQuery":"casa nua precios","variations":["casa nua chia","casa nua","casanua","casa nua trabaja con nosotros","casa nuva"]},{"url":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","mainQuery":null,"variations":[]},{"url":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","mainQuery":"vivienda asistida","variations":[]},{"url":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","mainQuery":null,"variations":[]},{"url":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","mainQuery":"cerebro diarios","variations":[]},{"url":"https://www.casanua.co/es_es/quienes-somos/","mainQuery":"casa nua","variations":["casanua","casa nua san lucas","casa nua trabaja con nosotros","casa nuva","itsabinova nua"]},{"url":"https://www.casanua.co/es_es/sedes/san-lucas/","mainQuery":"casa nua san lucas","variations":["casa nua","casa nua medellin","casa nua precios","casa nua san lucas precios","nua"]},{"url":"https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","mainQuery":"vivienda asistida salud mental","variations":[]},{"url":"https://www.casanua.co/es_es/sedes/casa-country/","mainQuery":"casa nua country","variations":["casa nua restaurante","casa nua","casa nua medellin","casa nua direccion","casa nua san lucas"]},{"url":"https://www.casanua.co/es_es/sedes/","mainQuery":null,"variations":[]},{"url":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","mainQuery":"casa nua","variations":["casa nua chia","casa nua senior living","casa nua trabaja con nosotros","casanua","casa nua san lucas"]},{"url":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","mainQuery":"casa nua","variations":["casa nua asunción","casanua","casa nua living","casa independiente","casa nua san lucas"]},{"url":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","mainQuery":"casa nua","variations":["casanua","casa nua chia","casa nuva","casa nua san lucas"]},{"url":"https://www.casanua.co/es_es/evento-clubes/","mainQuery":"club nua","variations":["casa nuda"]},{"url":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","mainQuery":"casa nua chia","variations":["senior living","casa nua","casa nua chía fotos","casa nua chía","senior living chia"]},{"url":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","mainQuery":"vivir más y mejor","variations":["viviendo mejor","vivir con vitalidad","vivir más"]},{"url":"https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/","mainQuery":"casa nua","variations":[]},{"url":"https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","mainQuery":null,"variations":[]},{"url":"https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/","mainQuery":"casa nua medellin","variations":["casa nua country","casa nua san lucas","casa nua","casa nua direccion","casa nua senior living"]},{"url":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","mainQuery":"casa nua","variations":["vivienda temporal tratamiento médico","casa nua san lucas","vivienda transitoria","vivienda temporal","casa nuva"]},{"url":"https://www.casanua.co/es_es/casa-nua-san-lucas/","mainQuery":"casa nua san lucas","variations":["casa nua restaurante","casa nua san lucas fotos","casa nua ibiza"]},{"url":"https://www.casanua.co/es_es/senior_living_colombia/","mainQuery":"casa nua","variations":["casa nua chia","casa nua colombia","cohousing senior colombia","retierment home","casanua"]},{"url":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","mainQuery":null,"variations":[]},{"url":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","mainQuery":"vivienda asistida para adultos mayores bogotá","variations":["casa nua","vivienda asistida","vivienda asistida bogota","casanua","casa nua senior living"]},{"url":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","mainQuery":"casa de recuperación post quirúrgica precio medellín","variations":["casa de recuperación post quirúrgica medellín","casa de recuperacion medellin","casas de recuperacion post operatoria","centros de recuperación postoperatorios","casa de recuperación post quirúrgica precio bogotá"]}],"aiActions":[{"page":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","detail":"Title muy largo (99 caracteres, recomendado 50-60): \"4 Hábitos diarios que fortalecen el cerebro después de los 60 (y cómo empezar hoy mismo) - Casa Nua\" — acortarlo."},{"page":"https://www.casanua.co/es_es/4-habitos-diarios-que-fortalecen-elcerebro-despues-de-los-60-y-comoempezar-hoy-mismo/","detail":"6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","detail":"Title muy largo (86 caracteres, recomendado 50-60): acortarlo."},{"page":"https://www.casanua.co/es_es/5-habitos-diarios-que-mantienen-tu-mente-y-cuerpo-activos-despues-de-los-60/","detail":"3 de 4 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/adulto-mayor-vivienda-asistida-vida-activa-comunidad-casanua/","detail":"6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/","detail":"Tiene 2 <h1> (\"Actividades\" y \"ASÍ VIVIMOS LAS ACTIVIDADES EN CASA NUA\"): dejar solo uno."},{"page":"https://www.casanua.co/es_es/casa-nua-actividades-vivienda-adulto-mayo/","detail":"17 de 17 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"No tiene <h1>: agregar uno con el tema central de la página."},{"page":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"Canibalización: existe otra URL sobre el mismo tema, https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/, con un title casi idéntico (\"Casa Nua Chía | Vivienda asistida adulto mayor | Senior living\" vs \"Casa Nua Chía | Vivienda Asistida Adulto Mayor | Senior Living\"). Definir cuál es la página canónica para \"Casa Nua Chía\" y diferenciar o consolidar la otra."},{"page":"https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"8 de 8 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/casa-nua-country-adulto-mayo-senior-living-colombia/","detail":"16 de 36 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","detail":"No tiene <h1>: agregar uno con el tema central de la página."},{"page":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","detail":"Title corto (43 caracteres, recomendado 50-60): \"Conoce Casa Nua | Senior Living en Colombia\" — extenderlo con más keywords relevantes."},{"page":"https://www.casanua.co/es_es/casa-nua-nosotros-vivienda-adulto-mayor-colombia/","detail":"3 de 6 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/casa-nua-san-lucas/","detail":"Title muy corto (29 caracteres) y en minúsculas (\"Casa nua San lucas - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres con keywords (ej. ubicación, servicio)."},{"page":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/el-primer-senior-living-age-friendly-de-colombia/","detail":"5 de 6 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/evento-clubes/","detail":"No tiene <h1>: agregar uno con el tema central de la página."},{"page":"https://www.casanua.co/es_es/evento-clubes/","detail":"Meta description rota (12 caracteres): el contenido es literalmente \"Contáctanos…\", no describe la página. Escribir una real de 120-155 caracteres."},{"page":"https://www.casanua.co/es_es/evento-clubes/","detail":"Title corto (25 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."},{"page":"https://www.casanua.co/es_es/evento-clubes/","detail":"3 de 4 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/quienes-somos/","detail":"Tiene 2 <h1> (\"Nuestro Equipo\" y \"Una tripulación hecha de vocación y excelencia\"): dejar solo uno."},{"page":"https://www.casanua.co/es_es/quienes-somos/","detail":"Title corto (24 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."},{"page":"https://www.casanua.co/es_es/quienes-somos/","detail":"4 de 4 imágenes sin alt (el 100%): agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/sedes/","detail":"No tiene <h1>: agregar uno (ej. \"Nuestras sedes\")."},{"page":"https://www.casanua.co/es_es/sedes/","detail":"Title muy corto (16 caracteres, \"Sedes - Casa Nua\"): extenderlo a 50-60 caracteres con keywords relevantes (ubicaciones, senior living)."},{"page":"https://www.casanua.co/es_es/sedes/","detail":"11 de 12 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/sedes/casa-country/","detail":"Title muy corto y en minúsculas (23 caracteres, \"sede country - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/sedes/casa-country/","detail":"No tiene meta description: agregar una de 120-155 caracteres con la keyword principal."},{"page":"https://www.casanua.co/es_es/sedes/casa-country/","detail":"Tiene 3 <h1> y los 3 están en INGLÉS (\"Senior Living for Independent Seniors\", \"Assisted living for seniors\" x2) en una página que por lo demás es en español (title y og:title dicen \"sede country - Casa Nua\"): traducir a español y dejar un solo <h1>."},{"page":"https://www.casanua.co/es_es/sedes/casa-country/","detail":"El og:description también está en inglés (\"Senior Living for Independent Seniors Independence, community, and well-being...\"), mezclado con un sitio en español: traducirlo."},{"page":"https://www.casanua.co/es_es/sedes/casa-country/","detail":"5 de 16 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"Canibalización: existe otra URL sobre el mismo tema, https://www.casanua.co/es_es/casa-nua-chia-vivienda-asistida-senior-living-colombia/, con un title casi idéntico. Definir cuál es la página canónica para \"Casa Nua Chía\"."},{"page":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"Tiene 3 <h1>, con el texto \"Vivienda asistida para adultos mayores que valoran su independencia, con todo incluido\" repetido 2 veces: dejar un solo <h1>."},{"page":"https://www.casanua.co/es_es/sedes/casa-nua-chia-vivienda-asistida-senior-living-colombia/","detail":"5 de 24 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/sedes/san-lucas/","detail":"Title corto y en minúsculas (25 caracteres, \"sede san lucas - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/sedes/san-lucas/","detail":"Tiene 4 <h1>, con \"Vivienda asistida para adultos mayores\" repetido 2 veces: dejar un solo <h1>."},{"page":"https://www.casanua.co/es_es/sedes/san-lucas/","detail":"5 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/senior_living_colombia/","detail":"Title corto (33 caracteres, \"CASA NUA SENIOR LIVING - Casa Nua\") y en mayúsculas: reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/senior_living_colombia/","detail":"7 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","detail":"Title corto y en minúsculas (23 caracteres, \"casa nua día - Casa Nua\"): reescribir con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","detail":"Tiene 2 <h1> (\"Casa Nua Día\" y \"OPCIONES A TU MEDIDA\"): dejar solo uno."},{"page":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","detail":"12 de 14 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/casa-nua-dia/","detail":"3 enlaces con texto de anchor genérico (\"ver más\"/similar): agregar contexto (a qué lleva cada uno)."},{"page":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","detail":"Title corto (38 caracteres): extenderlo a 50-60 caracteres con keywords relevantes."},{"page":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","detail":"Tiene 2 <h1> (\"Recuperación Postoperatoria\" y \"RECUPERACIÓN POSTPERATORIA EN CASA NUA\" — esta última además con un typo, \"POSTPERATORIA\"): dejar solo uno y corregir el typo."},{"page":"https://www.casanua.co/es_es/servicios/recuperacion-postoperatoria/","detail":"11 de 12 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","detail":"Title muy corto y en mayúsculas (28 caracteres, \"VIVIENDA ASISTIDA - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","detail":"Tiene 4 <h1>: dejar solo uno con el tema central de la página."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","detail":"25 de 26 imágenes con alt vacío (el 96%): agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-asistida/","detail":"2 enlaces con texto de anchor genérico: agregar contexto."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","detail":"Title corto y en mayúsculas (33 caracteres, \"VIVIENDA INDEPENDIENTE - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","detail":"Tiene 2 <h1>: dejar solo uno."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","detail":"10 de 11 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-independiente/","detail":"2 enlaces con texto de anchor genérico: agregar contexto."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","detail":"Title corto y en mayúsculas (28 caracteres, \"VIVIENDA TEMPORAL - Casa Nua\"): reescribirlo con mayúsculas correctas y extenderlo a 50-60 caracteres."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","detail":"Tiene 2 <h1>: dejar solo uno."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","detail":"15 de 17 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/servicios/vivienda-temporal/","detail":"3 enlaces con texto de anchor genérico: agregar contexto."},{"page":"https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/vivienda-asistida-certificada-como-edificio-sostenible/","detail":"8 de 9 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/vivienda-asistida-rompiendo-mitos-y-estigmas/","detail":"6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","detail":"No tiene <h1>: agregar uno con el tema central del artículo."},{"page":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","detail":"Title muy largo (86 caracteres): acortarlo."},{"page":"https://www.casanua.co/es_es/vivir-mas-o-vivir-mejor-el-verdaderosecreto-del-envejecimiento-saludable/","detail":"6 de 7 imágenes con alt vacío: agregar alt descriptivo en cada una."},{"page":"https://www.casanua.co/","detail":"22 enlaces con el mismo texto de anchor genérico \"Ver más\": agregar contexto específico (a qué sede o servicio lleva cada uno) en el texto o via aria-label, para accesibilidad y relevancia semántica."}]}</script>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<div class="navbar shadow-sm sticky top-0 z-50 no-print" style="background:#042F2E;">
+  <div class="flex-1">
+    <span class="text-xl font-semibold px-2" style="color:#E5E7EB;">Flow</span>
+  </div>
+  <div class="flex-none gap-2">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">Exportar PDF</button>
+  </div>
+</div>
+
+<div class="max-w-[1600px] mx-auto flex gap-6 p-4 md:p-8 items-start">
+
+  <!-- ═══════════════ TABLA DE CONTENIDOS ═══════════════ -->
+  <!-- Se llena por JS a partir del título (.card-title, o data-nav-title si
+       lo tiene) de cada <section class="section-card"> — no hace falta
+       mantener esta lista a mano cada vez que se agrega una sección. -->
+  <aside class="hidden lg:block sticky top-20 self-start w-64 shrink-0 no-print">
+    <nav class="card shadow-md p-4" style="background:#ffffff;">
+      <p class="text-xs font-semibold text-base-content/50 uppercase tracking-wide mb-3">Secciones</p>
+      <ul class="space-y-1 text-sm" id="toc-list"></ul>
+    </nav>
+  </aside>
+
+  <main class="flex-1 min-w-0 space-y-8">
+
+  <!-- ═══════════════ HEADER / RESUMEN EJECUTIVO ═══════════════ -->
+  <section class="section-card card shadow-md" data-nav-title="Resumen ejecutivo" style="background:#ffffff;">
+    <div class="card-body">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1 class="text-3xl font-bold" id="report-h1">Reporte SEO</h1>
+        <p class="text-base-content/60 md:text-right" id="report-period"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLICKS E IMPRESIONES EN EL TIEMPO ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Clicks a lo largo del tiempo</h2>
+      <p class="text-base-content/60 mb-2" id="clicks-over-time-period">Últimos 90 días</p>
+      <div id="chart-clicks-area" class="chart" style="height: 420px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CANIBALIZACIÓN ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Mapa de canibalización de keywords</h2>
+      <p class="text-base-content/60 mb-2">Hasta 10 queries con más de una URL compitiendo · ordenadas por severidad</p>
+      <div id="cannibalization-groups" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GANADORES Y PERDEDORES (ÚLTIMA SEMANA) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Ganadores y perdedores (última semana)</h2>
+      <p class="text-base-content/60 mb-2" id="landings-period"></p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-success mb-2">↑ Ganadores</h3>
+          <div id="table-winners"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-error mb-2">↓ Perdedores</h3>
+          <div id="table-losers"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LANDINGS A CRAWLEAR ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Landings: Descargar HTML para análisis</h2>
+      <p class="text-base-content/60 mb-2">Top 10 landings · descarga el HTML renderizado (Cloudflare Browser Rendering) para auditarlo</p>
+      <div id="table-landings-crawl"></div>
+
+      <div class="divider">Acciones recomendadas (análisis IA)</div>
+      <ul id="ai-actions-list" class="list-disc pl-5 space-y-3"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RENDIMIENTO DE KEYWORDS ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Rendimiento de keywords</h2>
+      <p class="text-base-content/60 mb-2">Últimos 28 días · agrupadas por tipo de consulta</p>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-2">Consultas generales</h3>
+          <div id="table-kw-general"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Consultas objetivo</h3>
+          <div id="table-kw-target"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Brand</h3>
+          <div id="table-kw-brand"></div>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Non-brand</h3>
+          <div id="table-kw-nonbrand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VOLUMEN DE BÚSQUEDA ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Volumen de búsqueda</h2>
+      <p class="text-base-content/60 mb-2">Consultas objetivo (seedKeywords) · volumen mensual promedio (DataForSEO), clicks/impresiones reales (Search Console) y posición actual en Google (ValueSERP)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Consultas</th><th>Volumen de búsqueda</th><th>Clicks</th><th>Impresiones</th><th>Posición</th></tr>
+          </thead>
+          <tbody id="keyword-volume-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONSULTA PRINCIPAL Y VARIACIONES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Consulta principal y variaciones</h2>
+      <p class="text-base-content/60 mb-2">Una fila por landing (seedUrls) · consulta principal y variaciones relacionadas (Google Search Console)</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Consulta principal</th><th>Variaciones</th></tr>
+          </thead>
+          <tbody id="query-variations-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITEMAP.XML ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de Sitemap.xml</h2>
+      <p class="text-base-content/60 mb-2">Estado actual de rastreo e indexación técnica</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Métrica</th><th>Valor</th></tr>
+          </thead>
+          <tbody id="sitemap-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Sitemaps encontrados</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>Sitemap</th><th>Tipo</th><th>Enviadas</th><th>Indexadas (GSC)</th><th>URLs al descargar</th><th>Errores</th><th>Warnings</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="sitemap-list-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Indexación real por página (vía inspect_url · coverageState)</div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Estado (coverageState)</th></tr>
+          </thead>
+          <tbody id="sitemap-inspection-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="divider">Resumen: seedUrls no encontradas en los sitemaps</div>
+      <div id="sitemap-missing-summary"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROBOTS.TXT ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Análisis de robots.txt</h2>
+      <p class="text-base-content/60 mb-2" id="robots-source"></p>
+      <textarea id="robots-textarea" readonly class="textarea textarea-bordered w-full font-mono text-xs" rows="12"></textarea>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO FALTANTE ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido faltante</h2>
+      <p class="text-base-content/60 mb-2">Consultas que ya generan impresiones/clicks pero no aparecen en el texto de la página</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Hallazgo</th><th>Página</th></tr>
+          </thead>
+          <tbody id="findings-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HALLAZGOS: CONTENIDO PARA MEJORAR (DataForSEO AI Optimization) ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Hallazgos: Contenido para mejorar</h2>
+      <p class="text-base-content/60 mb-2">Landings principales con oportunidades de mejora detectadas</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>Pregunta y Respuesta</th><th>URL</th><th>Fuente</th></tr>
+          </thead>
+          <tbody id="content-improve-grid"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TITLE AND DESCRIPTION ANALYSER ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Title and Description analyser</h2>
+      <p class="text-base-content/60 mb-2">Title y meta description de cada seed URL · longitud recomendada: title 50-60 caracteres, description 120-155</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th>URL</th><th>Title</th><th>Description</th></tr>
+          </thead>
+          <tbody id="title-description-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPETIDORES ═══════════════ -->
+  <section class="section-card card shadow-md" style="background:#ffffff;">
+    <div class="card-body">
+      <h2 class="card-title">Competidores</h2>
+      <p class="text-base-content/60 mb-2">Análisis comparativo de autoridad de dominio frente a la competencia</p>
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr><th></th><th>Competidor</th><th>Domain Authority</th><th>Page Authority</th><th>Backlinks</th><th>Dominios de referencia</th></tr>
+          </thead>
+          <tbody id="competitors-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer class="text-center text-sm text-base-content/50 py-6 no-print max-w-[1600px] mx-auto">
+  Flow · Generado con MCP Google Search Console + Cloudflare Crawler
+</footer>
+
+<script>
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+  // Los hallazgos de aiActions describen HTML (mencionan literalmente
+  // <title>, <body>, <h1>, etc.) — sin escapar, el navegador los parsea
+  // como tags reales y el primero sin cierre (ej. "<title>") se traga todo
+  // el resto del contenido como RCDATA invisible. Por eso este escape es
+  // obligatorio, no cosmético.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ── Header ──
+  document.getElementById('page-title').textContent = `Flow: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-h1').textContent = `Reporte SEO: ${REPORT_DATA.meta.domain}`;
+  document.getElementById('report-period').textContent =
+    `Período: ${REPORT_DATA.meta.periodStart} → ${REPORT_DATA.meta.periodEnd} · Generado el ${REPORT_DATA.meta.generatedAt}`;
+  document.getElementById('landings-period').textContent =
+    `Variación de clicks: ${REPORT_DATA.landingsPeriodLabel} vs semana anterior`;
+
+  const da = REPORT_DATA.domainAnalytics;
+  const domainAnalyticsStats = da ? [
+    { title: 'Keywords orgánicas', value: da.organicKeywords ?? '—' },
+    { title: 'Backlinks', value: da.backlinks?.toLocaleString() ?? '—', desc: `${da.referringDomains ?? '—'} dominios de referencia` },
+  ] : [];
+
+  const kw = REPORT_DATA.keywords;
+  const totalKeywords = kw ? (kw.general.length + kw.target.length + kw.brand.length + kw.nonBrand.length) : 0;
+  const crawlKeywordStats = [
+    { title: 'URLs en settings', value: REPORT_DATA.landingsCrawl?.length ?? '—', desc: 'crawl.seedUrls del cliente' },
+    { title: 'Keywords analizadas', value: totalKeywords, desc: 'General + objetivo + brand + non-brand' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = [...REPORT_DATA.stats, ...crawlKeywordStats, ...domainAnalyticsStats].map(s => `
+    <div class="stat bg-base-200/50 rounded-lg">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value ${s.valueClass || ''}">${s.value}</div>
+      <div class="stat-desc ${s.descClass || ''}">${s.desc || ''}</div>
+    </div>`).join('');
+
+  // ── Canibalización ──
+  document.getElementById('cannibalization-groups').innerHTML = (REPORT_DATA.cannibalization || []).length === 0
+    ? '<p class="text-base-content/60">Sin canibalización detectada (excluyendo queries de marca).</p>'
+    : (REPORT_DATA.cannibalization || []).map(canib => `
+    <div>
+      <p class="font-medium mb-1">"${canib.query}"</p>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr><th>URL</th><th>Impresiones</th><th>Clicks</th><th>Posición</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            ${(canib.rows || []).map(r => `
+              <tr>
+                <td>${r.url}</td><td>${r.impressions.toLocaleString()}</td><td>${r.clicks}</td><td>${r.position}</td>
+                <td><span class="badge ${r.statusClass}">${r.status}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // ── Sitemap (a nivel de sitio, vía list_sitemaps + inspect_url por seedUrl) ──
+  const sm = REPORT_DATA.sitemap || {};
+  const su = sm.seedUrlsIndexing || { pages: [], totalIndexed: 0, totalChecked: 0, indexRate: '0%' };
+  document.getElementById('sitemap-rows').innerHTML = `
+    <tr><td>Sitemaps registrados</td><td>${sm.totalSitemaps || 0}</td></tr>
+    <tr><td>URLs enviadas (sitemaps)</td><td>${sm.totalSubmitted || 0}</td></tr>
+    <tr><td>URLs indexadas (seedUrls, vía inspect_url)</td><td class="text-success">${su.totalIndexed} / ${su.totalChecked}</td></tr>
+    <tr><td>Tasa de indexación (seedUrls)</td><td>${su.indexRate}</td></tr>
+    <tr><td>Sitemaps con errores</td><td class="${sm.sitemapsWithErrors > 0 ? 'text-error' : ''}">${sm.sitemapsWithErrors || 0}</td></tr>
+    <tr><td>Sitemaps con warnings</td><td class="${sm.sitemapsWithWarnings > 0 ? 'text-warning' : ''}">${sm.sitemapsWithWarnings || 0}</td></tr>`;
+
+  const SITEMAP_STATUS_CLASS = {
+    healthy: 'badge-success', partial: 'badge-warning', 'low-indexing': 'badge-error',
+    error: 'badge-error', pending: 'badge-ghost', empty: 'badge-ghost',
+  };
+  document.getElementById('sitemap-list-rows').innerHTML = (sm.sitemaps || []).length === 0
+    ? '<tr><td colspan="8" class="text-base-content/60">No hay sitemaps registrados en Search Console.</td></tr>'
+    : (sm.sitemaps || []).map(s => `
+    <tr>
+      <td class="break-all">${s.path}</td>
+      <td>${s.isSitemapsIndex ? 'Índice' : 'Sitemap'}</td>
+      <td>${s.submitted}</td>
+      <td>${s.indexed}</td>
+      <td>${s.download.ok ? s.download.urlCount : `<span class="text-error">error: ${s.download.error}</span>`}</td>
+      <td class="${s.errors > 0 ? 'text-error' : ''}">${s.errors}</td>
+      <td class="${s.warnings > 0 ? 'text-warning' : ''}">${s.warnings}</td>
+      <td><span class="badge ${SITEMAP_STATUS_CLASS[s.status] || 'badge-ghost'}">${s.status}</span></td>
+    </tr>`).join('');
+
+  document.getElementById('sitemap-inspection-rows').innerHTML = (su.pages || []).map(p => `
+    <tr>
+      <td>${p.path || '/'}</td>
+      <td class="${p.indexed ? 'text-success' : 'text-error'}">${p.coverageState}</td>
+    </tr>`).join('');
+
+  const missingFromSitemap = sm.seedUrlsNotInSitemap || [];
+  document.getElementById('sitemap-missing-summary').innerHTML = missingFromSitemap.length === 0
+    ? `<p class="text-success">Todas las seedUrls (${(su.pages || []).length}) aparecen en el contenido de algún sitemap descargado.</p>`
+    : `
+    <p class="text-warning mb-2">${missingFromSitemap.length} de ${(su.pages || []).length} seedUrls NO aparecen en ningún sitemap descargado:</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead><tr><th>URL</th></tr></thead>
+        <tbody>
+          ${missingFromSitemap.map(u => `<tr><td>${u.url}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // ── robots.txt (fetch real, contenido crudo) ──
+  const rb = REPORT_DATA.robotsTxt || { url: '', content: '' };
+  document.getElementById('robots-source').textContent = rb.url ? `Descargado de ${rb.url}` : 'No disponible';
+  document.getElementById('robots-textarea').value = rb.content || '';
+
+  // ── Findings ──
+  document.getElementById('findings-rows').innerHTML = (REPORT_DATA.findings || []).map(f => `
+    <tr><td>${f.detail}</td><td>${f.page}</td></tr>`).join('');
+
+  document.getElementById('content-improve-grid').innerHTML = (REPORT_DATA.contentImprove || []).map(f => `
+    <tr>
+      <td>${f.detail}</td>
+      <td>${f.page}</td>
+      <td>${f.source || ''}</td>
+    </tr>`).join('');
+
+  // ── Clicks e impresiones en el tiempo (últimos 90 días, doble eje) ──
+  if (REPORT_DATA.clicksOverTime) {
+    const clicksAreaChart = echarts.init(document.getElementById('chart-clicks-area'));
+    const [cy, cm, cd] = REPORT_DATA.clicksOverTime.startDate.split('-').map(Number);
+    const clicksDates = REPORT_DATA.clicksOverTime.clicks.map((_, i) => {
+      const d = new Date(cy, cm - 1, cd);
+      d.setDate(d.getDate() + i);
+      return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    });
+    clicksAreaChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Clicks', 'Impresiones'], top: 0 },
+      grid: { left: 50, right: 50, top: 40, bottom: 30 },
+      xAxis: { type: 'category', boundaryGap: false, data: clicksDates },
+      yAxis: [
+        { type: 'value', name: 'Clicks', position: 'left' },
+        { type: 'value', name: 'Impresiones', position: 'right', splitLine: { show: false } },
+      ],
+      series: [
+        {
+          name: 'Clicks',
+          type: 'line',
+          yAxisIndex: 0,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(20,184,166,0.4)' },
+              { offset: 1, color: 'rgba(20,184,166,0.02)' },
+            ]),
+          },
+          lineStyle: { color: '#14B8A6', width: 2 },
+          itemStyle: { color: '#14B8A6' },
+          data: REPORT_DATA.clicksOverTime.clicks,
+        },
+        {
+          name: 'Impresiones',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#0ea5e9', width: 2 },
+          itemStyle: { color: '#0ea5e9' },
+          data: REPORT_DATA.clicksOverTime.impressions,
+        },
+      ],
+    });
+    window.addEventListener('resize', () => { clicksAreaChart.resize(); });
+  }
+
+  // ── Volumen de búsqueda (consultas objetivo) ──
+  document.getElementById('keyword-volume-rows').innerHTML = (REPORT_DATA.keywordVolume?.rows || []).map(r => `
+    <tr><td>${r.query}</td><td>${r.volume !== null ? r.volume.toLocaleString() : 'sin datos'}</td><td>${r.clicks.toLocaleString()}</td><td>${r.impressions.toLocaleString()}</td><td>${r.position !== null ? r.position : 'sin datos'}</td></tr>`).join('');
+
+  // ── Consulta principal y variaciones ──
+  document.getElementById('query-variations-rows').innerHTML = (REPORT_DATA.queryVariations || []).map(q => `
+    <tr><td>${q.url}</td><td><strong>${q.mainQuery || 'sin datos'}</strong></td><td>${q.variations.length ? q.variations.join(', ') : '—'}</td></tr>`).join('');
+
+  // ── Ganadores / Perdedores (landings) ──
+  const deltaFormatter = (cls) => (cell) => `<span class="${cls} font-semibold">${cell.getValue()}</span>`;
+
+  new Tabulator("#table-winners", {
+    layout: "fitColumns",
+    data: REPORT_DATA.winners || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-success") },
+    ],
+  });
+
+  new Tabulator("#table-losers", {
+    layout: "fitColumns",
+    data: REPORT_DATA.losers || [],
+    columns: [
+      { title: "Página", field: "page", widthGrow: 6 },
+      { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+      { title: "Sem. anterior", field: "prev", hozAlign: "right", widthGrow: 1 },
+      { title: "Variación", field: "delta", hozAlign: "right", widthGrow: 1, formatter: deltaFormatter("text-error") },
+    ],
+  });
+
+  // ── Landings a crawlear ──
+  new Tabulator("#table-landings-crawl", {
+    layout: "fitColumns",
+    data: REPORT_DATA.landingsCrawl || [],
+    columns: [
+      { title: "URL", field: "url" },
+      {
+        title: "", field: "localPath", hozAlign: "center", width: 90, headerSort: false,
+        formatter: (cell) => {
+          const localPath = cell.getValue();
+          if (!localPath) return '';
+          const relHref = 'data/crawl/' + localPath.split('/data/crawl/')[1];
+          return `
+            <a href="${relHref}" target="_blank" class="btn btn-circle btn-ghost btn-sm" title="Ver HTML descargado">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </a>`;
+        },
+      },
+    ],
+  });
+
+  document.getElementById('ai-actions-list').innerHTML = (REPORT_DATA.aiActions || []).map(a => {
+    const detail = escapeHtml(a.detail);
+    const sepIdx = detail.indexOf(': ');
+    const issue = sepIdx === -1 ? detail : detail.slice(0, sepIdx);
+    const action = sepIdx === -1 ? '' : detail.slice(sepIdx + 2);
+    return `
+    <li>
+      <p><strong>${issue}</strong>${action ? ': ' + action : ''}</p>
+      <a href="${escapeHtml(a.page)}" target="_blank" class="text-xs text-primary/70 hover:underline break-all">${escapeHtml(a.page)}</a>
+    </li>`;
+  }).join('');
+
+  // ── Keywords ──
+  // Query se lleva 60% del ancho (widthGrow: 6); Clicks/Impr./Pos./Δ se
+  // reparten el 40% restante en partes iguales (widthGrow: 1 c/u), todas
+  // alineadas a la derecha.
+  const kwColumns = [
+    { title: "Query", field: "query", widthGrow: 6 },
+    { title: "Clicks", field: "clicks", hozAlign: "right", widthGrow: 1 },
+    { title: "Impr.", field: "impressions", hozAlign: "right", widthGrow: 1 },
+    { title: "Pos.", field: "position", hozAlign: "right", widthGrow: 1 },
+    { title: "Δ", field: "delta", hozAlign: "right", widthGrow: 1 },
+  ];
+  if (REPORT_DATA.keywords) {
+    new Tabulator("#table-kw-general", { layout: "fitColumns", data: REPORT_DATA.keywords.general || [], columns: kwColumns });
+    new Tabulator("#table-kw-target", { layout: "fitColumns", data: REPORT_DATA.keywords.target || [], columns: kwColumns });
+    new Tabulator("#table-kw-brand", { layout: "fitColumns", data: REPORT_DATA.keywords.brand || [], columns: kwColumns });
+    new Tabulator("#table-kw-nonbrand", { layout: "fitColumns", data: REPORT_DATA.keywords.nonBrand || [], columns: kwColumns });
+  }
+
+  // ── Title and Description analyser ──
+  function lengthBadgeClass(len, min, max) {
+    if (!len) return 'badge-error';
+    if (len < min || len > max) return 'badge-warning';
+    return 'badge-success';
+  }
+
+  document.getElementById('title-description-rows').innerHTML = (REPORT_DATA.titleDescriptionAnalysis || []).map(r => {
+    const titleLen = r.title ? r.title.length : 0;
+    const descLen = r.description ? r.description.length : 0;
+    return `
+    <tr>
+      <td class="break-all">${escapeHtml(r.url)}</td>
+      <td>
+        <p>${r.title ? escapeHtml(r.title) : '<span class="text-error">Sin title</span>'}</p>
+        <span class="badge badge-sm ${lengthBadgeClass(titleLen, 50, 60)}">${titleLen} car.</span>
+      </td>
+      <td>
+        <p>${r.description ? escapeHtml(r.description) : '<span class="text-error">Sin description</span>'}</p>
+        <span class="badge badge-sm ${lengthBadgeClass(descLen, 120, 155)}">${descLen} car.</span>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // ── Competidores ──
+  document.getElementById('competitors-rows').innerHTML = (REPORT_DATA.competitors || []).map(c => `
+    <tr>
+      <td><img src="${escapeHtml(c.icon)}" alt="" class="w-5 h-5" /></td>
+      <td><a href="${escapeHtml(c.link)}" target="_blank" class="hover:underline">${escapeHtml(c.title)}</a></td>
+      <td>${c.domainAuthority ?? '—'}</td>
+      <td>${c.pageAuthority ?? '—'}</td>
+      <td>${c.backlinks?.toLocaleString() ?? '—'}</td>
+      <td>${c.referringDomains?.toLocaleString() ?? '—'}</td>
+    </tr>`).join('');
+
+  // ── Tabla de contenidos + scroll-spy ──
+  function slugify(text) {
+    const COMBINING_MARKS = /[\u0300-\u036f]/g;
+    return text
+      .normalize('NFD').replace(COMBINING_MARKS, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  const tocSections = [...document.querySelectorAll('main.flex-1 > section.section-card')];
+  const tocList = document.getElementById('toc-list');
+  tocList.innerHTML = tocSections.map((sec, i) => {
+    const title = sec.dataset.navTitle || sec.querySelector('.card-title')?.textContent.trim() || `Sección ${i + 1}`;
+    const id = slugify(title) || `section-${i}`;
+    sec.id = id;
+    return `<li><a href="#${id}" class="toc-link" data-target="${id}">${title}</a></li>`;
+  }).join('');
+
+  const tocLinks = [...tocList.querySelectorAll('.toc-link')];
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const link = tocList.querySelector(`[data-target="${entry.target.id}"]`);
+      if (!link) return;
+      tocLinks.forEach(l => l.classList.remove('toc-active'));
+      link.classList.add('toc-active');
+    });
+  }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+  tocSections.forEach(sec => tocObserver.observe(sec));
+
+</script>
+
+<!-- Paged.js — solo se activa al exportar a PDF/impresión -->
+<script>
+  if (window.matchMedia('print').matches) {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
